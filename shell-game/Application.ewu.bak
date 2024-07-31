@@ -1,0 +1,6502 @@
+﻿$version 13.04
+
+// This is the root component of the entire GUI application.
+$rect <170,250,370,290>
+$output false
+class Application : Core::Root
+{
+  $rect <820,10,1020,50>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <820,140,1000,180>
+  inherited method Init()
+  {
+    attachobserver OnScreenChange,^Application::Device1.CurrentScreen;
+
+    postsignal OnScreenChange;
+
+  }
+
+  $rect <820,80,1020,120>
+  var Application::DeviceClass Variable = Application::Device;
+
+  $rect <814,214,1014,254>
+  var Application::DeviceClass1 CurrentScreen = Application::Device1;
+
+  $rect <813,306,1013,346>
+  slot OnScreenChange
+  {
+    switch(Application::Device1.CurrentScreen){
+      case Application::ScreenType.MainMenu: Container.Content=new Application::MainMenu;
+      case Application::ScreenType.HelpMenu: Container.Content=new Application::HelpMenu;
+      case Application::ScreenType.SettingsMenu: Container.Content=new Application::Settings;
+      case Application::ScreenType.InitilizeGame: Container.Content=new Application::LoadingGame;
+      case Application::ScreenType.Shop: Container.Content=new Application::Shop;
+      case Application::ScreenType.Stats: Container.Content=new Application::Stats;
+      case Application::ScreenType.Game: Container.Content=new Application::Game;
+      case Application::ScreenType.Achivements : Container.Content=new Application::Achievements;
+      default: ;
+    }
+  }
+
+  $rect <20,20,160,60>
+  object Application::Container Container
+  {
+    preset Content = new Application::MainMenu;
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Variable
+  $member CurrentScreen
+  $member OnScreenChange
+  $member Container
+}
+
+$rect <170,0,370,40>
+$output false
+resource Resources::Font Font
+{
+  attr fontname FontName = Roboto;
+  attr fontheight Height = 38;
+  attr fontheightmode HeightMode = Popular;
+  attr fontquality Quality = High;
+  attr fontranges Ranges = 0x20-0xFF;
+  attr fontaspectratio AspectRatio = 1.0;
+  attr fontbold Bold = false;
+  attr fontitalic Italic = false;
+  attr fontkerning Kerning = true;
+  attr fontrowdistance RowDistance;
+}
+
+$rect <430,450,630,490>
+$output false
+class Game : Core::Group
+{
+  $rect <650,940,850,980>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <0,0,800,480>;
+    preset ColorBR = #0DFF5CFF;
+    preset ColorTL = #03FEFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Center
+  {
+    preset StackingPriority = 3;
+    preset Bounds = <300,70,500,438>;
+    preset Animated = true;
+    preset ScrollOffset = <0,0>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter, ScaleToFit];
+    preset FrameNumber = 10;
+    preset Bitmap = Application::ShopCups;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle2
+  {
+    preset Bounds = <0,355,800,480>;
+    preset RadiusTR = 30;
+    preset RadiusTL = 30;
+    preset ColorBL = #883400FF;
+    preset ColorBR = #6A3002FF;
+    preset ColorTR = #B53E00FF;
+    preset ColorTL = #B84300FF;
+    preset AlphaBlended = true;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Ball
+  {
+    preset StackingPriority = 1;
+    preset Bounds = <328,283,472,354>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter];
+    preset FrameNumber = 5;
+    preset Bitmap = Application::ShopBalls;
+  }
+
+  $rect <679,590,879,630>
+  object Effects::PointEffect ShowBall
+  {
+    preset OnFinished = CallHideBall;
+    preset OnAnimate = null;
+    preset Reversed = false;
+    preset Symmetric = false;
+    preset Timing = Effects::Timing.FastIn_EaseOut;
+    preset NoOfCycles = 1;
+    preset InterCycleDelay = 0;
+    preset InitialDelay = 0;
+    preset Enabled = true;
+    preset Value2 = <0,-70>;
+    preset Value1 = <0,0>;
+    preset Outlet = ^Center.ScrollOffset;
+  }
+
+  $rect <900,590,1100,630>
+  object Effects::PointEffect HideBall
+  {
+    preset OnFinished = HideIt;
+    preset OnAnimate = null;
+    preset Reversed = false;
+    preset Symmetric = false;
+    preset Timing = Effects::Timing.EaseIn_FastOut;
+    preset NoOfCycles = 1;
+    preset InitialDelay = 150;
+    preset Enabled = false;
+    preset Value2 = <0,0>;
+    preset Value1 = <0,-70>;
+    preset Outlet = ^Center.ScrollOffset;
+  }
+
+  $rect <900,640,1100,680>
+  slot CallHideBall
+  {
+    var Effects::PointEffect hide=this.HideBall;
+    hide.Enabled=true;
+  }
+
+  $rect <11,689,230,729>
+  slot LeftCenter
+  {
+    var bool active=SettingsObject.Animation;
+
+    if(!active)
+    {
+      if(this.Left.Bounds==<100,70,300,438>)
+      {
+          this.LeftCenterAnimation.Outlet=^Left.Bounds;
+          Left.StackingPriority=5;
+          if(this.Center.Bounds==<300,70,500,438>)
+          {
+              this.LeftCenterAnimation.Outlet1=^Center.Bounds;
+              Center.StackingPriority=2;
+          }
+          else
+          {
+              this.LeftCenterAnimation.Outlet1=^Right.Bounds;
+              Right.StackingPriority=5;
+          }
+       }
+      else if(this.Center.Bounds==<100,70,300,438>)
+      {
+          this.LeftCenterAnimation.Outlet=^Center.Bounds;
+          Center.StackingPriority=2;
+          if(this.Left.Bounds==<300,70,500,438>)
+          {
+           this.LeftCenterAnimation.Outlet1=^Left.Bounds;
+           Left.StackingPriority=2;
+          }
+          else{
+            this.LeftCenterAnimation.Outlet1=^Right.Bounds;
+            Right.StackingPriority=2;
+          }
+       }
+       else
+      {
+          this.LeftCenterAnimation.Outlet=^Right.Bounds;
+          Right.StackingPriority=5;
+          if(this.Center.Bounds==<300,70,500,438>)
+         {
+              this.LeftCenterAnimation.Outlet1=^Center.Bounds;
+              Center.StackingPriority=2;
+         }
+          else
+          {
+            this.LeftCenterAnimation.Outlet1=^Left.Bounds;
+            Left.StackingPriority=2;
+          }
+        }
+       this.LeftCenterAnimation.Enabled=true;
+    }
+    else{
+      LeftCenterSecondaryAnimation();
+    }
+
+
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Left
+  {
+    preset StackingPriority = 3;
+    preset Bounds = <100,70,300,438>;
+    preset Animated = true;
+    preset ScrollOffset = <0,0>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter, ScaleToFit];
+    preset FrameNumber = 10;
+    preset Bitmap = Application::ShopCups;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Right
+  {
+    preset StackingPriority = 3;
+    preset Bounds = <500,70,700,438>;
+    preset ScrollOffset = <0,0>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter, ScaleToFit];
+    preset FrameNumber = 10;
+    preset Bitmap = Application::ShopCups;
+  }
+
+  $rect <230,689,450,729>
+  slot RightLeft
+  {
+    var bool active=SettingsObject.Animation;
+
+    if(!active)
+    {
+      if(this.Left.Bounds==<100,70,300,438>)
+      {
+         this.LeftRightAnimation.Outlet=^Left.Bounds;
+         Left.StackingPriority=5;
+          if(this.Center.Bounds==<500,70,700,438>)
+         {
+           this.LeftRightAnimation.Outlet1=^Center.Bounds;
+           Center.StackingPriority=2;
+         }
+        else
+        {
+          this.LeftRightAnimation.Outlet1=^Right.Bounds;
+          Right.StackingPriority=2;
+         }
+      }
+      else if(this.Center.Bounds==<100,70,300,438>)
+      {
+        this.LeftRightAnimation.Outlet=^Center.Bounds;
+        Center.StackingPriority=5;
+        if(this.Left.Bounds==<500,70,700,438>)
+         {
+          this.LeftRightAnimation.Outlet1=^Left.Bounds; 
+          Left.StackingPriority=2;
+         }
+        else
+          {
+          this.LeftRightAnimation.Outlet1=^Right.Bounds;
+          Right.StackingPriority=2;
+          }
+       }
+      else
+      {
+          this.LeftRightAnimation.Outlet=^Right.Bounds;
+         Right.StackingPriority=5;
+        if(this.Center.Bounds==<500,70,700,438>)
+         {
+           this.LeftRightAnimation.Outlet1=^Center.Bounds;
+           Center.StackingPriority=2;
+         }
+        else
+         {
+            this.LeftRightAnimation.Outlet1=^Left.Bounds;
+            Left.StackingPriority=2;
+         }
+      }
+       this.LeftRightAnimation.Enabled=true;
+    }
+    else
+    {
+      RightLeftSecondaryAnimation();
+    }
+
+  }
+
+  $rect <679,640,879,680>
+  slot ShowBallCall
+  {
+    this.Ball.Visible=true;
+    this.ShowBall.Enabled=true;
+
+
+
+  }
+
+  $rect <910,700,1110,740>
+  slot HideIt
+  {
+    this.Ball.Visible=false;
+    this.ShowBall.Outlet=^Center.ScrollOffset;
+    this.HideBall.Outlet=^Center.ScrollOffset;
+
+    Center.StackingPriority=3;
+    Left.StackingPriority=3;
+    Right.StackingPriority=3;
+
+
+    if(Moves==0)
+    {
+      this.MakeMoves.Enabled=true;
+      $if (!$prototyper)
+      native{
+          ShuffleStart();
+      }
+      $endif
+     }
+    else 
+    {
+        Moves=0;
+        this.Text.Visible=false;
+        this.ChooseTextEffectTL.Enabled=false;
+        this.ChooseTextEffectBR.Enabled=false;
+        if(Correct)
+        {
+          Correct=false;
+          signal NextLevel;
+        }
+      else{
+       signal Reset;
+      }
+
+      }
+  }
+
+  $rect <449,688,650,728>
+  slot CenterRight
+  {
+    var bool active=SettingsObject.Animation;
+
+    if(!active)
+    {
+      if(this.Left.Bounds==<300,70,500,438>)
+      {
+        this.CenterRightAnimation.Outlet=^Left.Bounds;
+        Left.StackingPriority=5;
+        if(this.Center.Bounds==<500,70,700,438>)
+         {
+         this.CenterRightAnimation.Outlet1=^Center.Bounds;
+          Center.StackingPriority=2;
+         }
+        else
+          {
+          this.CenterRightAnimation.Outlet1=^Right.Bounds;
+           Right.StackingPriority=2;
+          }
+      }
+      else if(this.Center.Bounds==<300,70,500,438>)
+      {
+        this.CenterRightAnimation.Outlet=^Center.Bounds;
+        Center.StackingPriority=5;
+        if(this.Left.Bounds==<500,70,700,438>)
+         {
+          this.CenterRightAnimation.Outlet1=^Left.Bounds;
+          Left.StackingPriority=2;
+         }
+        else
+          {
+          this.CenterRightAnimation.Outlet1=^Right.Bounds;
+          Right.StackingPriority=2;
+          }
+      }
+      else
+      {
+        this.CenterRightAnimation.Outlet=^Right.Bounds;
+        Right.StackingPriority=5;
+        if(this.Center.Bounds==<500,70,700,438>)
+         {
+            this.CenterRightAnimation.Outlet1=^Center.Bounds;
+            Center.StackingPriority=2;
+         }
+        else
+          {
+           this.CenterRightAnimation.Outlet1=^Left.Bounds;
+           Left.StackingPriority=2;
+          }
+        }
+        this.CenterRightAnimation.Enabled=true;
+    }
+    else{
+      CenterRightSecondaryAnimation();
+    }
+
+
+
+
+  }
+
+  $rect <679,700,879,740>
+  slot ShowBallFinal
+  {
+    if(this.Center.Bounds==<100,70,300,438>)
+      this.Ball.Bounds=<128,283,272,354>;
+    else if(this.Center.Bounds==<300,70,500,438>)
+       this.Ball.Bounds=<328,283,472,354>;
+    else
+        this.Ball.Bounds=<528,283,672,354>;
+
+    this.Ball.Visible=true;
+
+    signal ShowBallCall;
+
+  }
+
+  $rect <100,820,300,860>
+  slot GameLogic
+  {
+    var int32 First=math_rand(0,9)%3 + 1;
+    var int32 second=math_rand(0,9)%3 + 1;
+
+    while(First==second)
+      second=math_rand(0,9)%3 + 1;
+
+    if((First==1 && second==2) || (First==2 && second==1))
+      signal LeftCenter;
+    else if((First==1 && second==3) || (First==3 && second==1))
+      signal RightLeft;
+    else
+      signal CenterRight;
+
+    Moves+=1;
+
+    if(Moves>=Nivel*2)
+      {
+        this.MakeMoves.Enabled=false;
+        this.WaitFinish.Enabled=true;
+      }
+  }
+
+  $rect <370,820,570,860>
+  object Core::Timer MakeMoves
+  {
+    preset OnTrigger = GameLogic;
+    preset Period = 1000;
+  }
+
+  $rect <650,860,850,900>
+  var int32 Moves = 0;
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <212,39,588,91>;
+    preset ColorBR = #FFF00CFF;
+    preset ColorTL = #FF1108FF;
+    preset String = "Choose a Cup";
+    preset Font = Application::Font1;
+    preset Visible = false;
+  }
+
+  $rect <372,859,572,899>
+  object Core::Timer WaitFinish
+  {
+    preset OnTrigger = OnFinish;
+    preset Period = 1000;
+  }
+
+  $rect <372,900,572,940>
+  slot OnFinish
+  {
+    this.Text.Visible=true;
+    this.WaitFinish.Enabled=false;
+    this.ChooseTextEffectTL.Enabled=true;
+    this.ChooseTextEffectBR.Enabled=true;
+    ChooseLeft.Enabled=true;
+    ChooseRight.Enabled=true;
+    ChooseCenter.Enabled=true;
+    $if (!$prototyper)
+    native{
+     ShuffleEnd();
+    }
+    $endif
+
+
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler ChooseLeft
+  {
+    preset Point4 = <144,148>;
+    preset Point3 = <261,148>;
+    preset Point2 = <283,352>;
+    preset Point1 = <127,352>;
+    preset OnPress = Choice;
+    preset Enabled = false;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler ChooseCenter
+  {
+    preset Point4 = <344,148>;
+    preset Point3 = <461,148>;
+    preset Point2 = <483,352>;
+    preset Point1 = <327,352>;
+    preset OnPress = Choice;
+    preset Enabled = false;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler ChooseRight
+  {
+    preset Point4 = <538,148>;
+    preset Point3 = <655,148>;
+    preset Point2 = <677,352>;
+    preset Point1 = <521,352>;
+    preset OnPress = Choice;
+    preset Enabled = false;
+  }
+
+  $rect <100,870,300,910>
+  slot Choice
+  {
+    var Core::SimpleTouchHandler choice = (Core::SimpleTouchHandler)sender;
+    var Application::DeviceClass settings=this.SettingsObject;
+
+    settings.TotalRounds+=1;
+    if(choice==ChooseLeft)
+      {
+        if(Left.Bounds==<100,70,300,438>)
+          {this.ShowBall.Outlet=^Left.ScrollOffset;
+           this.HideBall.Outlet= ^Left.ScrollOffset;
+          }
+        else if(Right.Bounds==<100,70,300,438>)
+          {this.ShowBall.Outlet=^Right.ScrollOffset;
+            this.HideBall.Outlet=^Right.ScrollOffset;
+          }
+        else
+        {
+          this.ShowBall.Outlet=^Center.ScrollOffset;
+          this.HideBall.Outlet=^Center.ScrollOffset;
+          Correct=true;
+          }
+      }
+
+    else if(choice==ChooseCenter)
+      {
+        if(Left.Bounds==<300,70,500,438>)
+         {this.ShowBall.Outlet=^Left.ScrollOffset;
+           this.HideBall.Outlet= ^Left.ScrollOffset;
+          }
+        else if(Right.Bounds==<300,70,500,438>)
+          {this.ShowBall.Outlet=^Right.ScrollOffset;
+            this.HideBall.Outlet=^Right.ScrollOffset;
+          }
+        else
+        {
+          Correct=true;
+          this.ShowBall.Outlet=^Center.ScrollOffset;
+          this.HideBall.Outlet=^Center.ScrollOffset;
+
+          }
+      }
+    else
+    {
+        if(Left.Bounds==<500,70,700,438>)
+          {this.ShowBall.Outlet=^Left.ScrollOffset;
+           this.HideBall.Outlet= ^Left.ScrollOffset;
+          }
+        else if(Right.Bounds==<500,70,700,438>)
+          {this.ShowBall.Outlet=^Right.ScrollOffset;
+            this.HideBall.Outlet=^Right.ScrollOffset;
+          }
+        else
+        {
+          this.ShowBall.Outlet=^Center.ScrollOffset;
+          this.HideBall.Outlet=^Center.ScrollOffset;
+          Correct=true;
+          }
+      }
+
+    if(Correct)
+    {
+      settings.CorrectGuesses+=1;
+      $if (!$prototyper)
+      native{
+         Correct();
+      }
+      $endif
+    }
+    else{
+       $if (!$prototyper)
+      native{
+         Wrong();
+      }
+      $endif
+
+    }
+
+    this.ChooseCenter.Enabled=false;
+    this.ChooseLeft.Enabled=false;
+    this.ChooseRight.Enabled=false; 
+    signal ShowBallFinal;
+  }
+
+  $rect <650,820,850,860>
+  var bool Correct = false;
+
+  $rect <-100,870,100,910>
+  slot Reset
+  {
+    Nivel=1;
+    this.NivelCurrent.String="Nivel: 1";
+
+        //warped
+         LeftToCenterF.CycleDuration=250;
+        CenterToLeftF.CycleDuration=250;
+        LeftToRightF.CycleDuration=250;
+        RightToLeftF.CycleDuration=250;
+        CenterToRightF.CycleDuration=250;
+        RightToCenterF.CycleDuration=250;
+
+        LeftToCenterS.CycleDuration=250;
+        CenterToLeftS.CycleDuration=250;
+        LeftToRightS.CycleDuration=250;
+        RightToLeftS.CycleDuration=250;
+        CenterToRightS.CycleDuration=250;
+        RightToCenterS.CycleDuration=250;
+
+        this.MakeMoves.Period=1000;
+    this.WaitFinish.Period=1000;
+    this.ShowBall.CycleDuration=1000;
+    this.HideBall.CycleDuration=1000;
+
+    LeftCenterAnimation.CycleDuration=500;
+    LeftRightAnimation.CycleDuration=500;
+    CenterRightAnimation.CycleDuration=500;
+
+     var int32 lvl=Nivel;
+     $if (!$prototyper)
+      native(lvl){
+         UpdateStorage(lvl,true,false);  
+      }
+      $endif
+
+    signal ShowBallCall;
+
+     
+  }
+
+  $rect <650,900,850,940>
+  var int32 Nivel = 1;
+
+  $rect <-100,820,100,860>
+  slot NextLevel
+  {
+    Nivel+=1;
+    var int32 frame=-1;
+    var Application::DeviceClass settings=this.SettingsObject;
+
+    var int32 lvl=Nivel;
+    var int32 coins;
+
+    if(Nivel>settings.MaxLevel)
+    {
+      settings.MaxLevel=Nivel;
+    }
+      $if (!$prototyper)
+      native(lvl,frame){
+         UpdateStorage(lvl,true,true);
+         frame=CheckLevels();
+         if(frame==-1)
+            frame=CheckRights();  
+      }
+      $endif
+
+    this.NivelCurrent.String="Nivel: "+(string)Nivel;
+    var int32 speedMine = LeftCenterAnimation.CycleDuration;
+    var int32 speedW = LeftToCenterF.CycleDuration-Nivel*5;
+     var bool GoOnSwitched=false;
+    if(speedW>80){
+        //warped 
+        GoOnSwitched=true;
+         LeftToCenterF.CycleDuration=speedW;
+        CenterToLeftF.CycleDuration=speedW;
+        LeftToRightF.CycleDuration=speedW;
+        RightToLeftF.CycleDuration=speedW;
+        CenterToRightF.CycleDuration=speedW;
+        RightToCenterF.CycleDuration=speedW;
+
+        LeftToCenterS.CycleDuration=speedW;
+        CenterToLeftS.CycleDuration=speedW;
+        LeftToRightS.CycleDuration=speedW;
+        RightToLeftS.CycleDuration=speedW;
+        CenterToRightS.CycleDuration=speedW;
+        RightToCenterS.CycleDuration=speedW;
+      }
+    var bool goOn=false;
+    coins=(speedMine-500).abs/50 + Nivel;
+    if(speedMine>230)
+    {    goOn=true;
+        speedMine=speedMine-Nivel*10;
+       LeftCenterAnimation.CycleDuration=speedMine;
+        LeftRightAnimation.CycleDuration=speedMine;
+        CenterRightAnimation.CycleDuration=speedMine;
+    }
+    else if(speedMine>150)
+    {         goOn=true;
+        speedMine-=10;
+           LeftCenterAnimation.CycleDuration-=10;
+        LeftRightAnimation.CycleDuration-=10;
+        CenterRightAnimation.CycleDuration-=10;
+    }
+    var bool active=SettingsObject.Animation;
+    if(!active && goOn)
+    {
+       this.MakeMoves.Period=speedMine*2;
+      this.WaitFinish.Period=speedMine*2;
+      this.ShowBall.CycleDuration=speedMine*2;
+      this.HideBall.CycleDuration=speedMine*2;
+    }
+    else if(GoOnSwitched){
+          this.MakeMoves.Period=speedW*4;
+    this.WaitFinish.Period=speedW*4;
+    this.ShowBall.CycleDuration=speedW*4;
+    this.HideBall.CycleDuration=speedW*4;
+    }
+
+
+    if(frame!=-1)
+     {    
+          SettingsObject.AchFrame=frame;
+          AchPopDismiss.Enabled=true;
+          PresentDialog(new Application::AchPop,Effects::SlideDownCentered,null,null,null,null,null,null,null,false);
+     }
+    UpdateCoins(coins);
+
+    signal ShowBallCall;
+  }
+
+  // Custom Movement
+  note group Note
+  {
+    attr Bounds = <10,541,670,780>;
+  }
+
+  // Showing Ball
+  note group Note1
+  {
+    attr Bounds = <670,540,1140,780>;
+  }
+
+  // GameLogic
+  note group Note2
+  {
+    attr Bounds = <-110,781,310,999>;
+  }
+
+  // Timers
+  note group Note3
+  {
+    attr Bounds = <310,780,610,999>;
+  }
+
+  // Properties and Variables
+  note group Note4
+  {
+    attr Bounds = <611,779,1060,1000>;
+  }
+
+  $rect <611,1499,811,1539>
+  object Effects::RectEffect LeftToRightF
+  {
+    preset OnFinished = LeftToRightS.StartEffect;
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <344,70,468,192>;
+    preset Value1 = <100,70,300,438>;
+  }
+
+  $rect <821,1499,1021,1539>
+  object Effects::RectEffect LeftToRightS
+  {
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <500,70,700,438>;
+    preset Value1 = <344,70,468,192>;
+  }
+
+  $rect <611,1549,811,1589>
+  object Effects::RectEffect RightToLeftF
+  {
+    preset OnFinished = RightToLeftS.StartEffect;
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <262,142,539,562>;
+    preset Value1 = <500,70,700,438>;
+  }
+
+  $rect <821,1549,1021,1589>
+  object Effects::RectEffect RightToLeftS
+  {
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <100,70,300,438>;
+    preset Value1 = <262,142,539,562>;
+  }
+
+  // Warped Left-Right
+  note group Note5
+  {
+    attr Bounds = <560,1441,1111,1650>;
+  }
+
+  // Warped LeftCenter
+  note group Note6
+  {
+    attr Bounds = <21,1440,560,1650>;
+  }
+
+  $rect <50,1510,250,1550>
+  object Effects::RectEffect LeftToCenterF
+  {
+    preset OnFinished = LeftToCenterS.StartEffect;
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <210,38,359,212>;
+    preset Value1 = <100,70,300,438>;
+  }
+
+  $rect <264,1509,464,1549>
+  object Effects::RectEffect LeftToCenterS
+  {
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <300,70,500,438>;
+    preset Value1 = <210,38,359,212>;
+  }
+
+  $rect <41,1569,241,1609>
+  object Effects::RectEffect CenterToLeftF
+  {
+    preset OnFinished = CenterToLeftS.StartEffect;
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <155,195,411,480>;
+    preset Value1 = <300,70,500,438>;
+  }
+
+  $rect <270,1560,470,1600>
+  object Effects::RectEffect CenterToLeftS
+  {
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <100,70,300,438>;
+    preset Value1 = <155,195,411,480>;
+  }
+
+  // Warped CenterRight
+  note group Note7
+  {
+    attr Bounds = <20,1239,560,1440>;
+  }
+
+  $rect <61,1280,261,1320>
+  object Effects::RectEffect CenterToRightF
+  {
+    preset OnFinished = CenterToRightS.StartEffect;
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <426,38,575,212>;
+    preset Value1 = <300,70,500,438>;
+  }
+
+  $rect <301,1280,501,1320>
+  object Effects::RectEffect CenterToRightS
+  {
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <500,70,700,438>;
+    preset Value1 = <426,38,575,212>;
+  }
+
+  $rect <61,1340,261,1380>
+  object Effects::RectEffect RightToCenterF
+  {
+    preset OnFinished = RightToCenterS.StartEffect;
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <371,211,627,496>;
+    preset Value1 = <500,70,700,438>;
+  }
+
+  $rect <301,1340,501,1380>
+  object Effects::RectEffect RightToCenterS
+  {
+    preset NoOfCycles = 1;
+    preset CycleDuration = 250;
+    preset Value2 = <300,70,500,438>;
+    preset Value1 = <371,211,627,496>;
+  }
+
+  $rect <359,1060,559,1100>
+  object Effects::ColorEffect ChooseTextEffectTL
+  {
+    preset Symmetric = true;
+    preset Value2 = #FF1108FF;
+    preset Value1 = #FFAD00FF;
+    preset Outlet = ^Text.ColorTL;
+  }
+
+  $rect <359,1110,559,1150>
+  object Effects::ColorEffect ChooseTextEffectBR
+  {
+    preset Symmetric = true;
+    preset Value2 = #FFF00CFF;
+    preset Value1 = #FF8F00FF;
+    preset Outlet = ^Text.ColorBR;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text NivelCurrent
+  {
+    preset Bounds = <-11,0,144,65>;
+    preset ColorBL = #FF0015FF;
+    preset ColorBR = #FF0071FF;
+    preset ColorTR = #FF00C7FF;
+    preset ColorTL = #FF3F00FF;
+    preset String = "Nivel: 1";
+    preset Font = Application::Font2;
+    preset Color = #FFFFFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton
+  {
+    preset Bounds = <725,0,800,39>;
+    preset OnPress = GoToMenu;
+    preset IconFrame = 11;
+    preset Icon = Resources::NavigationIconsMedium;
+    preset Label = "";
+    preset Appearance = PushButtonConfig;
+  }
+
+  $rect <39,1110,279,1150>
+  object WidgetSet::PushButtonConfig PushButtonConfig
+  {
+    preset ThumbColorFocused = #00000000;
+    preset ThumbColorDisabled = #00000000;
+    preset IconTintActive = #B7B7B7FF;
+    preset IconTintFocused = #000000FF;
+    preset IconTintDisabled = #000000FF;
+    preset IconTintDefault = #000000FF;
+    preset FaceBitmapFocused = null;
+  }
+
+  $rect <40,1060,240,1100>
+  slot GoToMenu
+  {
+    Application::Device1.ShowOr=true;
+    if(Owner!=null)
+      Owner.PresentDialog( new Application::Settings, Effects::SlideLeftCentered,null, null, null, null, null, null, null, false );
+
+  }
+
+  // Menu/Setting
+  note group Note8
+  {
+    attr Bounds = <10,999,310,1210>;
+  }
+
+  // Text
+  note group Note9
+  {
+    attr Bounds = <330,1010,581,1190>;
+  }
+
+  $rect <50,1159,230,1199>
+  inherited method Init()
+  {
+    UpdateCoins(0);
+    Left.FrameNumber=SettingsObject.ActiveCup;
+    Right.FrameNumber=SettingsObject.ActiveCup;
+    Center.FrameNumber=SettingsObject.ActiveCup;
+    Ball.FrameNumber=SettingsObject.ActiveBall;
+
+    FromDB();
+
+    if(SettingsObject.HallAct)
+    {
+      MakeItHalloween();
+    }
+    else{
+      Rectangle.ColorBL=#FFFFFFFF;
+      Rectangle.ColorBR=#0DFF5CFF;
+      Rectangle.ColorTL=#03FEFFFF;
+      Rectangle.ColorTR=#FFFFFFFF;
+
+      NivelCurrent.ColorTL=#FF3F00FF;
+      NivelCurrent.ColorTR=#FF00C7FF;
+      NivelCurrent.ColorBL=#FF0015FF;
+      NivelCurrent.ColorBR=#FF0071FF;
+
+      Left.FrameNumber=SettingsObject.ActiveCup;
+      Center.FrameNumber=SettingsObject.ActiveCup;
+      Right.FrameNumber=SettingsObject.ActiveCup;
+
+      SpiderLeft.Visible=false;
+      SpiderRight.Visible=false;
+      PumpLeft.Visible=false;
+      PumpRight.Visible=false;
+
+      Ball.Bitmap=Application::ShopBalls;
+      Ball.FrameNumber=SettingsObject.ActiveBall;
+    }   
+       
+  }
+
+  $rect <850,819,1050,859>
+  var Application::DeviceClass SettingsObject = Application::Device;
+
+  $rect <30,620,230,660>
+  object Application::TheClass LeftCenterAnimation
+  {
+    preset NoOfCycles = 1;
+    preset CycleDuration = 500;
+    preset Outlet = null;
+    preset Value1 = <300,70,500,438>;
+    preset Value2 = <100,70,300,438>;
+    preset Outlet1 = null;
+    preset Value11 = <300,70,500,438>;
+    preset Value22 = <100,70,300,438>;
+  }
+
+  $rect <240,620,440,660>
+  object Application::TheClass CenterRightAnimation
+  {
+    preset NoOfCycles = 1;
+    preset CycleDuration = 500;
+    preset Value1 = <500,70,700,438>;
+    preset Value2 = <300,70,500,438>;
+    preset Value11 = <500,70,700,438>;
+    preset Value22 = <300,70,500,438>;
+  }
+
+  $rect <450,620,650,660>
+  object Application::TheClass LeftRightAnimation
+  {
+    preset NoOfCycles = 1;
+    preset CycleDuration = 500;
+    preset Value1 = <500,70,700,438>;
+    preset Value2 = <100,70,300,438>;
+    preset Value11 = <500,70,700,438>;
+    preset Value22 = <100,70,300,438>;
+  }
+
+  // FirstAnimation
+  note group Note10
+  {
+    attr Bounds = <-30,1200,1190,1680>;
+  }
+
+  $rect <20,730,220,770>
+  method void LeftCenterSecondaryAnimation()
+  {
+    if(this.Left.Bounds==<100,70,300,438>)
+    {
+      this.LeftToCenterF.Outlet=^Left.Bounds;
+      this.LeftToCenterS.Outlet=^Left.Bounds;
+      Left.StackingPriority=2;
+      if(this.Center.Bounds==<300,70,500,438>)
+         {
+         this.CenterToLeftF.Outlet=^Center.Bounds;
+         this.CenterToLeftS.Outlet=^Center.Bounds;
+         Center.StackingPriority=5;
+         }
+      else
+      {
+          this.CenterToLeftF.Outlet=^Right.Bounds;
+          this.CenterToLeftS.Outlet=^Right.Bounds;
+          Right.StackingPriority=2;
+      }
+    }
+    else if(this.Center.Bounds==<100,70,300,438>)
+      {
+      this.LeftToCenterF.Outlet=^Center.Bounds;
+      this.LeftToCenterS.Outlet=^Center.Bounds;
+      Center.StackingPriority=5;
+      if(this.Left.Bounds==<300,70,500,438>)
+         {
+           this.CenterToLeftF.Outlet=^Left.Bounds;
+           this.CenterToLeftS.Outlet=^Left.Bounds;
+           Left.StackingPriority=5;
+         }
+      else{
+           this.CenterToLeftF.Outlet=^Right.Bounds;
+            this.CenterToLeftS.Outlet=^Right.Bounds;
+            Right.StackingPriority=5;
+          }
+      }
+    else
+      {
+      this.LeftToCenterF.Outlet=^Right.Bounds;
+      this.LeftToCenterS.Outlet=^Right.Bounds;
+      Right.StackingPriority=2;
+      if(this.Center.Bounds==<300,70,500,438>)
+         {
+          this.CenterToLeftF.Outlet=^Center.Bounds;
+          this.CenterToLeftS.Outlet=^Center.Bounds;
+          Center.StackingPriority=5;
+         }
+      else
+      {
+          this.CenterToLeftF.Outlet=^Left.Bounds;
+          this.CenterToLeftS.Outlet=^Left.Bounds;
+          Left.StackingPriority=5;
+          }
+    }
+
+      LeftToCenterF.Enabled=true;
+     CenterToLeftF.Enabled=true;
+  }
+
+  $rect <230,730,430,770>
+  method void RightLeftSecondaryAnimation()
+  {
+     if(this.Left.Bounds==<100,70,300,438>)
+      {
+      this.LeftToRightF.Outlet=^Left.Bounds;
+      this.LeftToRightS.Outlet=^Left.Bounds;
+      Left.StackingPriority=2;
+      if(this.Center.Bounds==<500,70,700,438>)
+         {
+          this.RightToLeftF.Outlet=^Center.Bounds;
+           this.RightToLeftS.Outlet=^Center.Bounds;
+           Center.StackingPriority=5;
+         }
+      else
+      {
+          this.RightToLeftF.Outlet=^Right.Bounds;
+          this.RightToLeftS.Outlet=^Right.Bounds;
+          Right.StackingPriority=5;
+          }
+      }
+    else if(this.Center.Bounds==<100,70,300,438>)
+      {
+      this.LeftToRightF.Outlet=^Center.Bounds;
+      this.LeftToRightS.Outlet=^Center.Bounds;
+      Center.StackingPriority=2;
+      if(this.Left.Bounds==<500,70,700,438>)
+         {
+          this.RightToLeftF.Outlet=^Left.Bounds;
+          this.RightToLeftS.Outlet=^Left.Bounds;
+          Left.StackingPriority=5;
+         }
+      else
+          {
+          this.RightToLeftF.Outlet=^Right.Bounds;
+          this.RightToLeftS.Outlet=^Right.Bounds;
+          Right.StackingPriority=5;
+          }
+      }
+    else
+      {
+      this.LeftToRightF.Outlet=^Right.Bounds;
+      this.LeftToRightS.Outlet=^Right.Bounds;
+      Right.StackingPriority=2;
+      if(this.Center.Bounds==<500,70,700,438>)
+         {
+           this.RightToLeftF.Outlet=^Center.Bounds;
+           this.RightToLeftS.Outlet=^Center.Bounds;
+           Center.StackingPriority=5;
+         }
+      else
+         {
+            this.RightToLeftF.Outlet=^Left.Bounds;
+            this.RightToLeftS.Outlet=^Left.Bounds;
+            Left.StackingPriority=5;
+         }
+      }
+
+     LeftToRightF.Enabled=true;
+     RightToLeftF.Enabled=true;
+
+  }
+
+  $rect <441,732,641,772>
+  method void CenterRightSecondaryAnimation()
+  {
+    if(this.Left.Bounds==<300,70,500,438>)
+      {
+      this.CenterToRightF.Outlet=^Left.Bounds;
+      this.CenterToRightS.Outlet=^Left.Bounds;
+      Left.StackingPriority=2;
+      if(this.Center.Bounds==<500,70,700,438>)
+         {
+         this.RightToCenterF.Outlet=^Center.Bounds;
+         this.RightToCenterS.Outlet=^Center.Bounds;
+         Center.StackingPriority=5 ;
+         }
+      else
+          {
+          this.RightToCenterF.Outlet=^Right.Bounds;
+          this.RightToCenterS.Outlet=^Right.Bounds;
+          Right.StackingPriority=5;
+          }
+      }
+    else if(this.Center.Bounds==<300,70,500,438>)
+      {
+      this.CenterToRightF.Outlet=^Center.Bounds;
+      this.CenterToRightS.Outlet=^Center.Bounds;
+      Center.StackingPriority=2;
+      if(this.Left.Bounds==<500,70,700,438>)
+         {
+          this.RightToCenterF.Outlet=^Left.Bounds;
+          this.RightToCenterS.Outlet=^Left.Bounds;
+          Left.StackingPriority=5 ;
+         }
+      else
+          {
+          this.RightToCenterF.Outlet=^Right.Bounds;
+          this.RightToCenterS.Outlet=^Right.Bounds;
+          Right.StackingPriority=5  ;
+          }
+      }
+    else
+      {
+      this.CenterToRightF.Outlet=^Right.Bounds;
+      this.CenterToRightS.Outlet=^Right.Bounds;
+      Right.StackingPriority=2;
+      if(this.Center.Bounds==<500,70,700,438>)
+         {
+         this.RightToCenterF.Outlet=^Center.Bounds;
+         this.RightToCenterS.Outlet=^Center.Bounds;
+         Center.StackingPriority=5 ;
+         }
+      else
+          {
+           this.RightToCenterF.Outlet=^Left.Bounds;
+           this.RightToCenterS.Outlet=^Left.Bounds;
+           Left.StackingPriority=5 ;
+          }
+    }
+
+
+     CenterToRightF.Enabled=true;
+     RightToCenterF.Enabled=true;
+
+
+
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <752,438,800,486>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter, ScaleToFit];
+    preset Bitmap = Application::Coin;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text1
+  {
+    preset Bounds = <652,447,752,477>;
+    preset ColorBL = #FF880BFF;
+    preset ColorBR = #E0FF12FF;
+    preset ColorTR = #FFAB2CFF;
+    preset ColorTL = #FFFA36FF;
+    preset String = "";
+    preset Font = Application::Font2;
+  }
+
+  $rect <-100,930,100,970>
+  method void UpdateCoins( arg int32 coins )
+  {
+    $if (!$prototyper)
+    native(coins)
+    {
+      UpdateMoney(coins);
+      coins=GetCoins();
+    }
+    $endif
+    SettingsObject.Coins=coins;
+    Text1.String=(string)SettingsObject.Coins;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image SpiderLeft
+  {
+    preset Bounds = <0,1,109,130>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter, ScaleToFit];
+    preset Bitmap = Application::Spider;
+    preset Visible = false;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image SpiderRight
+  {
+    preset Bounds = <725,19,807,148>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter, ScaleToFit];
+    preset Bitmap = Application::Spider;
+    preset Visible = false;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image PumpLeft
+  {
+    preset Bounds = <0,295,98,367>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter, ScaleToFit];
+    preset Bitmap = Application::Pumpkings;
+    preset Visible = false;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image PumpRight
+  {
+    preset Bounds = <702,295,800,367>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter, ScaleToFit];
+    preset Bitmap = Application::Pumpkings;
+    preset Visible = false;
+  }
+
+  $rect <110,930,310,970>
+  method void MakeItHalloween()
+  {
+    Rectangle.ColorBL=#0028FFFF;
+      Rectangle.ColorBR=#FF6F00FF;
+      Rectangle.ColorTL=#FF7500FF;
+      Rectangle.ColorTR=#6300FFFF;
+
+      Rectangle2.ColorTL= #B80035FF;
+      Rectangle2.ColorTR= #B5002DFF;
+
+      NivelCurrent.ColorTL=#FEF4FFFF;
+      NivelCurrent.ColorTR=#BFBFB9FF;
+      NivelCurrent.ColorBL=#D0E5FFFF;
+      NivelCurrent.ColorBR=#FFB3D5FF;
+      Left.FrameNumber=13;
+      Center.FrameNumber=13;
+      Right.FrameNumber=13;
+
+      SpiderLeft.Visible=true;
+      SpiderRight.Visible=true;
+      PumpLeft.Visible=true;
+      PumpRight.Visible=true;
+      Ball.Bitmap=Application::CrystalBall;
+      Ball.FrameNumber=0;
+  }
+
+  $rect <630,1070,830,1110>
+  method void FromDB()
+  {
+    var bool hallAct;
+
+    $if (!$prototyper)
+      native(hallAct){
+          hallAct=GetHalloweenActive();
+      }
+      $endif
+
+      SettingsObject.HallAct=hallAct;
+
+  }
+
+  $rect <679,1020,879,1060>
+  object Core::Timer AchPopDismiss
+  {
+    preset OnTrigger = AchPopTrigger;
+    preset Period = 2000;
+  }
+
+  $rect <685,1111,885,1151>
+  slot AchPopTrigger
+  {
+    DismissDialog( FindCurrentDialog(), Effects::SlideUpCentered, null, null, null,null , false );
+    AchPopDismiss.Enabled=false;
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Rectangle
+  $member Center
+  $member Rectangle2
+  $member Ball
+  $member ShowBall
+  $member HideBall
+  $member CallHideBall
+  $member LeftCenter
+  $member Left
+  $member Right
+  $member RightLeft
+  $member ShowBallCall
+  $member HideIt
+  $member CenterRight
+  $member ShowBallFinal
+  $member GameLogic
+  $member MakeMoves
+  $member Moves
+  $member Text
+  $member WaitFinish
+  $member OnFinish
+  $member ChooseLeft
+  $member ChooseCenter
+  $member ChooseRight
+  $member Choice
+  $member Correct
+  $member Reset
+  $member Nivel
+  $member NextLevel
+  $member Note10
+  $member Note
+  $member Note1
+  $member Note2
+  $member Note3
+  $member Note4
+  $member LeftToRightF
+  $member LeftToRightS
+  $member RightToLeftF
+  $member RightToLeftS
+  $member Note5
+  $member Note6
+  $member LeftToCenterF
+  $member LeftToCenterS
+  $member CenterToLeftF
+  $member CenterToLeftS
+  $member Note7
+  $member CenterToRightF
+  $member CenterToRightS
+  $member RightToCenterF
+  $member RightToCenterS
+  $member ChooseTextEffectTL
+  $member ChooseTextEffectBR
+  $member NivelCurrent
+  $member PushButton
+  $member PushButtonConfig
+  $member GoToMenu
+  $member Note8
+  $member Note9
+  $member SettingsObject
+  $member LeftCenterAnimation
+  $member CenterRightAnimation
+  $member LeftRightAnimation
+  $member LeftCenterSecondaryAnimation
+  $member RightLeftSecondaryAnimation
+  $member CenterRightSecondaryAnimation
+  $member Image
+  $member Text1
+  $member UpdateCoins
+  $member SpiderLeft
+  $member SpiderRight
+  $member PumpLeft
+  $member PumpRight
+  $member MakeItHalloween
+  $member FromDB
+  $member AchPopDismiss
+  $member AchPopTrigger
+}
+
+$rect <470,20,670,60>
+$output false
+resource Resources::Bitmap Cup
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\Cup1.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <170,39,370,79>
+$output false
+resource Resources::Font Font1
+{
+  attr fontname FontName = Centaur;
+  attr fontheight Height = 48;
+  attr fontheightmode HeightMode = Popular;
+  attr fontquality Quality = High;
+  attr fontranges Ranges = 0x20-0xFF;
+  attr fontaspectratio AspectRatio = 1.0;
+  attr fontbold Bold = true;
+  attr fontitalic Italic = false;
+  attr fontkerning Kerning = true;
+  attr fontrowdistance RowDistance;
+}
+
+$rect <170,80,370,120>
+$output false
+resource Resources::Font Font2
+{
+  attr fontname FontName = Roboto;
+  attr fontheight Height = 32;
+  attr fontheightmode HeightMode = Popular;
+  attr fontquality Quality = High;
+  attr fontranges Ranges = 0x20-0xFF;
+  attr fontaspectratio AspectRatio = 1.0;
+  attr fontbold Bold = false;
+  attr fontitalic Italic = false;
+  attr fontkerning Kerning = true;
+  attr fontrowdistance RowDistance;
+}
+
+$rect <430,250,630,290>
+$output false
+class Settings : Core::Group
+{
+  $rect <250,630,450,670>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <0,0,800,480>;
+    preset ColorBR = #09BF45FF;
+    preset ColorTL = #02C5C6FF;
+    preset Color = #FFFFFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton
+  {
+    preset Bounds = <779,0,799,20>;
+    preset OnPress = SwitchDialog;
+    preset IconFrame = 9;
+    preset Icon = Resources::NavigationIconsSmall;
+    preset Label = "X";
+    preset Appearance = PushButtonConfig;
+  }
+
+  $rect <30,530,270,570>
+  object WidgetSet::PushButtonConfig PushButtonConfig
+  {
+    preset ThumbShadowColorFocused = #00000000;
+    preset ThumbShadowBlurRadiusFocused = 0;
+    preset ThumbBorderColorFocused = #575757FF;
+    preset ThumbBorderWidthFocused = 2;
+    preset ThumbColorActive = #FF0F00FF;
+    preset ThumbColorFocused = #B6B7B5FF;
+    preset ThumbColorDisabled = #B6B7B5FF;
+    preset ThumbColorDefault = #B6B7B5FF;
+    preset IconTintFocused = #000000FF;
+    preset FaceTintActive = #FF2A23FF;
+    preset FaceTintFocused = #D2FFA5FF;
+    preset FaceTintDisabled = #D2FFA5FF;
+    preset FaceTintDefault = #D2FFA5FF;
+    preset FaceBitmapActive = null;
+    preset FaceBitmapFocused = null;
+    preset FaceBitmapDisabled = null;
+    preset FaceBitmapDefault = null;
+  }
+
+  $rect <550,540,750,580>
+  slot SwitchDialog
+  {
+    var Core::Group dialog = FindCurrentDialog();
+    if (dialog != null)
+        {
+        dialog.Owner.DismissDialog( dialog, Effects::SlideRightCentered, null, null, null,null, false );
+        }
+    else
+        throw("Is not a dialog");  
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::ToggleButton ToggleButton
+  {
+    preset Bounds = <492,82,562,132>;
+    preset OnUpdate = null;
+    preset OnPress = UpdateProperty;
+    preset Label = "";
+    preset Appearance = WidgetSet::Switch_Lime_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <12,86,301,132>;
+    preset String = "Simple Animation";
+    preset Font = Application::Font2;
+  }
+
+  $rect <540,590,740,630>
+  slot UpdateProperty
+  {
+    var WidgetSet::ToggleButton activateAnimation=(WidgetSet::ToggleButton)sender;
+    var Application::DeviceClass settings=Application::Device;
+
+    if(!activateAnimation.Checked)
+      settings.Animation=true;
+    else
+      settings.Animation=false;
+
+  }
+
+  $rect <759,599,939,639>
+  inherited method Init()
+  {
+    this.ToggleButton.Checked=Object.Animation;
+    this.HorizontalSlider.CurrentValue=Object.Volume;
+    this.HorizontalSlider1.CurrentValue=Object.SFXVolume;
+
+    if(Application::Device1.ShowOr)
+      {
+      PushButton.Visible=true;
+      PushButton.Enabled=true;
+      }
+    else
+    {
+      PushButton.Visible=false;
+      PushButton.Enabled=false;
+      }
+
+
+
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text1
+  {
+    preset Bounds = <12,176,301,223>;
+    preset String = "Volume";
+    preset Font = Application::Font2;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalSlider HorizontalSlider
+  {
+    preset Bounds = <329,176,726,226>;
+    preset OnChange = Volume;
+    preset Appearance = HorizontalSliderConfig;
+  }
+
+  $rect <30,580,270,620>
+  object WidgetSet::HorizontalSliderConfig HorizontalSliderConfig
+  {
+    preset CoverBitmapDefault = null;
+    preset ThumbShadowColorDefault = #00000000;
+    preset ThumbCornerRadiusDefault = 0;
+    preset ThumbSizeDefault = <0,0>;
+    preset ThumbTintDefault = #FFFFFFFF;
+    preset ThumbBitmapActive = Application::MusicNote;
+    preset ThumbBitmapFocused = Application::MusicNote;
+    preset ThumbBitmapDisabled = Application::MusicNote;
+    preset ThumbBitmapDefault = Application::MusicNote;
+    preset ThumbOffsetActive = <0,0>;
+    preset ThumbOffsetFocused = <0,0>;
+    preset ThumbOffsetDisabled = <0,0>;
+    preset ThumbOffsetDefault = <0,0>;
+    preset TrackRightBorderColorActive = #20C47DBB;
+    preset TrackRightBorderColorFocused = #20C47DBB;
+    preset TrackRightBorderColorDisabled = #20C47DBB;
+    preset TrackRightBorderColorDefault = #20C47DBB;
+    preset TrackRightBorderWidthActive = 3;
+    preset TrackRightBorderWidthFocused = 3;
+    preset TrackRightBorderWidthDisabled = 3;
+    preset TrackRightBorderWidthDefault = 3;
+    preset TrackRightColorActive = #A2EE46C9;
+    preset TrackRightColorFocused = #A2EE46C9;
+    preset TrackRightColorDisabled = #A2EE46C9;
+    preset TrackRightColorDefault = #A2EE46C9;
+    preset TrackRightCornerRadiusActive = 50;
+    preset TrackRightCornerRadiusFocused = 50;
+    preset TrackRightCornerRadiusDisabled = 50;
+    preset TrackRightCornerRadiusDefault = 50;
+    preset TrackRightThicknessActive = 12;
+    preset TrackRightThicknessFocused = 12;
+    preset TrackRightThicknessDisabled = 12;
+    preset TrackRightThicknessDefault = 12;
+    preset TrackRightFlattened = true;
+    preset TrackRightMarginRight = 20;
+    preset TrackLeftBorderColorActive = #57B43EBB;
+    preset TrackLeftBorderColorFocused = #57B43EBB;
+    preset TrackLeftBorderColorDisabled = #57B43EBB;
+    preset TrackLeftBorderColorDefault = #57B43EBB;
+    preset TrackLeftBorderWidthActive = 3;
+    preset TrackLeftBorderWidthFocused = 3;
+    preset TrackLeftBorderWidthDisabled = 3;
+    preset TrackLeftBorderWidthDefault = 3;
+    preset TrackLeftColorActive = #37C7A7E5;
+    preset TrackLeftColorFocused = #37C7A7E5;
+    preset TrackLeftColorDisabled = #37C7A7E5;
+    preset TrackLeftColorDefault = #37C7A7E5;
+    preset TrackLeftCornerRadiusActive = 50;
+    preset TrackLeftCornerRadiusFocused = 50;
+    preset TrackLeftCornerRadiusDisabled = 50;
+    preset TrackLeftCornerRadiusDefault = 50;
+    preset TrackLeftThicknessActive = 12;
+    preset TrackLeftThicknessFocused = 12;
+    preset TrackLeftThicknessDisabled = 12;
+    preset TrackLeftThicknessDefault = 12;
+    preset TrackLeftFlattened = true;
+    preset TrackLeftBitmapFocused = null;
+    preset TrackLeftMarginLeft = 20;
+    preset FaceBitmapFocused = null;
+    preset FaceBitmapDisabled = null;
+    preset FaceBitmapDefault = null;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Sound
+  {
+    preset Bounds = <726,183,766,221>;
+    preset Color = #000000FF;
+    preset FrameNumber = 11;
+    preset Bitmap = Resources::PlayerIconsSmall;
+  }
+
+  $rect <540,640,740,680>
+  slot Volume
+  {
+    var WidgetSet::HorizontalSlider volume=(WidgetSet::HorizontalSlider)sender;
+    var Application::DeviceClass settings=Application::Device;
+
+    if(volume==this.HorizontalSlider)
+    {
+      if(volume.CurrentValue==0)
+        this.Sound.FrameNumber=12;
+      else if(volume.CurrentValue>0 && volume.CurrentValue<=50)
+        this.Sound.FrameNumber=10;
+      else
+         this.Sound.FrameNumber=11;
+    settings.Volume=volume.CurrentValue;
+    $if (!$prototyper)
+    native{
+        let vol= Math.abs(volume.CurrentValue / 100);
+        if(vol>1.0)
+          vol=1.0;
+        SetVolume(vol);
+    }
+
+    $endif
+    }
+    else if(volume==this.HorizontalSlider1)
+    {
+       if(volume.CurrentValue==0)
+        this.Sound1.FrameNumber=12;
+      else if(volume.CurrentValue>0 && volume.CurrentValue<=50)
+        this.Sound1.FrameNumber=10;
+      else
+         this.Sound1.FrameNumber=11;
+    settings.SFXVolume=volume.CurrentValue;
+     $if (!$prototyper)
+    native{
+        let vol= Math.abs(volume.CurrentValue / 100);
+        if(vol>1.0)
+          vol=1.0;
+        ShuffleVolume(vol);
+        }
+    $endif
+    }
+
+  }
+
+  // WidgetsConfigs
+  note group Note1
+  {
+    attr Bounds = <20,490,530,690>;
+  }
+
+  // Slots
+  note group Note2
+  {
+    attr Bounds = <530,490,1010,690>;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text2
+  {
+    preset Bounds = <12,295,301,342>;
+    preset String = "SFX";
+    preset Font = Application::Font2;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalSlider HorizontalSlider1
+  {
+    preset Bounds = <329,292,726,342>;
+    preset OnChange = Volume;
+    preset Appearance = HorizontalSliderConfig;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Sound1
+  {
+    preset Bounds = <726,295,766,333>;
+    preset Color = #000000FF;
+    preset FrameNumber = 11;
+    preset Bitmap = Resources::PlayerIconsSmall;
+  }
+
+  $rect <30,630,230,670>
+  var Application::DeviceClass Object = Application::Device;
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton BackMenu
+  {
+    preset Bounds = <266,391,535,441>;
+    preset OnPress = BackToMenu;
+    preset Label = "Back to Menu";
+    preset Appearance = PushButtonConfig1;
+  }
+
+  $rect <270,530,510,570>
+  object WidgetSet::PushButtonConfig PushButtonConfig1
+  {
+    preset ThumbShadowColorActive = #A9477BFF;
+    preset ThumbShadowColorFocused = #A9477BFF;
+    preset ThumbShadowColorDisabled = #A9477BFF;
+    preset ThumbShadowColorDefault = #A9477BFF;
+    preset ThumbShadowBlurRadiusActive = 8;
+    preset ThumbShadowBlurRadiusFocused = 8;
+    preset ThumbShadowBlurRadiusDisabled = 8;
+    preset ThumbShadowBlurRadiusDefault = 8;
+    preset ThumbBorderColorActive = #00CE9FAD;
+    preset ThumbBorderColorFocused = #00CE9FAD;
+    preset ThumbBorderColorDisabled = #00CE9FAD;
+    preset ThumbBorderColorDefault = #00CE9FAD;
+    preset ThumbBorderWidthDefault = 0;
+    preset ThumbColorActive = #E250CFEB;
+    preset ThumbColorFocused = #E250CFEB;
+    preset ThumbColorDisabled = #E263D6AD;
+    preset ThumbColorDefault = #E263D6AD;
+    preset ThumbCornerRadiusDefault = 0;
+    preset LabelColorActive = #F1F30CFF;
+    preset LabelColorFocused = #F1F30CFF;
+    preset LabelColorDisabled = #F1F30CFF;
+    preset LabelColorDefault = #F1F30CFF;
+    preset LabelFont = Application::Font2;
+    preset FaceTintDefault = #FFFFFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Bevel Bevel
+  {
+    preset Bounds = <265,391,535,441>;
+    preset Width = 4;
+    preset ColorL = #FFFFFFFF;
+    preset ColorR = #000000FF;
+  }
+
+  $rect <759,540,959,580>
+  slot BackToMenu
+  {
+    $if (!$prototyper)
+     native{
+      ShuffleEnd();
+     }
+    $endif
+    Owner.DismissDialog( FindCurrentDialog(), Effects::SlideRightCentered, null, null, null, null, false );
+    Application::Device1.LeftToRight=1;
+    Application::Device1.CurrentScreen=Application::ScreenType.MainMenu;
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Rectangle
+  $member PushButton
+  $member PushButtonConfig
+  $member SwitchDialog
+  $member ToggleButton
+  $member Text
+  $member UpdateProperty
+  $member Text1
+  $member HorizontalSlider
+  $member HorizontalSliderConfig
+  $member Sound
+  $member Volume
+  $member Note1
+  $member Note2
+  $member Text2
+  $member HorizontalSlider1
+  $member Sound1
+  $member Object
+  $member BackMenu
+  $member PushButtonConfig1
+  $member Bevel
+  $member BackToMenu
+}
+
+$rect <470,60,670,100>
+$output false
+resource Resources::Bitmap MusicNote
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\music note.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <170,460,370,500>
+inline Inline
+{
+  /*
+
+    TO DO:
+
+    Include external header files or add type and function declarations needed
+    in the implementation of Application::DeviceClass. For example:
+
+      #include "DeviceDriver.h"
+
+      #include "your_middleware_api.h"
+
+      void Your_Middleware_Some_Function( int aSomeArg );
+
+  */
+}
+
+$rect <170,410,370,450>
+$output false
+class DeviceClass : Templates::DeviceClass
+{
+  $rect <30,80,230,120>
+  inherited method Done()
+  {
+    // The following section is intended to perform de-initialization-related operations
+    // in the underlying device or middleware. Consequently, the section is taken in
+    // account only when generating code (not during prototyping).
+    $if !$prototyper
+      var object thisObject = this;
+
+      /*
+         TO DO:
+
+         The following native statement is intended to enclose code to communicate with
+         your device API. The variable 'thisObject' contains a pointer to the actually
+         de-initialized Application::DeviceClass object. Use the 'thisObject' pointer to
+         e.g. de-register the object from the middleware if you have registered it
+         beforehand.
+         
+      */
+
+      native ( thisObject )
+      {
+        /*
+           TO DO:
+
+           Depending on your application case you call functions of the underlying
+           middleware (or access the device directly) in order to perform the necessary
+           de-initialization steps. For example, you invoke some 'C' function:
+
+             YourDevice_DeInitialize();
+
+           IMPORTANT:
+           ----------
+
+           The variable 'thisObject' represents the actually de-initialized instance of the
+           Application::DeviceClass. If you have stored this object at the initialization
+           time (in the 'Init' method) in some global C variable or registered it by the
+           middleware, it is important to perform now the opposite operation. Set the
+           global variable to NULL or de-register 'thisObject' object from the middleware.
+           
+        */
+      }
+    $endif
+  }
+
+  $rect <30,40,230,80>
+  inherited method Init()
+  {
+    // The following section is intended to perform initialization-related operations
+    // in the underlying device or middleware. Consequently, the section is taken in
+    // account only when generating code (not during prototyping).
+    $if !$prototyper
+      var object thisObject = this;
+
+      /*
+         TO DO:
+
+         The following native statement is intended to enclose code to communicate with
+         your device API. The variable 'thisObject' contains a pointer to the actually
+         initialized Application::DeviceClass object. Use the 'thisObject' pointer to
+         e.g. register the object by the middleware as receiver of events, etc.
+         
+      */
+
+      native ( thisObject )
+      {
+        /*
+           TO DO:
+
+           Depending on your application case you call functions of the underlying
+           middleware (or access the device directly) in order to perform the necessary
+           initialization steps. For example, you invoke some 'C' function:
+
+             YourDevice_Initialize();
+
+           The variable 'thisObject' represents the actually initialized instance of the
+           Application::DeviceClass. You can store this variable e.g. in the middleware
+           and use it whenever the middleware needs to notify the GUI application about
+           some state alternation or events. In this manner, the middleware will be able
+           to invoke methods of the interface device object.
+
+           For example, you can store 'thisObject' in some global C variable:
+
+             // Declaration of the global C variable
+             XObject theDeviceObject;
+
+             // Store the instance in the global variable
+             theDeviceObject = thisObject;
+
+           Later use the global variable e.g. to provide the GUI application with events:
+
+             ApplicationDeviceClass__TriggerSomeEvent( theDeviceObject );
+
+           IMPORTANT:
+           ----------
+
+           If you store 'thisObject' for later use, don't forget to implement the opposite
+           operation in the method 'Done'. Concrete, 'Done' should set the global variable
+           again to the value NULL.
+
+        */
+      }
+    $endif
+  }
+
+  note arrow Note2
+  {
+    attr Point1 = <250,50>;
+    attr Point2 = <320,50>;
+  }
+
+  // Constructor and Destructor
+  note group Note1
+  {
+    attr Bounds = <10,0,250,140>;
+  }
+
+  $rect <70,190,270,230>
+  property int32 Volume = 50;
+
+  $rect <490,190,690,230>
+  onget Volume
+  {
+    // Per default return the value stored already in the property.
+    return pure Volume;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <279,190,479,230>
+  onset Volume
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure Volume == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure Volume = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^Volume;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-140,190,60,230>
+  $output true
+  method void UpdateProperty( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure Volume )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure Volume = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^Volume;
+    }
+  }
+
+  $rect <70,240,270,280>
+  property int32 SFXVolume = 50;
+
+  $rect <470,240,670,280>
+  onget SFXVolume
+  {
+    // Per default return the value stored already in the property.
+    return pure SFXVolume;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <270,240,470,280>
+  onset SFXVolume
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure SFXVolume == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure SFXVolume = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^SFXVolume;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-130,240,70,280>
+  $output true
+  method void UpdateProperty1( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure SFXVolume )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure SFXVolume = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^SFXVolume;
+    }
+  }
+
+  $rect <70,290,270,330>
+  property bool Animation;
+
+  $rect <470,290,670,330>
+  onget Animation
+  {
+    // Per default return the value stored already in the property.
+    return pure Animation;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <270,290,470,330>
+  onset Animation
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure Animation == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure Animation = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^Animation;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-130,290,70,330>
+  $output true
+  method void UpdateProperty2( arg bool aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure Animation )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure Animation = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^Animation;
+    }
+  }
+
+  $rect <70,340,270,380>
+  property int32 MaxLevel = 1;
+
+  $rect <470,340,670,380>
+  onget MaxLevel
+  {
+    // Per default return the value stored already in the property.
+    return pure MaxLevel;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <270,340,470,380>
+  onset MaxLevel
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure MaxLevel == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure MaxLevel = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^MaxLevel;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-130,340,70,380>
+  $output true
+  method void UpdateProperty3( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure MaxLevel )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure MaxLevel = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^MaxLevel;
+    }
+  }
+
+  $rect <70,390,270,430>
+  property int32 TotalRounds = 0;
+
+  $rect <470,390,670,430>
+  onget TotalRounds
+  {
+    // Per default return the value stored already in the property.
+    return pure TotalRounds;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <270,390,470,430>
+  onset TotalRounds
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure TotalRounds == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure TotalRounds = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^TotalRounds;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-130,390,70,430>
+  $output true
+  method void UpdateProperty4( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure TotalRounds )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure TotalRounds = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^TotalRounds;
+    }
+  }
+
+  $rect <81,450,281,490>
+  property int32 CorrectGuesses = 0;
+
+  $rect <481,450,681,490>
+  onget CorrectGuesses
+  {
+    // Per default return the value stored already in the property.
+    return pure CorrectGuesses;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <281,450,481,490>
+  onset CorrectGuesses
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure CorrectGuesses == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure CorrectGuesses = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^CorrectGuesses;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-119,450,81,490>
+  $output true
+  method void UpdateProperty5( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure CorrectGuesses )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure CorrectGuesses = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^CorrectGuesses;
+    }
+  }
+
+  $rect <70,519,270,559>
+  property int32 Coins = 6000;
+
+  $rect <470,519,670,559>
+  onget Coins
+  {
+    // Per default return the value stored already in the property.
+    return pure Coins;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <270,519,470,559>
+  onset Coins
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure Coins == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure Coins = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^Coins;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-130,519,70,559>
+  $output true
+  method void UpdateProperty6( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure Coins )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure Coins = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^Coins;
+    }
+  }
+
+  $rect <60,590,260,630>
+  property int32 ShopTab = 1;
+
+  $rect <460,590,660,630>
+  onget ShopTab
+  {
+    // Per default return the value stored already in the property.
+    return pure ShopTab;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <260,590,460,630>
+  onset ShopTab
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure ShopTab == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure ShopTab = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^ShopTab;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-140,590,60,630>
+  $output true
+  method void UpdateProperty7( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure ShopTab )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure ShopTab = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^ShopTab;
+    }
+  }
+
+  $rect <758,380,958,420>
+  array bool CupsArray[ 13 ] =
+  (
+    Default[0] = false;
+    Default[1] = false;
+    Default[2] = false;
+    Default[3] = false;
+    Default[4] = false;
+    Default[5] = false;
+    Default[6] = false;
+    Default[7] = false;
+    Default[8] = false;
+    Default[9] = false;
+    Default[10] = true;
+    Default[11] = false;
+    Default[12] = false;
+  );
+
+  $rect <750,430,950,470>
+  array bool BallsArray[ 10 ] =
+  (
+    Default[0] = false;
+    Default[1] = false;
+    Default[2] = false;
+    Default[3] = false;
+    Default[4] = false;
+    Default[5] = true;
+    Default[6] = false;
+    Default[7] = false;
+    Default[8] = false;
+    Default[9] = false;
+  );
+
+  $rect <50,650,250,690>
+  property int32 ActiveCup = 10;
+
+  $rect <450,650,650,690>
+  onget ActiveCup
+  {
+    // Per default return the value stored already in the property.
+    return pure ActiveCup;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <250,650,450,690>
+  onset ActiveCup
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure ActiveCup == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure ActiveCup = value;
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^ActiveCup;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-150,650,50,690>
+  $output true
+  method void UpdateProperty8( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure ActiveCup )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure ActiveCup = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^ActiveCup;
+    }
+  }
+
+  $rect <70,720,270,760>
+  property int32 ActiveBall = 5;
+
+  $rect <470,720,670,760>
+  onget ActiveBall
+  {
+    // Per default return the value stored already in the property.
+    return pure ActiveBall;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <270,720,470,760>
+  onset ActiveBall
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure ActiveBall == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure ActiveBall = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^ActiveBall;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-130,720,70,760>
+  $output true
+  method void UpdateProperty9( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure ActiveBall )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure ActiveBall = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^ActiveBall;
+    }
+  }
+
+  $rect <750,480,950,520>
+  array bool MusicsArray[ 16 ] =
+  (
+    Default[0] = false;
+    Default[1] = false;
+    Default[2] = false;
+    Default[3] = false;
+    Default[4] = false;
+    Default[5] = false;
+    Default[6] = false;
+    Default[7] = false;
+    Default[8] = false;
+    Default[9] = false;
+    Default[10] = false;
+    Default[11] = false;
+    Default[12] = false;
+    Default[13] = false;
+    Default[14] = true;
+    Default[15] = false;
+  );
+
+  $rect <70,790,270,830>
+  property int32 ActiveMusic = 14;
+
+  $rect <470,790,670,830>
+  onget ActiveMusic
+  {
+    // Per default return the value stored already in the property.
+    return pure ActiveMusic;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <270,790,470,830>
+  onset ActiveMusic
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure ActiveMusic == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure ActiveMusic = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^ActiveMusic;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-130,790,70,830>
+  $output true
+  method void UpdateProperty10( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure ActiveMusic )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure ActiveMusic = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^ActiveMusic;
+    }
+  }
+
+  $rect <43,966,243,1006>
+  property bool HallAct = false;
+
+  $rect <443,966,643,1006>
+  onget HallAct
+  {
+    // Per default return the value stored already in the property.
+    return pure HallAct;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <243,966,443,1006>
+  onset HallAct
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure HallAct == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure HallAct = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^HallAct;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-157,966,43,1006>
+  $output true
+  method void UpdateProperty11( arg bool aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure HallAct )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure HallAct = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^HallAct;
+    }
+  }
+
+  $rect <50,1040,250,1080>
+  property bool HallPack = false;
+
+  $rect <450,1040,650,1080>
+  onget HallPack
+  {
+    // Per default return the value stored already in the property.
+    return pure HallPack;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <250,1040,450,1080>
+  onset HallPack
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure HallPack == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure HallPack = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^HallPack;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-150,1040,50,1080>
+  $output true
+  method void UpdateProperty12( arg bool aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure HallPack )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure HallPack = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^HallPack;
+    }
+  }
+
+  $rect <50,1120,250,1160>
+  property int32 AchFrame = 0;
+
+  $rect <450,1120,650,1160>
+  onget AchFrame
+  {
+    // Per default return the value stored already in the property.
+    return pure AchFrame;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <250,1120,450,1160>
+  onset AchFrame
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure AchFrame == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure AchFrame = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^AchFrame;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-150,1120,50,1160>
+  $output true
+  method void UpdateProperty13( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure AchFrame )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure AchFrame = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^AchFrame;
+    }
+  }
+}
+
+$rect <170,359,370,399>
+autoobject Application::DeviceClass Device;
+
+// BitMaps
+note group Note
+{
+  attr Bounds = <460,-20,919,210>;
+}
+
+// Fonts
+note group Note1
+{
+  attr Bounds = <160,-30,460,210>;
+}
+
+// Main
+note group Note2
+{
+  attr Bounds = <160,210,820,510>;
+}
+
+$rect <430,290,630,330>
+$output false
+class MainMenu : Core::Group
+{
+  $rect <30,590,230,630>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <0,0,800,480>;
+    preset ColorBR = #0DFF5CFF;
+    preset ColorTL = #03FEFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton Start
+  {
+    preset Bounds = <325,216,475,266>;
+    preset OnPress = InitializeGame;
+    preset Icon = null;
+    preset Label = "Play";
+    preset Appearance = PushButtonConfig;
+  }
+
+  $rect <230,640,470,680>
+  object WidgetSet::PushButtonConfig PushButtonConfig
+  {
+    preset ThumbShadowColorActive = #A9477BFF;
+    preset ThumbShadowColorFocused = #A9477BFF;
+    preset ThumbShadowColorDisabled = #A9477BFF;
+    preset ThumbShadowColorDefault = #A9477BFF;
+    preset ThumbShadowBlurRadiusActive = 8;
+    preset ThumbShadowBlurRadiusFocused = 8;
+    preset ThumbShadowBlurRadiusDisabled = 8;
+    preset ThumbShadowBlurRadiusDefault = 8;
+    preset ThumbBorderColorActive = #00CE9FAD;
+    preset ThumbBorderColorFocused = #00CE9FAD;
+    preset ThumbBorderColorDisabled = #00CE9FAD;
+    preset ThumbBorderColorDefault = #00CE9FAD;
+    preset ThumbBorderWidthDefault = 0;
+    preset ThumbColorActive = #E250CFEB;
+    preset ThumbColorFocused = #E250CFEB;
+    preset ThumbColorDisabled = #E263D6AD;
+    preset ThumbColorDefault = #E263D6AD;
+    preset ThumbCornerRadiusDefault = 0;
+    preset LabelColorActive = #F1F30CFF;
+    preset LabelColorFocused = #F1F30CFF;
+    preset LabelColorDisabled = #F1F30CFF;
+    preset LabelColorDefault = #F1F30CFF;
+    preset LabelFont = Application::Font2;
+    preset FaceTintDefault = #FFFFFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton StatsButton
+  {
+    preset Bounds = <325,310,475,360>;
+    preset OnPress = Stats;
+    preset Icon = null;
+    preset Label = "Stats";
+    preset Appearance = PushButtonConfig;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton Shop
+  {
+    preset Bounds = <325,397,475,447>;
+    preset OnPress = ShopMeth;
+    preset Icon = null;
+    preset Label = "Shop";
+    preset Appearance = PushButtonConfig;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <72,29,728,195>;
+    preset ColorBL = #FF95E1FF;
+    preset ColorBR = #CF4254C2;
+    preset ColorTR = #CF4254C2;
+    preset ColorTL = #FF95E1FF;
+    preset String = "Alba-Neagra";
+    preset Font = Application::Font1;
+    preset Color = #FF00E8FF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image2
+  {
+    preset Bounds = <0,215,192,480>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertBottom, ScaleToFill, ScaleToFit];
+    preset FrameNumber = 0;
+    preset Bitmap = Application::Cup;
+  }
+
+  $rect <30,640,230,680>
+  object Effects::RectEffect RectEffect1
+  {
+    preset Reversed = true;
+    preset Symmetric = true;
+    preset Timing = Effects::Timing.Circle_InOut;
+    preset CycleDuration = 3000;
+    preset Enabled = true;
+    preset Value2 = <608,215,800,480>;
+    preset Value1 = <0,215,192,480>;
+    preset Outlet = ^Image2.Bounds;
+  }
+
+  $rect <540,700,740,740>
+  slot InitializeGame
+  {
+    StartSound();
+    Application::Device1.LeftToRight=4;
+    Application::Device1.CurrentScreen=Application::ScreenType.InitilizeGame;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Bevel Bevel
+  {
+    preset Bounds = <325,216,475,266>;
+    preset Width = 4;
+    preset ColorL = #FFFFFFFF;
+    preset ColorR = #000000FF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Bevel Bevel1
+  {
+    preset Bounds = <325,310,475,360>;
+    preset Width = 4;
+    preset ColorL = #FFFFFFFF;
+    preset ColorR = #000000FF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Bevel Bevel2
+  {
+    preset Bounds = <325,397,475,447>;
+    preset Width = 4;
+    preset ColorL = #FFFFFFFF;
+    preset ColorR = #000000FF;
+  }
+
+  $rect <540,620,740,660>
+  slot Stats
+  {
+    StartSound();
+    Application::Device1.LeftToRight=1;
+    Application::Device1.CurrentScreen=Application::ScreenType.Stats;
+  }
+
+  $rect <230,700,410,740>
+  inherited method Init()
+  {
+    Start.Enabled=true;
+    StatsButton.Enabled=true;
+    Shop.Enabled=true;
+
+  }
+
+  $rect <540,660,740,700>
+  slot ShopMeth
+  {
+    StartSound();
+    Application::Device1.LeftToRight=1;
+    Application::Device1.CurrentScreen=Application::ScreenType.Shop;
+  }
+
+  $rect <30,700,230,740>
+  method void StartSound()
+  {
+    $if (!$prototyper)
+      native
+      {
+        // Javascript code executed inside the browser
+        if(GetHalloweenActive()==false)
+        {
+          var music=GetActiveMusicName();
+          SelectMusic(music);
+        }
+        else{
+          SelectMusic("Halloween ");
+        }
+       }
+    $endif
+
+  }
+
+  // Tabs
+  note group Note
+  {
+    attr Bounds = <530,570,900,790>;
+  }
+
+  // Everything else
+  note group Note1
+  {
+    attr Bounds = <20,550,480,760>;
+  }
+
+  $rect <240,590,350,630>
+  object WidgetSet::PushButtonConfig Settings
+  {
+    preset ThumbBorderColorActive = #00FF56FF;
+    preset ThumbColorFocused = #00000000;
+    preset ThumbColorDisabled = #00000000;
+    preset IconTintActive = #B7B7B7FF;
+    preset IconTintFocused = #1E7070FF;
+    preset IconTintDisabled = #1E7070FF;
+    preset IconTintDefault = #1E7070FF;
+    preset FaceBitmapFocused = null;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton HelpBtn
+  {
+    preset Layout = Core::Layout[AlignToLeft, AlignToTop];
+    preset Bounds = <0,0,57,43>;
+    preset OnPress = HelpTab;
+    preset IconFrame = -1;
+    preset Icon = Application::HelpIcon;
+    preset Label = "";
+    preset Appearance = Settings;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton Sett
+  {
+    preset Bounds = <754,0,803,43>;
+    preset OnPress = GoToSettings;
+    preset Icon = Application::SettingsIcon;
+    preset Label = "Caption";
+    preset Appearance = Settings;
+  }
+
+  $rect <540,740,740,780>
+  slot GoToSettings
+  {
+    StartSound();
+    Application::Device1.ShowOr=false;
+    Application::Device1.LeftToRight=0;
+    Application::Device1.CurrentScreen=Application::ScreenType.SettingsMenu;
+
+
+  }
+
+  $rect <740,610,890,650>
+  slot HelpTab
+  {
+    StartSound();
+    Application::Device1.LeftToRight=1;
+    Application::Device1.CurrentScreen=Application::ScreenType.HelpMenu;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton HelpBtn1
+  {
+    preset Layout = Core::Layout[AlignToLeft, AlignToTop];
+    preset Bounds = <44,3,101,39>;
+    preset OnPress = AchieveTab;
+    preset IconFrame = -1;
+    preset Icon = Application::AchiveIcon;
+    preset Label = "";
+    preset Appearance = Settings;
+  }
+
+  $rect <740,650,860,690>
+  slot AchieveTab
+  {
+    StartSound();
+    Application::Device1.LeftToRight=1;
+    Application::Device1.CurrentScreen=Application::ScreenType.Achivements;
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Rectangle
+  $member Start
+  $member PushButtonConfig
+  $member StatsButton
+  $member Shop
+  $member Text
+  $member Image2
+  $member RectEffect1
+  $member InitializeGame
+  $member Bevel
+  $member Bevel1
+  $member Bevel2
+  $member Stats
+  $member ShopMeth
+  $member StartSound
+  $member Note
+  $member Note1
+  $member Settings
+  $member HelpBtn
+  $member Sett
+  $member GoToSettings
+  $member HelpTab
+  $member HelpBtn1
+  $member AchieveTab
+}
+
+$rect <430,330,630,370>
+$output false
+class LoadingGame : Core::Group
+{
+  $rect <10,500,210,540>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <0,0,800,480>;
+    preset ColorBR = #0DFF5CFF;
+    preset ColorTL = #03FEFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <102,315,698,384>;
+    preset String = "Se aranjeaza paharele";
+    preset Font = Application::Font2;
+    preset Color = #000000FF;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalValueBar HorizontalValueBar
+  {
+    preset Bounds = <102,214,646,264>;
+    preset CurrentValue = 0;
+    preset Appearance = HorizontalValueBarConfig;
+  }
+
+  $rect <0,550,240,590>
+  object WidgetSet::HorizontalValueBarConfig HorizontalValueBarConfig
+  {
+    preset NeedleBitmap = Application::BallSlider;
+    preset TrackRightBorderColor = #FCFF0BDE;
+    preset TrackRightBorderWidth = 2;
+    preset TrackRightColor = #FF0200EC;
+    preset TrackRightFlattened = true;
+    preset TrackRightCornerRadius = 10;
+    preset TrackRightThickness = 15;
+    preset TrackRightWithEdge = false;
+    preset TrackRightMarginRight = 15;
+    preset TrackLeftBorderColor = #D88C37DE;
+    preset TrackLeftBorderWidth = 1;
+    preset TrackLeftColor = #ECF226FF;
+    preset TrackLeftFlattened = true;
+    preset TrackLeftCornerRadius = 10;
+    preset TrackLeftThickness = 15;
+  }
+
+  $rect <313,545,513,585>
+  object Effects::Int32Effect Int32Effect
+  {
+    preset OnFinished = Slot;
+    preset Timing = Effects::Timing.Power_Out;
+    preset NoOfCycles = 1;
+    preset CycleDuration = 4000;
+    preset Enabled = true;
+    preset Value2 = 100;
+    preset Outlet = ^HorizontalValueBar.CurrentValue;
+  }
+
+  $rect <30,619,230,659>
+  slot Slot
+  {
+    Application::Device1.LeftToRight=1;
+    Application::Device1.CurrentScreen=Application::ScreenType.Game;
+  }
+
+  $rect <267,607,447,647>
+  inherited method Init()
+  {
+    var int32 nr=  math_rand(0,4);
+    var string message=Array[nr];
+    if(nr==3)
+        Text.Bounds=<50,315,646,384>;
+    else if(nr==0)
+           Text.Bounds=<75,315,671,384>;
+    Text.String=message;
+  }
+
+  $rect <646,561,846,601>
+  array string Array[ 4 ] =
+  (
+    Default[0] = "Se aranjeaza paharele";
+    Default[1] = "Se aduc paharele";
+    Default[2] = "Se pregateste jocul";
+    Default[3] = "HINT: Fii cu ochii pe minge!";
+  );
+
+  $rect <20,20,160,60>
+  object Views::Text Text3
+  {
+    preset Bounds = <546,315,646,384>;
+    preset String = ".";
+    preset Font = Application::Font1;
+    preset Color = #000000FF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text2
+  {
+    preset Bounds = <523,315,624,384>;
+    preset String = ".";
+    preset Font = Application::Font1;
+    preset Color = #000000FF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text1
+  {
+    preset Bounds = <499,315,609,384>;
+    preset String = ".";
+    preset Font = Application::Font1;
+    preset Color = #000000FF;
+  }
+
+  $rect <1120,370,1320,410>
+  object Effects::PointEffect PointEffect
+  {
+    preset Reversed = true;
+    preset Symmetric = true;
+    preset Timing = Effects::Timing.Sine_InOut;
+    preset CycleDuration = 2000;
+    preset InitialDelay = 500;
+    preset Enabled = true;
+    preset Value2 = <0,-20>;
+    preset Outlet = ^Text2.ScrollOffset;
+  }
+
+  $rect <859,370,1059,410>
+  object Effects::PointEffect PointEffect1
+  {
+    preset Reversed = true;
+    preset Symmetric = true;
+    preset Timing = Effects::Timing.Sine_InOut;
+    preset NoOfCycles = 0;
+    preset CycleDuration = 2000;
+    preset Enabled = true;
+    preset Value2 = <0,-20>;
+    preset Outlet = ^Text1.ScrollOffset;
+  }
+
+  $rect <1350,390,1550,430>
+  object Effects::PointEffect PointEffect2
+  {
+    preset Reversed = true;
+    preset Symmetric = true;
+    preset Timing = Effects::Timing.Sine_InOut;
+    preset CycleDuration = 2000;
+    preset InitialDelay = 1000;
+    preset Enabled = true;
+    preset Value2 = <0,-20>;
+    preset Outlet = ^Text3.ScrollOffset;
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Rectangle
+  $member Text
+  $member HorizontalValueBar
+  $member HorizontalValueBarConfig
+  $member Int32Effect
+  $member Slot
+  $member Array
+  $member Text3
+  $member Text2
+  $member Text1
+  $member PointEffect
+  $member PointEffect1
+  $member PointEffect2
+}
+
+$rect <690,20,890,60>
+$output false
+resource Resources::Bitmap BallSlider
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\BallSlider.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <430,370,630,410>
+$output false
+class Stats : Core::Group
+{
+  $rect <0,530,200,570>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <0,0,800,480>;
+    preset ColorBR = #0DFF5CFF;
+    preset ColorTL = #03FEFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text MaxLevel
+  {
+    preset Bounds = <5,88,315,165>;
+    preset String = "Highest level: 1";
+    preset Font = Application::Font2;
+    preset Color = #FF39FBFF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Date
+  {
+    preset Bounds = <361,88,773,165>;
+    preset String = "Reached: 12.08.2024";
+    preset Font = Application::Font2;
+    preset Color = #FF39FBFF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text HoursPlayed
+  {
+    preset Bounds = <11,217,310,283>;
+    preset String = "Hours played: 0.0H";
+    preset Font = Application::Font2;
+    preset Color = #FF39FBFF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Corrects
+  {
+    preset Bounds = <332,217,800,283>;
+    preset String = "Correct guesses: 0/0";
+    preset Font = Application::Font2;
+    preset Color = #FF39FBFF;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton
+  {
+    preset Bounds = <296,348,466,398>;
+    preset OnPress = Back;
+    preset Label = "Back";
+    preset Appearance = PushButtonConfig;
+  }
+
+  $rect <210,530,450,570>
+  object WidgetSet::PushButtonConfig PushButtonConfig
+  {
+    preset ThumbShadowColorActive = #A9477BFF;
+    preset ThumbShadowColorFocused = #A9477BFF;
+    preset ThumbShadowColorDisabled = #A9477BFF;
+    preset ThumbShadowColorDefault = #A9477BFF;
+    preset ThumbShadowBlurRadiusActive = 8;
+    preset ThumbShadowBlurRadiusFocused = 8;
+    preset ThumbShadowBlurRadiusDisabled = 8;
+    preset ThumbShadowBlurRadiusDefault = 8;
+    preset ThumbBorderColorActive = #00CE9FAD;
+    preset ThumbBorderColorFocused = #00CE9FAD;
+    preset ThumbBorderColorDisabled = #00CE9FAD;
+    preset ThumbBorderColorDefault = #00CE9FAD;
+    preset ThumbBorderWidthDefault = 0;
+    preset ThumbColorActive = #E250CFEB;
+    preset ThumbColorFocused = #E250CFEB;
+    preset ThumbColorDisabled = #E263D6AD;
+    preset ThumbColorDefault = #E263D6AD;
+    preset ThumbCornerRadiusDefault = 0;
+    preset LabelColorActive = #F1F30CFF;
+    preset LabelColorFocused = #F1F30CFF;
+    preset LabelColorDisabled = #F1F30CFF;
+    preset LabelColorDefault = #F1F30CFF;
+    preset LabelFont = Application::Font2;
+    preset FaceTintDefault = #FFFFFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Bevel Bevel
+  {
+    preset Bounds = <296,348,466,398>;
+    preset Width = 4;
+    preset ColorL = #FFFFFFFF;
+    preset ColorR = #000000FF;
+  }
+
+  $rect <-21,588,179,628>
+  slot Back
+  {
+    Application::Device1.LeftToRight=0;
+    Application::Device1.CurrentScreen=Application::ScreenType.MainMenu;
+  }
+
+  $rect <470,520,650,560>
+  inherited method Init()
+  {
+    var string lvl;
+    var string correct;
+    var string total;
+    var string hours;
+    var string date;
+
+
+    $if (!$prototyper)
+    native(lvl,correct,total,hours,date){
+    lvl=GetBestLevel();
+    correct=GetCorrects();
+    total=GetTotal();
+    date=GetDate();
+    hours=GetHours();
+    }
+    $endif
+
+
+    this.MaxLevel.String="Highest level: " +(string)lvl;
+    this.Corrects.String="Correct guesses: " +(string)correct+"/"+(string)total;
+    this.HoursPlayed.String="Hours played: "+hours;
+    this.Date.String="Reached: "+date;
+
+  }
+
+  $rect <200,590,400,630>
+  var Application::DeviceClass Object = Application::Device;
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Rectangle
+  $member MaxLevel
+  $member Date
+  $member HoursPlayed
+  $member Corrects
+  $member PushButton
+  $member PushButtonConfig
+  $member Bevel
+  $member Back
+  $member Object
+}
+
+$rect <170,300,370,340>
+$output false
+class TheClass : Effects::Effect
+{
+  $rect <2,-320,182,-280>
+  inherited method Animate()
+  {
+    // Invoke the inherited version of the method 'Animate'.
+    // Remove the line if the inherited code should not be executed.
+    super( aProgress );
+
+    var float initialScale = 1.0;   
+    var float finalScale = 2.0;     
+
+    var float scale;
+    if (aProgress <= 0.5) {
+      scale = initialScale - (initialScale - finalScale) * (aProgress / 0.5);
+    } else {
+      scale = finalScale + (initialScale - finalScale) * ((aProgress - 0.5) / 0.5);
+    }
+
+    //First Outlet
+
+    var int32 x1_start = pure Value1.x1;
+    var int32 y1_start = pure Value1.y1;
+    var int32 x2_start = pure Value1.x2;
+    var int32 y2_start = pure Value1.y2;
+
+    var int32 x1_end = pure Value2.x1;
+    var int32 y1_end = pure Value2.y1;
+    var int32 y2_end = pure Value2.y2;
+
+    var float angle=aProgress * 3.14159;
+    var float angle_degrees = angle*(180/3.14159);
+
+
+    var int32 x_center = (x1_start + x1_end)/2 ;
+    var int32 y_center = (y1_start + y1_end)/2;
+
+    var float radius1= (x1_end - x1_start)/2.0 ;
+    var float radius2= (y2_end - y1_start)/2.0 ;
+
+
+    var int32 x1 = x_center + int32( math_round( radius1 * math_cos(angle_degrees) ));
+    var int32 y1 = y_center + int32( math_round( radius2 * math_sin(angle_degrees) ));
+
+    var int32 width= (int32)((x2_start-x1_start)*scale);
+    var int32 height =(int32) (y2_start-y1_start);
+
+    Value = rect( x1, y1, x1+width, y1+height );
+    if ( pure Outlet != null )
+      Outlet^ = Value;
+
+    //
+
+
+    var float initialScale1 = 1.0;   
+    var float finalScale1 = 0.7;     
+
+    var float scale1;
+    if (aProgress <= 0.5) {
+     
+      scale1 = initialScale1 - (initialScale1 - finalScale1) * (aProgress / 0.5);
+    } else {
+
+      scale1 = finalScale1 + (initialScale1 - finalScale1) * ((aProgress - 0.5) / 0.5);
+    }
+
+     //SecondOutlet
+
+    var int32 x11_start = pure Value11.x1;
+    var int32 y11_start = pure Value11.y1;
+    var int32 x22_start = pure Value11.x2;
+    var int32 y22_start = pure Value11.y2;
+
+    var int32 x11_end = pure Value22.x1;
+    var int32 y11_end = pure Value22.y1;
+    var int32 y22_end = pure Value22.y2;
+
+    var float angle1=3.14159 + (aProgress*3.14159);
+    var float angle_degrees1 = angle1*(180/3.14159);
+
+
+    var int32 x1_center = (x11_start + x11_end)/2;
+    var int32 y1_center = (y11_start + y11_end)/2 ;
+    var float radius3= (x11_end - x11_start)/2.0;
+    var float radius4= (y22_end - y11_start)/2.0 ;
+
+    var int32 x11 = x1_center + int32( math_round( radius3 * math_cos(angle_degrees1) ));
+    var int32 y11 = y1_center + int32( math_round( radius4 * math_sin(angle_degrees1) ));
+
+    var int32 width1= (int32)((x22_start-x11_start)*scale1);
+    var int32 height1 = (y22_start-y11_start);
+
+    Value = rect( x11, y11, x11+width1, y11+height1 );
+
+    if ( pure Outlet1 != null )
+      Outlet1^ = Value;
+
+  }
+
+  $rect <210,-320,410,-280>
+  property ^rect Outlet;
+
+  $rect <410,-320,610,-280>
+  onset Outlet
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Outlet == value )
+      return;
+
+    // Remember the property's new value.
+    pure Outlet = value;
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <610,-320,810,-280>
+  onget Outlet
+  {
+    return pure Outlet;
+  }
+
+  $rect <210,-260,410,-220>
+  property rect Value1;
+
+  $rect <420,-260,620,-220>
+  onset Value1
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Value1 == value )
+      return;
+
+    // Remember the property's new value.
+    pure Value1 = value;
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <630,-260,830,-220>
+  onget Value1
+  {
+    return pure Value1;
+  }
+
+  $rect <210,-200,410,-160>
+  property rect Value2;
+
+  $rect <420,-200,620,-160>
+  onset Value2
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Value2 == value )
+      return;
+
+    // Remember the property's new value.
+    pure Value2 = value;
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <630,-200,830,-160>
+  onget Value2
+  {
+    return pure Value2;
+  }
+
+  $rect <210,-140,410,-100>
+  property rect Value;
+
+  $rect <420,-130,620,-90>
+  onset Value
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Value == value )
+      return;
+
+    // Remember the property's new value.
+    pure Value = value;
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <640,-130,840,-90>
+  onget Value
+  {
+    return pure Value;
+  }
+
+  // FirstOutlet
+  note group Note
+  {
+    attr Bounds = <200,-350,840,-50>;
+  }
+
+  $rect <230,10,430,50>
+  property ^rect Outlet1;
+
+  $rect <430,10,630,50>
+  onset Outlet1
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Outlet1 == value )
+      return;
+
+    // Remember the property's new value.
+    pure Outlet1 = value;
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <630,10,830,50>
+  onget Outlet1
+  {
+    return pure Outlet1;
+  }
+
+  $rect <230,70,430,110>
+  property rect Value11;
+
+  $rect <440,70,640,110>
+  onset Value11
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Value11 == value )
+      return;
+
+    // Remember the property's new value.
+    pure Value11 = value;
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <650,70,850,110>
+  onget Value11
+  {
+    return pure Value11;
+  }
+
+  $rect <230,130,430,170>
+  property rect Value22;
+
+  $rect <440,130,640,170>
+  onset Value22
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Value22 == value )
+      return;
+
+    // Remember the property's new value.
+    pure Value22 = value;
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <650,130,850,170>
+  onget Value22
+  {
+    return pure Value22;
+  }
+
+  $rect <230,190,430,230>
+  property rect Value_;
+
+  $rect <440,200,640,240>
+  onset Value_
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Value_ == value )
+      return;
+
+    // Remember the property's new value.
+    pure Value_ = value;
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <660,200,860,240>
+  onget Value_
+  {
+    return pure Value_;
+  }
+
+  // Second Outlet
+  note group Note1
+  {
+    attr Bounds = <220,-20,860,280>;
+  }
+}
+
+$rect <170,560,350,599>
+$output false
+resource Resources::Bitmap ShopCups
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\AllCupsShop2.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize = <150,202>;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+// ShopStuff
+note group Note3
+{
+  attr Bounds = <160,510,570,720>;
+}
+
+$rect <170,610,340,650>
+$output false
+resource Resources::Bitmap ShopBalls
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\AllBallsShop1.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize = <82,100>;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <430,410,630,450>
+$output false
+class Shop : Core::Group
+{
+  $rect <0,550,200,590>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <-1,-3,799,477>;
+    preset ColorBL = #49FF6EFF;
+    preset ColorBR = #0ADD4FFF;
+    preset ColorTR = #51CEFFFF;
+    preset ColorTL = #02DCDDFF;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton CupsBtn
+  {
+    preset Bounds = <0,0,150,81>;
+    preset OnPress = SelectShopTab;
+    preset Label = "Cups";
+    preset Appearance = PushButtonConfigSelected;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton BallsBtn
+  {
+    preset Bounds = <150,0,300,81>;
+    preset OnPress = SelectShopTab;
+    preset Label = "Balls";
+    preset Appearance = PushButtonConfigNormal;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton MusicBtn
+  {
+    preset Bounds = <300,0,450,81>;
+    preset OnPress = SelectShopTab;
+    preset Label = "Music";
+    preset Appearance = PushButtonConfigNormal;
+  }
+
+  $rect <320,640,560,680>
+  object WidgetSet::PushButtonConfig PushButtonConfigNormal
+  {
+    preset ThumbBorderColorDefault = #8E8E8EFF;
+    preset ThumbBorderWidthDefault = 1;
+    preset ThumbColorDefault = #1BC6CFFF;
+    preset LabelColorActive = #00E353FF;
+    preset LabelColorFocused = #00E353FF;
+    preset LabelColorDisabled = #00E353FF;
+    preset LabelColorDefault = #00E353FF;
+    preset LabelFont = Application::Font1;
+  }
+
+  $rect <800,540,950,580>
+  inherited method Init()
+  {
+    Obj.ShopTab=1;
+    Text.String=Obj.Coins;
+    attachobserver UpdateOnBuy,^Obj.Coins;
+    attachobserver UpdateOnBuy,^Obj.ActiveCup;
+    attachobserver UpdateOnBuy,^Obj.ActiveBall;
+    attachobserver UpdateOnBuy,^Obj.ActiveMusic;
+    attachobserver UpdateOnBuy,^Obj.HallAct;
+
+    BringFromDB();
+
+  }
+
+  $rect <310,590,550,630>
+  object WidgetSet::PushButtonConfig PushButtonConfigSelected
+  {
+    preset ThumbBorderColorDefault = #8E8E8EFF;
+    preset ThumbBorderWidthDefault = 1;
+    preset ThumbColorDefault = #17ACB4FF;
+    preset LabelColorActive = #00E353FF;
+    preset LabelColorFocused = #00E353FF;
+    preset LabelColorDisabled = #00E353FF;
+    preset LabelColorDefault = #00E353FF;
+    preset LabelFont = Application::Font1;
+  }
+
+  $rect <599,540,799,580>
+  slot SelectShopTab
+  {
+    var WidgetSet::PushButton btn=(WidgetSet::PushButton)sender;
+
+    if(btn==CupsBtn)
+    {
+       btn.Appearance=PushButtonConfigSelected;
+       BallsBtn.Appearance= PushButtonConfigNormal;
+       MusicBtn.Appearance= PushButtonConfigNormal;
+       PacksBtn.Appearance=PushButtonConfigNormal;
+       Obj.ShopTab=1;
+       HorizontalList.NoOfItems=13;
+       HorizontalList.InvalidateItems(0,HorizontalList.NoOfItems-1);
+
+    }
+    else if(btn==BallsBtn)
+    {
+       btn.Appearance=PushButtonConfigSelected;
+        CupsBtn.Appearance= PushButtonConfigNormal;
+       MusicBtn.Appearance= PushButtonConfigNormal;
+       PacksBtn.Appearance=PushButtonConfigNormal;
+       Obj.ShopTab=2;
+       HorizontalList.NoOfItems=10;
+       HorizontalList.InvalidateItems(0,HorizontalList.NoOfItems-1);
+
+    }
+    else if(btn==MusicBtn)
+    {
+        btn.Appearance=PushButtonConfigSelected;
+        BallsBtn.Appearance= PushButtonConfigNormal;
+       CupsBtn.Appearance= PushButtonConfigNormal;
+       PacksBtn.Appearance=PushButtonConfigNormal;
+
+       Obj.ShopTab=3;
+       HorizontalList.NoOfItems=16;
+       HorizontalList.InvalidateItems(0,HorizontalList.NoOfItems-1);
+    } 
+    else{
+        btn.Appearance=PushButtonConfigSelected;
+        CupsBtn.Appearance= PushButtonConfigNormal;
+       BallsBtn.Appearance= PushButtonConfigNormal;
+       MusicBtn.Appearance= PushButtonConfigNormal;
+       Obj.ShopTab=4;
+       HorizontalList.NoOfItems=1;
+       HorizontalList.InvalidateItems(0,HorizontalList.NoOfItems-1);
+    }
+
+  }
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle1
+  {
+    preset Bounds = <-1,80,799,480>;
+    preset ColorBL = #1E9A405D;
+    preset ColorBR = #1E9A405D;
+    preset ColorTR = #1E699E5D;
+    preset ColorTL = #1E699E5D;
+  }
+
+  $rect <20,20,160,60>
+  object Core::HorizontalList HorizontalList
+  {
+    preset StackingPriority = 10;
+    preset Bounds = <-1,80,799,480>;
+    preset OnLoadItem = OnLoadItem;
+    preset SlideHandler = SlideTouchHandler;
+    preset ItemWidth = 160;
+    preset NoOfItems = 13;
+    preset ItemClass = Application::ShopListItem;
+  }
+
+  // This method is called by 'HorizontalList' every time the list loads or updates \
+  // an item.
+  $rect <350,759,500,799>
+  slot OnLoadItem
+  {
+    /*
+
+      Hint:
+
+      - The code below demonstrates a simple usage of the list component.
+
+      - The list component creates and manages automatically view item instances of
+        the class specified in its property 'ItemClass'. In this example it is the
+        class 'Views::Image'.
+
+      - When you change the 'ItemClass' property you will also need to replace
+        accordingly all 'Views::Image' occurrences in the below code.
+
+      - You will also need to adapt the initialization of the 'itemView'.
+
+    */
+    // Get the number of the item to load. The list component takes care of the
+    // creation of the corresponding item view. Just access it ...
+    var int32        itemNo   = HorizontalList.Item;
+    var Application::ShopListItem itemView = (Application::ShopListItem)HorizontalList.View;
+
+    // The implementation of this slot method does not match the item class
+    // specified in the associated list component. Or the slot method is not
+    // called in context of the OnLoadItem list operation. 
+    if ( itemView == null )
+      return;
+
+    // Configure the item view ...
+    BringFromDB();
+    itemView.Property=Obj.ShopTab;
+    var int32 coins=Obj.Coins;
+    if(itemView.Property==1)
+    {
+          HorizontalList.NoOfItems=13;
+          itemView.ImageNr=itemNo;
+           
+      itemView.Bought=false;
+      if(itemNo/11==0)
+        itemView.Price=500;
+      else
+        itemView.Price=1000;
+     if (Obj.CupsArray[itemNo]) {
+        itemView.Bought = true;
+        }
+    }
+    else if(itemView.Property==2){
+        HorizontalList.NoOfItems=10;
+        itemView.ImageNr=itemNo;
+        itemView.Bought=false;
+      if(itemNo/8==0)
+        itemView.Price=500;
+      else
+        itemView.Price=1000;
+      if(Obj.BallsArray[itemNo])
+        {
+          itemView.Bought=true;
+        }
+    }
+    else if(itemView.Property==3){
+         HorizontalList.NoOfItems=16;
+        itemView.ImageNr=itemNo;
+        itemView.Bought=false;
+        itemView.Price=1500;
+        itemView.SongName.String=Songs[itemNo];
+      if(Obj.MusicsArray[itemNo])
+        {
+          itemView.Bought=true;
+        }
+    }
+    else{
+      HorizontalList.NoOfItems=1;
+      itemView.ImageNr=itemNo;
+        itemView.Bought=false;
+        itemView.Price=6000;
+        if(Obj.HallPack==true)
+          itemView.Bought=true;
+    }
+
+    if(coins>=itemView.Price)
+      {
+        itemView.Color=#F9FF19FF;
+      }
+    else{
+      itemView.Color= #FF0600FF;
+    }
+
+    // Ensure that the item has correct size. The position of the item will be
+    // managed by the list component.
+    itemView.Bounds.size = HorizontalList.ViewSize;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SlideTouchHandler SlideTouchHandler
+  {
+    preset Bounds = <0,80,800,480>;
+    preset SnapLast = <0,0>;
+    preset SnapNext = <160,0>;
+    preset SnapFirst = <0,0>;
+    preset SlideVert = false;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <706,16,768,66>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter, ScaleToFit];
+    preset Bitmap = Application::Coin;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <613,16,726,66>;
+    preset ColorBL = #FF880BFF;
+    preset ColorBR = #E0FF12FF;
+    preset ColorTR = #FFAB2CFF;
+    preset ColorTL = #FFFA36FF;
+    preset String = "Text";
+    preset Font = Application::Font1;
+  }
+
+  $rect <599,590,799,630>
+  slot UpdateOnBuy
+  {
+    Text.String=Obj.Coins;
+    HorizontalList.InvalidateItems(0,HorizontalList.NoOfItems-1);
+    UpdateArr();
+
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton
+  {
+    preset Bounds = <780,0,800,20>;
+    preset OnPress = Back;
+    preset IconFrame = 9;
+    preset Icon = Resources::NavigationIconsMedium;
+    preset Label = "";
+    preset Appearance = PushButtonConfig;
+  }
+
+  $rect <310,550,550,590>
+  object WidgetSet::PushButtonConfig PushButtonConfig
+  {
+    preset ThumbShadowColorFocused = #00000000;
+    preset ThumbShadowBlurRadiusFocused = 0;
+    preset ThumbBorderColorFocused = #575757FF;
+    preset ThumbBorderWidthFocused = 2;
+    preset ThumbColorActive = #FF0F00FF;
+    preset ThumbColorFocused = #B6B7B5FF;
+    preset ThumbColorDisabled = #B6B7B5FF;
+    preset ThumbColorDefault = #B6B7B5FF;
+    preset LabelColorDefault = #000000FF;
+    preset IconTintActive = #000000FF;
+    preset IconTintFocused = #000000FF;
+    preset IconTintDisabled = #000000FF;
+    preset IconTintDefault = #000000FF;
+    preset FaceTintActive = #FF2A23FF;
+    preset FaceTintFocused = #D2FFA5FF;
+    preset FaceTintDisabled = #D2FFA5FF;
+    preset FaceTintDefault = #D2FFA5FF;
+    preset FaceBitmapActive = null;
+    preset FaceBitmapFocused = null;
+    preset FaceBitmapDisabled = null;
+    preset FaceBitmapDefault = null;
+  }
+
+  $rect <599,640,799,679>
+  slot Back
+  {
+    Application::Device1.LeftToRight=0;
+    Application::Device1.CurrentScreen=Application::ScreenType.MainMenu;
+  }
+
+  $rect <0,650,200,690>
+  var Application::DeviceClass Obj = Application::Device;
+
+  $rect <0,599,200,639>
+  array string Songs[ 16 ] =
+  (
+    Default[0] = "Tate McRae";
+    Default[1] = "Ava Max";
+    Default[2] = "Alan Walker ";
+    Default[3] = "Enisa";
+    Default[4] = "Cascada ";
+    Default[5] = "Skillet ";
+    Default[6] = "Eurovision ";
+    Default[7] = "Summer Mix";
+    Default[8] = "Keiino ";
+    Default[9] = "Bass Boosted";
+    Default[10] = "Manele Vechi";
+    Default[11] = "Dance Music";
+    Default[12] = "Hit-uri Romania";
+    Default[13] = "Faydee & Ahzee";
+    Default[14] = "Default ";
+    Default[15] = "Country ";
+  );
+
+  // Variables
+  note group Note
+  {
+    attr Bounds = <-10,500,290,710>;
+  }
+
+  // Configs
+  note group Note1
+  {
+    attr Bounds = <290,500,590,710>;
+  }
+
+  // Slots
+  note group Note2
+  {
+    attr Bounds = <590,500,970,710>;
+  }
+
+  $rect <810,590,970,640>
+  method void BringFromDB()
+  {
+    var int32 ACup=10;
+    var int32 ABall=5;
+    var int32 AMusic=14;
+    var int32 Coins=6000;
+    var bool AHall=false;
+
+    $if (!$prototyper)
+      native(ACup,ABall,AMusic,Coins,AHall){
+        ACup=GetActiveCup();
+        ABall=GetActiveBall();
+        AMusic=GetActiveMusic();
+        Coins=GetCoins();
+        AHall=GetHalloweenActive();  
+      }
+    $endif
+
+    Obj.ActiveCup=ACup;
+    Obj.ActiveBall=ABall;
+    Obj.ActiveMusic=AMusic;
+    Obj.Coins=Coins;
+    Obj.HallAct=AHall;
+
+    GetArrays();
+
+
+  }
+
+  $rect <800,650,960,690>
+  method void UpdateArr()
+  {
+    array bool CupsArray[13];;
+    array bool BallsArray[10];
+    array bool MusicArray[16];
+    var bool hallPack=Obj.HallPack;
+    var bool hallAct=Obj.HallAct;
+
+    var int32 i;
+    for(i=0;i<Obj.CupsArray.size;i++)
+      CupsArray[i]=Obj.CupsArray[i];
+    for(i=0;i<Obj.BallsArray.size;i++)
+      BallsArray[i]=Obj.BallsArray[i];
+    for(i=0;i<Obj.MusicsArray.size;i++)
+      MusicArray[i]=Obj.MusicsArray[i];
+    $if (!$prototyper)
+    native(CupsArray,BallsArray,MusicArray,hallPack,hallAct){
+      UpdateArrays(CupsArray,BallsArray,MusicArray);
+      SetHalloweenBought(hallPack);
+      SetHalloweenActive(hallAct);
+      var cups=GetCupsArray();
+      var balls=GetBallsArray();
+      var musics=GetMusicArray();
+      for(let i=0;i<cups.length;i++)
+          CupsArray[i]=cups[i];
+      for(i=0;i<balls.length;i++)
+          BallsArray[i]=balls[i];
+      for(i=0;i<musics.length;i++)
+          MusicArray[i]=musics[i];
+
+    }
+    $endif
+
+     for(i=0;i<Obj.CupsArray.size;i++)
+      Obj.CupsArray[i]=CupsArray[i];
+    for(i=0;i<Obj.BallsArray.size;i++)
+      Obj.BallsArray[i]=BallsArray[i];
+    for(i=0;i<Obj.MusicsArray.size;i++)
+      Obj.MusicsArray[i]=MusicArray[i];
+    Obj.HallPack=hallPack;
+    Obj.HallAct=hallAct;
+  }
+
+  $rect <722,763,922,803>
+  method void GetArrays()
+  {
+    array bool CupsArray[13];
+    array bool BallsArray[10];
+    array bool MusicArray[16];
+    var bool hallPack=Obj.HallPack;
+
+    var int32 i;
+    $if (!$prototyper)
+    native(CupsArray,BallsArray,MusicArray,hallPack){
+      var cups=GetCupsArray();
+      var balls=GetBallsArray();
+      var musics=GetMusicArray();
+      hallPack=GetHalloweenBought();
+      for(let i=0;i<cups.length;i++)
+          CupsArray[i]=cups[i];
+      for(i=0;i<balls.length;i++)
+          BallsArray[i]=balls[i];
+      for(i=0;i<musics.length;i++)
+          MusicArray[i]=musics[i];
+
+    }
+    $endif
+
+     for(i=0;i<Obj.CupsArray.size;i++)
+      Obj.CupsArray[i]=CupsArray[i];
+    for(i=0;i<Obj.BallsArray.size;i++)
+      Obj.BallsArray[i]=BallsArray[i];
+    for(i=0;i<Obj.MusicsArray.size;i++)
+      Obj.MusicsArray[i]=MusicArray[i];
+    Obj.HallPack=hallPack;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PacksBtn
+  {
+    preset Bounds = <450,-1,600,80>;
+    preset OnPress = SelectShopTab;
+    preset Label = "Special";
+    preset Appearance = PushButtonConfigNormal;
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Rectangle
+  $member Rectangle1
+  $member OnLoadItem
+  $member SlideTouchHandler
+  $member HorizontalList
+  $member CupsBtn
+  $member BallsBtn
+  $member MusicBtn
+  $member PushButtonConfigNormal
+  $member PushButtonConfigSelected
+  $member SelectShopTab
+  $member Image
+  $member Text
+  $member UpdateOnBuy
+  $member PushButton
+  $member PushButtonConfig
+  $member Back
+  $member Obj
+  $member Songs
+  $member Note
+  $member Note1
+  $member Note2
+  $member BringFromDB
+  $member UpdateArr
+  $member GetArrays
+  $member PacksBtn
+}
+
+$rect <370,560,540,599>
+$output false
+class ShopListItem : Core::Group
+{
+  $rect <-20,490,90,530>
+  inherited property Bounds = <0,0,160,400>;
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,160,326>;
+    preset FrameNumber = -1;
+    preset Bitmap = Application::ShopCups;
+    preset Visible = true;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton
+  {
+    preset StackingPriority = 0;
+    preset Bounds = <0,326,160,400>;
+    preset OnPress = Buy;
+    preset Label = "Buy";
+    preset Appearance = PushButtonConfigBuy;
+  }
+
+  $rect <240,290,480,330>
+  object WidgetSet::PushButtonConfig PushButtonConfigBuy
+  {
+    preset ThumbShadowColorFocused = #00000000;
+    preset ThumbShadowOffsetFocused = <0,0>;
+    preset ThumbBorderColorActive = #8E8E8EFF;
+    preset ThumbBorderColorFocused = #8E8E8EFF;
+    preset ThumbBorderColorDefault = #8E8E8EFF;
+    preset ThumbBorderWidthDefault = 1;
+    preset ThumbColorActive = #4BFFFCFF;
+    preset ThumbColorFocused = #07F112E1;
+    preset ThumbColorDefault = #07F112E1;
+    preset LabelColorActive = #FFF10AFF;
+    preset LabelColorFocused = #FFF10AFF;
+    preset LabelColorDisabled = #FFF10AFF;
+    preset LabelColorDefault = #FFF10AFF;
+    preset LabelFont = Application::Font1;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <0,263,160,312>;
+    preset String = "500";
+    preset Font = Application::Font1;
+    preset Color = #FF0600FF;
+  }
+
+  $rect <240,440,440,480>
+  property int32 Price;
+
+  $rect <240,480,440,520>
+  onset Price
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Price == value )
+      return;
+
+    // Remember the property's new value.
+    pure Price = value;
+    Text.String=value;
+    SongNameVisible();
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <240,520,440,560>
+  onget Price
+  {
+    return pure Price;
+  }
+
+  $rect <460,450,660,490>
+  property int32 ImageNr = -1;
+
+  $rect <460,490,660,530>
+  onset ImageNr
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure ImageNr == value )
+      return;
+
+    // Remember the property's new value.
+    pure ImageNr = value;
+    Image.FrameNumber=value;
+
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <460,530,660,570>
+  onget ImageNr
+  {
+    return pure ImageNr;
+  }
+
+  $rect <680,450,880,490>
+  property bool Bought = false;
+
+  $rect <680,490,880,530>
+  onset Bought
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Bought == value )
+      return;
+
+    // Remember the property's new value.
+    pure Bought = value;
+
+    ActiveItem();
+
+    BoughtOrNot(value);
+     
+    SongNameVisible();
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <680,530,880,570>
+  onget Bought
+  {
+    return pure Bought;
+  }
+
+  $rect <250,340,490,380>
+  object WidgetSet::PushButtonConfig PushButtonConfigSold
+  {
+    preset ThumbShadowColorFocused = #00000000;
+    preset ThumbShadowOffsetFocused = <0,0>;
+    preset ThumbBorderColorActive = #8E8E8EFF;
+    preset ThumbBorderColorFocused = #8E8E8EFF;
+    preset ThumbBorderColorDefault = #8E8E8EFF;
+    preset ThumbBorderWidthDefault = 1;
+    preset ThumbColorActive = #2C50FAFE;
+    preset ThumbColorFocused = #7E8A7EFF;
+    preset ThumbColorDefault = #7E8A7EFF;
+    preset LabelColorActive = #FFFFFFFF;
+    preset LabelColorFocused = #FFFFFFFF;
+    preset LabelColorDisabled = #FFFFFFFF;
+    preset LabelColorDefault = #FFFFFFFF;
+    preset LabelFont = Application::Font1;
+  }
+
+  $rect <220,590,420,630>
+  property color Color = #FF0600FF;
+
+  $rect <220,630,420,670>
+  onset Color
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Color == value )
+      return;
+
+    // Remember the property's new value.
+    pure Color = value;
+    Text.Color=value;
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <220,670,420,710>
+  onget Color
+  {
+    return pure Color;
+  }
+
+  $rect <450,590,650,630>
+  property int32 Property = 1;
+
+  $rect <450,630,650,670>
+  onset Property
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Property == value )
+      return;
+
+    // Remember the property's new value.
+    pure Property = value;
+
+    switch(value)
+    {
+      case 1: {Image.Bitmap=Application::ShopCups; Image.Alignment=Views::ImageAlignment[AlignHorzCenter, AlignVertCenter];}
+      case 2:  {Image.Bitmap=Application::ShopBalls;Image.Alignment=Views::ImageAlignment[AlignHorzCenter, AlignVertCenter];}
+      case 3: {Image.Bitmap=Application::ShopMusic; Image.Alignment=Views::ImageAlignment[AlignHorzCenter, AlignVertCenter];}
+      case 4: {Image.Bitmap=Application::Pumpkings; Image.Alignment=Views::ImageAlignment[ScaleToFit, AlignHorzCenter, AlignVertCenter];}
+      default: ;
+    }
+
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <450,670,650,710>
+  onget Property
+  {
+    return pure Property;
+  }
+
+  $rect <100,490,210,530>
+  var Application::DeviceClass Obj = Application::Device;
+
+  $rect <-80,590,40,630>
+  slot Buy
+  {
+    var WidgetSet::PushButton btn=(WidgetSet::PushButton)sender;
+    var int32 frame=2;
+        if(btn.Label=="Buy")
+        {
+          if(Obj.Coins>=Price)
+           { 
+            Bought=true;
+            if(Obj.ShopTab==1)
+            {
+                Obj.CupsArray[ImageNr]=true;
+                Obj.Coins-=Price;
+            }
+            else if(Obj.ShopTab==2)
+            { 
+                Obj.BallsArray[ImageNr]=true;
+                Obj.Coins-=Price;
+            }
+            else if(Obj.ShopTab==3){
+                Obj.MusicsArray[ImageNr]=true;
+                Obj.Coins-=Price;
+            }
+            else{
+              Obj.HallPack=true;
+              Obj.Coins-=Price;
+            }
+           UpdateCoinsSpent();
+           frame=Check(Obj.ShopTab);
+           //if(frame!=-1)
+           //{
+              Obj.AchFrame=frame; 
+              AchPopDismiss.Enabled=true;
+              rootthis.PresentDialog(new Application::AchPop,Effects::SlideDownCentered,null,null,null,null,null,null,null,false); 
+           //}
+         }
+       }
+       else if(btn.Label=="Activate")
+       {
+            if(Obj.ShopTab==1)
+              Obj.ActiveCup=ImageNr;
+            else if(Obj.ShopTab==2)
+              Obj.ActiveBall=ImageNr;
+            else if(Obj.ShopTab==3)
+              {
+              Obj.ActiveMusic=ImageNr;
+              PlayNewActiveMusic();
+              }
+            else{
+              Obj.HallAct=true;
+            }
+          UpdateActives();
+       }
+       else if(btn.Label=="Active" && Obj.ShopTab==4)
+       {        PushButton.Appearance=PushButtonConfigSold;
+                Text.String="Owned";
+                PushButton.Label="Activate";
+                Obj.HallAct=false;
+                trace "ActiveNot",Obj.HallAct;
+       }
+
+  }
+
+  $rect <50,590,140,630>
+  inherited method Init()
+  {
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Active
+  {
+    preset StackingPriority = 10;
+    preset Bounds = <55,7,117,57>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter, ScaleToFit];
+    preset Bitmap = Application::Check;
+    preset Visible = false;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text SongName
+  {
+    preset Bounds = <0,20,160,50>;
+    preset String = "";
+    preset Font = Application::MusicFont;
+    preset Color = #000000FF;
+    preset Visible = false;
+  }
+
+  $rect <0,630,200,670>
+  method void SongNameVisible()
+  {
+    if(Obj.ShopTab==3)
+    {
+        if(Active.Visible)
+          SongName.Visible=false;
+        else
+          SongName.Visible=true;
+    }
+    else{
+    SongName.Visible=false;
+    }
+
+  }
+
+  $rect <-210,630,-10,670>
+  method void PlayNewActiveMusic()
+  {
+    var string name=SongName.String;
+    $if (!$prototyper)
+
+    native(name){
+      SelectMusic(name);
+      SetActiveMusicName(name);
+    }
+
+
+    $endif
+  }
+
+  // Properties
+  note group Note
+  {
+    attr Bounds = <220,420,900,750>;
+  }
+
+  // Configs
+  note group Note1
+  {
+    attr Bounds = <214,225,514,425>;
+  }
+
+  // Slots
+  note group Note2
+  {
+    attr Bounds = <-230,560,220,840>;
+  }
+
+  // Variables
+  note group Note3
+  {
+    attr Bounds = <-80,430,220,560>;
+  }
+
+  $rect <-210,680,-10,720>
+  method void BoughtOrNot( arg bool aArg1 )
+  {
+    if(aArg1)
+      {
+       PushButton.Appearance=PushButtonConfigSold;
+       Text.String="Owned";
+       if(Active.Visible)
+        PushButton.Label="Active";
+       else
+         PushButton.Label="Activate";
+      }
+    else {
+        PushButton.Label = "Buy";
+         
+        PushButton.Appearance = PushButtonConfigBuy; 
+        Text.String = Price;
+    }
+  }
+
+  $rect <0,690,200,730>
+  method void ActiveItem()
+  {
+    if(Obj.ShopTab==1)
+    {
+        if(Obj.ActiveCup==ImageNr) Active.Visible=true;
+        else  Active.Visible=false;
+    }
+    else if(Obj.ShopTab==2)
+    {
+       if(Obj.ActiveBall==ImageNr) Active.Visible=true;
+        else Active.Visible=false; 
+    }
+    else if(Obj.ShopTab==3){
+         if(Obj.ActiveMusic==ImageNr)
+         {
+           Active.Visible=true;  
+           }
+        else
+            Active.Visible=false;
+    }
+    else{
+      if(Obj.HallAct==true)
+        Active.Visible=true;
+      else
+        Active.Visible=false;
+    }
+  }
+
+  $rect <-210,740,-10,780>
+  method void UpdateCoinsSpent()
+  {
+    var int32 moneySpent=Price;
+    var bool pack=Obj.HallPack;
+    $if (!$prototyper)
+    native(moneySpent,pack){
+      UpdateMoney(-moneySpent);
+      SetHalloweenBought(pack);
+    }
+
+    $endif
+  }
+
+  $rect <0,740,200,780>
+  method void UpdateActives()
+  {
+    var int32 ACup=Obj.ActiveCup;
+    var int32 ABall=Obj.ActiveBall;
+    var int32 AMusic=Obj.ActiveMusic;
+    var bool APack=Obj.HallAct;
+
+
+    $if (!$prototyper)
+    native(ACup,ABall,AMusic,APack){
+      UpdatePrefs(ACup,ABall,AMusic,APack);
+    }
+
+    $endif
+
+  }
+
+  $rect <395,782,595,822>
+  method int32 Check( arg int32 aArg1 )
+  {
+    var int32 frame=2;
+
+    $if (!$prototyper)
+    native(aArg1,frame){
+      switch(aArg1){
+         case 1: {frame=CheckCupsAchievements();break;}
+         case 2: {frame=CheckBallsAchievements();break;}
+         case 3: {frame=CheckMusicAchievements();break;}
+         case 4: {frame=CheckHalloween();break;}
+      }
+
+    }
+    $endif
+
+    return frame;
+
+  }
+
+  $rect <640,770,840,810>
+  object Core::Timer AchPopDismiss
+  {
+    preset OnTrigger = AchPopTrigger;
+    preset Period = 2000;
+  }
+
+  $rect <646,861,846,901>
+  slot AchPopTrigger
+  {
+    rootthis.DismissDialog( rootthis.FindCurrentDialog(), Effects::SlideUpCentered, null, null, null,null , false );
+    AchPopDismiss.Enabled=false;
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Image
+  $member PushButton
+  $member PushButtonConfigBuy
+  $member Text
+  $member Price
+  $member OnSetPrice
+  $member OnGetPrice
+  $member ImageNr
+  $member OnSetImageNr
+  $member OnGetImageNr
+  $member Bought
+  $member OnSetBought
+  $member OnGetBought
+  $member PushButtonConfigSold
+  $member Color
+  $member OnSetColor
+  $member OnGetColor
+  $member Property
+  $member OnSetProperty
+  $member OnGetProperty
+  $member Obj
+  $member Buy
+  $member Active
+  $member SongName
+  $member SongNameVisible
+  $member PlayNewActiveMusic
+  $member Note
+  $member Note1
+  $member Note2
+  $member Note3
+  $member BoughtOrNot
+  $member ActiveItem
+  $member UpdateCoinsSpent
+  $member UpdateActives
+  $member Check
+  $member AchPopDismiss
+  $member AchPopTrigger
+}
+
+$rect <170,119,370,159>
+$output false
+resource Resources::Font Title
+{
+  attr fontname FontName = Centaur;
+  attr fontheight Height = 90;
+  attr fontheightmode HeightMode = Popular;
+  attr fontquality Quality = High;
+  attr fontranges Ranges = 0x20-0xFF;
+  attr fontaspectratio AspectRatio = 1.0;
+  attr fontbold Bold = false;
+  attr fontitalic Italic = false;
+  attr fontkerning Kerning = true;
+  attr fontrowdistance RowDistance;
+}
+
+$rect <690,60,890,100>
+$output false
+resource Resources::Bitmap Coin
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\coin.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <470,100,670,140>
+$output false
+resource Resources::Bitmap Check
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\check.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <180,660,340,700>
+$output false
+resource Resources::Bitmap ShopMusic
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\MusicShopThumbnails\ShopMusicPlaylistsBeggining.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize = <200,200>;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <170,160,370,200>
+$output false
+resource Resources::Font MusicFont
+{
+  attr fontname FontName = Bahnschrift Light;
+  attr fontheight Height = 20;
+  attr fontheightmode HeightMode = Popular;
+  attr fontquality Quality = High;
+  attr fontranges Ranges = 0x20-0xFF;
+  attr fontaspectratio AspectRatio = 1.0;
+  attr fontbold Bold = false;
+  attr fontitalic Italic = false;
+  attr fontkerning Kerning = true;
+  attr fontrowdistance RowDistance;
+}
+
+$rect <690,110,890,150>
+$output false
+resource Resources::Bitmap HelpIcon
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\help1.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <470,140,670,180>
+$output false
+resource Resources::Bitmap SettingsIcon
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\Settings.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <630,250,830,290>
+$output false
+class HelpMenu : Core::Group
+{
+  $rect <30,650,230,690>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <0,0,800,480>;
+    preset ColorBR = #09BF45FF;
+    preset ColorTL = #02C5C6FF;
+    preset Color = #FFFFFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <291,0,509,52>;
+    preset ColorBL = #3700FFFF;
+    preset ColorBR = #FF000BFF;
+    preset ColorTR = #FF0DE0FF;
+    preset ColorTL = #20FF77FF;
+    preset String = "Help";
+    preset Font = Application::Font1;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text1
+  {
+    preset Layout = Core::Layout[AlignToLeft, AlignToTop];
+    preset Bounds = <0,85,800,266>;
+    preset Padding = 10;
+    preset RowDistance = 35;
+    preset WrapText = true;
+    preset Alignment = Views::TextAlignment[AlignHorzLeft, AlignVertTop];
+    preset String = "Welcome to Alba-Neagra game. Is a simple game in which the main objective is to pay attention where the ball is at anytime. After every level, the number of moves made and the speed will increase, so don't loose your focus for not even a second, but you'll earn more money as well. With the money earned you can customize your cups, balls and even the music in background, so, HAVE FUN!";
+    preset Font = Resources::FontMedium;
+    preset Color = #FF39FBFF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,266,800,480>;
+    preset Bitmap = Application::HelpImages;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton
+  {
+    preset Bounds = <780,0,800,20>;
+    preset OnPress = Back;
+    preset IconFrame = 9;
+    preset Icon = Resources::NavigationIconsSmall;
+    preset Label = "";
+    preset Appearance = PushButtonConfig;
+  }
+
+  $rect <330,540,570,580>
+  object WidgetSet::PushButtonConfig PushButtonConfig
+  {
+    preset ThumbShadowColorFocused = #00000000;
+    preset ThumbShadowBlurRadiusFocused = 0;
+    preset ThumbBorderColorFocused = #575757FF;
+    preset ThumbBorderWidthFocused = 2;
+    preset ThumbColorActive = #FF0F00FF;
+    preset ThumbColorFocused = #B6B7B5FF;
+    preset ThumbColorDisabled = #B6B7B5FF;
+    preset ThumbColorDefault = #B6B7B5FF;
+    preset LabelColorDefault = #000000FF;
+    preset IconTintActive = #000000FF;
+    preset IconTintFocused = #000000FF;
+    preset IconTintDisabled = #000000FF;
+    preset IconTintDefault = #000000FF;
+    preset FaceTintActive = #FF2A23FF;
+    preset FaceTintFocused = #D2FFA5FF;
+    preset FaceTintDisabled = #D2FFA5FF;
+    preset FaceTintDefault = #D2FFA5FF;
+    preset FaceBitmapActive = null;
+    preset FaceBitmapFocused = null;
+    preset FaceBitmapDisabled = null;
+    preset FaceBitmapDefault = null;
+  }
+
+  $rect <590,540,790,580>
+  slot Back
+  {
+    Application::Device1.LeftToRight=0;
+    Application::Device1.CurrentScreen=Application::ScreenType.MainMenu;
+  }
+
+  $rect <524,641,704,681>
+  inherited method Init()
+  {
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Rectangle
+  $member Text
+  $member Text1
+  $member Image
+  $member PushButton
+  $member PushButtonConfig
+  $member Back
+}
+
+$rect <673,159,873,199>
+$output false
+resource Resources::Bitmap HelpImages
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\EasyHelp.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <620,560,820,600>
+$output false
+enum ScreenType
+{
+  $rect <10,10,210,50>
+  item MainMenu;
+
+  $rect <10,60,210,100>
+  item HelpMenu;
+
+  $rect <10,110,210,150>
+  item SettingsMenu;
+
+  $rect <10,210,210,250>
+  item Shop;
+
+  $rect <10,160,210,200>
+  item Stats;
+
+  $rect <10,260,210,300>
+  item InitilizeGame;
+
+  $rect <10,310,210,350>
+  item Game;
+
+  $rect <10,360,210,400>
+  item Achivements;
+}
+
+// This is an annotation.
+note group ManagingScreens
+{
+  attr Bounds = <590,519,1070,720>;
+}
+
+$rect <630,639,830,679>
+inline Inline1
+{
+  /*
+
+    TO DO:
+
+    Include external header files or add type and function declarations needed
+    in the implementation of Application::DeviceClass1. For example:
+
+      #include "DeviceDriver.h"
+
+      #include "your_middleware_api.h"
+
+      void Your_Middleware_Some_Function( int aSomeArg );
+
+  */
+}
+
+$rect <630,599,830,639>
+$output false
+class DeviceClass1 : Templates::DeviceClass
+{
+  $rect <30,80,230,120>
+  inherited method Done()
+  {
+    // The following section is intended to perform de-initialization-related operations
+    // in the underlying device or middleware. Consequently, the section is taken in
+    // account only when generating code (not during prototyping).
+    $if !$prototyper
+      var object thisObject = this;
+
+      /*
+         TO DO:
+
+         The following native statement is intended to enclose code to communicate with
+         your device API. The variable 'thisObject' contains a pointer to the actually
+         de-initialized Application::DeviceClass1 object. Use the 'thisObject' pointer to
+         e.g. de-register the object from the middleware if you have registered it
+         beforehand.
+         
+      */
+
+      native ( thisObject )
+      {
+        /*
+           TO DO:
+
+           Depending on your application case you call functions of the underlying
+           middleware (or access the device directly) in order to perform the necessary
+           de-initialization steps. For example, you invoke some 'C' function:
+
+             YourDevice_DeInitialize();
+
+           IMPORTANT:
+           ----------
+
+           The variable 'thisObject' represents the actually de-initialized instance of the
+           Application::DeviceClass1. If you have stored this object at the initialization
+           time (in the 'Init' method) in some global C variable or registered it by the
+           middleware, it is important to perform now the opposite operation. Set the
+           global variable to NULL or de-register 'thisObject' object from the middleware.
+           
+        */
+      }
+    $endif
+  }
+
+  $rect <30,40,230,80>
+  inherited method Init()
+  {
+    // The following section is intended to perform initialization-related operations
+    // in the underlying device or middleware. Consequently, the section is taken in
+    // account only when generating code (not during prototyping).
+    $if !$prototyper
+      var object thisObject = this;
+
+      /*
+         TO DO:
+
+         The following native statement is intended to enclose code to communicate with
+         your device API. The variable 'thisObject' contains a pointer to the actually
+         initialized Application::DeviceClass1 object. Use the 'thisObject' pointer to
+         e.g. register the object by the middleware as receiver of events, etc.
+         
+      */
+
+      native ( thisObject )
+      {
+        /*
+           TO DO:
+
+           Depending on your application case you call functions of the underlying
+           middleware (or access the device directly) in order to perform the necessary
+           initialization steps. For example, you invoke some 'C' function:
+
+             YourDevice_Initialize();
+
+           The variable 'thisObject' represents the actually initialized instance of the
+           Application::DeviceClass1. You can store this variable e.g. in the middleware
+           and use it whenever the middleware needs to notify the GUI application about
+           some state alternation or events. In this manner, the middleware will be able
+           to invoke methods of the interface device object.
+
+           For example, you can store 'thisObject' in some global C variable:
+
+             // Declaration of the global C variable
+             XObject theDeviceObject;
+
+             // Store the instance in the global variable
+             theDeviceObject = thisObject;
+
+           Later use the global variable e.g. to provide the GUI application with events:
+
+             ApplicationDeviceClass__TriggerSomeEvent( theDeviceObject );
+
+           IMPORTANT:
+           ----------
+
+           If you store 'thisObject' for later use, don't forget to implement the opposite
+           operation in the method 'Done'. Concrete, 'Done' should set the global variable
+           again to the value NULL.
+
+        */
+      }
+    $endif
+  }
+
+  note arrow Note2
+  {
+    attr Point1 = <250,50>;
+    attr Point2 = <320,50>;
+  }
+
+  // Constructor and Destructor
+  note group Note1
+  {
+    attr Bounds = <10,0,250,140>;
+  }
+
+  $rect <260,310,460,350>
+  property Application::ScreenType CurrentScreen = Application::ScreenType.MainMenu;
+
+  $rect <660,310,860,350>
+  onget CurrentScreen
+  {
+    // Per default return the value stored already in the property.
+    return pure CurrentScreen;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <460,310,660,350>
+  onset CurrentScreen
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure CurrentScreen == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure CurrentScreen = value;
+
+    if(value==Application::ScreenType.MainMenu)
+    {
+      $if (!$prototyper)
+      native{
+        ShuffleEnd();
+      }
+      $endif
+    }
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^CurrentScreen;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <60,310,260,350>
+  $output true
+  method void UpdateProperty( arg Application::ScreenType aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure CurrentScreen )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure CurrentScreen = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^CurrentScreen;
+    }
+  }
+
+  $rect <250,390,450,430>
+  var bool ShowOr = true;
+
+  $rect <470,390,670,430>
+  var int32 LeftToRight = 0;
+}
+
+$rect <830,599,1030,639>
+autoobject Application::DeviceClass1 Device1;
+
+$rect <850,650,1050,690>
+$output false
+class Container : Core::Group
+{
+  $rect <-10,490,190,530>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <220,520,420,560>
+  property Core::Group Content;
+
+  $rect <220,560,420,600>
+  onset Content
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Content == value )
+      return;
+
+    if(value==null)
+      DismissDialog(pure Content,Effects::SlideLeftCentered,null,null,null,null,false);
+
+    // Remember the property's new value.
+    pure Content = value;
+
+    if(value!=null)
+    {     
+        switch(Application::Device1.LeftToRight){
+          case 0: SwitchToDialog(value,Effects::SlideLeftCentered,Effects::SlideRightCentered,null,null,null,null,null,null,null,false);
+          case 1: SwitchToDialog(value,Effects::SlideRightCentered,Effects::SlideLeftCentered,null,null,null,null,null,null,null,false);
+          case 2: SwitchToDialog(value,Effects::SlideDownCentered,Effects::SlideUpCentered,null,null,null,null,null,null,null,false);
+          case 3: SwitchToDialog(value,Effects::SlideUpCentered,Effects::SlideDownCentered,null,null,null,null,null,null,null,false);
+          case 4: SwitchToDialog(value,Effects::SlideRightCentered,Effects::SlideRightCentered,null,null,null,null,null,null,null,false);
+          default:;
+        }
+     }
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <220,600,420,640>
+  onget Content
+  {
+    return pure Content;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <0,0,800,480>;
+    preset ColorBR = #0DFF5CFF;
+    preset ColorTL = #03FEFFFF;
+  }
+}
+
+$rect <190,770,390,810>
+$output false
+resource Resources::Bitmap Spider
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\Spider.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <180,860,380,900>
+$output false
+resource Resources::Bitmap Pumpkings
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\Pumpkings.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <180,810,380,850>
+$output false
+resource Resources::Bitmap CrystalBall
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\Crystal.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+// Halloween
+note group Note4
+{
+  attr Bounds = <190,740,490,940>;
+}
+
+$rect <960,260,1160,300>
+$output false
+class Achievements : Core::Group
+{
+  $rect <820,450,1020,490>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <0,0,800,480>;
+    preset ColorBR = #0DFF5CFF;
+    preset ColorTL = #03FEFFFF;
+  }
+
+  $rect <20,20,160,60>
+  object Core::VerticalList VerticalList
+  {
+    preset Bounds = <34,80,774,384>;
+    preset OnLoadItem = OnLoadItem;
+    preset SlideHandler = SlideTouchHandler;
+    preset ItemHeight = 100;
+    preset NoOfItems = 15;
+    preset ItemClass = Application::Achievement;
+  }
+
+  // This method is called by 'VerticalList' every time the list loads or updates \
+  // an item.
+  $rect <640,570,840,610>
+  slot OnLoadItem
+  {
+    /*
+
+      Hint:
+
+      - The code below demonstrates a simple usage of the list component.
+
+      - The list component creates and manages automatically view item instances of
+        the class specified in its property 'ItemClass'. In this example it is the
+        class 'Views::Text'.
+
+      - When you change the 'ItemClass' property you will also need to replace
+        accordingly all 'Views::Text' occurrences in the below code.
+
+      - You will also need to adapt the initialization of the 'itemView'.
+
+    */
+
+    // Get the number of the item to load. The list component takes care of the
+    // creation of the corresponding item view. Just access it ...
+    var int32       itemNo   = VerticalList.Item;
+    var Application::Achievement itemView = (Application::Achievement)VerticalList.View;
+
+    // The implementation of this slot method does not match the item class
+    // specified in the associated list component. Or the slot method is not
+    // called in context of the OnLoadItem list operation. 
+    if ( itemView == null )
+      return;
+
+    // Configure the item view ...
+    itemView.Image.FrameNumber=itemNo;
+    itemView.Title.String=AchievementsNames[itemNo];
+    itemView.Text.String=Describing[itemNo];
+
+
+    if(!Unlocked[itemNo])
+    {
+      itemView.FilterScreen.Visible=true;
+      itemView.Title.Color=#FC0005FF;
+    }
+    else{
+       itemView.FilterScreen.Visible=false;
+        itemView.Title.Color=#00FC07FF;
+    }
+
+    // Ensure that the item has correct size. The position of the item will be
+    // managed by the list component.
+    itemView.Bounds.size = VerticalList.ViewSize;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SlideTouchHandler SlideTouchHandler
+  {
+    preset Bounds = <34,82,774,384>;
+    preset Offset = <0,0>;
+    preset SnapNext = <0,100>;
+    preset SlideHorz = false;
+  }
+
+  $rect <340,560,540,600>
+  array string AchievementsNames[ 15 ] =
+  (
+    Default[0] = "On the right track!";
+    Default[1] = "No more training wheels!";
+    Default[2] = "My first cup!";
+    Default[3] = "I think I need more cups!";
+    Default[4] = "No more cups?!";
+    Default[5] = "My first ball!";
+    Default[6] = "Five is not enough!";
+    Default[7] = "I want them all!";
+    Default[8] = "My first song!";
+    Default[9] = "I can't stop listening!";
+    Default[10] = "I've started grooving!";
+    Default[11] = "Pumpka-Boo!";
+    Default[12] = "Beginning of a legend!";
+    Default[13] = "Almost a legend!";
+    Default[14] = "The LEGEND!";
+  );
+
+  $rect <340,600,540,640>
+  array string Describing[ 15 ] =
+  (
+    Default[0] = "Make 50 correct guesses";
+    Default[1] = "Make 100 correct guesses";
+    Default[2] = "Buy your first cup";
+    Default[3] = "Buy 5 cups";
+    Default[4] = "Buy all cups";
+    Default[5] = "Buy your first ball";
+    Default[6] = "Buy 5 balls";
+    Default[7] = "Buy all balls";
+    Default[8] = "Buy your first song";
+    Default[9] = "Buy 5 songs";
+    Default[10] = "Buy all the songs";
+    Default[11] = "Buy Halloween Pack";
+    Default[12] = "Reach level 15";
+    Default[13] = "Reach level 20";
+    Default[14] = "Reach level 25";
+  );
+
+  $rect <650,620,830,660>
+  inherited method Init()
+  {
+    var int32 count;
+    var int32 i;
+    Check();
+    for(i=0;i<Unlocked.size;i++)
+    {
+      if(Unlocked[i])
+        count++;
+    }
+
+    Progress.CurrentValue=(count*(100/Unlocked.size));
+    Text.String=(string)Progress.CurrentValue+"%%";
+  }
+
+  $rect <340,640,540,680>
+  array bool Unlocked[ 15 ] =
+  (
+    Default[0] = false;
+    Default[1] = false;
+    Default[2] = false;
+    Default[3] = false;
+    Default[4] = false;
+    Default[5] = false;
+    Default[6] = false;
+    Default[7] = false;
+    Default[8] = false;
+    Default[9] = false;
+    Default[10] = false;
+    Default[11] = false;
+    Default[12] = false;
+    Default[13] = false;
+    Default[14] = false;
+  );
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalValueBar Progress
+  {
+    preset Bounds = <34,396,774,446>;
+    preset CurrentValue = 0;
+    preset Appearance = HorizontalValueBarConfig;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <354,431,454,461>;
+    preset String = "0%%";
+    preset Font = Application::Font2;
+    preset Color = #000FFFFF;
+  }
+
+  $rect <20,600,260,640>
+  object WidgetSet::HorizontalValueBarConfig HorizontalValueBarConfig
+  {
+    preset TrackRightColor = #898989FF;
+    preset TrackRightFlattened = true;
+    preset TrackRightCornerRadius = 20;
+    preset TrackRightThickness = 15;
+    preset TrackRightWithEdge = true;
+    preset TrackLeftColor = #FF005FFF;
+    preset TrackLeftFlattened = true;
+    preset TrackLeftCornerRadius = 20;
+    preset TrackLeftThickness = 15;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton
+  {
+    preset Bounds = <780,0,800,20>;
+    preset OnPress = Back;
+    preset IconFrame = 9;
+    preset Icon = Resources::NavigationIconsSmall;
+    preset Label = "";
+    preset Appearance = PushButtonConfig;
+  }
+
+  $rect <630,670,830,710>
+  slot Back
+  {
+    Application::Device1.LeftToRight=0;
+    Application::Device1.CurrentScreen=Application::ScreenType.MainMenu;
+  }
+
+  $rect <20,560,260,600>
+  object WidgetSet::PushButtonConfig PushButtonConfig
+  {
+    preset ThumbShadowColorFocused = #00000000;
+    preset ThumbShadowBlurRadiusFocused = 0;
+    preset ThumbBorderColorFocused = #575757FF;
+    preset ThumbBorderWidthFocused = 2;
+    preset ThumbColorActive = #FF0F00FF;
+    preset ThumbColorFocused = #B6B7B5FF;
+    preset ThumbColorDisabled = #B6B7B5FF;
+    preset ThumbColorDefault = #B6B7B5FF;
+    preset LabelColorDefault = #000000FF;
+    preset IconTintActive = #000000FF;
+    preset IconTintFocused = #000000FF;
+    preset IconTintDisabled = #000000FF;
+    preset IconTintDefault = #000000FF;
+    preset FaceTintActive = #FF2A23FF;
+    preset FaceTintFocused = #D2FFA5FF;
+    preset FaceTintDisabled = #D2FFA5FF;
+    preset FaceTintDefault = #D2FFA5FF;
+    preset FaceBitmapActive = null;
+    preset FaceBitmapFocused = null;
+    preset FaceBitmapDisabled = null;
+    preset FaceBitmapDefault = null;
+  }
+
+  // Configs
+  note group Note
+  {
+    attr Bounds = <0,520,300,720>;
+  }
+
+  // Storage
+  note group Note1
+  {
+    attr Bounds = <300,520,600,720>;
+  }
+
+  // Methods
+  note group Note2
+  {
+    attr Bounds = <600,520,900,720>;
+  }
+
+  $rect <662,780,862,820>
+  method void Check()
+  {
+    array bool Achives[15];
+    var int32 i;
+
+    $if (!$prototyper)
+      native(Achives){
+        var ach=GetAchivements(); 
+        for(let i=0;i<ach.length;i++)
+            Achives[i]=ach[i];
+      }
+
+    $endif
+
+    for(i=0;i<Unlocked.size;i++)
+      Unlocked[i]=Achives[i];
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Rectangle
+  $member VerticalList
+  $member OnLoadItem
+  $member SlideTouchHandler
+  $member AchievementsNames
+  $member Describing
+  $member Unlocked
+  $member Progress
+  $member Text
+  $member HorizontalValueBarConfig
+  $member PushButton
+  $member Back
+  $member PushButtonConfig
+  $member Note
+  $member Note1
+  $member Note2
+  $member Check
+}
+
+$rect <960,310,1160,350>
+$output false
+class Achievement : Core::Group
+{
+  $rect <10,230,210,270>
+  inherited property Bounds = <0,0,700,100>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <0,0,701,100>;
+    preset Color = #757575FF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <40,2,140,102>;
+    preset Bitmap = Application::Achives;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <190,52,700,100>;
+    preset String = "Make 50 correct choices!";
+    preset Font = Application::MusicFont;
+    preset Color = #000000FF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Title
+  {
+    preset Bounds = <190,0,701,75>;
+    preset String = "On the right track!";
+    preset Font = Application::Font;
+    preset Color = #FC0005FF;
+  }
+
+  $rect <20,20,160,60>
+  object Views::FilterScreen FilterScreen
+  {
+    preset Bounds = <40,0,140,100>;
+    preset TintColor = #FFFFFFFF;
+    preset TintMode = Graphics::TintMode.Grayscale;
+    preset BlurClampToEdges = true;
+  }
+}
+
+$rect <170,199,370,239>
+$output false
+resource Resources::Font AchivementTitle
+{
+  attr fontname FontName = Bahnschrift Light;
+  attr fontheight Height = 54;
+  attr fontheightmode HeightMode = Popular;
+  attr fontquality Quality = High;
+  attr fontranges Ranges = 0x20-0xFF;
+  attr fontaspectratio AspectRatio = 1.0;
+  attr fontbold Bold = false;
+  attr fontitalic Italic = false;
+  attr fontkerning Kerning = true;
+  attr fontrowdistance RowDistance;
+}
+
+$rect <960,359,1160,399>
+$output false
+resource Resources::Bitmap Achives
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Achives\Achieves.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize = <100,100>;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <894,9,1094,49>
+$output false
+resource Resources::Bitmap AchiveIcon
+{
+  attr bitmapfile FileName = C:\Users\Alex\Pictures\Camera Roll\AchivementsIcon.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <960,210,1160,250>
+$output false
+class AchPop : Core::Group
+{
+  $rect <-20,500,180,540>
+  inherited property Bounds = <0,0,800,480>;
+
+  $rect <507,498,687,538>
+  inherited method Init()
+  {
+    Title.String=AchievementsNames[Obj.AchFrame];
+    Image.FrameNumber=Obj.AchFrame;
+
+    $if (!$prototyper)
+    native{
+      achievementUnlock();
+      
+    }
+
+
+    $endif
+  }
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <250,0,550,50>;
+    preset Color = #3DE60087;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <232,0,328,50>;
+    preset Alignment = Views::ImageAlignment[AlignHorzCenter, AlignVertCenter, ScaleToFit];
+    preset FrameNumber = 0;
+    preset Bitmap = Application::Achives;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Title
+  {
+    preset Bounds = <304,0,550,50>;
+    preset String = "On the right track!";
+    preset Font = Application::MusicFont;
+    preset Color = #FC0005FF;
+  }
+
+  $rect <190,500,390,540>
+  array string AchievementsNames[ 15 ] =
+  (
+    Default[0] = "On the right track!";
+    Default[1] = "No more training wheels!";
+    Default[2] = "My first cup!";
+    Default[3] = "I think I need more cups!";
+    Default[4] = "No more cups?!";
+    Default[5] = "My first ball!";
+    Default[6] = "Five is not enough!";
+    Default[7] = "I want them all!";
+    Default[8] = "My first song!";
+    Default[9] = "I can't stop listening!";
+    Default[10] = "I've started grooving!";
+    Default[11] = "Pumpka-Boo!";
+    Default[12] = "Beginning of a legend!";
+    Default[13] = "Almost a legend!";
+    Default[14] = "The LEGEND!";
+  );
+
+  $rect <-10,560,190,600>
+  var Application::DeviceClass Obj = Application::Device;
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+  $member Rectangle
+  $member Image
+  $member Title
+  $member AchievementsNames
+  $member Obj
+}
