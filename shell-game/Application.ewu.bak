@@ -1624,6 +1624,7 @@ class Settings : Core::Group
     this.ToggleButton.Checked=Object.Animation;
     this.HorizontalSlider.CurrentValue=Object.Volume;
     this.HorizontalSlider1.CurrentValue=Object.SFXVolume;
+    attachobserver onVolumeChange,^Application::Device.Volume;
 
     if(Application::Device1.ShowOr)
       {
@@ -1653,6 +1654,7 @@ class Settings : Core::Group
   {
     preset Bounds = <329,176,726,226>;
     preset OnChange = Volume;
+    preset Outlet = ^Application::Device.Volume;
     preset Appearance = HorizontalSliderConfig;
   }
 
@@ -1739,13 +1741,7 @@ class Settings : Core::Group
 
     if(volume==this.HorizontalSlider)
     {
-      if(volume.CurrentValue==0)
-        this.Sound.FrameNumber=12;
-      else if(volume.CurrentValue>0 && volume.CurrentValue<=50)
-        this.Sound.FrameNumber=10;
-      else
-         this.Sound.FrameNumber=11;
-    settings.Volume=volume.CurrentValue;
+
     $if (!$prototyper)
     native{
         let vol= Math.abs(volume.CurrentValue / 100);
@@ -1877,6 +1873,17 @@ class Settings : Core::Group
     Application::Device1.CurrentScreen=Application::ScreenType.MainMenu;
   }
 
+  $rect <751,641,951,681>
+  slot onVolumeChange
+  {
+      if(Application::Device.Volume==0)
+        this.Sound.FrameNumber=12;
+      else if(Application::Device.Volume>0 && Application::Device.Volume<=50)
+        this.Sound.FrameNumber=10;
+      else
+         this.Sound.FrameNumber=11;
+  }
+
   // Directives to adapt the order of the above members according to how these members 
   // where arranged when the project content was stored. In this manner the storage 
   // and the expected order of the members don't depend. Merging of changes in the 
@@ -1905,6 +1912,7 @@ class Settings : Core::Group
   $member PushButtonConfig1
   $member Bevel
   $member BackToMenu
+  $member onVolumeChange
 }
 
 $rect <470,60,670,100>
@@ -5155,12 +5163,12 @@ class ShopListItem : Core::Group
             }
            UpdateCoinsSpent();
            frame=Check(Obj.ShopTab);
-           //if(frame!=-1)
-           //{
+           if(frame!=-1)
+           {
               Obj.AchFrame=frame; 
               AchPopDismiss.Enabled=true;
               rootthis.PresentDialog(new Application::AchPop,Effects::SlideDownCentered,null,null,null,null,null,null,null,false); 
-           //}
+           }
          }
        }
        else if(btn.Label=="Activate")
@@ -6500,3 +6508,34 @@ class AchPop : Core::Group
   $member AchievementsNames
   $member Obj
 }
+
+$rect <660,370,860,410>
+$variant WebGL
+vclass DeviceClassWebGL : Application::DeviceClass
+{
+  $rect <802,-173,1002,-133>
+  inherited onset Volume
+  {
+    // Invoke the inherited version of the onset method 'OnSetVolume'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+
+    $if (!$prototyper)
+    var int32 volume = Volume;
+
+    native( volume ) 
+    {
+      let vol = Math.abs( volume / 100 );
+      if ( vol > 1.0 )
+        vol = 1.0;
+      SetVolume( vol );
+    }
+
+    $endif
+  }
+}
+
+$rect <660,430,860,470>
+$variant Simulation
+vclass DeviceClassSimulation : Application::DeviceClass;

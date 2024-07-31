@@ -87,6 +87,7 @@ function GetActiveMusicName(){
 
 function SetHalloweenBought(APack){
     localStorage.setItem("HalloweenBought",APack);
+    console.log("Setter "+APack);
 }
 function GetHalloweenBought(){
     let hall=localStorage.getItem("HalloweenBought");
@@ -201,13 +202,12 @@ function UpdateStorage(lvl,ok,ok1){
     getStart();
 }
 
-function UpdatePrefs(ACup,ABall,AMusic,APack,APack1)
+function UpdatePrefs(ACup,ABall,AMusic,APack)
 {
     SetActiveCup(ACup);
     SetActiveBall(ABall);
     SetActiveMusic(AMusic);
     SetHalloweenActive(APack);
-    SetHalloweenBought(APack1);
 }
 function UpdateMoney(money)
 {
