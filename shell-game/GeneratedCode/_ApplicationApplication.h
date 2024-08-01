@@ -58,12 +58,6 @@
 #define _ApplicationDeviceClass_
 #endif
 
-/* Forward declaration of the class Application::DeviceClass1 */
-#ifndef _ApplicationDeviceClass1_
-  EW_DECLARE_CLASS( ApplicationDeviceClass1 )
-#define _ApplicationDeviceClass1_
-#endif
-
 /* Forward declaration of the class Core::DialogContext */
 #ifndef _CoreDialogContext_
   EW_DECLARE_CLASS( CoreDialogContext )
@@ -117,7 +111,7 @@
 EW_DEFINE_FIELDS( ApplicationApplication, CoreRoot )
   EW_OBJECT  ( Container,       ApplicationContainer )
   EW_VARIABLE( Variable,        ApplicationDeviceClass )
-  EW_VARIABLE( CurrentScreen,   ApplicationDeviceClass1 )
+  EW_VARIABLE( CurrentScreen,   ApplicationDeviceClass )
 EW_END_OF_FIELDS( ApplicationApplication )
 
 /* Virtual Method Table (VMT) for the class : 'Application::Application' */

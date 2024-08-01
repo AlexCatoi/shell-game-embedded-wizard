@@ -168,11 +168,6 @@ EW_DEFINE_METHODS( ApplicationMainMenu, CoreGroup )
     aOrder )
 EW_END_OF_METHODS( ApplicationMainMenu )
 
-/* The method Init() is invoked automatically after the component has been created. 
-   This method can be overridden and filled with logic containing additional initialization 
-   statements. */
-void ApplicationMainMenu_Init( ApplicationMainMenu _this, XHandle aArg );
-
 /* 'C' function for method : 'Application::MainMenu.InitializeGame()' */
 void ApplicationMainMenu_InitializeGame( ApplicationMainMenu _this, XObject sender );
 
@@ -181,9 +176,6 @@ void ApplicationMainMenu_Stats( ApplicationMainMenu _this, XObject sender );
 
 /* 'C' function for method : 'Application::MainMenu.ShopMeth()' */
 void ApplicationMainMenu_ShopMeth( ApplicationMainMenu _this, XObject sender );
-
-/* 'C' function for method : 'Application::MainMenu.StartSound()' */
-void ApplicationMainMenu_StartSound( ApplicationMainMenu _this );
 
 /* 'C' function for method : 'Application::MainMenu.GoToSettings()' */
 void ApplicationMainMenu_GoToSettings( ApplicationMainMenu _this, XObject sender );

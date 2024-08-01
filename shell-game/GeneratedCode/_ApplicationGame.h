@@ -55,12 +55,6 @@
 #include "_WidgetSetPushButton.h"
 #include "_WidgetSetPushButtonConfig.h"
 
-/* Forward declaration of the class Application::DeviceClass */
-#ifndef _ApplicationDeviceClass_
-  EW_DECLARE_CLASS( ApplicationDeviceClass )
-#define _ApplicationDeviceClass_
-#endif
-
 /* Forward declaration of the class Application::Game */
 #ifndef _ApplicationGame_
   EW_DECLARE_CLASS( ApplicationGame )
@@ -147,7 +141,6 @@ EW_DEFINE_FIELDS( ApplicationGame, CoreGroup )
   EW_OBJECT  ( PumpLeft,        ViewsImage )
   EW_OBJECT  ( PumpRight,       ViewsImage )
   EW_OBJECT  ( AchPopDismiss,   CoreTimer )
-  EW_VARIABLE( SettingsObject,  ApplicationDeviceClass )
   EW_VARIABLE( Moves,           XInt32 )
   EW_VARIABLE( Nivel,           XInt32 )
   EW_VARIABLE( Correct,         XBool )
@@ -266,9 +259,6 @@ void ApplicationGame_UpdateCoins( ApplicationGame _this, XInt32 coins );
 
 /* 'C' function for method : 'Application::Game.MakeItHalloween()' */
 void ApplicationGame_MakeItHalloween( ApplicationGame _this );
-
-/* 'C' function for method : 'Application::Game.FromDB()' */
-void ApplicationGame_FromDB( ApplicationGame _this );
 
 /* 'C' function for method : 'Application::Game.AchPopTrigger()' */
 void ApplicationGame_AchPopTrigger( ApplicationGame _this, XObject sender );

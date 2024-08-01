@@ -49,12 +49,6 @@
 #include "_WidgetSetPushButton.h"
 #include "_WidgetSetPushButtonConfig.h"
 
-/* Forward declaration of the class Application::DeviceClass */
-#ifndef _ApplicationDeviceClass_
-  EW_DECLARE_CLASS( ApplicationDeviceClass )
-#define _ApplicationDeviceClass_
-#endif
-
 /* Forward declaration of the class Application::ShopListItem */
 #ifndef _ApplicationShopListItem_
   EW_DECLARE_CLASS( ApplicationShopListItem )
@@ -108,7 +102,6 @@ EW_DEFINE_FIELDS( ApplicationShopListItem, CoreGroup )
   EW_OBJECT  ( Active,          ViewsImage )
   EW_OBJECT  ( SongName,        ViewsText )
   EW_OBJECT  ( AchPopDismiss,   CoreTimer )
-  EW_VARIABLE( Obj,             ApplicationDeviceClass )
   EW_PROPERTY( Price,           XInt32 )
   EW_PROPERTY( ImageNr,         XInt32 )
   EW_PROPERTY( Color,           XColor )
@@ -199,23 +192,11 @@ void ApplicationShopListItem_Buy( ApplicationShopListItem _this, XObject sender 
 /* 'C' function for method : 'Application::ShopListItem.SongNameVisible()' */
 void ApplicationShopListItem_SongNameVisible( ApplicationShopListItem _this );
 
-/* 'C' function for method : 'Application::ShopListItem.PlayNewActiveMusic()' */
-void ApplicationShopListItem_PlayNewActiveMusic( ApplicationShopListItem _this );
-
 /* 'C' function for method : 'Application::ShopListItem.BoughtOrNot()' */
 void ApplicationShopListItem_BoughtOrNot( ApplicationShopListItem _this, XBool aArg1 );
 
 /* 'C' function for method : 'Application::ShopListItem.ActiveItem()' */
 void ApplicationShopListItem_ActiveItem( ApplicationShopListItem _this );
-
-/* 'C' function for method : 'Application::ShopListItem.UpdateCoinsSpent()' */
-void ApplicationShopListItem_UpdateCoinsSpent( ApplicationShopListItem _this );
-
-/* 'C' function for method : 'Application::ShopListItem.UpdateActives()' */
-void ApplicationShopListItem_UpdateActives( ApplicationShopListItem _this );
-
-/* 'C' function for method : 'Application::ShopListItem.Check()' */
-XInt32 ApplicationShopListItem_Check( ApplicationShopListItem _this, XInt32 aArg1 );
 
 /* 'C' function for method : 'Application::ShopListItem.AchPopTrigger()' */
 void ApplicationShopListItem_AchPopTrigger( ApplicationShopListItem _this, XObject 

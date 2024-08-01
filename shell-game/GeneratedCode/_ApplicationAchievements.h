@@ -107,7 +107,6 @@ EW_DEFINE_FIELDS( ApplicationAchievements, CoreGroup )
   EW_OBJECT  ( PushButtonConfig, WidgetSetPushButtonConfig )
   EW_ARRAY   ( AchievementsNames, XString, [15])
   EW_ARRAY   ( Describing,      XString, [15])
-  EW_ARRAY   ( Unlocked,        XBool, [15])
 EW_END_OF_FIELDS( ApplicationAchievements )
 
 /* Virtual Method Table (VMT) for the class : 'Application::Achievements' */
@@ -177,9 +176,6 @@ void ApplicationAchievements_OnLoadItem( ApplicationAchievements _this, XObject
 
 /* 'C' function for method : 'Application::Achievements.Back()' */
 void ApplicationAchievements_Back( ApplicationAchievements _this, XObject sender );
-
-/* 'C' function for method : 'Application::Achievements.Check()' */
-void ApplicationAchievements_Check( ApplicationAchievements _this );
 
 #ifdef __cplusplus
   }

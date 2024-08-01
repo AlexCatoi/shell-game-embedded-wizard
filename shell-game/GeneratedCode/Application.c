@@ -31,7 +31,6 @@
 #include "_ApplicationApplication.h"
 #include "_ApplicationContainer.h"
 #include "_ApplicationDeviceClass.h"
-#include "_ApplicationDeviceClass1.h"
 #include "_ApplicationGame.h"
 #include "_ApplicationHelpMenu.h"
 #include "_ApplicationLoadingGame.h"
@@ -81,56 +80,56 @@
 /* Compressed strings for the language 'Default'. */
 EW_CONST_STRING_PRAGMA static const unsigned int _StringsDefault0[] =
 {
-  0x00000408, /* ratio 54.65 % */
+  0x0000041A, /* ratio 54.48 % */
   0xB8001F00, 0x00086452, 0x24DE0034, 0x40073004, 0x00200019, 0xC0088184, 0x70001D60,
   0x305C6800, 0x001388B0, 0x71D80069, 0x000D8008, 0x6863141D, 0xE3A0A004, 0x1F2390C7,
   0x5119449A, 0x588E8123, 0x38E84E56, 0x36802405, 0x8C924B18, 0x1B800418, 0xD227409F,
   0xA8F0A9F1, 0xAD1D04C6, 0x1179342C, 0x068D43E8, 0x02300278, 0x8146A720, 0x04488504,
   0x1AC00630, 0x46154B8A, 0xE8F2426C, 0x3A128D45, 0xF1486126, 0x11A5C2A8, 0xE3244627,
-  0x8549A273, 0xE81E5667, 0xC4E84508, 0x68112B3C, 0xAE94AA5D, 0x7B04C1C6, 0x51985422,
-  0x458E83A3, 0xDB198A4D, 0x87C7C002, 0x19CB0313, 0x4125B1AB, 0x2E331383, 0x2574D90D,
-  0xF30FAD06, 0xF13D1802, 0x13921AA8, 0x988D8CF5, 0x89C22271, 0xD49265A3, 0xD0F233B8,
-  0x962F7CB1, 0xF7F63DE5, 0xAF26926C, 0x9B00B002, 0x00E0C662, 0xD87E3702, 0x006C6970,
-  0xBD9615B7, 0x87E35268, 0xCC00488E, 0x24E548FD, 0x4321AE45, 0x514F1C46, 0xF29F41FC,
-  0x1A077E83, 0x87E068F2, 0x1374AC21, 0x84E82E41, 0x21814F9E, 0x78001DC4, 0x4C50F509,
-  0x8004D142, 0x47511A4A, 0x91B81490, 0x7C43DF75, 0x0C92A849, 0x03081400, 0x08843800,
-  0x82238800, 0x154AC348, 0x45D0A81C, 0x9CC435A3, 0xD4918749, 0x8A234521, 0x1A7A4008,
-  0x4191D05D, 0x5D868D0A, 0x76060D59, 0x2D0D82D1, 0x2F88E128, 0x63E23000, 0x5135891D,
-  0x75C16759, 0x92094860, 0xD1451DD4, 0x7B9D0489, 0xC1400135, 0x49090B8F, 0x19149112,
-  0x4A5D25A9, 0x47536452, 0x81146A4D, 0x48C0008B, 0x21638CD7, 0x2B9821C6, 0x8611D031,
-  0x20A869A0, 0x09863700, 0x06754159, 0x8A4690D5, 0x49963585, 0x400A2D26, 0x75B045A3,
-  0x95214351, 0xED412505, 0x8307843D, 0x51D0352B, 0xC451DB7B, 0x4E185956, 0x45699D24,
-  0x5E923514, 0xD135B000, 0x66615FA7, 0x5D145198, 0x2459A8F1, 0xA526168D, 0x521AE045,
-  0x446D1343, 0x950D44E6, 0xB05F1135, 0x59DC6B1A, 0x524A4121, 0x14AD2B83, 0x00000010,
-  0x00000000
+  0x8549A273, 0xE8325667, 0x4A800308, 0x00700017, 0x40032C40, 0x5634C6E1, 0xD8BC201E,
+  0x938D65B1, 0x3A114209, 0x044ACF31, 0xA52A975A, 0x422B598B, 0x3A351985, 0xA4D458E8,
+  0x002DB198, 0x31387C7C, 0x1AB19CB0, 0x3834125B, 0x90D2E331, 0xD062574D, 0x802F30FA,
+  0xAA8F13DB, 0xCF513921, 0x271988D8, 0x5B789C22, 0x3B8D4926, 0x3E2CF609, 0xB2C5EF96,
+  0x3F4EC7D0, 0x55E4D24E, 0x53881600, 0x401D58CC, 0x1B0FD1E0, 0x5CBEE52E, 0x268BD961,
+  0x88E87E35, 0x8FDCC004, 0x11449C54, 0x14852157, 0xD9147DD1, 0x064F9077, 0x501DC506,
+  0xD8151D21, 0x74AC2143, 0x61884113, 0x814F9FC7, 0x001F1421, 0x50F50978, 0x64D1424C,
+  0x11E94AD8, 0x64730524, 0x5F10F82D, 0x18D4AA26, 0xC6298562, 0xAD906598, 0x0A86C154,
+  0x435B745D, 0x19D499E1, 0x54523049, 0xF4008D18, 0x1D05D1A7, 0x6DD0A419, 0x621595ED,
+  0xD87D1760, 0x162687D0, 0x0065C2F6, 0x58845664, 0x16759513, 0xD4861B5C, 0x51F24921,
+  0xE5489E64, 0x00135809, 0x10B93414, 0x49492494, 0xD2689511, 0x36452585, 0x46A5B475,
+  0x8008F011, 0x3905748F, 0xBA2F6796, 0x2B475829, 0x87A2D6D2, 0xA6F91400, 0xD5051697,
+  0x85A04690, 0x26499635, 0xA6400A5D, 0x5175B045, 0x55952143, 0x3E01411A, 0x2B880784,
+  0x8051D035, 0x56C451F0, 0x744E2B59, 0x14456E9E, 0x005E9235, 0xAAD135B0, 0x99C6B15F,
+  0xB15D1451, 0xDD2459A9, 0x045426F6, 0x486C4115, 0x91BAF10D, 0x5435139C, 0x497C44D6,
+  0x014692BB, 0x00000001, 0x00000000
 };
 
 /* Compressed strings for the language 'Default'. */
 EW_CONST_STRING_PRAGMA static const unsigned int _StringsDefault1[] =
 {
-  0x000004AC, /* ratio 51.17 % */
-  0xB8001D00, 0x8008A452, 0x00E4003A, 0x0EC00378, 0xE6003480, 0xC0085C3C, 0x0010000D,
-  0x58183632, 0x0041CA64, 0x2802406D, 0x8022F093, 0x64F11326, 0xE380A004, 0x21139192,
-  0x3188645A, 0x428E03E3, 0xC8898400, 0x864E6313, 0x81D2250C, 0x4DE56649, 0x5A772882,
-  0x2606C924, 0xC7302B46, 0x31334000, 0x448240A3, 0x20045674, 0x94462495, 0x94422508,
-  0x4702519A, 0xB6871324, 0x2210A8F8, 0x43142946, 0x33B89D2A, 0x468E0463, 0x5001E6B4,
-  0x0057A494, 0x99064C26, 0x4C0F400A, 0x70171992, 0x8CD24ACC, 0x874D8456, 0x98A004D6,
-  0x088A10E0, 0xB8550E2D, 0x824B7277, 0xA544E11E, 0x4669A00B, 0xEE3F3803, 0x06B1CD3D,
-  0x57AF1800, 0x58322E56, 0x0E8850EA, 0x0C450E77, 0xDAC70120, 0x84376E00, 0xC7011199,
-  0x6CEE0027, 0x23345925, 0x835CDF83, 0xD248744F, 0x19A1C509, 0xD9859C0F, 0x42C67454,
-  0xE15E0801, 0xC8619D1E, 0x026943BF, 0x8C54DC18, 0x49D6B5D6, 0x72533CEE, 0x3BFA4627,
-  0x617003CF, 0xAD4F4932, 0x92258918, 0x85FD4D68, 0xC97F489F, 0x54729264, 0x4618458D,
-  0x97F55143, 0x8459135C, 0xA9EE4311, 0xD4709A31, 0x44910499, 0x91845210, 0xA6753B68,
-  0x6DBB50D5, 0x16431C25, 0x49184726, 0xA2F7A10A, 0xD4EDEE49, 0x7D185354, 0x3B6E9268,
-  0x7097B56E, 0xD187F1FA, 0xA8A58E60, 0x75244610, 0x054999C8, 0x0014C70E, 0xA114982C,
-  0x14215B53, 0x9A307B92, 0x186390C4, 0x8750C485, 0x53B48A20, 0x545A3D5F, 0x9A128854,
-  0x7E689124, 0x44E0B5F1, 0x95B87A37, 0x256A3154, 0x06514911, 0x2C9BA228, 0x74827002,
-  0x14053518, 0xC5ED7F4F, 0x02474210, 0x524318E0, 0xA2D26585, 0x13346125, 0xD87530A0,
-  0x96847DA2, 0x795155B7, 0x421EE002, 0xE8600192, 0x89C67F47, 0xB50A56A4, 0x134965E8,
-  0xA894B452, 0xDCA9863D, 0x39094D93, 0x4A0F5A50, 0xAE976697, 0x7CA264C2, 0x267ABD25,
-  0x249A87AC, 0x35185CD5, 0x227A53CA, 0xA1586441, 0x1D1A4598, 0xD449A242, 0x65A58D69,
-  0xC35CE61B, 0x8B530926, 0xA8EAB653, 0x856E3983, 0xAD52B611, 0x0A7D0001, 0x94266B15,
-  0x29D4526A, 0x6541835A, 0x55794610, 0x21758001, 0x406FE4AC, 0x00000000
+  0x000004BC, /* ratio 50.50 % */
+  0xB8001700, 0x800A6452, 0x00D20035, 0x4010B360, 0x00740019, 0xD1400080, 0x4522C0C1,
+  0x2001D400, 0x001BC007, 0x98021276, 0x1BA3F223, 0x34011489, 0x637068B8, 0x1F2F001B,
+  0x44D89C76, 0x0A949E24, 0x28712E2E, 0x8FC9E152, 0xB83E2913, 0x98400428, 0x16274891,
+  0x6491F8FD, 0x526487C4, 0xF358250E, 0x0C87C9E8, 0xC2B44E1F, 0x34000C73, 0x245E2B22,
+  0x49C01462, 0xD4015AAF, 0xA15248DC, 0x2E128A57, 0xB1191122, 0x228E4685, 0x08F14A27,
+  0x8549ECB3, 0xB8462947, 0x1E6CA468, 0xA61F5100, 0xC8328135, 0x787A0057, 0x9028A43E,
+  0x6687D920, 0x18646ECA, 0xCA802831, 0xDDF08645, 0xC7623278, 0x12739EC3, 0xABA70834,
+  0x290CA3C8, 0x0558B826, 0x47A8EB40, 0x4034A69F, 0x8A61EEF4, 0x00D609BC, 0x4A788300,
+  0x46BD8ED0, 0x37321854, 0x9317D94F, 0x72191443, 0x17040032, 0x63B8009F, 0x8A546796,
+  0x64F2E407, 0xA1629AD8, 0x8CAF0400, 0x63F5E007, 0x8111944C, 0x50CC7002, 0x4EBB594C,
+  0x833D1E78, 0xFE44E8F7, 0x02E7BD47, 0x5524494A, 0xF56D44D6, 0x28565AD5, 0x5A57D801,
+  0x1DC4A13E, 0x363D6E58, 0xA5604451, 0x1151D2F5, 0x7D91F44E, 0x1CB6B86A, 0xA44D3C48,
+  0xF2174910, 0x476B5135, 0x445656A1, 0x525695BA, 0xC84D1377, 0x61694753, 0xF6002258,
+  0x8990D6C1, 0x91373A06, 0x361C0055, 0x018D80A2, 0x336E9990, 0x5E1D54F1, 0x24F8322E,
+  0xF7C02C43, 0xB9275A58, 0x288DE3C4, 0x44D9947D, 0x24F47D2F, 0x951D7D8A, 0x46444A18,
+  0x28866295, 0x629AD491, 0x12284988, 0x79010C43, 0x1D0F5E16, 0x5543D245, 0x9C62A822,
+  0xC2700126, 0xC4311374, 0x1D695214, 0x4D46D1F6, 0x5791F666, 0x28E4A16C, 0x44FD135E,
+  0x9D3C93A8, 0xAE9B6434, 0x9F551A05, 0x59D46E5B, 0xDA09A391, 0xE1FA9D50, 0x1F5F69A5,
+  0x985288E1, 0xA2E43DDD, 0xD562729E, 0xA91380D0, 0x6B8E90A7, 0x55EB08EE, 0xA7944EA4,
+  0xA4A1DEAA, 0x79135DE8, 0x77B26445, 0x4BD7C539, 0x6896450A, 0x6A424DA9, 0xF6A0521B,
+  0xDD906A78, 0x43E989A9, 0x61A8EAAB, 0x657922B3, 0x7ADA4A27, 0x1D7F1085, 0x002DDA2D,
+  0x11F492A0, 0xC63973A8, 0x15134655, 0x217E5B56, 0x406FE4A4, 0x00000000
 };
 
 /* Compressed strings for the language 'Default'. */
@@ -276,182 +275,184 @@ static const XColor _Const0065 = { 0xE2, 0x63, 0xD6, 0xAD };
 static const XColor _Const0066 = { 0xF1, 0xF3, 0x0C, 0xFF };
 static const XRect _Const0067 = {{ 265, 391 }, { 535, 441 }};
 static const XStringRes _Const0068 = { _StringsDefault0, 0x005B };
-static const XRect _Const0069 = {{ 325, 216 }, { 475, 266 }};
-static const XStringRes _Const006A = { _StringsDefault0, 0x006D };
-static const XRect _Const006B = {{ 325, 310 }, { 475, 360 }};
-static const XStringRes _Const006C = { _StringsDefault0, 0x0074 };
-static const XRect _Const006D = {{ 325, 397 }, { 475, 447 }};
-static const XStringRes _Const006E = { _StringsDefault0, 0x007C };
-static const XRect _Const006F = {{ 72, 29 }, { 728, 195 }};
-static const XColor _Const0070 = { 0xFF, 0x95, 0xE1, 0xFF };
-static const XColor _Const0071 = { 0xCF, 0x42, 0x54, 0xC2 };
-static const XStringRes _Const0072 = { _StringsDefault0, 0x0083 };
-static const XColor _Const0073 = { 0xFF, 0x00, 0xE8, 0xFF };
-static const XRect _Const0074 = {{ 0, 215 }, { 192, 480 }};
-static const XRect _Const0075 = {{ 608, 215 }, { 800, 480 }};
-static const XColor _Const0076 = { 0x00, 0xFF, 0x56, 0xFF };
-static const XColor _Const0077 = { 0x1E, 0x70, 0x70, 0xFF };
-static const XRect _Const0078 = {{ 0, 0 }, { 57, 43 }};
-static const XRect _Const0079 = {{ 754, 0 }, { 803, 43 }};
-static const XStringRes _Const007A = { _StringsDefault0, 0x0091 };
-static const XRect _Const007B = {{ 44, 3 }, { 101, 39 }};
-static const XRect _Const007C = {{ 102, 315 }, { 698, 384 }};
-static const XStringRes _Const007D = { _StringsDefault0, 0x009B };
-static const XRect _Const007E = {{ 102, 214 }, { 646, 264 }};
-static const XColor _Const007F = { 0xFC, 0xFF, 0x0B, 0xDE };
-static const XColor _Const0080 = { 0xFF, 0x02, 0x00, 0xEC };
-static const XColor _Const0081 = { 0xD8, 0x8C, 0x37, 0xDE };
-static const XColor _Const0082 = { 0xEC, 0xF2, 0x26, 0xFF };
-static const XStringRes _Const0083 = { _StringsDefault0, 0x00B3 };
-static const XStringRes _Const0084 = { _StringsDefault0, 0x00C6 };
-static const XStringRes _Const0085 = { _StringsDefault0, 0x00DC };
-static const XRect _Const0086 = {{ 546, 315 }, { 646, 384 }};
-static const XStringRes _Const0087 = { _StringsDefault0, 0x00FB };
-static const XRect _Const0088 = {{ 523, 315 }, { 624, 384 }};
-static const XRect _Const0089 = {{ 499, 315 }, { 609, 384 }};
-static const XPoint _Const008A = { 0, -20 };
-static const XRect _Const008B = {{ 50, 315 }, { 646, 384 }};
-static const XRect _Const008C = {{ 75, 315 }, { 671, 384 }};
-static const XRect _Const008D = {{ 5, 88 }, { 315, 165 }};
-static const XStringRes _Const008E = { _StringsDefault0, 0x00FF };
-static const XColor _Const008F = { 0xFF, 0x39, 0xFB, 0xFF };
-static const XRect _Const0090 = {{ 361, 88 }, { 773, 165 }};
-static const XStringRes _Const0091 = { _StringsDefault0, 0x0112 };
-static const XRect _Const0092 = {{ 11, 217 }, { 310, 283 }};
-static const XStringRes _Const0093 = { _StringsDefault0, 0x0128 };
-static const XRect _Const0094 = {{ 332, 217 }, { 800, 283 }};
-static const XStringRes _Const0095 = { _StringsDefault0, 0x013D };
-static const XRect _Const0096 = {{ 296, 348 }, { 466, 398 }};
-static const XStringRes _Const0097 = { _StringsDefault0, 0x0154 };
-static const XStringRes _Const0098 = { _StringsDefault0, 0x015B };
-static const XStringRes _Const0099 = { _StringsDefault0, 0x016D };
-static const XStringRes _Const009A = { _StringsDefault0, 0x0181 };
-static const XStringRes _Const009B = { _StringsDefault0, 0x0185 };
-static const XStringRes _Const009C = { _StringsDefault0, 0x0196 };
-static const XRect _Const009D = {{ -1, -3 }, { 799, 477 }};
-static const XColor _Const009E = { 0x49, 0xFF, 0x6E, 0xFF };
-static const XColor _Const009F = { 0x0A, 0xDD, 0x4F, 0xFF };
-static const XColor _Const00A0 = { 0x51, 0xCE, 0xFF, 0xFF };
-static const XColor _Const00A1 = { 0x02, 0xDC, 0xDD, 0xFF };
-static const XRect _Const00A2 = {{ -1, 80 }, { 799, 480 }};
-static const XColor _Const00A3 = { 0x1E, 0x9A, 0x40, 0x5D };
-static const XColor _Const00A4 = { 0x1E, 0x69, 0x9E, 0x5D };
-static const XRect _Const00A5 = {{ 0, 80 }, { 800, 480 }};
-static const XPoint _Const00A6 = { 160, 0 };
-static const XRect _Const00A7 = {{ 0, 0 }, { 150, 81 }};
-static const XStringRes _Const00A8 = { _StringsDefault0, 0x01A2 };
-static const XRect _Const00A9 = {{ 150, 0 }, { 300, 81 }};
-static const XStringRes _Const00AA = { _StringsDefault0, 0x01A9 };
-static const XRect _Const00AB = {{ 300, 0 }, { 450, 81 }};
-static const XStringRes _Const00AC = { _StringsDefault0, 0x01B1 };
-static const XColor _Const00AD = { 0x8E, 0x8E, 0x8E, 0xFF };
-static const XColor _Const00AE = { 0x1B, 0xC6, 0xCF, 0xFF };
-static const XColor _Const00AF = { 0x00, 0xE3, 0x53, 0xFF };
-static const XColor _Const00B0 = { 0x17, 0xAC, 0xB4, 0xFF };
-static const XRect _Const00B1 = {{ 706, 16 }, { 768, 66 }};
-static const XRect _Const00B2 = {{ 613, 16 }, { 726, 66 }};
-static const XStringRes _Const00B3 = { _StringsDefault0, 0x01B9 };
-static const XRect _Const00B4 = {{ 780, 0 }, { 800, 20 }};
-static const XStringRes _Const00B5 = { _StringsDefault0, 0x01C0 };
-static const XStringRes _Const00B6 = { _StringsDefault0, 0x01CD };
-static const XStringRes _Const00B7 = { _StringsDefault0, 0x01D7 };
-static const XStringRes _Const00B8 = { _StringsDefault0, 0x01E6 };
-static const XStringRes _Const00B9 = { _StringsDefault0, 0x01EE };
+static const XStringRes _Const0069 = { _StringsDefault0, 0x006D };
+static const XStringRes _Const006A = { _StringsDefault0, 0x0079 };
+static const XRect _Const006B = {{ 325, 216 }, { 475, 266 }};
+static const XStringRes _Const006C = { _StringsDefault0, 0x0080 };
+static const XRect _Const006D = {{ 325, 310 }, { 475, 360 }};
+static const XStringRes _Const006E = { _StringsDefault0, 0x0087 };
+static const XRect _Const006F = {{ 325, 397 }, { 475, 447 }};
+static const XStringRes _Const0070 = { _StringsDefault0, 0x008F };
+static const XRect _Const0071 = {{ 72, 29 }, { 728, 195 }};
+static const XColor _Const0072 = { 0xFF, 0x95, 0xE1, 0xFF };
+static const XColor _Const0073 = { 0xCF, 0x42, 0x54, 0xC2 };
+static const XStringRes _Const0074 = { _StringsDefault0, 0x0096 };
+static const XColor _Const0075 = { 0xFF, 0x00, 0xE8, 0xFF };
+static const XRect _Const0076 = {{ 0, 215 }, { 192, 480 }};
+static const XRect _Const0077 = {{ 608, 215 }, { 800, 480 }};
+static const XColor _Const0078 = { 0x00, 0xFF, 0x56, 0xFF };
+static const XColor _Const0079 = { 0x1E, 0x70, 0x70, 0xFF };
+static const XRect _Const007A = {{ 0, 0 }, { 57, 43 }};
+static const XRect _Const007B = {{ 754, 0 }, { 803, 43 }};
+static const XStringRes _Const007C = { _StringsDefault0, 0x00A4 };
+static const XRect _Const007D = {{ 44, 3 }, { 101, 39 }};
+static const XRect _Const007E = {{ 102, 315 }, { 698, 384 }};
+static const XStringRes _Const007F = { _StringsDefault0, 0x00AE };
+static const XRect _Const0080 = {{ 102, 214 }, { 646, 264 }};
+static const XColor _Const0081 = { 0xFC, 0xFF, 0x0B, 0xDE };
+static const XColor _Const0082 = { 0xFF, 0x02, 0x00, 0xEC };
+static const XColor _Const0083 = { 0xD8, 0x8C, 0x37, 0xDE };
+static const XColor _Const0084 = { 0xEC, 0xF2, 0x26, 0xFF };
+static const XStringRes _Const0085 = { _StringsDefault0, 0x00C6 };
+static const XStringRes _Const0086 = { _StringsDefault0, 0x00D9 };
+static const XStringRes _Const0087 = { _StringsDefault0, 0x00EF };
+static const XRect _Const0088 = {{ 546, 315 }, { 646, 384 }};
+static const XStringRes _Const0089 = { _StringsDefault0, 0x010E };
+static const XRect _Const008A = {{ 523, 315 }, { 624, 384 }};
+static const XRect _Const008B = {{ 499, 315 }, { 609, 384 }};
+static const XPoint _Const008C = { 0, -20 };
+static const XRect _Const008D = {{ 50, 315 }, { 646, 384 }};
+static const XRect _Const008E = {{ 75, 315 }, { 671, 384 }};
+static const XRect _Const008F = {{ 5, 88 }, { 315, 165 }};
+static const XStringRes _Const0090 = { _StringsDefault0, 0x0112 };
+static const XColor _Const0091 = { 0xFF, 0x39, 0xFB, 0xFF };
+static const XRect _Const0092 = {{ 361, 88 }, { 773, 165 }};
+static const XStringRes _Const0093 = { _StringsDefault0, 0x0125 };
+static const XRect _Const0094 = {{ 11, 217 }, { 310, 283 }};
+static const XStringRes _Const0095 = { _StringsDefault0, 0x013B };
+static const XRect _Const0096 = {{ 332, 217 }, { 800, 283 }};
+static const XStringRes _Const0097 = { _StringsDefault0, 0x0150 };
+static const XRect _Const0098 = {{ 296, 348 }, { 466, 398 }};
+static const XStringRes _Const0099 = { _StringsDefault0, 0x0167 };
+static const XStringRes _Const009A = { _StringsDefault0, 0x016E };
+static const XStringRes _Const009B = { _StringsDefault0, 0x0180 };
+static const XStringRes _Const009C = { _StringsDefault0, 0x0194 };
+static const XStringRes _Const009D = { _StringsDefault0, 0x0198 };
+static const XStringRes _Const009E = { _StringsDefault0, 0x01A9 };
+static const XRect _Const009F = {{ -1, -3 }, { 799, 477 }};
+static const XColor _Const00A0 = { 0x49, 0xFF, 0x6E, 0xFF };
+static const XColor _Const00A1 = { 0x0A, 0xDD, 0x4F, 0xFF };
+static const XColor _Const00A2 = { 0x51, 0xCE, 0xFF, 0xFF };
+static const XColor _Const00A3 = { 0x02, 0xDC, 0xDD, 0xFF };
+static const XRect _Const00A4 = {{ -1, 80 }, { 799, 480 }};
+static const XColor _Const00A5 = { 0x1E, 0x9A, 0x40, 0x5D };
+static const XColor _Const00A6 = { 0x1E, 0x69, 0x9E, 0x5D };
+static const XRect _Const00A7 = {{ 0, 80 }, { 800, 480 }};
+static const XPoint _Const00A8 = { 160, 0 };
+static const XRect _Const00A9 = {{ 0, 0 }, { 150, 81 }};
+static const XStringRes _Const00AA = { _StringsDefault0, 0x01B5 };
+static const XRect _Const00AB = {{ 150, 0 }, { 300, 81 }};
+static const XStringRes _Const00AC = { _StringsDefault0, 0x01BC };
+static const XRect _Const00AD = {{ 300, 0 }, { 450, 81 }};
+static const XStringRes _Const00AE = { _StringsDefault0, 0x01C4 };
+static const XColor _Const00AF = { 0x8E, 0x8E, 0x8E, 0xFF };
+static const XColor _Const00B0 = { 0x1B, 0xC6, 0xCF, 0xFF };
+static const XColor _Const00B1 = { 0x00, 0xE3, 0x53, 0xFF };
+static const XColor _Const00B2 = { 0x17, 0xAC, 0xB4, 0xFF };
+static const XRect _Const00B3 = {{ 706, 16 }, { 768, 66 }};
+static const XRect _Const00B4 = {{ 613, 16 }, { 726, 66 }};
+static const XStringRes _Const00B5 = { _StringsDefault0, 0x01CC };
+static const XRect _Const00B6 = {{ 780, 0 }, { 800, 20 }};
+static const XStringRes _Const00B7 = { _StringsDefault0, 0x01D3 };
+static const XStringRes _Const00B8 = { _StringsDefault0, 0x01E0 };
+static const XStringRes _Const00B9 = { _StringsDefault0, 0x01EA };
 static const XStringRes _Const00BA = { _StringsDefault0, 0x01F9 };
-static const XStringRes _Const00BB = { _StringsDefault1, 0x0002 };
-static const XStringRes _Const00BC = { _StringsDefault1, 0x0010 };
-static const XStringRes _Const00BD = { _StringsDefault1, 0x001D };
-static const XStringRes _Const00BE = { _StringsDefault1, 0x0027 };
-static const XStringRes _Const00BF = { _StringsDefault1, 0x0036 };
-static const XStringRes _Const00C0 = { _StringsDefault1, 0x0045 };
-static const XStringRes _Const00C1 = { _StringsDefault1, 0x0053 };
-static const XStringRes _Const00C2 = { _StringsDefault1, 0x0065 };
-static const XStringRes _Const00C3 = { _StringsDefault1, 0x0076 };
-static const XStringRes _Const00C4 = { _StringsDefault1, 0x0081 };
-static const XRect _Const00C5 = {{ 450, -1 }, { 600, 80 }};
+static const XStringRes _Const00BB = { _StringsDefault0, 0x0202 };
+static const XStringRes _Const00BC = { _StringsDefault1, 0x0002 };
+static const XStringRes _Const00BD = { _StringsDefault1, 0x000D };
+static const XStringRes _Const00BE = { _StringsDefault1, 0x001B };
+static const XStringRes _Const00BF = { _StringsDefault1, 0x0028 };
+static const XStringRes _Const00C0 = { _StringsDefault1, 0x0032 };
+static const XStringRes _Const00C1 = { _StringsDefault1, 0x0041 };
+static const XStringRes _Const00C2 = { _StringsDefault1, 0x0050 };
+static const XStringRes _Const00C3 = { _StringsDefault1, 0x005E };
+static const XStringRes _Const00C4 = { _StringsDefault1, 0x0070 };
+static const XStringRes _Const00C5 = { _StringsDefault1, 0x0081 };
 static const XStringRes _Const00C6 = { _StringsDefault1, 0x008C };
-static const XColor _Const00C7 = { 0xF9, 0xFF, 0x19, 0xFF };
-static const XColor _Const00C8 = { 0xFF, 0x06, 0x00, 0xFF };
-static const XRect _Const00C9 = {{ 0, 0 }, { 160, 400 }};
-static const XRect _Const00CA = {{ 0, 0 }, { 160, 326 }};
-static const XRect _Const00CB = {{ 0, 326 }, { 160, 400 }};
-static const XStringRes _Const00CC = { _StringsDefault1, 0x0096 };
-static const XColor _Const00CD = { 0x4B, 0xFF, 0xFC, 0xFF };
-static const XColor _Const00CE = { 0x07, 0xF1, 0x12, 0xE1 };
-static const XColor _Const00CF = { 0xFF, 0xF1, 0x0A, 0xFF };
-static const XRect _Const00D0 = {{ 0, 263 }, { 160, 312 }};
-static const XStringRes _Const00D1 = { _StringsDefault1, 0x009C };
-static const XColor _Const00D2 = { 0x2C, 0x50, 0xFA, 0xFE };
-static const XColor _Const00D3 = { 0x7E, 0x8A, 0x7E, 0xFF };
-static const XRect _Const00D4 = {{ 55, 7 }, { 117, 57 }};
-static const XRect _Const00D5 = {{ 0, 20 }, { 160, 50 }};
-static const XStringRes _Const00D6 = { _StringsDefault1, 0x00A2 };
-static const XStringRes _Const00D7 = { _StringsDefault1, 0x00AD };
-static const XStringRes _Const00D8 = { _StringsDefault1, 0x00B6 };
-static const XStringRes _Const00D9 = { _StringsDefault1, 0x00BE };
-static const XRect _Const00DA = {{ 291, 0 }, { 509, 52 }};
-static const XColor _Const00DB = { 0x37, 0x00, 0xFF, 0xFF };
-static const XColor _Const00DC = { 0xFF, 0x00, 0x0B, 0xFF };
-static const XColor _Const00DD = { 0xFF, 0x0D, 0xE0, 0xFF };
-static const XColor _Const00DE = { 0x20, 0xFF, 0x77, 0xFF };
-static const XStringRes _Const00DF = { _StringsDefault1, 0x00CA };
-static const XRect _Const00E0 = {{ 0, 85 }, { 800, 266 }};
-static const XStringRes _Const00E1 = { _StringsDefault1, 0x00D1 };
-static const XRect _Const00E2 = {{ 0, 266 }, { 800, 480 }};
-static const XRect _Const00E3 = {{ 34, 80 }, { 774, 384 }};
-static const XRect _Const00E4 = {{ 34, 82 }, { 774, 384 }};
-static const XPoint _Const00E5 = { 0, 100 };
-static const XStringRes _Const00E6 = { _StringsDefault2, 0x0002 };
-static const XStringRes _Const00E7 = { _StringsDefault2, 0x0018 };
-static const XStringRes _Const00E8 = { _StringsDefault2, 0x0033 };
-static const XStringRes _Const00E9 = { _StringsDefault2, 0x0043 };
-static const XStringRes _Const00EA = { _StringsDefault2, 0x005F };
-static const XStringRes _Const00EB = { _StringsDefault2, 0x0070 };
-static const XStringRes _Const00EC = { _StringsDefault2, 0x0081 };
-static const XStringRes _Const00ED = { _StringsDefault2, 0x0097 };
-static const XStringRes _Const00EE = { _StringsDefault2, 0x00AA };
-static const XStringRes _Const00EF = { _StringsDefault2, 0x00BB };
-static const XStringRes _Const00F0 = { _StringsDefault2, 0x00D5 };
-static const XStringRes _Const00F1 = { _StringsDefault2, 0x00EE };
-static const XStringRes _Const00F2 = { _StringsDefault2, 0x00FC };
-static const XStringRes _Const00F3 = { _StringsDefault2, 0x0115 };
-static const XStringRes _Const00F4 = { _StringsDefault2, 0x0128 };
-static const XStringRes _Const00F5 = { _StringsDefault2, 0x0136 };
-static const XStringRes _Const00F6 = { _StringsDefault2, 0x0150 };
-static const XStringRes _Const00F7 = { _StringsDefault2, 0x016B };
-static const XStringRes _Const00F8 = { _StringsDefault2, 0x0180 };
-static const XStringRes _Const00F9 = { _StringsDefault2, 0x018D };
-static const XStringRes _Const00FA = { _StringsDefault2, 0x019C };
-static const XStringRes _Const00FB = { _StringsDefault2, 0x01B2 };
-static const XStringRes _Const00FC = { _StringsDefault2, 0x01C0 };
-static const XStringRes _Const00FD = { _StringsDefault2, 0x01D0 };
-static const XStringRes _Const00FE = { _StringsDefault2, 0x01E6 };
-static const XStringRes _Const00FF = { _StringsDefault2, 0x01F4 };
-static const XStringRes _Const0100 = { _StringsDefault3, 0x0002 };
-static const XStringRes _Const0101 = { _StringsDefault3, 0x0017 };
-static const XStringRes _Const0102 = { _StringsDefault3, 0x0028 };
-static const XStringRes _Const0103 = { _StringsDefault3, 0x0039 };
-static const XRect _Const0104 = {{ 34, 396 }, { 774, 446 }};
-static const XRect _Const0105 = {{ 354, 431 }, { 454, 461 }};
-static const XStringRes _Const0106 = { _StringsDefault3, 0x004A };
-static const XColor _Const0107 = { 0x00, 0x0F, 0xFF, 0xFF };
-static const XColor _Const0108 = { 0x89, 0x89, 0x89, 0xFF };
-static const XColor _Const0109 = { 0xFF, 0x00, 0x5F, 0xFF };
-static const XStringRes _Const010A = { _StringsDefault3, 0x0050 };
-static const XColor _Const010B = { 0xFC, 0x00, 0x05, 0xFF };
-static const XColor _Const010C = { 0x00, 0xFC, 0x07, 0xFF };
-static const XRect _Const010D = {{ 0, 0 }, { 700, 100 }};
-static const XRect _Const010E = {{ 0, 0 }, { 701, 100 }};
-static const XColor _Const010F = { 0x75, 0x75, 0x75, 0xFF };
-static const XRect _Const0110 = {{ 40, 2 }, { 140, 102 }};
-static const XRect _Const0111 = {{ 190, 52 }, { 700, 100 }};
-static const XStringRes _Const0112 = { _StringsDefault3, 0x0055 };
-static const XRect _Const0113 = {{ 190, 0 }, { 701, 75 }};
-static const XRect _Const0114 = {{ 40, 0 }, { 140, 100 }};
-static const XRect _Const0115 = {{ 250, 0 }, { 550, 50 }};
-static const XColor _Const0116 = { 0x3D, 0xE6, 0x00, 0x87 };
-static const XRect _Const0117 = {{ 232, 0 }, { 328, 50 }};
-static const XRect _Const0118 = {{ 304, 0 }, { 550, 50 }};
+static const XRect _Const00C7 = {{ 450, -1 }, { 600, 80 }};
+static const XStringRes _Const00C8 = { _StringsDefault1, 0x0097 };
+static const XColor _Const00C9 = { 0xF9, 0xFF, 0x19, 0xFF };
+static const XColor _Const00CA = { 0xFF, 0x06, 0x00, 0xFF };
+static const XStringRes _Const00CB = { _StringsDefault1, 0x00A1 };
+static const XRect _Const00CC = {{ 0, 0 }, { 160, 400 }};
+static const XRect _Const00CD = {{ 0, 0 }, { 160, 326 }};
+static const XRect _Const00CE = {{ 0, 326 }, { 160, 400 }};
+static const XStringRes _Const00CF = { _StringsDefault1, 0x00AA };
+static const XColor _Const00D0 = { 0x4B, 0xFF, 0xFC, 0xFF };
+static const XColor _Const00D1 = { 0x07, 0xF1, 0x12, 0xE1 };
+static const XColor _Const00D2 = { 0xFF, 0xF1, 0x0A, 0xFF };
+static const XRect _Const00D3 = {{ 0, 263 }, { 160, 312 }};
+static const XStringRes _Const00D4 = { _StringsDefault1, 0x00B0 };
+static const XColor _Const00D5 = { 0x2C, 0x50, 0xFA, 0xFE };
+static const XColor _Const00D6 = { 0x7E, 0x8A, 0x7E, 0xFF };
+static const XRect _Const00D7 = {{ 55, 7 }, { 117, 57 }};
+static const XRect _Const00D8 = {{ 0, 20 }, { 160, 50 }};
+static const XStringRes _Const00D9 = { _StringsDefault1, 0x00B6 };
+static const XStringRes _Const00DA = { _StringsDefault1, 0x00C1 };
+static const XStringRes _Const00DB = { _StringsDefault1, 0x00CA };
+static const XRect _Const00DC = {{ 291, 0 }, { 509, 52 }};
+static const XColor _Const00DD = { 0x37, 0x00, 0xFF, 0xFF };
+static const XColor _Const00DE = { 0xFF, 0x00, 0x0B, 0xFF };
+static const XColor _Const00DF = { 0xFF, 0x0D, 0xE0, 0xFF };
+static const XColor _Const00E0 = { 0x20, 0xFF, 0x77, 0xFF };
+static const XStringRes _Const00E1 = { _StringsDefault1, 0x00D2 };
+static const XRect _Const00E2 = {{ 0, 85 }, { 800, 266 }};
+static const XStringRes _Const00E3 = { _StringsDefault1, 0x00D9 };
+static const XRect _Const00E4 = {{ 0, 266 }, { 800, 480 }};
+static const XRect _Const00E5 = {{ 34, 80 }, { 774, 384 }};
+static const XRect _Const00E6 = {{ 34, 82 }, { 774, 384 }};
+static const XPoint _Const00E7 = { 0, 100 };
+static const XStringRes _Const00E8 = { _StringsDefault2, 0x0002 };
+static const XStringRes _Const00E9 = { _StringsDefault2, 0x0018 };
+static const XStringRes _Const00EA = { _StringsDefault2, 0x0033 };
+static const XStringRes _Const00EB = { _StringsDefault2, 0x0043 };
+static const XStringRes _Const00EC = { _StringsDefault2, 0x005F };
+static const XStringRes _Const00ED = { _StringsDefault2, 0x0070 };
+static const XStringRes _Const00EE = { _StringsDefault2, 0x0081 };
+static const XStringRes _Const00EF = { _StringsDefault2, 0x0097 };
+static const XStringRes _Const00F0 = { _StringsDefault2, 0x00AA };
+static const XStringRes _Const00F1 = { _StringsDefault2, 0x00BB };
+static const XStringRes _Const00F2 = { _StringsDefault2, 0x00D5 };
+static const XStringRes _Const00F3 = { _StringsDefault2, 0x00EE };
+static const XStringRes _Const00F4 = { _StringsDefault2, 0x00FC };
+static const XStringRes _Const00F5 = { _StringsDefault2, 0x0115 };
+static const XStringRes _Const00F6 = { _StringsDefault2, 0x0128 };
+static const XStringRes _Const00F7 = { _StringsDefault2, 0x0136 };
+static const XStringRes _Const00F8 = { _StringsDefault2, 0x0150 };
+static const XStringRes _Const00F9 = { _StringsDefault2, 0x016B };
+static const XStringRes _Const00FA = { _StringsDefault2, 0x0180 };
+static const XStringRes _Const00FB = { _StringsDefault2, 0x018D };
+static const XStringRes _Const00FC = { _StringsDefault2, 0x019C };
+static const XStringRes _Const00FD = { _StringsDefault2, 0x01B2 };
+static const XStringRes _Const00FE = { _StringsDefault2, 0x01C0 };
+static const XStringRes _Const00FF = { _StringsDefault2, 0x01D0 };
+static const XStringRes _Const0100 = { _StringsDefault2, 0x01E6 };
+static const XStringRes _Const0101 = { _StringsDefault2, 0x01F4 };
+static const XStringRes _Const0102 = { _StringsDefault3, 0x0002 };
+static const XStringRes _Const0103 = { _StringsDefault3, 0x0017 };
+static const XStringRes _Const0104 = { _StringsDefault3, 0x0028 };
+static const XStringRes _Const0105 = { _StringsDefault3, 0x0039 };
+static const XRect _Const0106 = {{ 34, 396 }, { 774, 446 }};
+static const XRect _Const0107 = {{ 354, 431 }, { 454, 461 }};
+static const XStringRes _Const0108 = { _StringsDefault3, 0x004A };
+static const XColor _Const0109 = { 0x00, 0x0F, 0xFF, 0xFF };
+static const XColor _Const010A = { 0x89, 0x89, 0x89, 0xFF };
+static const XColor _Const010B = { 0xFF, 0x00, 0x5F, 0xFF };
+static const XStringRes _Const010C = { _StringsDefault3, 0x0050 };
+static const XColor _Const010D = { 0xFC, 0x00, 0x05, 0xFF };
+static const XColor _Const010E = { 0x00, 0xFC, 0x07, 0xFF };
+static const XRect _Const010F = {{ 0, 0 }, { 700, 100 }};
+static const XRect _Const0110 = {{ 0, 0 }, { 701, 100 }};
+static const XColor _Const0111 = { 0x75, 0x75, 0x75, 0xFF };
+static const XRect _Const0112 = {{ 40, 2 }, { 140, 102 }};
+static const XRect _Const0113 = {{ 190, 52 }, { 700, 100 }};
+static const XStringRes _Const0114 = { _StringsDefault3, 0x0055 };
+static const XRect _Const0115 = {{ 190, 0 }, { 701, 75 }};
+static const XRect _Const0116 = {{ 40, 0 }, { 140, 100 }};
+static const XRect _Const0117 = {{ 250, 0 }, { 550, 50 }};
+static const XColor _Const0118 = { 0x3D, 0xE6, 0x00, 0x87 };
+static const XRect _Const0119 = {{ 232, 0 }, { 328, 50 }};
+static const XRect _Const011A = {{ 304, 0 }, { 550, 50 }};
 
 #ifndef EW_DONT_CHECK_INDEX
   /* This function is used to check the indices when accessing an array.
@@ -494,7 +495,7 @@ void ApplicationApplication__Init( ApplicationApplication _this, XObject aLink, 
   CoreRectView__OnSetBounds( _this, _Const0000 );
   CoreGroup__Add( _this, ((CoreView)&_this->Container ), 0 );
   _this->Variable = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass );
-  _this->CurrentScreen = EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 );
+  _this->CurrentScreen = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass );
   ApplicationContainer_OnSetContent( &_this->Container, ((CoreGroup)EwNewObject( 
   ApplicationMainMenu, 0 )));
 
@@ -534,8 +535,8 @@ void ApplicationApplication_Init( ApplicationApplication _this, XHandle aArg )
   EW_UNUSED_ARG( aArg );
 
   EwAttachRefObserver( EwNewSlot( _this, ApplicationApplication_OnScreenChange ), 
-    EwNewRef( EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 ), ApplicationDeviceClass1_OnGetCurrentScreen, 
-    ApplicationDeviceClass1_OnSetCurrentScreen ), 0 );
+    EwNewRef( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), ApplicationDeviceClass_OnGetCurrentScreen, 
+    ApplicationDeviceClass_OnSetCurrentScreen ), 0 );
   EwPostSignal( EwNewSlot( _this, ApplicationApplication_OnScreenChange ), ((XObject)_this ));
 }
 
@@ -546,7 +547,7 @@ void ApplicationApplication_OnScreenChange( ApplicationApplication _this, XObjec
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( sender );
 
-  switch ( EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->CurrentScreen )
+  switch ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->CurrentScreen )
   {
     case ApplicationScreenTypeMainMenu :
       ApplicationContainer_OnSetContent( &_this->Container, ((CoreGroup)EwNewObject( 
@@ -937,7 +938,6 @@ void ApplicationGame__Init( ApplicationGame _this, XObject aLink, XHandle aArg )
   ResourcesBitmap ));
   WidgetSetPushButton_OnSetAppearance( &_this->PushButton, &_this->PushButtonConfig );
   WidgetSetPushButtonConfig_OnSetFaceBitmapFocused( &_this->PushButtonConfig, 0 );
-  _this->SettingsObject = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass );
   ApplicationTheClass_OnSetOutlet( &_this->LeftCenterAnimation, EwNullRef );
   ApplicationTheClass_OnSetOutlet1( &_this->LeftCenterAnimation, EwNullRef );
   ViewsImage_OnSetBitmap( &_this->Image, EwLoadResource( &ApplicationCoin, ResourcesBitmap ));
@@ -1068,13 +1068,16 @@ void ApplicationGame_Init( ApplicationGame _this, XHandle aArg )
   EW_UNUSED_ARG( aArg );
 
   ApplicationGame_UpdateCoins( _this, 0 );
-  ViewsImage_OnSetFrameNumber( &_this->Left, _this->SettingsObject->ActiveCup );
-  ViewsImage_OnSetFrameNumber( &_this->Right, _this->SettingsObject->ActiveCup );
-  ViewsImage_OnSetFrameNumber( &_this->Center, _this->SettingsObject->ActiveCup );
-  ViewsImage_OnSetFrameNumber( &_this->Ball, _this->SettingsObject->ActiveBall );
-  ApplicationGame_FromDB( _this );
+  ViewsImage_OnSetFrameNumber( &_this->Left, EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass )->ActiveCup );
+  ViewsImage_OnSetFrameNumber( &_this->Right, EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass )->ActiveCup );
+  ViewsImage_OnSetFrameNumber( &_this->Center, EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass )->ActiveCup );
+  ViewsImage_OnSetFrameNumber( &_this->Ball, EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass )->ActiveBall );
 
-  if ( _this->SettingsObject->HallAct )
+  if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->HallAct )
     ApplicationGame_MakeItHalloween( _this );
   else
   {
@@ -1086,16 +1089,20 @@ void ApplicationGame_Init( ApplicationGame _this, XHandle aArg )
     ViewsText_OnSetColorTR( &_this->NivelCurrent, _Const0029 );
     ViewsText_OnSetColorBL( &_this->NivelCurrent, _Const0027 );
     ViewsText_OnSetColorBR( &_this->NivelCurrent, _Const0028 );
-    ViewsImage_OnSetFrameNumber( &_this->Left, _this->SettingsObject->ActiveCup );
-    ViewsImage_OnSetFrameNumber( &_this->Center, _this->SettingsObject->ActiveCup );
-    ViewsImage_OnSetFrameNumber( &_this->Right, _this->SettingsObject->ActiveCup );
+    ViewsImage_OnSetFrameNumber( &_this->Left, EwGetAutoObject( &ApplicationDevice, 
+    ApplicationDeviceClass )->ActiveCup );
+    ViewsImage_OnSetFrameNumber( &_this->Center, EwGetAutoObject( &ApplicationDevice, 
+    ApplicationDeviceClass )->ActiveCup );
+    ViewsImage_OnSetFrameNumber( &_this->Right, EwGetAutoObject( &ApplicationDevice, 
+    ApplicationDeviceClass )->ActiveCup );
     ViewsImage_OnSetVisible( &_this->SpiderLeft, 0 );
     ViewsImage_OnSetVisible( &_this->SpiderRight, 0 );
     ViewsImage_OnSetVisible( &_this->PumpLeft, 0 );
     ViewsImage_OnSetVisible( &_this->PumpRight, 0 );
     ViewsImage_OnSetBitmap( &_this->Ball, EwLoadResource( &ApplicationShopBalls, 
     ResourcesBitmap ));
-    ViewsImage_OnSetFrameNumber( &_this->Ball, _this->SettingsObject->ActiveBall );
+    ViewsImage_OnSetFrameNumber( &_this->Ball, EwGetAutoObject( &ApplicationDevice, 
+    ApplicationDeviceClass )->ActiveBall );
   }
 }
 
@@ -1119,7 +1126,7 @@ void ApplicationGame_LeftCenter( ApplicationGame _this, XObject sender )
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( sender );
 
-  active = _this->SettingsObject->Animation;
+  active = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Animation;
 
   if ( !active )
   {
@@ -1196,7 +1203,7 @@ void ApplicationGame_RightLeft( ApplicationGame _this, XObject sender )
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( sender );
 
-  active = _this->SettingsObject->Animation;
+  active = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Animation;
 
   if ( !active )
   {
@@ -1320,7 +1327,7 @@ void ApplicationGame_CenterRight( ApplicationGame _this, XObject sender )
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( sender );
 
-  active = _this->SettingsObject->Animation;
+  active = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Animation;
 
   if ( !active )
   {
@@ -1458,10 +1465,13 @@ void ApplicationGame_OnFinish( ApplicationGame _this, XObject sender )
 /* 'C' function for method : 'Application::Game.Choice()' */
 void ApplicationGame_Choice( ApplicationGame _this, XObject sender )
 {
+  /* List of temporarily used variables */
+  void* _tmpO0;
   CoreSimpleTouchHandler choice = EwCastObject( sender, CoreSimpleTouchHandler );
-  ApplicationDeviceClass settings = _this->SettingsObject;
 
-  ApplicationDeviceClass_OnSetTotalRounds( settings, settings->TotalRounds + 1 );
+  ((void)( _tmpO0 = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )), 
+  ApplicationDeviceClass_OnSetTotalRounds((ApplicationDeviceClass)_tmpO0, ((ApplicationDeviceClass)_tmpO0)->TotalRounds 
+  + 1 ));
 
   if ( choice == &_this->ChooseLeft )
   {
@@ -1542,13 +1552,13 @@ void ApplicationGame_Choice( ApplicationGame _this, XObject sender )
         }
 
   if ( _this->Correct )
-  {
-    ApplicationDeviceClass_OnSetCorrectGuesses( settings, settings->CorrectGuesses 
-    + 1 );
-    Correct();
-  }
+    ((void)( _tmpO0 = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )), 
+    ApplicationDeviceClass_OnSetCorrectGuesses((ApplicationDeviceClass)_tmpO0, ((ApplicationDeviceClass)_tmpO0)->CorrectGuesses 
+    + 1 ));
   else
-    Wrong();
+    ((void)( _tmpO0 = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )), 
+    ApplicationDeviceClass_OnSetWrongGuesses((ApplicationDeviceClass)_tmpO0, ((ApplicationDeviceClass)_tmpO0)->WrongGuesses 
+    + 1 ));
 
   CoreSimpleTouchHandler_OnSetEnabled( &_this->ChooseCenter, 0 );
   CoreSimpleTouchHandler_OnSetEnabled( &_this->ChooseLeft, 0 );
@@ -1559,8 +1569,6 @@ void ApplicationGame_Choice( ApplicationGame _this, XObject sender )
 /* 'C' function for method : 'Application::Game.Reset()' */
 void ApplicationGame_Reset( ApplicationGame _this, XObject sender )
 {
-  XInt32 lvl;
-
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( sender );
 
@@ -1586,41 +1594,44 @@ void ApplicationGame_Reset( ApplicationGame _this, XObject sender )
   EffectsEffect_OnSetCycleDuration((EffectsEffect)&_this->LeftRightAnimation, 500 );
   EffectsEffect_OnSetCycleDuration((EffectsEffect)&_this->CenterRightAnimation, 
   500 );
-  lvl = _this->Nivel;
-  UpdateStorage(lvl,true,false);
+
+  if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Reset )
+    ApplicationDeviceClass_OnSetReset( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), 
+    0 );
+  else
+    ApplicationDeviceClass_OnSetReset( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), 
+    1 );
+
   EwSignal( EwNewSlot( _this, ApplicationGame_ShowBallCall ), ((XObject)_this ));
 }
 
 /* 'C' function for method : 'Application::Game.NextLevel()' */
 void ApplicationGame_NextLevel( ApplicationGame _this, XObject sender )
 {
-  XInt32 frame;
-  ApplicationDeviceClass settings;
-  XInt32 lvl;
-  XInt32 coins;
   XInt32 speedMine;
   XInt32 speedW;
   XBool GoOnSwitched;
   XBool goOn;
+  XInt32 coins;
   XBool active;
+  XInt32 frame;
 
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( sender );
 
   _this->Nivel += 1;
-  frame = -1;
-  settings = _this->SettingsObject;
-  lvl = _this->Nivel;
 
-  if ( _this->Nivel > settings->MaxLevel )
-    ApplicationDeviceClass_OnSetMaxLevel( settings, _this->Nivel );
+  if ( _this->Nivel > EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->MaxLevel )
+    ApplicationDeviceClass_OnSetMaxLevel( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), 
+    _this->Nivel );
 
-  {
-    UpdateStorage(lvl,true,true);
-    frame=CheckLevels();
-    if(frame==-1)
-       frame=CheckRights();
-  }
+  if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->NextLevel )
+    ApplicationDeviceClass_OnSetNextLevel( EwGetAutoObject( &ApplicationDevice, 
+    ApplicationDeviceClass ), 0 );
+  else
+    ApplicationDeviceClass_OnSetNextLevel( EwGetAutoObject( &ApplicationDevice, 
+    ApplicationDeviceClass ), 1 );
+
   ViewsText_OnSetString( &_this->NivelCurrent, EwConcatString( EwLoadString( &_Const003D ), 
   EwNewStringInt( _this->Nivel, 0, 10 )));
   speedMine = _this->LeftCenterAnimation.Super1.CycleDuration;
@@ -1671,7 +1682,7 @@ void ApplicationGame_NextLevel( ApplicationGame _this, XObject sender )
       _this->CenterRightAnimation.Super1.CycleDuration - 10 );
     }
 
-  active = _this->SettingsObject->Animation;
+  active = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Animation;
 
   if ( !active && goOn )
   {
@@ -1683,7 +1694,7 @@ void ApplicationGame_NextLevel( ApplicationGame _this, XObject sender )
     * 2 );
   }
   else
-    if ( GoOnSwitched )
+    if ( active && GoOnSwitched )
     {
       CoreTimer_OnSetPeriod( &_this->MakeMoves, speedW * 4 );
       CoreTimer_OnSetPeriod( &_this->WaitFinish, speedW * 4 );
@@ -1693,9 +1704,10 @@ void ApplicationGame_NextLevel( ApplicationGame _this, XObject sender )
       4 );
     }
 
+  frame = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Frame;
+
   if ( frame != -1 )
   {
-    ApplicationDeviceClass_OnSetAchFrame( _this->SettingsObject, frame );
     CoreTimer_OnSetEnabled( &_this->AchPopDismiss, 1 );
     CoreGroup__PresentDialog( _this, ((CoreGroup)EwNewObject( ApplicationAchPop, 
     0 )), ((EffectsTransition)EwGetAutoObject( &EffectsSlideDownCentered, EffectsSlideTransition )), 
@@ -1712,7 +1724,7 @@ void ApplicationGame_GoToMenu( ApplicationGame _this, XObject sender )
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( sender );
 
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->ShowOr = 1;
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShowOr = 1;
 
   if ( _this->Super3.Owner != 0 )
     CoreGroup__PresentDialog( _this->Super3.Owner, ((CoreGroup)EwNewObject( ApplicationSettings, 
@@ -1975,13 +1987,13 @@ void ApplicationGame_CenterRightSecondaryAnimation( ApplicationGame _this )
 /* 'C' function for method : 'Application::Game.UpdateCoins()' */
 void ApplicationGame_UpdateCoins( ApplicationGame _this, XInt32 coins )
 {
-  {
-    UpdateMoney(coins);
-    coins=GetCoins();
-  }
-  ApplicationDeviceClass_OnSetCoins( _this->SettingsObject, coins );
-  ViewsText_OnSetString( &_this->Text1, EwNewStringInt( _this->SettingsObject->Coins, 
-  0, 10 ));
+  /* List of temporarily used variables */
+  void* _tmpO0;
+  ((void)( _tmpO0 = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )), 
+  ApplicationDeviceClass_OnSetCoins((ApplicationDeviceClass)_tmpO0, ((ApplicationDeviceClass)_tmpO0)->Coins 
+  + coins ));
+  ViewsText_OnSetString( &_this->Text1, EwNewStringInt( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass )->Coins, 0, 10 ));
 }
 
 /* 'C' function for method : 'Application::Game.MakeItHalloween()' */
@@ -2009,15 +2021,6 @@ void ApplicationGame_MakeItHalloween( ApplicationGame _this )
   ViewsImage_OnSetFrameNumber( &_this->Ball, 0 );
 }
 
-/* 'C' function for method : 'Application::Game.FromDB()' */
-void ApplicationGame_FromDB( ApplicationGame _this )
-{
-  XBool hallAct = 0;
-
-  hallAct=GetHalloweenActive();
-  ApplicationDeviceClass_OnSetHallAct( _this->SettingsObject, hallAct );
-}
-
 /* 'C' function for method : 'Application::Game.AchPopTrigger()' */
 void ApplicationGame_AchPopTrigger( ApplicationGame _this, XObject sender )
 {
@@ -2035,8 +2038,8 @@ EW_DEFINE_CLASS_VARIANTS( ApplicationGame )
 EW_END_OF_CLASS_VARIANTS( ApplicationGame )
 
 /* Virtual Method Table (VMT) for the class : 'Application::Game' */
-EW_DEFINE_CLASS( ApplicationGame, CoreGroup, Rectangle, SettingsObject, Moves, Moves, 
-                 Moves, Moves, "Application::Game" )
+EW_DEFINE_CLASS( ApplicationGame, CoreGroup, Rectangle, Moves, Moves, Moves, Moves, 
+                 Moves, "Application::Game" )
   CoreRectView_initLayoutContext,
   CoreView_GetRoot,
   CoreGroup_Draw,
@@ -2330,7 +2333,6 @@ void ApplicationSettings__Init( ApplicationSettings _this, XObject aLink, XHandl
   &WidgetSetSwitch_Lime_Medium, WidgetSetToggleButtonConfig ));
   ViewsText_OnSetFont( &_this->Text, EwLoadResource( &ApplicationFont2, ResourcesFont ));
   ViewsText_OnSetFont( &_this->Text1, EwLoadResource( &ApplicationFont2, ResourcesFont ));
-  _this->HorizontalSlider.OnChange = EwNewSlot( _this, ApplicationSettings_Volume );
   WidgetSetHorizontalSlider_OnSetOutlet( &_this->HorizontalSlider, EwNewRef( EwGetAutoObject( 
   &ApplicationDevice, ApplicationDeviceClass ), ApplicationDeviceClass_OnGetVolume, 
   ApplicationDeviceClass_OnSetVolume ));
@@ -2356,7 +2358,9 @@ void ApplicationSettings__Init( ApplicationSettings _this, XObject aLink, XHandl
   ViewsImage_OnSetBitmap( &_this->Sound, EwLoadResource( &ResourcesPlayerIconsSmall, 
   ResourcesBitmap ));
   ViewsText_OnSetFont( &_this->Text2, EwLoadResource( &ApplicationFont2, ResourcesFont ));
-  _this->HorizontalSlider1.OnChange = EwNewSlot( _this, ApplicationSettings_Volume );
+  WidgetSetHorizontalSlider_OnSetOutlet( &_this->HorizontalSlider1, EwNewRef( EwGetAutoObject( 
+  &ApplicationDevice, ApplicationDeviceClass ), ApplicationDeviceClass_OnGetSFXVolume, 
+  ApplicationDeviceClass_OnSetSFXVolume ));
   WidgetSetHorizontalSlider_OnSetAppearance( &_this->HorizontalSlider1, &_this->HorizontalSliderConfig );
   ViewsImage_OnSetBitmap( &_this->Sound1, EwLoadResource( &ResourcesPlayerIconsSmall, 
   ResourcesBitmap ));
@@ -2435,8 +2439,11 @@ void ApplicationSettings_Init( ApplicationSettings _this, XHandle aArg )
   EwAttachRefObserver( EwNewSlot( _this, ApplicationSettings_onVolumeChange ), EwNewRef( 
     EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), ApplicationDeviceClass_OnGetVolume, 
     ApplicationDeviceClass_OnSetVolume ), 0 );
+  EwAttachRefObserver( EwNewSlot( _this, ApplicationSettings_onSFXVolumeChange ), 
+    EwNewRef( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), ApplicationDeviceClass_OnGetSFXVolume, 
+    ApplicationDeviceClass_OnSetSFXVolume ), 0 );
 
-  if ( EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->ShowOr )
+  if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShowOr )
   {
     CoreGroup_OnSetVisible((CoreGroup)&_this->PushButton, 1 );
     CoreGroup_OnSetEnabled((CoreGroup)&_this->PushButton, 1 );
@@ -2487,42 +2494,6 @@ void ApplicationSettings_UpdateProperty( ApplicationSettings _this, XObject send
     ApplicationDeviceClass_OnSetAnimation( settings, 0 );
 }
 
-/* 'C' function for method : 'Application::Settings.Volume()' */
-void ApplicationSettings_Volume( ApplicationSettings _this, XObject sender )
-{
-  WidgetSetHorizontalSlider volume = EwCastObject( sender, WidgetSetHorizontalSlider );
-  ApplicationDeviceClass settings = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass );
-
-  if ( volume == &_this->HorizontalSlider )
-    {
-      let vol= Math.abs(volume.CurrentValue / 100);
-      if(vol>1.0)
-        vol=1.0;
-      SetVolume(vol);
-    }
-  else
-    if ( volume == &_this->HorizontalSlider1 )
-    {
-      if ( WidgetSetHorizontalSlider_OnGetCurrentValue( volume ) == 0 )
-        ViewsImage_OnSetFrameNumber( &_this->Sound1, 12 );
-      else
-        if (( WidgetSetHorizontalSlider_OnGetCurrentValue( volume ) > 0 ) && ( WidgetSetHorizontalSlider_OnGetCurrentValue( 
-            volume ) <= 50 ))
-          ViewsImage_OnSetFrameNumber( &_this->Sound1, 10 );
-        else
-          ViewsImage_OnSetFrameNumber( &_this->Sound1, 11 );
-
-      ApplicationDeviceClass_OnSetSFXVolume( settings, WidgetSetHorizontalSlider_OnGetCurrentValue( 
-      volume ));
-      {
-        let vol= Math.abs(volume.CurrentValue / 100);
-        if(vol>1.0)
-          vol=1.0;
-        ShuffleVolume(vol);
-      }
-    }
-}
-
 /* 'C' function for method : 'Application::Settings.BackToMenu()' */
 void ApplicationSettings_BackToMenu( ApplicationSettings _this, XObject sender )
 {
@@ -2533,10 +2504,9 @@ void ApplicationSettings_BackToMenu( ApplicationSettings _this, XObject sender )
   CoreGroup__DismissDialog( _this->Super3.Owner, CoreGroup__FindCurrentDialog( _this ), 
   ((EffectsTransition)EwGetAutoObject( &EffectsSlideRightCentered, EffectsSlideTransition )), 
   0, 0, EwNullSlot, EwNullSlot, 0 );
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  1;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeMainMenu );
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 1;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeMainMenu );
 }
 
 /* 'C' function for method : 'Application::Settings.onVolumeChange()' */
@@ -2555,6 +2525,24 @@ void ApplicationSettings_onVolumeChange( ApplicationSettings _this, XObject send
       ViewsImage_OnSetFrameNumber( &_this->Sound, 10 );
     else
       ViewsImage_OnSetFrameNumber( &_this->Sound, 11 );
+}
+
+/* 'C' function for method : 'Application::Settings.onSFXVolumeChange()' */
+void ApplicationSettings_onSFXVolumeChange( ApplicationSettings _this, XObject sender )
+{
+  /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( sender );
+
+  if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->SFXVolume 
+      == 0 )
+    ViewsImage_OnSetFrameNumber( &_this->Sound1, 12 );
+  else
+    if (( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->SFXVolume 
+        > 0 ) && ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->SFXVolume 
+        <= 50 ))
+      ViewsImage_OnSetFrameNumber( &_this->Sound1, 10 );
+    else
+      ViewsImage_OnSetFrameNumber( &_this->Sound1, 11 );
 }
 
 /* Variants derived from the class : 'Application::Settings' */
@@ -2640,6 +2628,11 @@ void ApplicationDeviceClass__Init( ApplicationDeviceClass _this, XObject aLink, 
   _this->ActiveBall = 5;
   _this->MusicsArray[ 14 ] = 1;
   _this->ActiveMusic = 14;
+  _this->CurrentScreen = ApplicationScreenTypeMainMenu;
+  _this->ShowOr = 1;
+  _this->Frame = -1;
+  _this->Date = EwShareString( EwLoadString( &_Const0069 ));
+  _this->Hours = EwShareString( EwLoadString( &_Const006A ));
 
   /* Call the user defined constructor */
   ApplicationDeviceClass_Init( _this, aArg );
@@ -2775,8 +2768,7 @@ void ApplicationDeviceClass_OnSetVolume( ApplicationDeviceClass _this, XInt32 va
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty( ApplicationDeviceClass _this, XInt32 
-  aNewValue )
+void ApplicationDeviceClass_UpdateVolume( ApplicationDeviceClass _this, XInt32 aNewValue )
 {
   if ( aNewValue != _this->Volume )
   {
@@ -2786,10 +2778,10 @@ void ApplicationDeviceClass_UpdateProperty( ApplicationDeviceClass _this, XInt32
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty()' */
-void ApplicationDeviceClass__UpdateProperty( void* _this, XInt32 aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateVolume()' */
+void ApplicationDeviceClass__UpdateVolume( void* _this, XInt32 aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateVolume((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetSFXVolume()' */
@@ -2827,7 +2819,7 @@ void ApplicationDeviceClass_OnSetSFXVolume( ApplicationDeviceClass _this, XInt32
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty1( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateSFXVolume( ApplicationDeviceClass _this, XInt32 
   aNewValue )
 {
   if ( aNewValue != _this->SFXVolume )
@@ -2838,10 +2830,10 @@ void ApplicationDeviceClass_UpdateProperty1( ApplicationDeviceClass _this, XInt3
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty1()' */
-void ApplicationDeviceClass__UpdateProperty1( void* _this, XInt32 aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateSFXVolume()' */
+void ApplicationDeviceClass__UpdateSFXVolume( void* _this, XInt32 aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty1((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateSFXVolume((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetAnimation()' */
@@ -2879,7 +2871,7 @@ void ApplicationDeviceClass_OnSetAnimation( ApplicationDeviceClass _this, XBool
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty2( ApplicationDeviceClass _this, XBool 
+void ApplicationDeviceClass_UpdateAnimation( ApplicationDeviceClass _this, XBool 
   aNewValue )
 {
   if ( aNewValue != _this->Animation )
@@ -2890,10 +2882,10 @@ void ApplicationDeviceClass_UpdateProperty2( ApplicationDeviceClass _this, XBool
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty2()' */
-void ApplicationDeviceClass__UpdateProperty2( void* _this, XBool aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateAnimation()' */
+void ApplicationDeviceClass__UpdateAnimation( void* _this, XBool aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty2((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateAnimation((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetMaxLevel()' */
@@ -2931,7 +2923,7 @@ void ApplicationDeviceClass_OnSetMaxLevel( ApplicationDeviceClass _this, XInt32
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty3( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateMaxLevel( ApplicationDeviceClass _this, XInt32 
   aNewValue )
 {
   if ( aNewValue != _this->MaxLevel )
@@ -2942,10 +2934,10 @@ void ApplicationDeviceClass_UpdateProperty3( ApplicationDeviceClass _this, XInt3
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty3()' */
-void ApplicationDeviceClass__UpdateProperty3( void* _this, XInt32 aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateMaxLevel()' */
+void ApplicationDeviceClass__UpdateMaxLevel( void* _this, XInt32 aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty3((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateMaxLevel((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetTotalRounds()' */
@@ -2983,7 +2975,7 @@ void ApplicationDeviceClass_OnSetTotalRounds( ApplicationDeviceClass _this, XInt
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty4( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateTotalRounds( ApplicationDeviceClass _this, XInt32 
   aNewValue )
 {
   if ( aNewValue != _this->TotalRounds )
@@ -2994,10 +2986,10 @@ void ApplicationDeviceClass_UpdateProperty4( ApplicationDeviceClass _this, XInt3
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty4()' */
-void ApplicationDeviceClass__UpdateProperty4( void* _this, XInt32 aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateTotalRounds()' */
+void ApplicationDeviceClass__UpdateTotalRounds( void* _this, XInt32 aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty4((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateTotalRounds((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetCorrectGuesses()' */
@@ -3035,8 +3027,8 @@ void ApplicationDeviceClass_OnSetCorrectGuesses( ApplicationDeviceClass _this, X
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty5( ApplicationDeviceClass _this, XInt32 
-  aNewValue )
+void ApplicationDeviceClass_UpdateCorrectGuesses( ApplicationDeviceClass _this, 
+  XInt32 aNewValue )
 {
   if ( aNewValue != _this->CorrectGuesses )
   {
@@ -3046,10 +3038,10 @@ void ApplicationDeviceClass_UpdateProperty5( ApplicationDeviceClass _this, XInt3
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty5()' */
-void ApplicationDeviceClass__UpdateProperty5( void* _this, XInt32 aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateCorrectGuesses()' */
+void ApplicationDeviceClass__UpdateCorrectGuesses( void* _this, XInt32 aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty5((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateCorrectGuesses((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetCoins()' */
@@ -3086,8 +3078,7 @@ void ApplicationDeviceClass_OnSetCoins( ApplicationDeviceClass _this, XInt32 val
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty6( ApplicationDeviceClass _this, XInt32 
-  aNewValue )
+void ApplicationDeviceClass_UpdateCoins( ApplicationDeviceClass _this, XInt32 aNewValue )
 {
   if ( aNewValue != _this->Coins )
   {
@@ -3097,10 +3088,10 @@ void ApplicationDeviceClass_UpdateProperty6( ApplicationDeviceClass _this, XInt3
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty6()' */
-void ApplicationDeviceClass__UpdateProperty6( void* _this, XInt32 aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateCoins()' */
+void ApplicationDeviceClass__UpdateCoins( void* _this, XInt32 aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty6((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateCoins((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetShopTab()' */
@@ -3137,7 +3128,7 @@ void ApplicationDeviceClass_OnSetShopTab( ApplicationDeviceClass _this, XInt32 v
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty7( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateShopTab( ApplicationDeviceClass _this, XInt32 
   aNewValue )
 {
   if ( aNewValue != _this->ShopTab )
@@ -3148,10 +3139,10 @@ void ApplicationDeviceClass_UpdateProperty7( ApplicationDeviceClass _this, XInt3
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty7()' */
-void ApplicationDeviceClass__UpdateProperty7( void* _this, XInt32 aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateShopTab()' */
+void ApplicationDeviceClass__UpdateShopTab( void* _this, XInt32 aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty7((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateShopTab((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetActiveCup()' */
@@ -3189,7 +3180,7 @@ void ApplicationDeviceClass_OnSetActiveCup( ApplicationDeviceClass _this, XInt32
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty8( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateActiveCup( ApplicationDeviceClass _this, XInt32 
   aNewValue )
 {
   if ( aNewValue != _this->ActiveCup )
@@ -3200,10 +3191,10 @@ void ApplicationDeviceClass_UpdateProperty8( ApplicationDeviceClass _this, XInt3
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty8()' */
-void ApplicationDeviceClass__UpdateProperty8( void* _this, XInt32 aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateActiveCup()' */
+void ApplicationDeviceClass__UpdateActiveCup( void* _this, XInt32 aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty8((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateActiveCup((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetActiveBall()' */
@@ -3241,7 +3232,7 @@ void ApplicationDeviceClass_OnSetActiveBall( ApplicationDeviceClass _this, XInt3
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty9( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateActiveBall( ApplicationDeviceClass _this, XInt32 
   aNewValue )
 {
   if ( aNewValue != _this->ActiveBall )
@@ -3252,10 +3243,10 @@ void ApplicationDeviceClass_UpdateProperty9( ApplicationDeviceClass _this, XInt3
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty9()' */
-void ApplicationDeviceClass__UpdateProperty9( void* _this, XInt32 aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateActiveBall()' */
+void ApplicationDeviceClass__UpdateActiveBall( void* _this, XInt32 aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty9((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateActiveBall((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetActiveMusic()' */
@@ -3293,7 +3284,7 @@ void ApplicationDeviceClass_OnSetActiveMusic( ApplicationDeviceClass _this, XInt
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty10( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateActiveMusic( ApplicationDeviceClass _this, XInt32 
   aNewValue )
 {
   if ( aNewValue != _this->ActiveMusic )
@@ -3304,10 +3295,10 @@ void ApplicationDeviceClass_UpdateProperty10( ApplicationDeviceClass _this, XInt
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty10()' */
-void ApplicationDeviceClass__UpdateProperty10( void* _this, XInt32 aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateActiveMusic()' */
+void ApplicationDeviceClass__UpdateActiveMusic( void* _this, XInt32 aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty10((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateActiveMusic((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetHallAct()' */
@@ -3344,8 +3335,7 @@ void ApplicationDeviceClass_OnSetHallAct( ApplicationDeviceClass _this, XBool va
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty11( ApplicationDeviceClass _this, XBool 
-  aNewValue )
+void ApplicationDeviceClass_UpdateHallAct( ApplicationDeviceClass _this, XBool aNewValue )
 {
   if ( aNewValue != _this->HallAct )
   {
@@ -3355,10 +3345,10 @@ void ApplicationDeviceClass_UpdateProperty11( ApplicationDeviceClass _this, XBoo
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty11()' */
-void ApplicationDeviceClass__UpdateProperty11( void* _this, XBool aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateHallAct()' */
+void ApplicationDeviceClass__UpdateHallAct( void* _this, XBool aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty11((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateHallAct((ApplicationDeviceClass)_this, aNewValue );
 }
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetHallPack()' */
@@ -3395,7 +3385,7 @@ void ApplicationDeviceClass_OnSetHallPack( ApplicationDeviceClass _this, XBool v
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty12( ApplicationDeviceClass _this, XBool 
+void ApplicationDeviceClass_UpdateHallPack( ApplicationDeviceClass _this, XBool 
   aNewValue )
 {
   if ( aNewValue != _this->HallPack )
@@ -3406,26 +3396,26 @@ void ApplicationDeviceClass_UpdateProperty12( ApplicationDeviceClass _this, XBoo
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty12()' */
-void ApplicationDeviceClass__UpdateProperty12( void* _this, XBool aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateHallPack()' */
+void ApplicationDeviceClass__UpdateHallPack( void* _this, XBool aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty12((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateHallPack((ApplicationDeviceClass)_this, aNewValue );
 }
 
-/* 'C' function for method : 'Application::DeviceClass.OnGetAchFrame()' */
-XInt32 ApplicationDeviceClass_OnGetAchFrame( ApplicationDeviceClass _this )
+/* 'C' function for method : 'Application::DeviceClass.OnGetFrameSound()' */
+XBool ApplicationDeviceClass_OnGetFrameSound( ApplicationDeviceClass _this )
 {
-  return _this->AchFrame;
+  return _this->FrameSound;
 }
 
-/* 'C' function for method : 'Application::DeviceClass.OnSetAchFrame()' */
-void ApplicationDeviceClass_OnSetAchFrame( ApplicationDeviceClass _this, XInt32 
+/* 'C' function for method : 'Application::DeviceClass.OnSetFrameSound()' */
+void ApplicationDeviceClass_OnSetFrameSound( ApplicationDeviceClass _this, XBool 
   value )
 {
-  if ( _this->AchFrame == value )
+  if ( _this->FrameSound == value )
     return;
 
-  _this->AchFrame = value;
+  _this->FrameSound = value;
   {
     /*
        TO DO:
@@ -3441,27 +3431,525 @@ void ApplicationDeviceClass_OnSetAchFrame( ApplicationDeviceClass _this, XInt32
        YourDevice_SomeVariable = value;
     */
   }
-  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetAchFrame, ApplicationDeviceClass_OnSetAchFrame ), 
+  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetFrameSound, 
+    ApplicationDeviceClass_OnSetFrameSound ), 0 );
+}
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateFrameSound( ApplicationDeviceClass _this, XBool 
+  aNewValue )
+{
+  if ( aNewValue != _this->FrameSound )
+  {
+    _this->FrameSound = aNewValue;
+    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetFrameSound, 
+      ApplicationDeviceClass_OnSetFrameSound ), 0 );
+  }
+}
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateFrameSound()' */
+void ApplicationDeviceClass__UpdateFrameSound( void* _this, XBool aNewValue )
+{
+  ApplicationDeviceClass_UpdateFrameSound((ApplicationDeviceClass)_this, aNewValue );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetCurrentScreen()' */
+XEnum ApplicationDeviceClass_OnGetCurrentScreen( ApplicationDeviceClass _this )
+{
+  return _this->CurrentScreen;
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetCurrentScreen()' */
+void ApplicationDeviceClass_OnSetCurrentScreen( ApplicationDeviceClass _this, XEnum 
+  value )
+{
+  if ( _this->CurrentScreen == value )
+    return;
+
+  _this->CurrentScreen = value;
+
+  if ( value == ApplicationScreenTypeMainMenu )
+    ShuffleEnd();
+
+  {
+    /*
+       TO DO:
+
+       You can call a function of your own device API or you simply
+       modify a variable existing in your middleware to reflect the
+       new value:
+
+       YourDevice_SetSomeValue( value );
+
+       or
+
+       YourDevice_SomeVariable = value;
+    */
+  }
+  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetCurrentScreen, 
+    ApplicationDeviceClass_OnSetCurrentScreen ), 0 );
+}
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateCurrentScreen( ApplicationDeviceClass _this, XEnum 
+  aNewValue )
+{
+  if ( aNewValue != _this->CurrentScreen )
+  {
+    _this->CurrentScreen = aNewValue;
+    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetCurrentScreen, 
+      ApplicationDeviceClass_OnSetCurrentScreen ), 0 );
+  }
+}
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateCurrentScreen()' */
+void ApplicationDeviceClass__UpdateCurrentScreen( void* _this, XEnum aNewValue )
+{
+  ApplicationDeviceClass_UpdateCurrentScreen((ApplicationDeviceClass)_this, aNewValue );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetFrame()' */
+XInt32 ApplicationDeviceClass_OnGetFrame( ApplicationDeviceClass _this )
+{
+  return _this->Frame;
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetFrame()' */
+void ApplicationDeviceClass_OnSetFrame( ApplicationDeviceClass _this, XInt32 value )
+{
+  if ( _this->Frame == value )
+    return;
+
+  _this->Frame = value;
+  {
+    /*
+       TO DO:
+
+       You can call a function of your own device API or you simply
+       modify a variable existing in your middleware to reflect the
+       new value:
+
+       YourDevice_SetSomeValue( value );
+
+       or
+
+       YourDevice_SomeVariable = value;
+    */
+  }
+  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetFrame, ApplicationDeviceClass_OnSetFrame ), 
     0 );
 }
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty13( ApplicationDeviceClass _this, XInt32 
-  aNewValue )
+void ApplicationDeviceClass_UpdateFrame( ApplicationDeviceClass _this, XInt32 aNewValue )
 {
-  if ( aNewValue != _this->AchFrame )
+  if ( aNewValue != _this->Frame )
   {
-    _this->AchFrame = aNewValue;
-    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetAchFrame, 
-      ApplicationDeviceClass_OnSetAchFrame ), 0 );
+    _this->Frame = aNewValue;
+    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetFrame, ApplicationDeviceClass_OnSetFrame ), 
+      0 );
   }
 }
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty13()' */
-void ApplicationDeviceClass__UpdateProperty13( void* _this, XInt32 aNewValue )
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateFrame()' */
+void ApplicationDeviceClass__UpdateFrame( void* _this, XInt32 aNewValue )
 {
-  ApplicationDeviceClass_UpdateProperty13((ApplicationDeviceClass)_this, aNewValue );
+  ApplicationDeviceClass_UpdateFrame((ApplicationDeviceClass)_this, aNewValue );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetNextLevel()' */
+XBool ApplicationDeviceClass_OnGetNextLevel( ApplicationDeviceClass _this )
+{
+  return _this->NextLevel;
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetNextLevel()' */
+void ApplicationDeviceClass_OnSetNextLevel( ApplicationDeviceClass _this, XBool 
+  value )
+{
+  if ( _this->NextLevel == value )
+    return;
+
+  _this->NextLevel = value;
+  {
+    /*
+       TO DO:
+
+       You can call a function of your own device API or you simply
+       modify a variable existing in your middleware to reflect the
+       new value:
+
+       YourDevice_SetSomeValue( value );
+
+       or
+
+       YourDevice_SomeVariable = value;
+    */
+  }
+  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetNextLevel, 
+    ApplicationDeviceClass_OnSetNextLevel ), 0 );
+}
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateNextLevel( ApplicationDeviceClass _this, XBool 
+  aNewValue )
+{
+  if ( aNewValue != _this->NextLevel )
+  {
+    _this->NextLevel = aNewValue;
+    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetNextLevel, 
+      ApplicationDeviceClass_OnSetNextLevel ), 0 );
+  }
+}
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateNextLevel()' */
+void ApplicationDeviceClass__UpdateNextLevel( void* _this, XBool aNewValue )
+{
+  ApplicationDeviceClass_UpdateNextLevel((ApplicationDeviceClass)_this, aNewValue );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetReset()' */
+XBool ApplicationDeviceClass_OnGetReset( ApplicationDeviceClass _this )
+{
+  return _this->Reset;
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetReset()' */
+void ApplicationDeviceClass_OnSetReset( ApplicationDeviceClass _this, XBool value )
+{
+  if ( _this->Reset == value )
+    return;
+
+  _this->Reset = value;
+  {
+    /*
+       TO DO:
+
+       You can call a function of your own device API or you simply
+       modify a variable existing in your middleware to reflect the
+       new value:
+
+       YourDevice_SetSomeValue( value );
+
+       or
+
+       YourDevice_SomeVariable = value;
+    */
+  }
+  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetReset, ApplicationDeviceClass_OnSetReset ), 
+    0 );
+}
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateReset( ApplicationDeviceClass _this, XBool aNewValue )
+{
+  if ( aNewValue != _this->Reset )
+  {
+    _this->Reset = aNewValue;
+    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetReset, ApplicationDeviceClass_OnSetReset ), 
+      0 );
+  }
+}
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateReset()' */
+void ApplicationDeviceClass__UpdateReset( void* _this, XBool aNewValue )
+{
+  ApplicationDeviceClass_UpdateReset((ApplicationDeviceClass)_this, aNewValue );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetStartSound()' */
+XBool ApplicationDeviceClass_OnGetStartSound( ApplicationDeviceClass _this )
+{
+  return _this->StartSound;
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetStartSound()' */
+void ApplicationDeviceClass_OnSetStartSound( ApplicationDeviceClass _this, XBool 
+  value )
+{
+  if ( _this->StartSound == value )
+    return;
+
+  _this->StartSound = value;
+  {
+    /*
+       TO DO:
+
+       You can call a function of your own device API or you simply
+       modify a variable existing in your middleware to reflect the
+       new value:
+
+       YourDevice_SetSomeValue( value );
+
+       or
+
+       YourDevice_SomeVariable = value;
+    */
+  }
+  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetStartSound, 
+    ApplicationDeviceClass_OnSetStartSound ), 0 );
+}
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateStartSound( ApplicationDeviceClass _this, XBool 
+  aNewValue )
+{
+  if ( aNewValue != _this->StartSound )
+  {
+    _this->StartSound = aNewValue;
+    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetStartSound, 
+      ApplicationDeviceClass_OnSetStartSound ), 0 );
+  }
+}
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateStartSound()' */
+void ApplicationDeviceClass__UpdateStartSound( void* _this, XBool aNewValue )
+{
+  ApplicationDeviceClass_UpdateStartSound((ApplicationDeviceClass)_this, aNewValue );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetWrongGuesses()' */
+XInt32 ApplicationDeviceClass_OnGetWrongGuesses( ApplicationDeviceClass _this )
+{
+  return _this->WrongGuesses;
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetWrongGuesses()' */
+void ApplicationDeviceClass_OnSetWrongGuesses( ApplicationDeviceClass _this, XInt32 
+  value )
+{
+  if ( _this->WrongGuesses == value )
+    return;
+
+  _this->WrongGuesses = value;
+  {
+    /*
+       TO DO:
+
+       You can call a function of your own device API or you simply
+       modify a variable existing in your middleware to reflect the
+       new value:
+
+       YourDevice_SetSomeValue( value );
+
+       or
+
+       YourDevice_SomeVariable = value;
+    */
+  }
+  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetWrongGuesses, 
+    ApplicationDeviceClass_OnSetWrongGuesses ), 0 );
+}
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateWrongGuesses( ApplicationDeviceClass _this, XInt32 
+  aNewValue )
+{
+  if ( aNewValue != _this->WrongGuesses )
+  {
+    _this->WrongGuesses = aNewValue;
+    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetWrongGuesses, 
+      ApplicationDeviceClass_OnSetWrongGuesses ), 0 );
+  }
+}
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateWrongGuesses()' */
+void ApplicationDeviceClass__UpdateWrongGuesses( void* _this, XInt32 aNewValue )
+{
+  ApplicationDeviceClass_UpdateWrongGuesses((ApplicationDeviceClass)_this, aNewValue );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetActiveMusicName()' */
+XString ApplicationDeviceClass_OnGetActiveMusicName( ApplicationDeviceClass _this )
+{
+  return _this->ActiveMusicName;
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetActiveMusicName()' */
+void ApplicationDeviceClass_OnSetActiveMusicName( ApplicationDeviceClass _this, 
+  XString value )
+{
+  if ( !EwCompString( _this->ActiveMusicName, value ))
+    return;
+
+  _this->ActiveMusicName = EwShareString( value );
+  {
+    /*
+       TO DO:
+
+       You can call a function of your own device API or you simply
+       modify a variable existing in your middleware to reflect the
+       new value:
+
+       YourDevice_SetSomeValue( value );
+
+       or
+
+       YourDevice_SomeVariable = value;
+    */
+  }
+  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetActiveMusicName, 
+    ApplicationDeviceClass_OnSetActiveMusicName ), 0 );
+}
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateActiveMusicName( ApplicationDeviceClass _this, 
+  XString aNewValue )
+{
+  if ( EwCompString( aNewValue, _this->ActiveMusicName ) != 0 )
+  {
+    _this->ActiveMusicName = EwShareString( aNewValue );
+    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetActiveMusicName, 
+      ApplicationDeviceClass_OnSetActiveMusicName ), 0 );
+  }
+}
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateActiveMusicName()' */
+void ApplicationDeviceClass__UpdateActiveMusicName( void* _this, XString aNewValue )
+{
+  ApplicationDeviceClass_UpdateActiveMusicName((ApplicationDeviceClass)_this, aNewValue );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetDate()' */
+XString ApplicationDeviceClass_OnGetDate( ApplicationDeviceClass _this )
+{
+  return _this->Date;
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetDate()' */
+void ApplicationDeviceClass_OnSetDate( ApplicationDeviceClass _this, XString value )
+{
+  if ( !EwCompString( _this->Date, value ))
+    return;
+
+  _this->Date = EwShareString( value );
+  {
+    /*
+       TO DO:
+
+       You can call a function of your own device API or you simply
+       modify a variable existing in your middleware to reflect the
+       new value:
+
+       YourDevice_SetSomeValue( value );
+
+       or
+
+       YourDevice_SomeVariable = value;
+    */
+  }
+  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetDate, ApplicationDeviceClass_OnSetDate ), 
+    0 );
+}
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateDate( ApplicationDeviceClass _this, XString aNewValue )
+{
+  if ( EwCompString( aNewValue, _this->Date ) != 0 )
+  {
+    _this->Date = EwShareString( aNewValue );
+    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetDate, ApplicationDeviceClass_OnSetDate ), 
+      0 );
+  }
+}
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateDate()' */
+void ApplicationDeviceClass__UpdateDate( void* _this, XString aNewValue )
+{
+  ApplicationDeviceClass_UpdateDate((ApplicationDeviceClass)_this, aNewValue );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetHours()' */
+XString ApplicationDeviceClass_OnGetHours( ApplicationDeviceClass _this )
+{
+  return _this->Hours;
+}
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetHours()' */
+void ApplicationDeviceClass_OnSetHours( ApplicationDeviceClass _this, XString value )
+{
+  if ( !EwCompString( _this->Hours, value ))
+    return;
+
+  _this->Hours = EwShareString( value );
+  {
+    /*
+       TO DO:
+
+       You can call a function of your own device API or you simply
+       modify a variable existing in your middleware to reflect the
+       new value:
+
+       YourDevice_SetSomeValue( value );
+
+       or
+
+       YourDevice_SomeVariable = value;
+    */
+  }
+  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetHours, ApplicationDeviceClass_OnSetHours ), 
+    0 );
+}
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateHours( ApplicationDeviceClass _this, XString aNewValue )
+{
+  if ( EwCompString( aNewValue, _this->Hours ) != 0 )
+  {
+    _this->Hours = EwShareString( aNewValue );
+    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetHours, ApplicationDeviceClass_OnSetHours ), 
+      0 );
+  }
+}
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateHours()' */
+void ApplicationDeviceClass__UpdateHours( void* _this, XString aNewValue )
+{
+  ApplicationDeviceClass_UpdateHours((ApplicationDeviceClass)_this, aNewValue );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.GetShopArrays()' */
+void ApplicationDeviceClass_GetShopArrays( ApplicationDeviceClass _this )
+{
+  /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( _this );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.UpdateShopArrays()' */
+void ApplicationDeviceClass_UpdateShopArrays( ApplicationDeviceClass _this )
+{
+  /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( _this );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.GetAchivementsArray()' */
+void ApplicationDeviceClass_GetAchivementsArray( ApplicationDeviceClass _this )
+{
+  /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( _this );
+}
+
+/* 'C' function for method : 'Application::DeviceClass.CheckAchivements()' */
+XInt32 ApplicationDeviceClass_CheckAchivements( ApplicationDeviceClass _this, XInt32 
+  aArg1 )
+{
+  /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( _this );
+
+  if ( aArg1 >= 0 )
+    return -1;
+
+  return -1;
 }
 
 /* Variants derived from the class : 'Application::DeviceClass' */
@@ -3469,8 +3957,9 @@ EW_DEFINE_CLASS_VARIANTS( ApplicationDeviceClass )
 EW_END_OF_CLASS_VARIANTS( ApplicationDeviceClass )
 
 /* Virtual Method Table (VMT) for the class : 'Application::DeviceClass' */
-EW_DEFINE_CLASS( ApplicationDeviceClass, TemplatesDeviceClass, _.VMT, _.VMT, _.VMT, 
-                 _.VMT, _.VMT, _.VMT, "Application::DeviceClass" )
+EW_DEFINE_CLASS( ApplicationDeviceClass, TemplatesDeviceClass, ActiveMusicName, 
+                 ActiveMusicName, ActiveMusicName, ActiveMusicName, ActiveMusicName, 
+                 Volume, "Application::DeviceClass" )
 EW_END_OF_CLASS( ApplicationDeviceClass )
 
 /* User defined auto object: 'Application::Device' */
@@ -3526,8 +4015,8 @@ void ApplicationMainMenu__Init( ApplicationMainMenu _this, XObject aLink, XHandl
   CoreRectView__OnSetBounds( &_this->Rectangle, _Const0000 );
   ViewsRectangle_OnSetColorBR( &_this->Rectangle, _Const0001 );
   ViewsRectangle_OnSetColorTL( &_this->Rectangle, _Const0002 );
-  CoreRectView__OnSetBounds( &_this->Start, _Const0069 );
-  WidgetSetPushButton_OnSetLabel( &_this->Start, EwLoadString( &_Const006A ));
+  CoreRectView__OnSetBounds( &_this->Start, _Const006B );
+  WidgetSetPushButton_OnSetLabel( &_this->Start, EwLoadString( &_Const006C ));
   WidgetSetPushButtonConfig_OnSetThumbShadowColorActive( &_this->PushButtonConfig, 
   _Const0062 );
   WidgetSetPushButtonConfig_OnSetThumbShadowColorFocused( &_this->PushButtonConfig, 
@@ -3565,18 +4054,18 @@ void ApplicationMainMenu__Init( ApplicationMainMenu _this, XObject aLink, XHandl
   WidgetSetPushButtonConfig_OnSetLabelColorDisabled( &_this->PushButtonConfig, _Const0066 );
   WidgetSetPushButtonConfig_OnSetLabelColorDefault( &_this->PushButtonConfig, _Const0066 );
   WidgetSetPushButtonConfig_OnSetFaceTintDefault( &_this->PushButtonConfig, _Const002C );
-  CoreRectView__OnSetBounds( &_this->StatsButton, _Const006B );
-  WidgetSetPushButton_OnSetLabel( &_this->StatsButton, EwLoadString( &_Const006C ));
-  CoreRectView__OnSetBounds( &_this->Shop, _Const006D );
-  WidgetSetPushButton_OnSetLabel( &_this->Shop, EwLoadString( &_Const006E ));
-  CoreRectView__OnSetBounds( &_this->Text, _Const006F );
-  ViewsText_OnSetColorBL( &_this->Text, _Const0070 );
-  ViewsText_OnSetColorBR( &_this->Text, _Const0071 );
-  ViewsText_OnSetColorTR( &_this->Text, _Const0071 );
-  ViewsText_OnSetColorTL( &_this->Text, _Const0070 );
-  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const0072 ));
-  ViewsText_OnSetColor( &_this->Text, _Const0073 );
-  CoreRectView__OnSetBounds( &_this->Image2, _Const0074 );
+  CoreRectView__OnSetBounds( &_this->StatsButton, _Const006D );
+  WidgetSetPushButton_OnSetLabel( &_this->StatsButton, EwLoadString( &_Const006E ));
+  CoreRectView__OnSetBounds( &_this->Shop, _Const006F );
+  WidgetSetPushButton_OnSetLabel( &_this->Shop, EwLoadString( &_Const0070 ));
+  CoreRectView__OnSetBounds( &_this->Text, _Const0071 );
+  ViewsText_OnSetColorBL( &_this->Text, _Const0072 );
+  ViewsText_OnSetColorBR( &_this->Text, _Const0073 );
+  ViewsText_OnSetColorTR( &_this->Text, _Const0073 );
+  ViewsText_OnSetColorTL( &_this->Text, _Const0072 );
+  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const0074 ));
+  ViewsText_OnSetColor( &_this->Text, _Const0075 );
+  CoreRectView__OnSetBounds( &_this->Image2, _Const0076 );
   ViewsImage_OnSetAlignment( &_this->Image2, ViewsImageAlignmentAlignHorzCenter 
   | ViewsImageAlignmentAlignVertBottom | ViewsImageAlignmentScaleToFill | ViewsImageAlignmentScaleToFit );
   ViewsImage_OnSetFrameNumber( &_this->Image2, 0 );
@@ -3585,35 +4074,35 @@ void ApplicationMainMenu__Init( ApplicationMainMenu _this, XObject aLink, XHandl
   EffectsEffect_OnSetTiming((EffectsEffect)&_this->RectEffect1, EffectsTimingCircle_InOut );
   EffectsEffect_OnSetCycleDuration((EffectsEffect)&_this->RectEffect1, 3000 );
   EffectsEffect_OnSetEnabled((EffectsEffect)&_this->RectEffect1, 1 );
-  _this->RectEffect1.Value2 = _Const0075;
-  _this->RectEffect1.Value1 = _Const0074;
-  CoreRectView__OnSetBounds( &_this->Bevel, _Const0069 );
+  _this->RectEffect1.Value2 = _Const0077;
+  _this->RectEffect1.Value1 = _Const0076;
+  CoreRectView__OnSetBounds( &_this->Bevel, _Const006B );
   ViewsBevel_OnSetWidth( &_this->Bevel, 4 );
   ViewsBevel_OnSetColorL( &_this->Bevel, _Const002C );
   ViewsBevel_OnSetColorR( &_this->Bevel, _Const0030 );
-  CoreRectView__OnSetBounds( &_this->Bevel1, _Const006B );
+  CoreRectView__OnSetBounds( &_this->Bevel1, _Const006D );
   ViewsBevel_OnSetWidth( &_this->Bevel1, 4 );
   ViewsBevel_OnSetColorL( &_this->Bevel1, _Const002C );
   ViewsBevel_OnSetColorR( &_this->Bevel1, _Const0030 );
-  CoreRectView__OnSetBounds( &_this->Bevel2, _Const006D );
+  CoreRectView__OnSetBounds( &_this->Bevel2, _Const006F );
   ViewsBevel_OnSetWidth( &_this->Bevel2, 4 );
   ViewsBevel_OnSetColorL( &_this->Bevel2, _Const002C );
   ViewsBevel_OnSetColorR( &_this->Bevel2, _Const0030 );
-  WidgetSetPushButtonConfig_OnSetThumbBorderColorActive( &_this->Settings, _Const0076 );
+  WidgetSetPushButtonConfig_OnSetThumbBorderColorActive( &_this->Settings, _Const0078 );
   WidgetSetPushButtonConfig_OnSetThumbColorFocused( &_this->Settings, _Const002E );
   WidgetSetPushButtonConfig_OnSetThumbColorDisabled( &_this->Settings, _Const002E );
   WidgetSetPushButtonConfig_OnSetIconTintActive( &_this->Settings, _Const002F );
-  WidgetSetPushButtonConfig_OnSetIconTintFocused( &_this->Settings, _Const0077 );
-  WidgetSetPushButtonConfig_OnSetIconTintDisabled( &_this->Settings, _Const0077 );
-  WidgetSetPushButtonConfig_OnSetIconTintDefault( &_this->Settings, _Const0077 );
+  WidgetSetPushButtonConfig_OnSetIconTintFocused( &_this->Settings, _Const0079 );
+  WidgetSetPushButtonConfig_OnSetIconTintDisabled( &_this->Settings, _Const0079 );
+  WidgetSetPushButtonConfig_OnSetIconTintDefault( &_this->Settings, _Const0079 );
   CoreView_OnSetLayout((CoreView)&_this->HelpBtn, CoreLayoutAlignToLeft | CoreLayoutAlignToTop );
-  CoreRectView__OnSetBounds( &_this->HelpBtn, _Const0078 );
+  CoreRectView__OnSetBounds( &_this->HelpBtn, _Const007A );
   WidgetSetPushButton_OnSetIconFrame( &_this->HelpBtn, -1 );
   WidgetSetPushButton_OnSetLabel( &_this->HelpBtn, 0 );
-  CoreRectView__OnSetBounds( &_this->Sett, _Const0079 );
-  WidgetSetPushButton_OnSetLabel( &_this->Sett, EwLoadString( &_Const007A ));
+  CoreRectView__OnSetBounds( &_this->Sett, _Const007B );
+  WidgetSetPushButton_OnSetLabel( &_this->Sett, EwLoadString( &_Const007C ));
   CoreView_OnSetLayout((CoreView)&_this->HelpBtn1, CoreLayoutAlignToLeft | CoreLayoutAlignToTop );
-  CoreRectView__OnSetBounds( &_this->HelpBtn1, _Const007B );
+  CoreRectView__OnSetBounds( &_this->HelpBtn1, _Const007D );
   WidgetSetPushButton_OnSetIconFrame( &_this->HelpBtn1, -1 );
   WidgetSetPushButton_OnSetLabel( &_this->HelpBtn1, 0 );
   CoreGroup__Add( _this, ((CoreView)&_this->Rectangle ), 0 );
@@ -3656,9 +4145,6 @@ void ApplicationMainMenu__Init( ApplicationMainMenu _this, XObject aLink, XHandl
   WidgetSetPushButton_OnSetIcon( &_this->HelpBtn1, EwLoadResource( &ApplicationAchiveIcon, 
   ResourcesBitmap ));
   WidgetSetPushButton_OnSetAppearance( &_this->HelpBtn1, &_this->Settings );
-
-  /* Call the user defined constructor */
-  ApplicationMainMenu_Init( _this, aArg );
 }
 
 /* Re-Initializer for the class 'Application::MainMenu' */
@@ -3712,115 +4198,89 @@ void ApplicationMainMenu__Done( ApplicationMainMenu _this )
   CoreGroup__Done( &_this->_.Super );
 }
 
-/* The method Init() is invoked automatically after the component has been created. 
-   This method can be overridden and filled with logic containing additional initialization 
-   statements. */
-void ApplicationMainMenu_Init( ApplicationMainMenu _this, XHandle aArg )
-{
-  /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
-  EW_UNUSED_ARG( aArg );
-
-  CoreGroup_OnSetEnabled((CoreGroup)&_this->Start, 1 );
-  CoreGroup_OnSetEnabled((CoreGroup)&_this->StatsButton, 1 );
-  CoreGroup_OnSetEnabled((CoreGroup)&_this->Shop, 1 );
-}
-
 /* 'C' function for method : 'Application::MainMenu.InitializeGame()' */
 void ApplicationMainMenu_InitializeGame( ApplicationMainMenu _this, XObject sender )
 {
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( _this );
   EW_UNUSED_ARG( sender );
 
-  ApplicationMainMenu_StartSound( _this );
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  4;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeInitilizeGame );
+  ApplicationDeviceClass_OnSetStartSound( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), 
+  1 );
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 4;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeInitilizeGame );
 }
 
 /* 'C' function for method : 'Application::MainMenu.Stats()' */
 void ApplicationMainMenu_Stats( ApplicationMainMenu _this, XObject sender )
 {
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( _this );
   EW_UNUSED_ARG( sender );
 
-  ApplicationMainMenu_StartSound( _this );
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  1;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeStats );
+  ApplicationDeviceClass_OnSetStartSound( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), 
+  1 );
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 1;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeStats );
 }
 
 /* 'C' function for method : 'Application::MainMenu.ShopMeth()' */
 void ApplicationMainMenu_ShopMeth( ApplicationMainMenu _this, XObject sender )
 {
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( _this );
   EW_UNUSED_ARG( sender );
 
-  ApplicationMainMenu_StartSound( _this );
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  1;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeShop );
-}
-
-/* 'C' function for method : 'Application::MainMenu.StartSound()' */
-void ApplicationMainMenu_StartSound( ApplicationMainMenu _this )
-{
-  /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
-  EW_UNUSED_ARG( _this );
-
-  {
-    // Javascript code executed inside the browser
-    if(GetHalloweenActive()==false)
-    {
-      var music=GetActiveMusicName();
-      SelectMusic(music);
-    }
-    else{
-      SelectMusic("Halloween ");
-    }
-  }
+  ApplicationDeviceClass_OnSetStartSound( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), 
+  1 );
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 1;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeShop );
 }
 
 /* 'C' function for method : 'Application::MainMenu.GoToSettings()' */
 void ApplicationMainMenu_GoToSettings( ApplicationMainMenu _this, XObject sender )
 {
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( _this );
   EW_UNUSED_ARG( sender );
 
-  ApplicationMainMenu_StartSound( _this );
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->ShowOr = 0;
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  0;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeSettingsMenu );
+  ApplicationDeviceClass_OnSetStartSound( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), 
+  1 );
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShowOr = 0;
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 0;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeSettingsMenu );
 }
 
 /* 'C' function for method : 'Application::MainMenu.HelpTab()' */
 void ApplicationMainMenu_HelpTab( ApplicationMainMenu _this, XObject sender )
 {
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( _this );
   EW_UNUSED_ARG( sender );
 
-  ApplicationMainMenu_StartSound( _this );
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  1;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeHelpMenu );
+  ApplicationDeviceClass_OnSetStartSound( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), 
+  1 );
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 1;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeHelpMenu );
 }
 
 /* 'C' function for method : 'Application::MainMenu.AchieveTab()' */
 void ApplicationMainMenu_AchieveTab( ApplicationMainMenu _this, XObject sender )
 {
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( _this );
   EW_UNUSED_ARG( sender );
 
-  ApplicationMainMenu_StartSound( _this );
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  1;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeAchivements );
+  ApplicationDeviceClass_OnSetStartSound( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), 
+  1 );
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 1;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeAchivements );
 }
 
 /* Variants derived from the class : 'Application::MainMenu' */
@@ -3890,17 +4350,17 @@ void ApplicationLoadingGame__Init( ApplicationLoadingGame _this, XObject aLink, 
   CoreRectView__OnSetBounds( &_this->Rectangle, _Const0000 );
   ViewsRectangle_OnSetColorBR( &_this->Rectangle, _Const0001 );
   ViewsRectangle_OnSetColorTL( &_this->Rectangle, _Const0002 );
-  CoreRectView__OnSetBounds( &_this->Text, _Const007C );
-  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const007D ));
+  CoreRectView__OnSetBounds( &_this->Text, _Const007E );
+  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const007F ));
   ViewsText_OnSetColor( &_this->Text, _Const0030 );
-  CoreRectView__OnSetBounds( &_this->HorizontalValueBar, _Const007E );
+  CoreRectView__OnSetBounds( &_this->HorizontalValueBar, _Const0080 );
   WidgetSetHorizontalValueBar_OnSetCurrentValue( &_this->HorizontalValueBar, 0 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightBorderColor( &_this->HorizontalValueBarConfig, 
-  _Const007F );
+  _Const0081 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightBorderWidth( &_this->HorizontalValueBarConfig, 
   2 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightColor( &_this->HorizontalValueBarConfig, 
-  _Const0080 );
+  _Const0082 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightFlattened( &_this->HorizontalValueBarConfig, 
   1 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightCornerRadius( &_this->HorizontalValueBarConfig, 
@@ -3912,11 +4372,11 @@ void ApplicationLoadingGame__Init( ApplicationLoadingGame _this, XObject aLink, 
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightMarginRight( &_this->HorizontalValueBarConfig, 
   15 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftBorderColor( &_this->HorizontalValueBarConfig, 
-  _Const0081 );
+  _Const0083 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftBorderWidth( &_this->HorizontalValueBarConfig, 
   1 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftColor( &_this->HorizontalValueBarConfig, 
-  _Const0082 );
+  _Const0084 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftFlattened( &_this->HorizontalValueBarConfig, 
   1 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftCornerRadius( &_this->HorizontalValueBarConfig, 
@@ -3928,18 +4388,18 @@ void ApplicationLoadingGame__Init( ApplicationLoadingGame _this, XObject aLink, 
   EffectsEffect_OnSetCycleDuration((EffectsEffect)&_this->Int32Effect, 4000 );
   EffectsEffect_OnSetEnabled((EffectsEffect)&_this->Int32Effect, 1 );
   _this->Int32Effect.Value2 = 100;
-  _this->Array[ 0 ] = EwShareString( EwLoadString( &_Const007D ));
-  _this->Array[ 1 ] = EwShareString( EwLoadString( &_Const0083 ));
-  _this->Array[ 2 ] = EwShareString( EwLoadString( &_Const0084 ));
-  _this->Array[ 3 ] = EwShareString( EwLoadString( &_Const0085 ));
-  CoreRectView__OnSetBounds( &_this->Text3, _Const0086 );
-  ViewsText_OnSetString( &_this->Text3, EwLoadString( &_Const0087 ));
+  _this->Array[ 0 ] = EwShareString( EwLoadString( &_Const007F ));
+  _this->Array[ 1 ] = EwShareString( EwLoadString( &_Const0085 ));
+  _this->Array[ 2 ] = EwShareString( EwLoadString( &_Const0086 ));
+  _this->Array[ 3 ] = EwShareString( EwLoadString( &_Const0087 ));
+  CoreRectView__OnSetBounds( &_this->Text3, _Const0088 );
+  ViewsText_OnSetString( &_this->Text3, EwLoadString( &_Const0089 ));
   ViewsText_OnSetColor( &_this->Text3, _Const0030 );
-  CoreRectView__OnSetBounds( &_this->Text2, _Const0088 );
-  ViewsText_OnSetString( &_this->Text2, EwLoadString( &_Const0087 ));
+  CoreRectView__OnSetBounds( &_this->Text2, _Const008A );
+  ViewsText_OnSetString( &_this->Text2, EwLoadString( &_Const0089 ));
   ViewsText_OnSetColor( &_this->Text2, _Const0030 );
-  CoreRectView__OnSetBounds( &_this->Text1, _Const0089 );
-  ViewsText_OnSetString( &_this->Text1, EwLoadString( &_Const0087 ));
+  CoreRectView__OnSetBounds( &_this->Text1, _Const008B );
+  ViewsText_OnSetString( &_this->Text1, EwLoadString( &_Const0089 ));
   ViewsText_OnSetColor( &_this->Text1, _Const0030 );
   EffectsEffect_OnSetReversed((EffectsEffect)&_this->PointEffect, 1 );
   _this->PointEffect.Super1.Symmetric = 1;
@@ -3947,21 +4407,21 @@ void ApplicationLoadingGame__Init( ApplicationLoadingGame _this, XObject aLink, 
   EffectsEffect_OnSetCycleDuration((EffectsEffect)&_this->PointEffect, 2000 );
   EffectsEffect_OnSetInitialDelay((EffectsEffect)&_this->PointEffect, 500 );
   EffectsEffect_OnSetEnabled((EffectsEffect)&_this->PointEffect, 1 );
-  _this->PointEffect.Value2 = _Const008A;
+  _this->PointEffect.Value2 = _Const008C;
   EffectsEffect_OnSetReversed((EffectsEffect)&_this->PointEffect1, 1 );
   _this->PointEffect1.Super1.Symmetric = 1;
   EffectsEffect_OnSetTiming((EffectsEffect)&_this->PointEffect1, EffectsTimingSine_InOut );
   EffectsEffect_OnSetNoOfCycles((EffectsEffect)&_this->PointEffect1, 0 );
   EffectsEffect_OnSetCycleDuration((EffectsEffect)&_this->PointEffect1, 2000 );
   EffectsEffect_OnSetEnabled((EffectsEffect)&_this->PointEffect1, 1 );
-  _this->PointEffect1.Value2 = _Const008A;
+  _this->PointEffect1.Value2 = _Const008C;
   EffectsEffect_OnSetReversed((EffectsEffect)&_this->PointEffect2, 1 );
   _this->PointEffect2.Super1.Symmetric = 1;
   EffectsEffect_OnSetTiming((EffectsEffect)&_this->PointEffect2, EffectsTimingSine_InOut );
   EffectsEffect_OnSetCycleDuration((EffectsEffect)&_this->PointEffect2, 2000 );
   EffectsEffect_OnSetInitialDelay((EffectsEffect)&_this->PointEffect2, 1000 );
   EffectsEffect_OnSetEnabled((EffectsEffect)&_this->PointEffect2, 1 );
-  _this->PointEffect2.Value2 = _Const008A;
+  _this->PointEffect2.Value2 = _Const008C;
   CoreGroup__Add( _this, ((CoreView)&_this->Rectangle ), 0 );
   CoreGroup__Add( _this, ((CoreView)&_this->Text ), 0 );
   CoreGroup__Add( _this, ((CoreView)&_this->HorizontalValueBar ), 0 );
@@ -4047,10 +4507,10 @@ void ApplicationLoadingGame_Init( ApplicationLoadingGame _this, XHandle aArg )
   message = _this->Array[ EwCheckIndex( nr, 4 )];
 
   if ( nr == 3 )
-    CoreRectView__OnSetBounds( &_this->Text, _Const008B );
+    CoreRectView__OnSetBounds( &_this->Text, _Const008D );
   else
     if ( nr == 0 )
-      CoreRectView__OnSetBounds( &_this->Text, _Const008C );
+      CoreRectView__OnSetBounds( &_this->Text, _Const008E );
 
   ViewsText_OnSetString( &_this->Text, message );
 }
@@ -4062,10 +4522,9 @@ void ApplicationLoadingGame_Slot( ApplicationLoadingGame _this, XObject sender )
   EW_UNUSED_ARG( _this );
   EW_UNUSED_ARG( sender );
 
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  1;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeGame );
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 1;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeGame );
 }
 
 /* Variants derived from the class : 'Application::LoadingGame' */
@@ -4138,20 +4597,20 @@ void ApplicationStats__Init( ApplicationStats _this, XObject aLink, XHandle aArg
   CoreRectView__OnSetBounds( &_this->Rectangle, _Const0000 );
   ViewsRectangle_OnSetColorBR( &_this->Rectangle, _Const0001 );
   ViewsRectangle_OnSetColorTL( &_this->Rectangle, _Const0002 );
-  CoreRectView__OnSetBounds( &_this->MaxLevel, _Const008D );
-  ViewsText_OnSetString( &_this->MaxLevel, EwLoadString( &_Const008E ));
-  ViewsText_OnSetColor( &_this->MaxLevel, _Const008F );
-  CoreRectView__OnSetBounds( &_this->Date, _Const0090 );
-  ViewsText_OnSetString( &_this->Date, EwLoadString( &_Const0091 ));
-  ViewsText_OnSetColor( &_this->Date, _Const008F );
-  CoreRectView__OnSetBounds( &_this->HoursPlayed, _Const0092 );
-  ViewsText_OnSetString( &_this->HoursPlayed, EwLoadString( &_Const0093 ));
-  ViewsText_OnSetColor( &_this->HoursPlayed, _Const008F );
-  CoreRectView__OnSetBounds( &_this->Corrects, _Const0094 );
-  ViewsText_OnSetString( &_this->Corrects, EwLoadString( &_Const0095 ));
-  ViewsText_OnSetColor( &_this->Corrects, _Const008F );
-  CoreRectView__OnSetBounds( &_this->PushButton, _Const0096 );
-  WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const0097 ));
+  CoreRectView__OnSetBounds( &_this->MaxLevel, _Const008F );
+  ViewsText_OnSetString( &_this->MaxLevel, EwLoadString( &_Const0090 ));
+  ViewsText_OnSetColor( &_this->MaxLevel, _Const0091 );
+  CoreRectView__OnSetBounds( &_this->Date, _Const0092 );
+  ViewsText_OnSetString( &_this->Date, EwLoadString( &_Const0093 ));
+  ViewsText_OnSetColor( &_this->Date, _Const0091 );
+  CoreRectView__OnSetBounds( &_this->HoursPlayed, _Const0094 );
+  ViewsText_OnSetString( &_this->HoursPlayed, EwLoadString( &_Const0095 ));
+  ViewsText_OnSetColor( &_this->HoursPlayed, _Const0091 );
+  CoreRectView__OnSetBounds( &_this->Corrects, _Const0096 );
+  ViewsText_OnSetString( &_this->Corrects, EwLoadString( &_Const0097 ));
+  ViewsText_OnSetColor( &_this->Corrects, _Const0091 );
+  CoreRectView__OnSetBounds( &_this->PushButton, _Const0098 );
+  WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const0099 ));
   WidgetSetPushButtonConfig_OnSetThumbShadowColorActive( &_this->PushButtonConfig, 
   _Const0062 );
   WidgetSetPushButtonConfig_OnSetThumbShadowColorFocused( &_this->PushButtonConfig, 
@@ -4189,7 +4648,7 @@ void ApplicationStats__Init( ApplicationStats _this, XObject aLink, XHandle aArg
   WidgetSetPushButtonConfig_OnSetLabelColorDisabled( &_this->PushButtonConfig, _Const0066 );
   WidgetSetPushButtonConfig_OnSetLabelColorDefault( &_this->PushButtonConfig, _Const0066 );
   WidgetSetPushButtonConfig_OnSetFaceTintDefault( &_this->PushButtonConfig, _Const002C );
-  CoreRectView__OnSetBounds( &_this->Bevel, _Const0096 );
+  CoreRectView__OnSetBounds( &_this->Bevel, _Const0098 );
   ViewsBevel_OnSetWidth( &_this->Bevel, 4 );
   ViewsBevel_OnSetColorL( &_this->Bevel, _Const002C );
   ViewsBevel_OnSetColorR( &_this->Bevel, _Const0030 );
@@ -4208,7 +4667,6 @@ void ApplicationStats__Init( ApplicationStats _this, XObject aLink, XHandle aArg
   WidgetSetPushButton_OnSetAppearance( &_this->PushButton, &_this->PushButtonConfig );
   WidgetSetPushButtonConfig_OnSetLabelFont( &_this->PushButtonConfig, EwLoadResource( 
   &ApplicationFont2, ResourcesFont ));
-  _this->Object = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass );
 
   /* Call the user defined constructor */
   ApplicationStats_Init( _this, aArg );
@@ -4256,8 +4714,8 @@ void ApplicationStats__Done( ApplicationStats _this )
    statements. */
 void ApplicationStats_Init( ApplicationStats _this, XHandle aArg )
 {
-  XString lvl;
-  XString correct;
+  XInt32 lvl;
+  XInt32 correct;
   XString total;
   XString hours;
   XString date;
@@ -4265,25 +4723,20 @@ void ApplicationStats_Init( ApplicationStats _this, XHandle aArg )
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( aArg );
 
-  lvl = 0;
-  correct = 0;
-  total = 0;
-  hours = 0;
-  date = 0;
-  {
-    lvl=GetBestLevel();
-    correct=GetCorrects();
-    total=GetTotal();
-    date=GetDate();
-    hours=GetHours();
-  }
-  ViewsText_OnSetString( &_this->MaxLevel, EwConcatString( EwLoadString( &_Const0098 ), 
-  lvl ));
+  lvl = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->MaxLevel;
+  correct = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->CorrectGuesses;
+  total = EwNewStringInt( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->TotalRounds, 
+  0, 10 );
+  hours = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Hours;
+  date = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Date;
+  ViewsText_OnSetString( &_this->MaxLevel, EwConcatString( EwLoadString( &_Const009A ), 
+  EwNewStringInt( lvl, 0, 10 )));
   ViewsText_OnSetString( &_this->Corrects, EwConcatString( EwConcatString( EwConcatString( 
-  EwLoadString( &_Const0099 ), correct ), EwLoadString( &_Const009A )), total ));
-  ViewsText_OnSetString( &_this->HoursPlayed, EwConcatString( EwLoadString( &_Const009B ), 
+  EwLoadString( &_Const009B ), EwNewStringInt( correct, 0, 10 )), EwLoadString( 
+  &_Const009C )), total ));
+  ViewsText_OnSetString( &_this->HoursPlayed, EwConcatString( EwLoadString( &_Const009D ), 
   hours ));
-  ViewsText_OnSetString( &_this->Date, EwConcatString( EwLoadString( &_Const009C ), 
+  ViewsText_OnSetString( &_this->Date, EwConcatString( EwLoadString( &_Const009E ), 
   date ));
 }
 
@@ -4294,10 +4747,9 @@ void ApplicationStats_Back( ApplicationStats _this, XObject sender )
   EW_UNUSED_ARG( _this );
   EW_UNUSED_ARG( sender );
 
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  0;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeMainMenu );
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 0;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeMainMenu );
 }
 
 /* Variants derived from the class : 'Application::Stats' */
@@ -4305,7 +4757,7 @@ EW_DEFINE_CLASS_VARIANTS( ApplicationStats )
 EW_END_OF_CLASS_VARIANTS( ApplicationStats )
 
 /* Virtual Method Table (VMT) for the class : 'Application::Stats' */
-EW_DEFINE_CLASS( ApplicationStats, CoreGroup, Rectangle, Object, _.VMT, _.VMT, _.VMT, 
+EW_DEFINE_CLASS( ApplicationStats, CoreGroup, Rectangle, _.VMT, _.VMT, _.VMT, _.VMT, 
                  _.VMT, "Application::Stats" )
   CoreRectView_initLayoutContext,
   CoreView_GetRoot,
@@ -4580,70 +5032,70 @@ void ApplicationShop__Init( ApplicationShop _this, XObject aLink, XHandle aArg )
 
   /* ... and initialize objects, variables, properties, etc. */
   CoreRectView__OnSetBounds( _this, _Const0000 );
-  CoreRectView__OnSetBounds( &_this->Rectangle, _Const009D );
-  ViewsRectangle_OnSetColorBL( &_this->Rectangle, _Const009E );
-  ViewsRectangle_OnSetColorBR( &_this->Rectangle, _Const009F );
-  ViewsRectangle_OnSetColorTR( &_this->Rectangle, _Const00A0 );
-  ViewsRectangle_OnSetColorTL( &_this->Rectangle, _Const00A1 );
-  CoreRectView__OnSetBounds( &_this->Rectangle1, _Const00A2 );
-  ViewsRectangle_OnSetColorBL( &_this->Rectangle1, _Const00A3 );
-  ViewsRectangle_OnSetColorBR( &_this->Rectangle1, _Const00A3 );
-  ViewsRectangle_OnSetColorTR( &_this->Rectangle1, _Const00A4 );
-  ViewsRectangle_OnSetColorTL( &_this->Rectangle1, _Const00A4 );
-  CoreRectView__OnSetBounds( &_this->SlideTouchHandler, _Const00A5 );
+  CoreRectView__OnSetBounds( &_this->Rectangle, _Const009F );
+  ViewsRectangle_OnSetColorBL( &_this->Rectangle, _Const00A0 );
+  ViewsRectangle_OnSetColorBR( &_this->Rectangle, _Const00A1 );
+  ViewsRectangle_OnSetColorTR( &_this->Rectangle, _Const00A2 );
+  ViewsRectangle_OnSetColorTL( &_this->Rectangle, _Const00A3 );
+  CoreRectView__OnSetBounds( &_this->Rectangle1, _Const00A4 );
+  ViewsRectangle_OnSetColorBL( &_this->Rectangle1, _Const00A5 );
+  ViewsRectangle_OnSetColorBR( &_this->Rectangle1, _Const00A5 );
+  ViewsRectangle_OnSetColorTR( &_this->Rectangle1, _Const00A6 );
+  ViewsRectangle_OnSetColorTL( &_this->Rectangle1, _Const00A6 );
+  CoreRectView__OnSetBounds( &_this->SlideTouchHandler, _Const00A7 );
   CoreSlideTouchHandler_OnSetSnapLast( &_this->SlideTouchHandler, _Const0004 );
-  CoreSlideTouchHandler_OnSetSnapNext( &_this->SlideTouchHandler, _Const00A6 );
+  CoreSlideTouchHandler_OnSetSnapNext( &_this->SlideTouchHandler, _Const00A8 );
   CoreSlideTouchHandler_OnSetSnapFirst( &_this->SlideTouchHandler, _Const0004 );
   _this->SlideTouchHandler.SlideVert = 0;
   CoreView_OnSetStackingPriority((CoreView)&_this->HorizontalList, 10 );
-  CoreRectView__OnSetBounds( &_this->HorizontalList, _Const00A2 );
+  CoreRectView__OnSetBounds( &_this->HorizontalList, _Const00A4 );
   CoreHorizontalList_OnSetItemWidth( &_this->HorizontalList, 160 );
   CoreHorizontalList_OnSetNoOfItems( &_this->HorizontalList, 13 );
   CoreHorizontalList_OnSetItemClass( &_this->HorizontalList, EW_CLASS( ApplicationShopListItem ));
-  CoreRectView__OnSetBounds( &_this->CupsBtn, _Const00A7 );
-  WidgetSetPushButton_OnSetLabel( &_this->CupsBtn, EwLoadString( &_Const00A8 ));
-  CoreRectView__OnSetBounds( &_this->BallsBtn, _Const00A9 );
-  WidgetSetPushButton_OnSetLabel( &_this->BallsBtn, EwLoadString( &_Const00AA ));
-  CoreRectView__OnSetBounds( &_this->MusicBtn, _Const00AB );
-  WidgetSetPushButton_OnSetLabel( &_this->MusicBtn, EwLoadString( &_Const00AC ));
+  CoreRectView__OnSetBounds( &_this->CupsBtn, _Const00A9 );
+  WidgetSetPushButton_OnSetLabel( &_this->CupsBtn, EwLoadString( &_Const00AA ));
+  CoreRectView__OnSetBounds( &_this->BallsBtn, _Const00AB );
+  WidgetSetPushButton_OnSetLabel( &_this->BallsBtn, EwLoadString( &_Const00AC ));
+  CoreRectView__OnSetBounds( &_this->MusicBtn, _Const00AD );
+  WidgetSetPushButton_OnSetLabel( &_this->MusicBtn, EwLoadString( &_Const00AE ));
   WidgetSetPushButtonConfig_OnSetThumbBorderColorDefault( &_this->PushButtonConfigNormal, 
-  _Const00AD );
+  _Const00AF );
   WidgetSetPushButtonConfig_OnSetThumbBorderWidthDefault( &_this->PushButtonConfigNormal, 
   1 );
   WidgetSetPushButtonConfig_OnSetThumbColorDefault( &_this->PushButtonConfigNormal, 
-  _Const00AE );
+  _Const00B0 );
   WidgetSetPushButtonConfig_OnSetLabelColorActive( &_this->PushButtonConfigNormal, 
-  _Const00AF );
+  _Const00B1 );
   WidgetSetPushButtonConfig_OnSetLabelColorFocused( &_this->PushButtonConfigNormal, 
-  _Const00AF );
+  _Const00B1 );
   WidgetSetPushButtonConfig_OnSetLabelColorDisabled( &_this->PushButtonConfigNormal, 
-  _Const00AF );
+  _Const00B1 );
   WidgetSetPushButtonConfig_OnSetLabelColorDefault( &_this->PushButtonConfigNormal, 
-  _Const00AF );
+  _Const00B1 );
   WidgetSetPushButtonConfig_OnSetThumbBorderColorDefault( &_this->PushButtonConfigSelected, 
-  _Const00AD );
+  _Const00AF );
   WidgetSetPushButtonConfig_OnSetThumbBorderWidthDefault( &_this->PushButtonConfigSelected, 
   1 );
   WidgetSetPushButtonConfig_OnSetThumbColorDefault( &_this->PushButtonConfigSelected, 
-  _Const00B0 );
+  _Const00B2 );
   WidgetSetPushButtonConfig_OnSetLabelColorActive( &_this->PushButtonConfigSelected, 
-  _Const00AF );
+  _Const00B1 );
   WidgetSetPushButtonConfig_OnSetLabelColorFocused( &_this->PushButtonConfigSelected, 
-  _Const00AF );
+  _Const00B1 );
   WidgetSetPushButtonConfig_OnSetLabelColorDisabled( &_this->PushButtonConfigSelected, 
-  _Const00AF );
+  _Const00B1 );
   WidgetSetPushButtonConfig_OnSetLabelColorDefault( &_this->PushButtonConfigSelected, 
-  _Const00AF );
-  CoreRectView__OnSetBounds( &_this->Image, _Const00B1 );
+  _Const00B1 );
+  CoreRectView__OnSetBounds( &_this->Image, _Const00B3 );
   ViewsImage_OnSetAlignment( &_this->Image, ViewsImageAlignmentAlignHorzCenter | 
   ViewsImageAlignmentAlignVertCenter | ViewsImageAlignmentScaleToFit );
-  CoreRectView__OnSetBounds( &_this->Text, _Const00B2 );
+  CoreRectView__OnSetBounds( &_this->Text, _Const00B4 );
   ViewsText_OnSetColorBL( &_this->Text, _Const0033 );
   ViewsText_OnSetColorBR( &_this->Text, _Const0034 );
   ViewsText_OnSetColorTR( &_this->Text, _Const0035 );
   ViewsText_OnSetColorTL( &_this->Text, _Const0036 );
-  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00B3 ));
-  CoreRectView__OnSetBounds( &_this->PushButton, _Const00B4 );
+  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00B5 ));
+  CoreRectView__OnSetBounds( &_this->PushButton, _Const00B6 );
   WidgetSetPushButton_OnSetIconFrame( &_this->PushButton, 9 );
   WidgetSetPushButton_OnSetLabel( &_this->PushButton, 0 );
   WidgetSetPushButtonConfig_OnSetThumbShadowColorFocused( &_this->PushButtonConfig, 
@@ -4667,24 +5119,24 @@ void ApplicationShop__Init( ApplicationShop _this, XObject aLink, XHandle aArg )
   WidgetSetPushButtonConfig_OnSetFaceTintFocused( &_this->PushButtonConfig, _Const0050 );
   WidgetSetPushButtonConfig_OnSetFaceTintDisabled( &_this->PushButtonConfig, _Const0050 );
   WidgetSetPushButtonConfig_OnSetFaceTintDefault( &_this->PushButtonConfig, _Const0050 );
-  _this->Songs[ 0 ] = EwShareString( EwLoadString( &_Const00B5 ));
-  _this->Songs[ 1 ] = EwShareString( EwLoadString( &_Const00B6 ));
-  _this->Songs[ 2 ] = EwShareString( EwLoadString( &_Const00B7 ));
-  _this->Songs[ 3 ] = EwShareString( EwLoadString( &_Const00B8 ));
-  _this->Songs[ 4 ] = EwShareString( EwLoadString( &_Const00B9 ));
-  _this->Songs[ 5 ] = EwShareString( EwLoadString( &_Const00BA ));
-  _this->Songs[ 6 ] = EwShareString( EwLoadString( &_Const00BB ));
-  _this->Songs[ 7 ] = EwShareString( EwLoadString( &_Const00BC ));
-  _this->Songs[ 8 ] = EwShareString( EwLoadString( &_Const00BD ));
-  _this->Songs[ 9 ] = EwShareString( EwLoadString( &_Const00BE ));
-  _this->Songs[ 10 ] = EwShareString( EwLoadString( &_Const00BF ));
-  _this->Songs[ 11 ] = EwShareString( EwLoadString( &_Const00C0 ));
-  _this->Songs[ 12 ] = EwShareString( EwLoadString( &_Const00C1 ));
-  _this->Songs[ 13 ] = EwShareString( EwLoadString( &_Const00C2 ));
-  _this->Songs[ 14 ] = EwShareString( EwLoadString( &_Const00C3 ));
-  _this->Songs[ 15 ] = EwShareString( EwLoadString( &_Const00C4 ));
-  CoreRectView__OnSetBounds( &_this->PacksBtn, _Const00C5 );
-  WidgetSetPushButton_OnSetLabel( &_this->PacksBtn, EwLoadString( &_Const00C6 ));
+  _this->Songs[ 0 ] = EwShareString( EwLoadString( &_Const00B7 ));
+  _this->Songs[ 1 ] = EwShareString( EwLoadString( &_Const00B8 ));
+  _this->Songs[ 2 ] = EwShareString( EwLoadString( &_Const00B9 ));
+  _this->Songs[ 3 ] = EwShareString( EwLoadString( &_Const00BA ));
+  _this->Songs[ 4 ] = EwShareString( EwLoadString( &_Const00BB ));
+  _this->Songs[ 5 ] = EwShareString( EwLoadString( &_Const00BC ));
+  _this->Songs[ 6 ] = EwShareString( EwLoadString( &_Const00BD ));
+  _this->Songs[ 7 ] = EwShareString( EwLoadString( &_Const00BE ));
+  _this->Songs[ 8 ] = EwShareString( EwLoadString( &_Const00BF ));
+  _this->Songs[ 9 ] = EwShareString( EwLoadString( &_Const00C0 ));
+  _this->Songs[ 10 ] = EwShareString( EwLoadString( &_Const00C1 ));
+  _this->Songs[ 11 ] = EwShareString( EwLoadString( &_Const00C2 ));
+  _this->Songs[ 12 ] = EwShareString( EwLoadString( &_Const00C3 ));
+  _this->Songs[ 13 ] = EwShareString( EwLoadString( &_Const00C4 ));
+  _this->Songs[ 14 ] = EwShareString( EwLoadString( &_Const00C5 ));
+  _this->Songs[ 15 ] = EwShareString( EwLoadString( &_Const00C6 ));
+  CoreRectView__OnSetBounds( &_this->PacksBtn, _Const00C7 );
+  WidgetSetPushButton_OnSetLabel( &_this->PacksBtn, EwLoadString( &_Const00C8 ));
   CoreGroup__Add( _this, ((CoreView)&_this->Rectangle ), 0 );
   CoreGroup__Add( _this, ((CoreView)&_this->Rectangle1 ), 0 );
   CoreGroup__Add( _this, ((CoreView)&_this->SlideTouchHandler ), 0 );
@@ -4718,7 +5170,6 @@ void ApplicationShop__Init( ApplicationShop _this, XObject aLink, XHandle aArg )
   WidgetSetPushButtonConfig_OnSetFaceBitmapFocused( &_this->PushButtonConfig, 0 );
   WidgetSetPushButtonConfig_OnSetFaceBitmapDisabled( &_this->PushButtonConfig, 0 );
   WidgetSetPushButtonConfig_OnSetFaceBitmapDefault( &_this->PushButtonConfig, 0 );
-  _this->Obj = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass );
   _this->PacksBtn.OnPress = EwNewSlot( _this, ApplicationShop_SelectShopTab );
   WidgetSetPushButton_OnSetAppearance( &_this->PacksBtn, &_this->PushButtonConfigNormal );
 
@@ -4783,24 +5234,26 @@ void ApplicationShop_Init( ApplicationShop _this, XHandle aArg )
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( aArg );
 
-  ApplicationDeviceClass_OnSetShopTab( _this->Obj, 1 );
-  ViewsText_OnSetString( &_this->Text, EwNewStringInt( _this->Obj->Coins, 0, 10 ));
+  ApplicationDeviceClass_OnSetShopTab( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), 
+  1 );
+  ApplicationDeviceClass_GetShopArrays( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ));
+  ViewsText_OnSetString( &_this->Text, EwNewStringInt( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass )->Coins, 0, 10 ));
   EwAttachRefObserver( EwNewSlot( _this, ApplicationShop_UpdateOnBuy ), EwNewRef( 
-    _this->Obj, ApplicationDeviceClass_OnGetCoins, ApplicationDeviceClass_OnSetCoins ), 
-    0 );
+    EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), ApplicationDeviceClass_OnGetCoins, 
+    ApplicationDeviceClass_OnSetCoins ), 0 );
   EwAttachRefObserver( EwNewSlot( _this, ApplicationShop_UpdateOnBuy ), EwNewRef( 
-    _this->Obj, ApplicationDeviceClass_OnGetActiveCup, ApplicationDeviceClass_OnSetActiveCup ), 
-    0 );
+    EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), ApplicationDeviceClass_OnGetActiveCup, 
+    ApplicationDeviceClass_OnSetActiveCup ), 0 );
   EwAttachRefObserver( EwNewSlot( _this, ApplicationShop_UpdateOnBuy ), EwNewRef( 
-    _this->Obj, ApplicationDeviceClass_OnGetActiveBall, ApplicationDeviceClass_OnSetActiveBall ), 
-    0 );
+    EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), ApplicationDeviceClass_OnGetActiveBall, 
+    ApplicationDeviceClass_OnSetActiveBall ), 0 );
   EwAttachRefObserver( EwNewSlot( _this, ApplicationShop_UpdateOnBuy ), EwNewRef( 
-    _this->Obj, ApplicationDeviceClass_OnGetActiveMusic, ApplicationDeviceClass_OnSetActiveMusic ), 
-    0 );
+    EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), ApplicationDeviceClass_OnGetActiveMusic, 
+    ApplicationDeviceClass_OnSetActiveMusic ), 0 );
   EwAttachRefObserver( EwNewSlot( _this, ApplicationShop_UpdateOnBuy ), EwNewRef( 
-    _this->Obj, ApplicationDeviceClass_OnGetHallAct, ApplicationDeviceClass_OnSetHallAct ), 
-    0 );
-  ApplicationShop_BringFromDB( _this );
+    EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), ApplicationDeviceClass_OnGetHallAct, 
+    ApplicationDeviceClass_OnSetHallAct ), 0 );
 }
 
 /* This method is called by 'HorizontalList' every time the list loads or updates 
@@ -4820,9 +5273,10 @@ void ApplicationShop_OnLoadItem( ApplicationShop _this, XObject sender )
   if ( itemView == 0 )
     return;
 
-  ApplicationShop_BringFromDB( _this );
-  ApplicationShopListItem_OnSetProperty( itemView, _this->Obj->ShopTab );
-  coins = _this->Obj->Coins;
+  ApplicationDeviceClass_GetShopArrays( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ));
+  ApplicationShopListItem_OnSetProperty( itemView, EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass )->ShopTab );
+  coins = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Coins;
 
   if ( itemView->Property == 1 )
   {
@@ -4835,7 +5289,8 @@ void ApplicationShop_OnLoadItem( ApplicationShop _this, XObject sender )
     else
       ApplicationShopListItem_OnSetPrice( itemView, 1000 );
 
-    if ( _this->Obj->CupsArray[ EwCheckIndex( itemNo, 13 )])
+    if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->CupsArray[ 
+        EwCheckIndex( itemNo, 13 )])
       ApplicationShopListItem_OnSetBought( itemView, 1 );
   }
   else
@@ -4850,7 +5305,8 @@ void ApplicationShop_OnLoadItem( ApplicationShop _this, XObject sender )
       else
         ApplicationShopListItem_OnSetPrice( itemView, 1000 );
 
-      if ( _this->Obj->BallsArray[ EwCheckIndex( itemNo, 10 )])
+      if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->BallsArray[ 
+          EwCheckIndex( itemNo, 10 )])
         ApplicationShopListItem_OnSetBought( itemView, 1 );
     }
     else
@@ -4863,7 +5319,8 @@ void ApplicationShop_OnLoadItem( ApplicationShop _this, XObject sender )
         ViewsText_OnSetString( &itemView->SongName, _this->Songs[ EwCheckIndex( 
         itemNo, 16 )]);
 
-        if ( _this->Obj->MusicsArray[ EwCheckIndex( itemNo, 16 )])
+        if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->MusicsArray[ 
+            EwCheckIndex( itemNo, 16 )])
           ApplicationShopListItem_OnSetBought( itemView, 1 );
       }
       else
@@ -4873,14 +5330,15 @@ void ApplicationShop_OnLoadItem( ApplicationShop _this, XObject sender )
         ApplicationShopListItem_OnSetBought( itemView, 0 );
         ApplicationShopListItem_OnSetPrice( itemView, 6000 );
 
-        if ( _this->Obj->HallPack == 1 )
+        if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->HallPack 
+            == 1 )
           ApplicationShopListItem_OnSetBought( itemView, 1 );
       }
 
   if ( coins >= itemView->Price )
-    ApplicationShopListItem_OnSetColor( itemView, _Const00C7 );
+    ApplicationShopListItem_OnSetColor( itemView, _Const00C9 );
   else
-    ApplicationShopListItem_OnSetColor( itemView, _Const00C8 );
+    ApplicationShopListItem_OnSetColor( itemView, _Const00CA );
 
   CoreRectView__OnSetBounds( itemView, EwSetRectSize( itemView->Super2.Bounds, _this->HorizontalList.ViewSize ));
 }
@@ -4896,7 +5354,8 @@ void ApplicationShop_SelectShopTab( ApplicationShop _this, XObject sender )
     WidgetSetPushButton_OnSetAppearance( &_this->BallsBtn, &_this->PushButtonConfigNormal );
     WidgetSetPushButton_OnSetAppearance( &_this->MusicBtn, &_this->PushButtonConfigNormal );
     WidgetSetPushButton_OnSetAppearance( &_this->PacksBtn, &_this->PushButtonConfigNormal );
-    ApplicationDeviceClass_OnSetShopTab( _this->Obj, 1 );
+    ApplicationDeviceClass_OnSetShopTab( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass ), 
+    1 );
     CoreHorizontalList_OnSetNoOfItems( &_this->HorizontalList, 13 );
     CoreHorizontalList_InvalidateItems( &_this->HorizontalList, 0, _this->HorizontalList.NoOfItems 
     - 1 );
@@ -4908,7 +5367,8 @@ void ApplicationShop_SelectShopTab( ApplicationShop _this, XObject sender )
       WidgetSetPushButton_OnSetAppearance( &_this->CupsBtn, &_this->PushButtonConfigNormal );
       WidgetSetPushButton_OnSetAppearance( &_this->MusicBtn, &_this->PushButtonConfigNormal );
       WidgetSetPushButton_OnSetAppearance( &_this->PacksBtn, &_this->PushButtonConfigNormal );
-      ApplicationDeviceClass_OnSetShopTab( _this->Obj, 2 );
+      ApplicationDeviceClass_OnSetShopTab( EwGetAutoObject( &ApplicationDevice, 
+      ApplicationDeviceClass ), 2 );
       CoreHorizontalList_OnSetNoOfItems( &_this->HorizontalList, 10 );
       CoreHorizontalList_InvalidateItems( &_this->HorizontalList, 0, _this->HorizontalList.NoOfItems 
       - 1 );
@@ -4920,7 +5380,8 @@ void ApplicationShop_SelectShopTab( ApplicationShop _this, XObject sender )
         WidgetSetPushButton_OnSetAppearance( &_this->BallsBtn, &_this->PushButtonConfigNormal );
         WidgetSetPushButton_OnSetAppearance( &_this->CupsBtn, &_this->PushButtonConfigNormal );
         WidgetSetPushButton_OnSetAppearance( &_this->PacksBtn, &_this->PushButtonConfigNormal );
-        ApplicationDeviceClass_OnSetShopTab( _this->Obj, 3 );
+        ApplicationDeviceClass_OnSetShopTab( EwGetAutoObject( &ApplicationDevice, 
+        ApplicationDeviceClass ), 3 );
         CoreHorizontalList_OnSetNoOfItems( &_this->HorizontalList, 16 );
         CoreHorizontalList_InvalidateItems( &_this->HorizontalList, 0, _this->HorizontalList.NoOfItems 
         - 1 );
@@ -4931,7 +5392,8 @@ void ApplicationShop_SelectShopTab( ApplicationShop _this, XObject sender )
         WidgetSetPushButton_OnSetAppearance( &_this->CupsBtn, &_this->PushButtonConfigNormal );
         WidgetSetPushButton_OnSetAppearance( &_this->BallsBtn, &_this->PushButtonConfigNormal );
         WidgetSetPushButton_OnSetAppearance( &_this->MusicBtn, &_this->PushButtonConfigNormal );
-        ApplicationDeviceClass_OnSetShopTab( _this->Obj, 4 );
+        ApplicationDeviceClass_OnSetShopTab( EwGetAutoObject( &ApplicationDevice, 
+        ApplicationDeviceClass ), 4 );
         CoreHorizontalList_OnSetNoOfItems( &_this->HorizontalList, 1 );
         CoreHorizontalList_InvalidateItems( &_this->HorizontalList, 0, _this->HorizontalList.NoOfItems 
         - 1 );
@@ -4944,10 +5406,13 @@ void ApplicationShop_UpdateOnBuy( ApplicationShop _this, XObject sender )
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( sender );
 
-  ViewsText_OnSetString( &_this->Text, EwNewStringInt( _this->Obj->Coins, 0, 10 ));
+  EwTrace( "%s", EwLoadString( &_Const00CB ));
+  ViewsText_OnSetString( &_this->Text, EwNewStringInt( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass )->Coins, 0, 10 ));
   CoreHorizontalList_InvalidateItems( &_this->HorizontalList, 0, _this->HorizontalList.NoOfItems 
   - 1 );
-  ApplicationShop_UpdateArr( _this );
+  ApplicationDeviceClass_UpdateShopArrays( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ));
 }
 
 /* 'C' function for method : 'Application::Shop.Back()' */
@@ -4957,124 +5422,9 @@ void ApplicationShop_Back( ApplicationShop _this, XObject sender )
   EW_UNUSED_ARG( _this );
   EW_UNUSED_ARG( sender );
 
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  0;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeMainMenu );
-}
-
-/* 'C' function for method : 'Application::Shop.BringFromDB()' */
-void ApplicationShop_BringFromDB( ApplicationShop _this )
-{
-  XInt32 ACup = 10;
-  XInt32 ABall = 5;
-  XInt32 AMusic = 14;
-  XInt32 Coins = 6000;
-  XBool AHall = 0;
-
-  {
-    ACup=GetActiveCup();
-    ABall=GetActiveBall();
-    AMusic=GetActiveMusic();
-    Coins=GetCoins();
-    AHall=GetHalloweenActive();
-  }
-  ApplicationDeviceClass_OnSetActiveCup( _this->Obj, ACup );
-  ApplicationDeviceClass_OnSetActiveBall( _this->Obj, ABall );
-  ApplicationDeviceClass_OnSetActiveMusic( _this->Obj, AMusic );
-  ApplicationDeviceClass_OnSetCoins( _this->Obj, Coins );
-  ApplicationDeviceClass_OnSetHallAct( _this->Obj, AHall );
-  ApplicationShop_GetArrays( _this );
-}
-
-/* 'C' function for method : 'Application::Shop.UpdateArr()' */
-void ApplicationShop_UpdateArr( ApplicationShop _this )
-{
-  XBool CupsArray[ 13 ] = {0};
-  XBool BallsArray[ 10 ] = {0};
-  XBool MusicArray[ 16 ] = {0};
-  XBool hallPack = _this->Obj->HallPack;
-  XBool hallAct = _this->Obj->HallAct;
-  XInt32 i;
-
-  for ( i = 0; i < 13; i++ )
-    CupsArray[ EwCheckIndex( i, 13 )] = _this->Obj->CupsArray[ EwCheckIndex( i, 
-    13 )];
-
-  for ( i = 0; i < 10; i++ )
-    BallsArray[ EwCheckIndex( i, 10 )] = _this->Obj->BallsArray[ EwCheckIndex( i, 
-    10 )];
-
-  for ( i = 0; i < 16; i++ )
-    MusicArray[ EwCheckIndex( i, 16 )] = _this->Obj->MusicsArray[ EwCheckIndex( 
-    i, 16 )];
-
-  {
-    UpdateArrays(CupsArray,BallsArray,MusicArray);
-    SetHalloweenBought(hallPack);
-    SetHalloweenActive(hallAct);
-    var cups=GetCupsArray();
-    var balls=GetBallsArray();
-    var musics=GetMusicArray();
-    for(let i=0;i<cups.length;i++)
-        CupsArray[i]=cups[i];
-    for(i=0;i<balls.length;i++)
-        BallsArray[i]=balls[i];
-    for(i=0;i<musics.length;i++)
-        MusicArray[i]=musics[i];
-  }
-
-  for ( i = 0; i < 13; i++ )
-    _this->Obj->CupsArray[ EwCheckIndex( i, 13 )] = CupsArray[ EwCheckIndex( i, 
-    13 )];
-
-  for ( i = 0; i < 10; i++ )
-    _this->Obj->BallsArray[ EwCheckIndex( i, 10 )] = BallsArray[ EwCheckIndex( i, 
-    10 )];
-
-  for ( i = 0; i < 16; i++ )
-    _this->Obj->MusicsArray[ EwCheckIndex( i, 16 )] = MusicArray[ EwCheckIndex( 
-    i, 16 )];
-
-  ApplicationDeviceClass_OnSetHallPack( _this->Obj, hallPack );
-  ApplicationDeviceClass_OnSetHallAct( _this->Obj, hallAct );
-}
-
-/* 'C' function for method : 'Application::Shop.GetArrays()' */
-void ApplicationShop_GetArrays( ApplicationShop _this )
-{
-  XBool CupsArray[ 13 ] = {0};
-  XBool BallsArray[ 10 ] = {0};
-  XBool MusicArray[ 16 ] = {0};
-  XBool hallPack = _this->Obj->HallPack;
-  XInt32 i;
-
-  {
-    var cups=GetCupsArray();
-    var balls=GetBallsArray();
-    var musics=GetMusicArray();
-    hallPack=GetHalloweenBought();
-    for(let i=0;i<cups.length;i++)
-        CupsArray[i]=cups[i];
-    for(i=0;i<balls.length;i++)
-        BallsArray[i]=balls[i];
-    for(i=0;i<musics.length;i++)
-        MusicArray[i]=musics[i];
-  }
-
-  for ( i = 0; i < 13; i++ )
-    _this->Obj->CupsArray[ EwCheckIndex( i, 13 )] = CupsArray[ EwCheckIndex( i, 
-    13 )];
-
-  for ( i = 0; i < 10; i++ )
-    _this->Obj->BallsArray[ EwCheckIndex( i, 10 )] = BallsArray[ EwCheckIndex( i, 
-    10 )];
-
-  for ( i = 0; i < 16; i++ )
-    _this->Obj->MusicsArray[ EwCheckIndex( i, 16 )] = MusicArray[ EwCheckIndex( 
-    i, 16 )];
-
-  ApplicationDeviceClass_OnSetHallPack( _this->Obj, hallPack );
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 0;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeMainMenu );
 }
 
 /* Variants derived from the class : 'Application::Shop' */
@@ -5082,7 +5432,7 @@ EW_DEFINE_CLASS_VARIANTS( ApplicationShop )
 EW_END_OF_CLASS_VARIANTS( ApplicationShop )
 
 /* Virtual Method Table (VMT) for the class : 'Application::Shop' */
-EW_DEFINE_CLASS( ApplicationShop, CoreGroup, Rectangle, Obj, Songs, Songs, Songs, 
+EW_DEFINE_CLASS( ApplicationShop, CoreGroup, Rectangle, Songs, Songs, Songs, Songs, 
                  _.VMT, "Application::Shop" )
   CoreRectView_initLayoutContext,
   CoreView_GetRoot,
@@ -5137,61 +5487,61 @@ void ApplicationShopListItem__Init( ApplicationShopListItem _this, XObject aLink
   _this->_.VMT = EW_CLASS( ApplicationShopListItem );
 
   /* ... and initialize objects, variables, properties, etc. */
-  CoreRectView__OnSetBounds( _this, _Const00C9 );
-  CoreRectView__OnSetBounds( &_this->Image, _Const00CA );
+  CoreRectView__OnSetBounds( _this, _Const00CC );
+  CoreRectView__OnSetBounds( &_this->Image, _Const00CD );
   ViewsImage_OnSetFrameNumber( &_this->Image, -1 );
   ViewsImage_OnSetVisible( &_this->Image, 1 );
   CoreView_OnSetStackingPriority((CoreView)&_this->PushButton, 0 );
-  CoreRectView__OnSetBounds( &_this->PushButton, _Const00CB );
-  WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00CC ));
+  CoreRectView__OnSetBounds( &_this->PushButton, _Const00CE );
+  WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00CF ));
   WidgetSetPushButtonConfig_OnSetThumbShadowColorFocused( &_this->PushButtonConfigBuy, 
   _Const002E );
   WidgetSetPushButtonConfig_OnSetThumbShadowOffsetFocused( &_this->PushButtonConfigBuy, 
   _Const0004 );
   WidgetSetPushButtonConfig_OnSetThumbBorderColorActive( &_this->PushButtonConfigBuy, 
-  _Const00AD );
+  _Const00AF );
   WidgetSetPushButtonConfig_OnSetThumbBorderColorFocused( &_this->PushButtonConfigBuy, 
-  _Const00AD );
+  _Const00AF );
   WidgetSetPushButtonConfig_OnSetThumbBorderColorDefault( &_this->PushButtonConfigBuy, 
-  _Const00AD );
+  _Const00AF );
   WidgetSetPushButtonConfig_OnSetThumbBorderWidthDefault( &_this->PushButtonConfigBuy, 
   1 );
   WidgetSetPushButtonConfig_OnSetThumbColorActive( &_this->PushButtonConfigBuy, 
-  _Const00CD );
+  _Const00D0 );
   WidgetSetPushButtonConfig_OnSetThumbColorFocused( &_this->PushButtonConfigBuy, 
-  _Const00CE );
+  _Const00D1 );
   WidgetSetPushButtonConfig_OnSetThumbColorDefault( &_this->PushButtonConfigBuy, 
-  _Const00CE );
+  _Const00D1 );
   WidgetSetPushButtonConfig_OnSetLabelColorActive( &_this->PushButtonConfigBuy, 
-  _Const00CF );
+  _Const00D2 );
   WidgetSetPushButtonConfig_OnSetLabelColorFocused( &_this->PushButtonConfigBuy, 
-  _Const00CF );
+  _Const00D2 );
   WidgetSetPushButtonConfig_OnSetLabelColorDisabled( &_this->PushButtonConfigBuy, 
-  _Const00CF );
+  _Const00D2 );
   WidgetSetPushButtonConfig_OnSetLabelColorDefault( &_this->PushButtonConfigBuy, 
-  _Const00CF );
-  CoreRectView__OnSetBounds( &_this->Text, _Const00D0 );
-  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00D1 ));
-  ViewsText_OnSetColor( &_this->Text, _Const00C8 );
+  _Const00D2 );
+  CoreRectView__OnSetBounds( &_this->Text, _Const00D3 );
+  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00D4 ));
+  ViewsText_OnSetColor( &_this->Text, _Const00CA );
   _this->ImageNr = -1;
   WidgetSetPushButtonConfig_OnSetThumbShadowColorFocused( &_this->PushButtonConfigSold, 
   _Const002E );
   WidgetSetPushButtonConfig_OnSetThumbShadowOffsetFocused( &_this->PushButtonConfigSold, 
   _Const0004 );
   WidgetSetPushButtonConfig_OnSetThumbBorderColorActive( &_this->PushButtonConfigSold, 
-  _Const00AD );
+  _Const00AF );
   WidgetSetPushButtonConfig_OnSetThumbBorderColorFocused( &_this->PushButtonConfigSold, 
-  _Const00AD );
+  _Const00AF );
   WidgetSetPushButtonConfig_OnSetThumbBorderColorDefault( &_this->PushButtonConfigSold, 
-  _Const00AD );
+  _Const00AF );
   WidgetSetPushButtonConfig_OnSetThumbBorderWidthDefault( &_this->PushButtonConfigSold, 
   1 );
   WidgetSetPushButtonConfig_OnSetThumbColorActive( &_this->PushButtonConfigSold, 
-  _Const00D2 );
+  _Const00D5 );
   WidgetSetPushButtonConfig_OnSetThumbColorFocused( &_this->PushButtonConfigSold, 
-  _Const00D3 );
+  _Const00D6 );
   WidgetSetPushButtonConfig_OnSetThumbColorDefault( &_this->PushButtonConfigSold, 
-  _Const00D3 );
+  _Const00D6 );
   WidgetSetPushButtonConfig_OnSetLabelColorActive( &_this->PushButtonConfigSold, 
   _Const002C );
   WidgetSetPushButtonConfig_OnSetLabelColorFocused( &_this->PushButtonConfigSold, 
@@ -5200,14 +5550,14 @@ void ApplicationShopListItem__Init( ApplicationShopListItem _this, XObject aLink
   _Const002C );
   WidgetSetPushButtonConfig_OnSetLabelColorDefault( &_this->PushButtonConfigSold, 
   _Const002C );
-  _this->Color = _Const00C8;
+  _this->Color = _Const00CA;
   _this->Property = 1;
   CoreView_OnSetStackingPriority((CoreView)&_this->Active, 10 );
-  CoreRectView__OnSetBounds( &_this->Active, _Const00D4 );
+  CoreRectView__OnSetBounds( &_this->Active, _Const00D7 );
   ViewsImage_OnSetAlignment( &_this->Active, ViewsImageAlignmentAlignHorzCenter 
   | ViewsImageAlignmentAlignVertCenter | ViewsImageAlignmentScaleToFit );
   ViewsImage_OnSetVisible( &_this->Active, 0 );
-  CoreRectView__OnSetBounds( &_this->SongName, _Const00D5 );
+  CoreRectView__OnSetBounds( &_this->SongName, _Const00D8 );
   ViewsText_OnSetString( &_this->SongName, 0 );
   ViewsText_OnSetColor( &_this->SongName, _Const0030 );
   ViewsText_OnSetVisible( &_this->SongName, 0 );
@@ -5225,7 +5575,6 @@ void ApplicationShopListItem__Init( ApplicationShopListItem _this, XObject aLink
   ViewsText_OnSetFont( &_this->Text, EwLoadResource( &ApplicationFont1, ResourcesFont ));
   WidgetSetPushButtonConfig_OnSetLabelFont( &_this->PushButtonConfigSold, EwLoadResource( 
   &ApplicationFont1, ResourcesFont ));
-  _this->Obj = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass );
   ViewsImage_OnSetBitmap( &_this->Active, EwLoadResource( &ApplicationCheck, ResourcesBitmap ));
   ViewsText_OnSetFont( &_this->SongName, EwLoadResource( &ApplicationMusicFont, 
   ResourcesFont ));
@@ -5380,44 +5729,63 @@ void ApplicationShopListItem_OnSetProperty( ApplicationShopListItem _this, XInt3
 /* 'C' function for method : 'Application::ShopListItem.Buy()' */
 void ApplicationShopListItem_Buy( ApplicationShopListItem _this, XObject sender )
 {
+  /* List of temporarily used variables */
+  void* _tmpO0;
   WidgetSetPushButton btn = EwCastObject( sender, WidgetSetPushButton );
-  XInt32 frame = 2;
+  XInt32 frame = -1;
 
-  if ( !EwCompString( btn->Label, EwLoadString( &_Const00CC )))
+  if ( !EwCompString( btn->Label, EwLoadString( &_Const00CF )))
   {
-    if ( _this->Obj->Coins >= _this->Price )
+    if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Coins >= 
+        _this->Price )
     {
       ApplicationShopListItem_OnSetBought( _this, 1 );
 
-      if ( _this->Obj->ShopTab == 1 )
+      if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab 
+          == 1 )
       {
-        _this->Obj->CupsArray[ EwCheckIndex( _this->ImageNr, 13 )] = 1;
-        ApplicationDeviceClass_OnSetCoins( _this->Obj, _this->Obj->Coins - _this->Price );
+        EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->CupsArray[ 
+        EwCheckIndex( _this->ImageNr, 13 )] = 1;
+        ((void)( _tmpO0 = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )), 
+        ApplicationDeviceClass_OnSetCoins((ApplicationDeviceClass)_tmpO0, ((ApplicationDeviceClass)_tmpO0)->Coins 
+        - _this->Price ));
       }
       else
-        if ( _this->Obj->ShopTab == 2 )
+        if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab 
+            == 2 )
         {
-          _this->Obj->BallsArray[ EwCheckIndex( _this->ImageNr, 10 )] = 1;
-          ApplicationDeviceClass_OnSetCoins( _this->Obj, _this->Obj->Coins - _this->Price );
+          EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->BallsArray[ 
+          EwCheckIndex( _this->ImageNr, 10 )] = 1;
+          ((void)( _tmpO0 = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )), 
+          ApplicationDeviceClass_OnSetCoins((ApplicationDeviceClass)_tmpO0, ((ApplicationDeviceClass)_tmpO0)->Coins 
+          - _this->Price ));
         }
         else
-          if ( _this->Obj->ShopTab == 3 )
+          if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab 
+              == 3 )
           {
-            _this->Obj->MusicsArray[ EwCheckIndex( _this->ImageNr, 16 )] = 1;
-            ApplicationDeviceClass_OnSetCoins( _this->Obj, _this->Obj->Coins - _this->Price );
+            EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->MusicsArray[ 
+            EwCheckIndex( _this->ImageNr, 16 )] = 1;
+            ((void)( _tmpO0 = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )), 
+            ApplicationDeviceClass_OnSetCoins((ApplicationDeviceClass)_tmpO0, ((ApplicationDeviceClass)_tmpO0)->Coins 
+            - _this->Price ));
           }
           else
           {
-            ApplicationDeviceClass_OnSetHallPack( _this->Obj, 1 );
-            ApplicationDeviceClass_OnSetCoins( _this->Obj, _this->Obj->Coins - _this->Price );
+            ApplicationDeviceClass_OnSetHallPack( EwGetAutoObject( &ApplicationDevice, 
+            ApplicationDeviceClass ), 1 );
+            ((void)( _tmpO0 = EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )), 
+            ApplicationDeviceClass_OnSetCoins((ApplicationDeviceClass)_tmpO0, ((ApplicationDeviceClass)_tmpO0)->Coins 
+            - _this->Price ));
           }
 
-      ApplicationShopListItem_UpdateCoinsSpent( _this );
-      frame = ApplicationShopListItem_Check( _this, _this->Obj->ShopTab );
+      frame = ApplicationDeviceClass_CheckAchivements( EwGetAutoObject( &ApplicationDevice, 
+      ApplicationDeviceClass ), EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab );
 
       if ( frame != -1 )
       {
-        ApplicationDeviceClass_OnSetAchFrame( _this->Obj, frame );
+        ApplicationDeviceClass_OnSetFrame( EwGetAutoObject( &ApplicationDevice, 
+        ApplicationDeviceClass ), frame );
         CoreTimer_OnSetEnabled( &_this->AchPopDismiss, 1 );
         CoreGroup__PresentDialog( EwGetAppRootObject(), ((CoreGroup)EwNewObject( 
         ApplicationAchPop, 0 )), ((EffectsTransition)EwGetAutoObject( &EffectsSlideDownCentered, 
@@ -5426,40 +5794,47 @@ void ApplicationShopListItem_Buy( ApplicationShopListItem _this, XObject sender 
     }
   }
   else
-    if ( !EwCompString( btn->Label, EwLoadString( &_Const00D6 )))
+    if ( !EwCompString( btn->Label, EwLoadString( &_Const00D9 )))
     {
-      if ( _this->Obj->ShopTab == 1 )
-        ApplicationDeviceClass_OnSetActiveCup( _this->Obj, _this->ImageNr );
+      if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab 
+          == 1 )
+        ApplicationDeviceClass_OnSetActiveCup( EwGetAutoObject( &ApplicationDevice, 
+        ApplicationDeviceClass ), _this->ImageNr );
       else
-        if ( _this->Obj->ShopTab == 2 )
-          ApplicationDeviceClass_OnSetActiveBall( _this->Obj, _this->ImageNr );
+        if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab 
+            == 2 )
+          ApplicationDeviceClass_OnSetActiveBall( EwGetAutoObject( &ApplicationDevice, 
+          ApplicationDeviceClass ), _this->ImageNr );
         else
-          if ( _this->Obj->ShopTab == 3 )
+          if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab 
+              == 3 )
           {
-            ApplicationDeviceClass_OnSetActiveMusic( _this->Obj, _this->ImageNr );
-            ApplicationShopListItem_PlayNewActiveMusic( _this );
+            ApplicationDeviceClass_OnSetActiveMusic( EwGetAutoObject( &ApplicationDevice, 
+            ApplicationDeviceClass ), _this->ImageNr );
+            ApplicationDeviceClass_OnSetActiveMusicName( EwGetAutoObject( &ApplicationDevice, 
+            ApplicationDeviceClass ), _this->SongName.String );
           }
           else
-            ApplicationDeviceClass_OnSetHallAct( _this->Obj, 1 );
-
-      ApplicationShopListItem_UpdateActives( _this );
+            ApplicationDeviceClass_OnSetHallAct( EwGetAutoObject( &ApplicationDevice, 
+            ApplicationDeviceClass ), 1 );
     }
     else
-      if ( !EwCompString( btn->Label, EwLoadString( &_Const00D7 )) && ( _this->Obj->ShopTab 
-          == 4 ))
+      if ( !EwCompString( btn->Label, EwLoadString( &_Const00DA )) && ( EwGetAutoObject( 
+          &ApplicationDevice, ApplicationDeviceClass )->ShopTab == 4 ))
       {
         WidgetSetPushButton_OnSetAppearance( &_this->PushButton, &_this->PushButtonConfigSold );
-        ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00D8 ));
-        WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00D6 ));
-        ApplicationDeviceClass_OnSetHallAct( _this->Obj, 0 );
-        EwTrace( "%s%b", EwLoadString( &_Const00D9 ), _this->Obj->HallAct );
+        ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00DB ));
+        WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00D9 ));
+        ApplicationDeviceClass_OnSetHallAct( EwGetAutoObject( &ApplicationDevice, 
+        ApplicationDeviceClass ), 0 );
       }
 }
 
 /* 'C' function for method : 'Application::ShopListItem.SongNameVisible()' */
 void ApplicationShopListItem_SongNameVisible( ApplicationShopListItem _this )
 {
-  if ( _this->Obj->ShopTab == 3 )
+  if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab == 
+      3 )
   {
     if ( ViewsImage_OnGetVisible( &_this->Active ))
       ViewsText_OnSetVisible( &_this->SongName, 0 );
@@ -5470,33 +5845,22 @@ void ApplicationShopListItem_SongNameVisible( ApplicationShopListItem _this )
     ViewsText_OnSetVisible( &_this->SongName, 0 );
 }
 
-/* 'C' function for method : 'Application::ShopListItem.PlayNewActiveMusic()' */
-void ApplicationShopListItem_PlayNewActiveMusic( ApplicationShopListItem _this )
-{
-  XString name = _this->SongName.String;
-
-  {
-    SelectMusic(name);
-    SetActiveMusicName(name);
-  }
-}
-
 /* 'C' function for method : 'Application::ShopListItem.BoughtOrNot()' */
 void ApplicationShopListItem_BoughtOrNot( ApplicationShopListItem _this, XBool aArg1 )
 {
   if ( aArg1 )
   {
     WidgetSetPushButton_OnSetAppearance( &_this->PushButton, &_this->PushButtonConfigSold );
-    ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00D8 ));
+    ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00DB ));
 
     if ( ViewsImage_OnGetVisible( &_this->Active ))
-      WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00D7 ));
+      WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00DA ));
     else
-      WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00D6 ));
+      WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00D9 ));
   }
   else
   {
-    WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00CC ));
+    WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00CF ));
     WidgetSetPushButton_OnSetAppearance( &_this->PushButton, &_this->PushButtonConfigBuy );
     ViewsText_OnSetString( &_this->Text, EwNewStringInt( _this->Price, 0, 10 ));
   }
@@ -5505,77 +5869,41 @@ void ApplicationShopListItem_BoughtOrNot( ApplicationShopListItem _this, XBool a
 /* 'C' function for method : 'Application::ShopListItem.ActiveItem()' */
 void ApplicationShopListItem_ActiveItem( ApplicationShopListItem _this )
 {
-  if ( _this->Obj->ShopTab == 1 )
+  if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab == 
+      1 )
   {
-    if ( _this->Obj->ActiveCup == _this->ImageNr )
+    if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ActiveCup 
+        == _this->ImageNr )
       ViewsImage_OnSetVisible( &_this->Active, 1 );
     else
       ViewsImage_OnSetVisible( &_this->Active, 0 );
   }
   else
-    if ( _this->Obj->ShopTab == 2 )
+    if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab 
+        == 2 )
     {
-      if ( _this->Obj->ActiveBall == _this->ImageNr )
+      if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ActiveBall 
+          == _this->ImageNr )
         ViewsImage_OnSetVisible( &_this->Active, 1 );
       else
         ViewsImage_OnSetVisible( &_this->Active, 0 );
     }
     else
-      if ( _this->Obj->ShopTab == 3 )
+      if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab 
+          == 3 )
       {
-        if ( _this->Obj->ActiveMusic == _this->ImageNr )
+        if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ActiveMusic 
+            == _this->ImageNr )
           ViewsImage_OnSetVisible( &_this->Active, 1 );
         else
           ViewsImage_OnSetVisible( &_this->Active, 0 );
       }
       else
-        if ( _this->Obj->HallAct == 1 )
+        if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->HallAct 
+            == 1 )
           ViewsImage_OnSetVisible( &_this->Active, 1 );
         else
           ViewsImage_OnSetVisible( &_this->Active, 0 );
-}
-
-/* 'C' function for method : 'Application::ShopListItem.UpdateCoinsSpent()' */
-void ApplicationShopListItem_UpdateCoinsSpent( ApplicationShopListItem _this )
-{
-  XInt32 moneySpent = _this->Price;
-  XBool pack = _this->Obj->HallPack;
-
-  {
-    UpdateMoney(-moneySpent);
-    SetHalloweenBought(pack);
-  }
-}
-
-/* 'C' function for method : 'Application::ShopListItem.UpdateActives()' */
-void ApplicationShopListItem_UpdateActives( ApplicationShopListItem _this )
-{
-  XInt32 ACup = _this->Obj->ActiveCup;
-  XInt32 ABall = _this->Obj->ActiveBall;
-  XInt32 AMusic = _this->Obj->ActiveMusic;
-  XBool APack = _this->Obj->HallAct;
-
-  UpdatePrefs(ACup,ABall,AMusic,APack);
-}
-
-/* 'C' function for method : 'Application::ShopListItem.Check()' */
-XInt32 ApplicationShopListItem_Check( ApplicationShopListItem _this, XInt32 aArg1 )
-{
-  XInt32 frame;
-
-  /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
-  EW_UNUSED_ARG( _this );
-
-  frame = 2;
-  {
-    switch(aArg1){
-       case 1: {frame=CheckCupsAchievements();break;}
-       case 2: {frame=CheckBallsAchievements();break;}
-       case 3: {frame=CheckMusicAchievements();break;}
-       case 4: {frame=CheckHalloween();break;}
-    }
-  }
-  return frame;
 }
 
 /* 'C' function for method : 'Application::ShopListItem.AchPopTrigger()' */
@@ -5596,8 +5924,8 @@ EW_DEFINE_CLASS_VARIANTS( ApplicationShopListItem )
 EW_END_OF_CLASS_VARIANTS( ApplicationShopListItem )
 
 /* Virtual Method Table (VMT) for the class : 'Application::ShopListItem' */
-EW_DEFINE_CLASS( ApplicationShopListItem, CoreGroup, Image, Obj, Price, Price, Price, 
-                 Price, "Application::ShopListItem" )
+EW_DEFINE_CLASS( ApplicationShopListItem, CoreGroup, Image, Price, Price, Price, 
+                 Price, Price, "Application::ShopListItem" )
   CoreRectView_initLayoutContext,
   CoreView_GetRoot,
   CoreGroup_Draw,
@@ -5690,22 +6018,22 @@ void ApplicationHelpMenu__Init( ApplicationHelpMenu _this, XObject aLink, XHandl
   ViewsRectangle_OnSetColorBR( &_this->Rectangle, _Const0048 );
   ViewsRectangle_OnSetColorTL( &_this->Rectangle, _Const0049 );
   ViewsRectangle_OnSetColor( &_this->Rectangle, _Const002C );
-  CoreRectView__OnSetBounds( &_this->Text, _Const00DA );
-  ViewsText_OnSetColorBL( &_this->Text, _Const00DB );
-  ViewsText_OnSetColorBR( &_this->Text, _Const00DC );
-  ViewsText_OnSetColorTR( &_this->Text, _Const00DD );
-  ViewsText_OnSetColorTL( &_this->Text, _Const00DE );
-  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00DF ));
+  CoreRectView__OnSetBounds( &_this->Text, _Const00DC );
+  ViewsText_OnSetColorBL( &_this->Text, _Const00DD );
+  ViewsText_OnSetColorBR( &_this->Text, _Const00DE );
+  ViewsText_OnSetColorTR( &_this->Text, _Const00DF );
+  ViewsText_OnSetColorTL( &_this->Text, _Const00E0 );
+  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00E1 ));
   CoreView_OnSetLayout((CoreView)&_this->Text1, CoreLayoutAlignToLeft | CoreLayoutAlignToTop );
-  CoreRectView__OnSetBounds( &_this->Text1, _Const00E0 );
+  CoreRectView__OnSetBounds( &_this->Text1, _Const00E2 );
   ViewsText_OnSetPadding( &_this->Text1, 10 );
   ViewsText_OnSetRowDistance( &_this->Text1, 35 );
   ViewsText_OnSetWrapText( &_this->Text1, 1 );
   ViewsText_OnSetAlignment( &_this->Text1, ViewsTextAlignmentAlignHorzLeft | ViewsTextAlignmentAlignVertTop );
-  ViewsText_OnSetString( &_this->Text1, EwLoadString( &_Const00E1 ));
-  ViewsText_OnSetColor( &_this->Text1, _Const008F );
-  CoreRectView__OnSetBounds( &_this->Image, _Const00E2 );
-  CoreRectView__OnSetBounds( &_this->PushButton, _Const00B4 );
+  ViewsText_OnSetString( &_this->Text1, EwLoadString( &_Const00E3 ));
+  ViewsText_OnSetColor( &_this->Text1, _Const0091 );
+  CoreRectView__OnSetBounds( &_this->Image, _Const00E4 );
+  CoreRectView__OnSetBounds( &_this->PushButton, _Const00B6 );
   WidgetSetPushButton_OnSetIconFrame( &_this->PushButton, 9 );
   WidgetSetPushButton_OnSetLabel( &_this->PushButton, 0 );
   WidgetSetPushButtonConfig_OnSetThumbShadowColorFocused( &_this->PushButtonConfig, 
@@ -5801,10 +6129,9 @@ void ApplicationHelpMenu_Back( ApplicationHelpMenu _this, XObject sender )
   EW_UNUSED_ARG( _this );
   EW_UNUSED_ARG( sender );
 
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  0;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeMainMenu );
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 0;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeMainMenu );
 }
 
 /* Variants derived from the class : 'Application::HelpMenu' */
@@ -5849,222 +6176,6 @@ EW_END_OF_CLASS( ApplicationHelpMenu )
 
 /* Table with links to derived variants of the bitmap resource : 'Application::HelpImages' */
 EW_RES_WITHOUT_VARIANTS( ApplicationHelpImages )
-
-/* User defined inline code: 'Application::Inline1' */
-/*
-
-  TO DO:
-
-  Include external header files or add type and function declarations needed
-  in the implementation of Application::DeviceClass1. For example:
-
-    #include "DeviceDriver.h"
-
-    #include "your_middleware_api.h"
-
-    void Your_Middleware_Some_Function( int aSomeArg );
-
-*/
-
-/* Initializer for the class 'Application::DeviceClass1' */
-void ApplicationDeviceClass1__Init( ApplicationDeviceClass1 _this, XObject aLink, XHandle aArg )
-{
-  /* At first initialize the super class ... */
-  TemplatesDeviceClass__Init( &_this->_.Super, aLink, aArg );
-
-  /* Allow the Immediate Garbage Collection to evalute the members of this class. */
-  _this->_.XObject._.GCT = EW_CLASS_GCT( ApplicationDeviceClass1 );
-
-  /* Setup the VMT pointer */
-  _this->_.VMT = EW_CLASS( ApplicationDeviceClass1 );
-
-  /* ... and initialize objects, variables, properties, etc. */
-  _this->CurrentScreen = ApplicationScreenTypeMainMenu;
-  _this->ShowOr = 1;
-
-  /* Call the user defined constructor */
-  ApplicationDeviceClass1_Init( _this, aArg );
-}
-
-/* Re-Initializer for the class 'Application::DeviceClass1' */
-void ApplicationDeviceClass1__ReInit( ApplicationDeviceClass1 _this )
-{
-  /* At first re-initialize the super class ... */
-  TemplatesDeviceClass__ReInit( &_this->_.Super );
-}
-
-/* Finalizer method for the class 'Application::DeviceClass1' */
-void ApplicationDeviceClass1__Done( ApplicationDeviceClass1 _this )
-{
-  /* Call the user defined destructor of the class */
-  ApplicationDeviceClass1_Done( _this );
-
-  /* Finalize this class */
-  _this->_.Super._.VMT = EW_CLASS( TemplatesDeviceClass );
-
-  /* Don't forget to deinitialize the super class ... */
-  TemplatesDeviceClass__Done( &_this->_.Super );
-}
-
-/* 'C' function for method : 'Application::DeviceClass1.Done()' */
-void ApplicationDeviceClass1_Done( ApplicationDeviceClass1 _this )
-{
-  XObject thisObject = ((XObject)_this );
-
-  {
-    /*
-       TO DO:
-
-       Depending on your application case you call functions of the underlying
-       middleware (or access the device directly) in order to perform the necessary
-       de-initialization steps. For example, you invoke some 'C' function:
-
-         YourDevice_DeInitialize();
-
-       IMPORTANT:
-       ----------
-
-       The variable 'thisObject' represents the actually de-initialized instance of the
-       Application::DeviceClass1. If you have stored this object at the initialization
-       time (in the 'Init' method) in some global C variable or registered it by the
-       middleware, it is important to perform now the opposite operation. Set the
-       global variable to NULL or de-register 'thisObject' object from the middleware.
-
-    */
-  }
-}
-
-/* 'C' function for method : 'Application::DeviceClass1.Init()' */
-void ApplicationDeviceClass1_Init( ApplicationDeviceClass1 _this, XHandle aArg )
-{
-  XObject thisObject;
-
-  /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
-  EW_UNUSED_ARG( aArg );
-
-  thisObject = ((XObject)_this );
-  {
-    /*
-       TO DO:
-
-       Depending on your application case you call functions of the underlying
-       middleware (or access the device directly) in order to perform the necessary
-       initialization steps. For example, you invoke some 'C' function:
-
-         YourDevice_Initialize();
-
-       The variable 'thisObject' represents the actually initialized instance of the
-       Application::DeviceClass1. You can store this variable e.g. in the middleware
-       and use it whenever the middleware needs to notify the GUI application about
-       some state alternation or events. In this manner, the middleware will be able
-       to invoke methods of the interface device object.
-
-       For example, you can store 'thisObject' in some global C variable:
-
-         // Declaration of the global C variable
-         XObject theDeviceObject;
-
-         // Store the instance in the global variable
-         theDeviceObject = thisObject;
-
-       Later use the global variable e.g. to provide the GUI application with events:
-
-         ApplicationDeviceClass__TriggerSomeEvent( theDeviceObject );
-
-       IMPORTANT:
-       ----------
-
-       If you store 'thisObject' for later use, don't forget to implement the opposite
-       operation in the method 'Done'. Concrete, 'Done' should set the global variable
-       again to the value NULL.
-
-    */
-  }
-}
-
-/* 'C' function for method : 'Application::DeviceClass1.OnGetCurrentScreen()' */
-XEnum ApplicationDeviceClass1_OnGetCurrentScreen( ApplicationDeviceClass1 _this )
-{
-  return _this->CurrentScreen;
-}
-
-/* 'C' function for method : 'Application::DeviceClass1.OnSetCurrentScreen()' */
-void ApplicationDeviceClass1_OnSetCurrentScreen( ApplicationDeviceClass1 _this, 
-  XEnum value )
-{
-  if ( _this->CurrentScreen == value )
-    return;
-
-  _this->CurrentScreen = value;
-
-  if ( value == ApplicationScreenTypeMainMenu )
-    ShuffleEnd();
-
-  {
-    /*
-       TO DO:
-
-       You can call a function of your own device API or you simply
-       modify a variable existing in your middleware to reflect the
-       new value:
-
-       YourDevice_SetSomeValue( value );
-
-       or
-
-       YourDevice_SomeVariable = value;
-    */
-  }
-  EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass1_OnGetCurrentScreen, 
-    ApplicationDeviceClass1_OnSetCurrentScreen ), 0 );
-}
-
-/* This method is intended to be called by the device to notify the GUI application 
-   about an alternation of its setting or state value. */
-void ApplicationDeviceClass1_UpdateProperty( ApplicationDeviceClass1 _this, XEnum 
-  aNewValue )
-{
-  if ( aNewValue != _this->CurrentScreen )
-  {
-    _this->CurrentScreen = aNewValue;
-    EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass1_OnGetCurrentScreen, 
-      ApplicationDeviceClass1_OnSetCurrentScreen ), 0 );
-  }
-}
-
-/* Wrapper function for the non virtual method : 'Application::DeviceClass1.UpdateProperty()' */
-void ApplicationDeviceClass1__UpdateProperty( void* _this, XEnum aNewValue )
-{
-  ApplicationDeviceClass1_UpdateProperty((ApplicationDeviceClass1)_this, aNewValue );
-}
-
-/* Variants derived from the class : 'Application::DeviceClass1' */
-EW_DEFINE_CLASS_VARIANTS( ApplicationDeviceClass1 )
-EW_END_OF_CLASS_VARIANTS( ApplicationDeviceClass1 )
-
-/* Virtual Method Table (VMT) for the class : 'Application::DeviceClass1' */
-EW_DEFINE_CLASS( ApplicationDeviceClass1, TemplatesDeviceClass, _.VMT, _.VMT, _.VMT, 
-                 _.VMT, _.VMT, _.VMT, "Application::DeviceClass1" )
-EW_END_OF_CLASS( ApplicationDeviceClass1 )
-
-/* User defined auto object: 'Application::Device1' */
-EW_DEFINE_AUTOOBJECT( ApplicationDevice1, ApplicationDeviceClass1 )
-
-/* Initializer for the auto object 'Application::Device1' */
-void ApplicationDevice1__Init( ApplicationDeviceClass1 _this )
-{
-  EW_UNUSED_ARG( _this );
-}
-
-/* Re-Initializer for the auto object 'Application::Device1' */
-void ApplicationDevice1__ReInit( ApplicationDeviceClass1 _this )
-{
-  EW_UNUSED_ARG( _this );
-}
-
-/* Table with links to derived variants of the auto object : 'Application::Device1' */
-EW_DEFINE_AUTOOBJECT_VARIANTS( ApplicationDevice1 )
-EW_END_OF_AUTOOBJECT_VARIANTS( ApplicationDevice1 )
 
 /* Initializer for the class 'Application::Container' */
 void ApplicationContainer__Init( ApplicationContainer _this, XObject aLink, XHandle aArg )
@@ -6126,7 +6237,7 @@ void ApplicationContainer_OnSetContent( ApplicationContainer _this, CoreGroup va
   _this->Content = value;
 
   if ( value != 0 )
-    switch ( EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight )
+    switch ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight )
     {
       case 0 :
         CoreGroup__SwitchToDialog( _this, value, ((EffectsTransition)EwGetAutoObject( 
@@ -6249,51 +6360,51 @@ void ApplicationAchievements__Init( ApplicationAchievements _this, XObject aLink
   CoreRectView__OnSetBounds( &_this->Rectangle, _Const0000 );
   ViewsRectangle_OnSetColorBR( &_this->Rectangle, _Const0001 );
   ViewsRectangle_OnSetColorTL( &_this->Rectangle, _Const0002 );
-  CoreRectView__OnSetBounds( &_this->VerticalList, _Const00E3 );
+  CoreRectView__OnSetBounds( &_this->VerticalList, _Const00E5 );
   CoreVerticalList_OnSetItemHeight( &_this->VerticalList, 100 );
   CoreVerticalList_OnSetNoOfItems( &_this->VerticalList, 15 );
   CoreVerticalList_OnSetItemClass( &_this->VerticalList, EW_CLASS( ApplicationAchievement ));
-  CoreRectView__OnSetBounds( &_this->SlideTouchHandler, _Const00E4 );
+  CoreRectView__OnSetBounds( &_this->SlideTouchHandler, _Const00E6 );
   _this->SlideTouchHandler.Offset = _Const0004;
-  CoreSlideTouchHandler_OnSetSnapNext( &_this->SlideTouchHandler, _Const00E5 );
+  CoreSlideTouchHandler_OnSetSnapNext( &_this->SlideTouchHandler, _Const00E7 );
   _this->SlideTouchHandler.SlideHorz = 0;
-  _this->AchievementsNames[ 0 ] = EwShareString( EwLoadString( &_Const00E6 ));
-  _this->AchievementsNames[ 1 ] = EwShareString( EwLoadString( &_Const00E7 ));
-  _this->AchievementsNames[ 2 ] = EwShareString( EwLoadString( &_Const00E8 ));
-  _this->AchievementsNames[ 3 ] = EwShareString( EwLoadString( &_Const00E9 ));
-  _this->AchievementsNames[ 4 ] = EwShareString( EwLoadString( &_Const00EA ));
-  _this->AchievementsNames[ 5 ] = EwShareString( EwLoadString( &_Const00EB ));
-  _this->AchievementsNames[ 6 ] = EwShareString( EwLoadString( &_Const00EC ));
-  _this->AchievementsNames[ 7 ] = EwShareString( EwLoadString( &_Const00ED ));
-  _this->AchievementsNames[ 8 ] = EwShareString( EwLoadString( &_Const00EE ));
-  _this->AchievementsNames[ 9 ] = EwShareString( EwLoadString( &_Const00EF ));
-  _this->AchievementsNames[ 10 ] = EwShareString( EwLoadString( &_Const00F0 ));
-  _this->AchievementsNames[ 11 ] = EwShareString( EwLoadString( &_Const00F1 ));
-  _this->AchievementsNames[ 12 ] = EwShareString( EwLoadString( &_Const00F2 ));
-  _this->AchievementsNames[ 13 ] = EwShareString( EwLoadString( &_Const00F3 ));
-  _this->AchievementsNames[ 14 ] = EwShareString( EwLoadString( &_Const00F4 ));
-  _this->Describing[ 0 ] = EwShareString( EwLoadString( &_Const00F5 ));
-  _this->Describing[ 1 ] = EwShareString( EwLoadString( &_Const00F6 ));
-  _this->Describing[ 2 ] = EwShareString( EwLoadString( &_Const00F7 ));
-  _this->Describing[ 3 ] = EwShareString( EwLoadString( &_Const00F8 ));
-  _this->Describing[ 4 ] = EwShareString( EwLoadString( &_Const00F9 ));
-  _this->Describing[ 5 ] = EwShareString( EwLoadString( &_Const00FA ));
-  _this->Describing[ 6 ] = EwShareString( EwLoadString( &_Const00FB ));
-  _this->Describing[ 7 ] = EwShareString( EwLoadString( &_Const00FC ));
-  _this->Describing[ 8 ] = EwShareString( EwLoadString( &_Const00FD ));
-  _this->Describing[ 9 ] = EwShareString( EwLoadString( &_Const00FE ));
-  _this->Describing[ 10 ] = EwShareString( EwLoadString( &_Const00FF ));
-  _this->Describing[ 11 ] = EwShareString( EwLoadString( &_Const0100 ));
-  _this->Describing[ 12 ] = EwShareString( EwLoadString( &_Const0101 ));
-  _this->Describing[ 13 ] = EwShareString( EwLoadString( &_Const0102 ));
-  _this->Describing[ 14 ] = EwShareString( EwLoadString( &_Const0103 ));
-  CoreRectView__OnSetBounds( &_this->Progress, _Const0104 );
+  _this->AchievementsNames[ 0 ] = EwShareString( EwLoadString( &_Const00E8 ));
+  _this->AchievementsNames[ 1 ] = EwShareString( EwLoadString( &_Const00E9 ));
+  _this->AchievementsNames[ 2 ] = EwShareString( EwLoadString( &_Const00EA ));
+  _this->AchievementsNames[ 3 ] = EwShareString( EwLoadString( &_Const00EB ));
+  _this->AchievementsNames[ 4 ] = EwShareString( EwLoadString( &_Const00EC ));
+  _this->AchievementsNames[ 5 ] = EwShareString( EwLoadString( &_Const00ED ));
+  _this->AchievementsNames[ 6 ] = EwShareString( EwLoadString( &_Const00EE ));
+  _this->AchievementsNames[ 7 ] = EwShareString( EwLoadString( &_Const00EF ));
+  _this->AchievementsNames[ 8 ] = EwShareString( EwLoadString( &_Const00F0 ));
+  _this->AchievementsNames[ 9 ] = EwShareString( EwLoadString( &_Const00F1 ));
+  _this->AchievementsNames[ 10 ] = EwShareString( EwLoadString( &_Const00F2 ));
+  _this->AchievementsNames[ 11 ] = EwShareString( EwLoadString( &_Const00F3 ));
+  _this->AchievementsNames[ 12 ] = EwShareString( EwLoadString( &_Const00F4 ));
+  _this->AchievementsNames[ 13 ] = EwShareString( EwLoadString( &_Const00F5 ));
+  _this->AchievementsNames[ 14 ] = EwShareString( EwLoadString( &_Const00F6 ));
+  _this->Describing[ 0 ] = EwShareString( EwLoadString( &_Const00F7 ));
+  _this->Describing[ 1 ] = EwShareString( EwLoadString( &_Const00F8 ));
+  _this->Describing[ 2 ] = EwShareString( EwLoadString( &_Const00F9 ));
+  _this->Describing[ 3 ] = EwShareString( EwLoadString( &_Const00FA ));
+  _this->Describing[ 4 ] = EwShareString( EwLoadString( &_Const00FB ));
+  _this->Describing[ 5 ] = EwShareString( EwLoadString( &_Const00FC ));
+  _this->Describing[ 6 ] = EwShareString( EwLoadString( &_Const00FD ));
+  _this->Describing[ 7 ] = EwShareString( EwLoadString( &_Const00FE ));
+  _this->Describing[ 8 ] = EwShareString( EwLoadString( &_Const00FF ));
+  _this->Describing[ 9 ] = EwShareString( EwLoadString( &_Const0100 ));
+  _this->Describing[ 10 ] = EwShareString( EwLoadString( &_Const0101 ));
+  _this->Describing[ 11 ] = EwShareString( EwLoadString( &_Const0102 ));
+  _this->Describing[ 12 ] = EwShareString( EwLoadString( &_Const0103 ));
+  _this->Describing[ 13 ] = EwShareString( EwLoadString( &_Const0104 ));
+  _this->Describing[ 14 ] = EwShareString( EwLoadString( &_Const0105 ));
+  CoreRectView__OnSetBounds( &_this->Progress, _Const0106 );
   WidgetSetHorizontalValueBar_OnSetCurrentValue( &_this->Progress, 0 );
-  CoreRectView__OnSetBounds( &_this->Text, _Const0105 );
-  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const0106 ));
-  ViewsText_OnSetColor( &_this->Text, _Const0107 );
+  CoreRectView__OnSetBounds( &_this->Text, _Const0107 );
+  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const0108 ));
+  ViewsText_OnSetColor( &_this->Text, _Const0109 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightColor( &_this->HorizontalValueBarConfig, 
-  _Const0108 );
+  _Const010A );
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightFlattened( &_this->HorizontalValueBarConfig, 
   1 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightCornerRadius( &_this->HorizontalValueBarConfig, 
@@ -6303,14 +6414,14 @@ void ApplicationAchievements__Init( ApplicationAchievements _this, XObject aLink
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightWithEdge( &_this->HorizontalValueBarConfig, 
   1 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftColor( &_this->HorizontalValueBarConfig, 
-  _Const0109 );
+  _Const010B );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftFlattened( &_this->HorizontalValueBarConfig, 
   1 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftCornerRadius( &_this->HorizontalValueBarConfig, 
   20 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftThickness( &_this->HorizontalValueBarConfig, 
   15 );
-  CoreRectView__OnSetBounds( &_this->PushButton, _Const00B4 );
+  CoreRectView__OnSetBounds( &_this->PushButton, _Const00B6 );
   WidgetSetPushButton_OnSetIconFrame( &_this->PushButton, 9 );
   WidgetSetPushButton_OnSetLabel( &_this->PushButton, 0 );
   WidgetSetPushButtonConfig_OnSetThumbShadowColorFocused( &_this->PushButtonConfig, 
@@ -6401,20 +6512,25 @@ void ApplicationAchievements_Init( ApplicationAchievements _this, XHandle aArg )
 {
   XInt32 count;
   XInt32 i;
+  XFloat prog;
 
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( aArg );
 
   count = 0;
-  ApplicationAchievements_Check( _this );
+  ApplicationDeviceClass_GetAchivementsArray( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ));
 
   for ( i = 0; i < 15; i++ )
-    if ( _this->Unlocked[ EwCheckIndex( i, 15 )])
+    if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Unlocked[ 
+        EwCheckIndex( i, 15 )])
       count++;
 
-  WidgetSetHorizontalValueBar_OnSetCurrentValue( &_this->Progress, count * 6 );
+  prog = (XFloat)(( count * 100 ) / 15 );
+  WidgetSetHorizontalValueBar_OnSetCurrentValue( &_this->Progress, (XInt32)EwMathCeil( 
+  prog ));
   ViewsText_OnSetString( &_this->Text, EwConcatString( EwNewStringInt( WidgetSetHorizontalValueBar_OnGetCurrentValue( 
-  &_this->Progress ), 0, 10 ), EwLoadString( &_Const010A )));
+  &_this->Progress ), 0, 10 ), EwLoadString( &_Const010C )));
 }
 
 /* This method is called by 'VerticalList' every time the list loads or updates 
@@ -6440,15 +6556,16 @@ void ApplicationAchievements_OnLoadItem( ApplicationAchievements _this, XObject
   ViewsText_OnSetString( &itemView->Text, _this->Describing[ EwCheckIndex( itemNo, 
   15 )]);
 
-  if ( !_this->Unlocked[ EwCheckIndex( itemNo, 15 )])
+  if ( !EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Unlocked[ 
+      EwCheckIndex( itemNo, 15 )])
   {
     ViewsFilterScreen_OnSetVisible( &itemView->FilterScreen, 1 );
-    ViewsText_OnSetColor( &itemView->Title, _Const010B );
+    ViewsText_OnSetColor( &itemView->Title, _Const010D );
   }
   else
   {
     ViewsFilterScreen_OnSetVisible( &itemView->FilterScreen, 0 );
-    ViewsText_OnSetColor( &itemView->Title, _Const010C );
+    ViewsText_OnSetColor( &itemView->Title, _Const010E );
   }
 
   CoreRectView__OnSetBounds( itemView, EwSetRectSize( itemView->Super2.Bounds, _this->VerticalList.ViewSize ));
@@ -6461,26 +6578,9 @@ void ApplicationAchievements_Back( ApplicationAchievements _this, XObject sender
   EW_UNUSED_ARG( _this );
   EW_UNUSED_ARG( sender );
 
-  EwGetAutoObject( &ApplicationDevice1, ApplicationDeviceClass1 )->LeftToRight = 
-  0;
-  ApplicationDeviceClass1_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice1, 
-  ApplicationDeviceClass1 ), ApplicationScreenTypeMainMenu );
-}
-
-/* 'C' function for method : 'Application::Achievements.Check()' */
-void ApplicationAchievements_Check( ApplicationAchievements _this )
-{
-  XBool Achives[ 15 ] = {0};
-  XInt32 i;
-
-  {
-    var ach=GetAchivements(); 
-    for(let i=0;i<ach.length;i++)
-        Achives[i]=ach[i];
-  }
-
-  for ( i = 0; i < 15; i++ )
-    _this->Unlocked[ EwCheckIndex( i, 15 )] = Achives[ EwCheckIndex( i, 15 )];
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->LeftToRight = 0;
+  ApplicationDeviceClass_OnSetCurrentScreen( EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass ), ApplicationScreenTypeMainMenu );
 }
 
 /* Variants derived from the class : 'Application::Achievements' */
@@ -6489,7 +6589,7 @@ EW_END_OF_CLASS_VARIANTS( ApplicationAchievements )
 
 /* Virtual Method Table (VMT) for the class : 'Application::Achievements' */
 EW_DEFINE_CLASS( ApplicationAchievements, CoreGroup, Rectangle, AchievementsNames, 
-                 AchievementsNames, AchievementsNames, AchievementsNames, Unlocked, 
+                 AchievementsNames, AchievementsNames, AchievementsNames, _.VMT, 
                  "Application::Achievements" )
   CoreRectView_initLayoutContext,
   CoreView_GetRoot,
@@ -6541,17 +6641,17 @@ void ApplicationAchievement__Init( ApplicationAchievement _this, XObject aLink, 
   _this->_.VMT = EW_CLASS( ApplicationAchievement );
 
   /* ... and initialize objects, variables, properties, etc. */
-  CoreRectView__OnSetBounds( _this, _Const010D );
-  CoreRectView__OnSetBounds( &_this->Rectangle, _Const010E );
-  ViewsRectangle_OnSetColor( &_this->Rectangle, _Const010F );
-  CoreRectView__OnSetBounds( &_this->Image, _Const0110 );
-  CoreRectView__OnSetBounds( &_this->Text, _Const0111 );
-  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const0112 ));
+  CoreRectView__OnSetBounds( _this, _Const010F );
+  CoreRectView__OnSetBounds( &_this->Rectangle, _Const0110 );
+  ViewsRectangle_OnSetColor( &_this->Rectangle, _Const0111 );
+  CoreRectView__OnSetBounds( &_this->Image, _Const0112 );
+  CoreRectView__OnSetBounds( &_this->Text, _Const0113 );
+  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const0114 ));
   ViewsText_OnSetColor( &_this->Text, _Const0030 );
-  CoreRectView__OnSetBounds( &_this->Title, _Const0113 );
-  ViewsText_OnSetString( &_this->Title, EwLoadString( &_Const00E6 ));
-  ViewsText_OnSetColor( &_this->Title, _Const010B );
-  CoreRectView__OnSetBounds( &_this->FilterScreen, _Const0114 );
+  CoreRectView__OnSetBounds( &_this->Title, _Const0115 );
+  ViewsText_OnSetString( &_this->Title, EwLoadString( &_Const00E8 ));
+  ViewsText_OnSetColor( &_this->Title, _Const010D );
+  CoreRectView__OnSetBounds( &_this->FilterScreen, _Const0116 );
   ViewsFilterScreen_OnSetTintColor( &_this->FilterScreen, _Const002C );
   ViewsFilterScreen_OnSetTintMode( &_this->FilterScreen, GraphicsTintModeGrayscale );
   ViewsFilterScreen_OnSetBlurClampToEdges( &_this->FilterScreen, 1 );
@@ -6664,30 +6764,30 @@ void ApplicationAchPop__Init( ApplicationAchPop _this, XObject aLink, XHandle aA
 
   /* ... and initialize objects, variables, properties, etc. */
   CoreRectView__OnSetBounds( _this, _Const0000 );
-  CoreRectView__OnSetBounds( &_this->Rectangle, _Const0115 );
-  ViewsRectangle_OnSetColor( &_this->Rectangle, _Const0116 );
-  CoreRectView__OnSetBounds( &_this->Image, _Const0117 );
+  CoreRectView__OnSetBounds( &_this->Rectangle, _Const0117 );
+  ViewsRectangle_OnSetColor( &_this->Rectangle, _Const0118 );
+  CoreRectView__OnSetBounds( &_this->Image, _Const0119 );
   ViewsImage_OnSetAlignment( &_this->Image, ViewsImageAlignmentAlignHorzCenter | 
   ViewsImageAlignmentAlignVertCenter | ViewsImageAlignmentScaleToFit );
   ViewsImage_OnSetFrameNumber( &_this->Image, 0 );
-  CoreRectView__OnSetBounds( &_this->Title, _Const0118 );
-  ViewsText_OnSetString( &_this->Title, EwLoadString( &_Const00E6 ));
-  ViewsText_OnSetColor( &_this->Title, _Const010B );
-  _this->AchievementsNames[ 0 ] = EwShareString( EwLoadString( &_Const00E6 ));
-  _this->AchievementsNames[ 1 ] = EwShareString( EwLoadString( &_Const00E7 ));
-  _this->AchievementsNames[ 2 ] = EwShareString( EwLoadString( &_Const00E8 ));
-  _this->AchievementsNames[ 3 ] = EwShareString( EwLoadString( &_Const00E9 ));
-  _this->AchievementsNames[ 4 ] = EwShareString( EwLoadString( &_Const00EA ));
-  _this->AchievementsNames[ 5 ] = EwShareString( EwLoadString( &_Const00EB ));
-  _this->AchievementsNames[ 6 ] = EwShareString( EwLoadString( &_Const00EC ));
-  _this->AchievementsNames[ 7 ] = EwShareString( EwLoadString( &_Const00ED ));
-  _this->AchievementsNames[ 8 ] = EwShareString( EwLoadString( &_Const00EE ));
-  _this->AchievementsNames[ 9 ] = EwShareString( EwLoadString( &_Const00EF ));
-  _this->AchievementsNames[ 10 ] = EwShareString( EwLoadString( &_Const00F0 ));
-  _this->AchievementsNames[ 11 ] = EwShareString( EwLoadString( &_Const00F1 ));
-  _this->AchievementsNames[ 12 ] = EwShareString( EwLoadString( &_Const00F2 ));
-  _this->AchievementsNames[ 13 ] = EwShareString( EwLoadString( &_Const00F3 ));
-  _this->AchievementsNames[ 14 ] = EwShareString( EwLoadString( &_Const00F4 ));
+  CoreRectView__OnSetBounds( &_this->Title, _Const011A );
+  ViewsText_OnSetString( &_this->Title, EwLoadString( &_Const00E8 ));
+  ViewsText_OnSetColor( &_this->Title, _Const010D );
+  _this->AchievementsNames[ 0 ] = EwShareString( EwLoadString( &_Const00E8 ));
+  _this->AchievementsNames[ 1 ] = EwShareString( EwLoadString( &_Const00E9 ));
+  _this->AchievementsNames[ 2 ] = EwShareString( EwLoadString( &_Const00EA ));
+  _this->AchievementsNames[ 3 ] = EwShareString( EwLoadString( &_Const00EB ));
+  _this->AchievementsNames[ 4 ] = EwShareString( EwLoadString( &_Const00EC ));
+  _this->AchievementsNames[ 5 ] = EwShareString( EwLoadString( &_Const00ED ));
+  _this->AchievementsNames[ 6 ] = EwShareString( EwLoadString( &_Const00EE ));
+  _this->AchievementsNames[ 7 ] = EwShareString( EwLoadString( &_Const00EF ));
+  _this->AchievementsNames[ 8 ] = EwShareString( EwLoadString( &_Const00F0 ));
+  _this->AchievementsNames[ 9 ] = EwShareString( EwLoadString( &_Const00F1 ));
+  _this->AchievementsNames[ 10 ] = EwShareString( EwLoadString( &_Const00F2 ));
+  _this->AchievementsNames[ 11 ] = EwShareString( EwLoadString( &_Const00F3 ));
+  _this->AchievementsNames[ 12 ] = EwShareString( EwLoadString( &_Const00F4 ));
+  _this->AchievementsNames[ 13 ] = EwShareString( EwLoadString( &_Const00F5 ));
+  _this->AchievementsNames[ 14 ] = EwShareString( EwLoadString( &_Const00F6 ));
   CoreGroup__Add( _this, ((CoreView)&_this->Rectangle ), 0 );
   CoreGroup__Add( _this, ((CoreView)&_this->Image ), 0 );
   CoreGroup__Add( _this, ((CoreView)&_this->Title ), 0 );
@@ -6735,9 +6835,16 @@ void ApplicationAchPop_Init( ApplicationAchPop _this, XHandle aArg )
   EW_UNUSED_ARG( aArg );
 
   ViewsText_OnSetString( &_this->Title, _this->AchievementsNames[ EwCheckIndex( 
-  _this->Obj->AchFrame, 15 )]);
-  ViewsImage_OnSetFrameNumber( &_this->Image, _this->Obj->AchFrame );
-  achievementUnlock();
+  EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Frame, 15 )]);
+  ViewsImage_OnSetFrameNumber( &_this->Image, EwGetAutoObject( &ApplicationDevice, 
+  ApplicationDeviceClass )->Frame );
+
+  if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->FrameSound )
+    ApplicationDeviceClass_OnSetFrameSound( EwGetAutoObject( &ApplicationDevice, 
+    ApplicationDeviceClass ), 0 );
+  else
+    ApplicationDeviceClass_OnSetFrameSound( EwGetAutoObject( &ApplicationDevice, 
+    ApplicationDeviceClass ), 1 );
 }
 
 /* Variants derived from the class : 'Application::AchPop' */

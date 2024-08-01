@@ -53,6 +53,9 @@
 
 /* Deklaration of class : 'Application::DeviceClass' */
 EW_DEFINE_FIELDS( ApplicationDeviceClass, TemplatesDeviceClass )
+  EW_PROPERTY( ActiveMusicName, XString )
+  EW_PROPERTY( Date,            XString )
+  EW_PROPERTY( Hours,           XString )
   EW_PROPERTY( Volume,          XInt32 )
   EW_PROPERTY( SFXVolume,       XInt32 )
   EW_PROPERTY( MaxLevel,        XInt32 )
@@ -63,13 +66,22 @@ EW_DEFINE_FIELDS( ApplicationDeviceClass, TemplatesDeviceClass )
   EW_PROPERTY( ActiveCup,       XInt32 )
   EW_PROPERTY( ActiveBall,      XInt32 )
   EW_PROPERTY( ActiveMusic,     XInt32 )
-  EW_PROPERTY( AchFrame,        XInt32 )
+  EW_PROPERTY( CurrentScreen,   XEnum )
+  EW_VARIABLE( LeftToRight,     XInt32 )
+  EW_PROPERTY( Frame,           XInt32 )
+  EW_PROPERTY( WrongGuesses,    XInt32 )
   EW_PROPERTY( Animation,       XBool )
   EW_ARRAY   ( CupsArray,       XBool, [13])
   EW_ARRAY   ( BallsArray,      XBool, [10])
   EW_ARRAY   ( MusicsArray,     XBool, [16])
   EW_PROPERTY( HallAct,         XBool )
   EW_PROPERTY( HallPack,        XBool )
+  EW_PROPERTY( FrameSound,      XBool )
+  EW_VARIABLE( ShowOr,          XBool )
+  EW_PROPERTY( NextLevel,       XBool )
+  EW_PROPERTY( Reset,           XBool )
+  EW_PROPERTY( StartSound,      XBool )
+  EW_ARRAY   ( Unlocked,        XBool, [15])
 EW_END_OF_FIELDS( ApplicationDeviceClass )
 
 /* Virtual Method Table (VMT) for the class : 'Application::DeviceClass' */
@@ -90,14 +102,13 @@ void ApplicationDeviceClass_OnSetVolume( ApplicationDeviceClass _this, XInt32 va
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty( ApplicationDeviceClass _this, XInt32 
-  aNewValue );
+void ApplicationDeviceClass_UpdateVolume( ApplicationDeviceClass _this, XInt32 aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty()' */
-void ApplicationDeviceClass__UpdateProperty( void* _this, XInt32 aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateVolume()' */
+void ApplicationDeviceClass__UpdateVolume( void* _this, XInt32 aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty(). */
-#define _ApplicationDeviceClass__UpdateProperty_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateVolume(). */
+#define _ApplicationDeviceClass__UpdateVolume_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetSFXVolume()' */
 XInt32 ApplicationDeviceClass_OnGetSFXVolume( ApplicationDeviceClass _this );
@@ -108,14 +119,14 @@ void ApplicationDeviceClass_OnSetSFXVolume( ApplicationDeviceClass _this, XInt32
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty1( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateSFXVolume( ApplicationDeviceClass _this, XInt32 
   aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty1()' */
-void ApplicationDeviceClass__UpdateProperty1( void* _this, XInt32 aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateSFXVolume()' */
+void ApplicationDeviceClass__UpdateSFXVolume( void* _this, XInt32 aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty1(). */
-#define _ApplicationDeviceClass__UpdateProperty1_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateSFXVolume(). */
+#define _ApplicationDeviceClass__UpdateSFXVolume_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetAnimation()' */
 XBool ApplicationDeviceClass_OnGetAnimation( ApplicationDeviceClass _this );
@@ -126,14 +137,14 @@ void ApplicationDeviceClass_OnSetAnimation( ApplicationDeviceClass _this, XBool
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty2( ApplicationDeviceClass _this, XBool 
+void ApplicationDeviceClass_UpdateAnimation( ApplicationDeviceClass _this, XBool 
   aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty2()' */
-void ApplicationDeviceClass__UpdateProperty2( void* _this, XBool aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateAnimation()' */
+void ApplicationDeviceClass__UpdateAnimation( void* _this, XBool aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty2(). */
-#define _ApplicationDeviceClass__UpdateProperty2_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateAnimation(). */
+#define _ApplicationDeviceClass__UpdateAnimation_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetMaxLevel()' */
 XInt32 ApplicationDeviceClass_OnGetMaxLevel( ApplicationDeviceClass _this );
@@ -144,14 +155,14 @@ void ApplicationDeviceClass_OnSetMaxLevel( ApplicationDeviceClass _this, XInt32
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty3( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateMaxLevel( ApplicationDeviceClass _this, XInt32 
   aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty3()' */
-void ApplicationDeviceClass__UpdateProperty3( void* _this, XInt32 aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateMaxLevel()' */
+void ApplicationDeviceClass__UpdateMaxLevel( void* _this, XInt32 aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty3(). */
-#define _ApplicationDeviceClass__UpdateProperty3_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateMaxLevel(). */
+#define _ApplicationDeviceClass__UpdateMaxLevel_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetTotalRounds()' */
 XInt32 ApplicationDeviceClass_OnGetTotalRounds( ApplicationDeviceClass _this );
@@ -162,14 +173,14 @@ void ApplicationDeviceClass_OnSetTotalRounds( ApplicationDeviceClass _this, XInt
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty4( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateTotalRounds( ApplicationDeviceClass _this, XInt32 
   aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty4()' */
-void ApplicationDeviceClass__UpdateProperty4( void* _this, XInt32 aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateTotalRounds()' */
+void ApplicationDeviceClass__UpdateTotalRounds( void* _this, XInt32 aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty4(). */
-#define _ApplicationDeviceClass__UpdateProperty4_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateTotalRounds(). */
+#define _ApplicationDeviceClass__UpdateTotalRounds_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetCorrectGuesses()' */
 XInt32 ApplicationDeviceClass_OnGetCorrectGuesses( ApplicationDeviceClass _this );
@@ -180,14 +191,14 @@ void ApplicationDeviceClass_OnSetCorrectGuesses( ApplicationDeviceClass _this, X
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty5( ApplicationDeviceClass _this, XInt32 
-  aNewValue );
+void ApplicationDeviceClass_UpdateCorrectGuesses( ApplicationDeviceClass _this, 
+  XInt32 aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty5()' */
-void ApplicationDeviceClass__UpdateProperty5( void* _this, XInt32 aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateCorrectGuesses()' */
+void ApplicationDeviceClass__UpdateCorrectGuesses( void* _this, XInt32 aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty5(). */
-#define _ApplicationDeviceClass__UpdateProperty5_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateCorrectGuesses(). */
+#define _ApplicationDeviceClass__UpdateCorrectGuesses_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetCoins()' */
 XInt32 ApplicationDeviceClass_OnGetCoins( ApplicationDeviceClass _this );
@@ -197,14 +208,13 @@ void ApplicationDeviceClass_OnSetCoins( ApplicationDeviceClass _this, XInt32 val
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty6( ApplicationDeviceClass _this, XInt32 
-  aNewValue );
+void ApplicationDeviceClass_UpdateCoins( ApplicationDeviceClass _this, XInt32 aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty6()' */
-void ApplicationDeviceClass__UpdateProperty6( void* _this, XInt32 aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateCoins()' */
+void ApplicationDeviceClass__UpdateCoins( void* _this, XInt32 aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty6(). */
-#define _ApplicationDeviceClass__UpdateProperty6_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateCoins(). */
+#define _ApplicationDeviceClass__UpdateCoins_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetShopTab()' */
 XInt32 ApplicationDeviceClass_OnGetShopTab( ApplicationDeviceClass _this );
@@ -214,14 +224,14 @@ void ApplicationDeviceClass_OnSetShopTab( ApplicationDeviceClass _this, XInt32 v
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty7( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateShopTab( ApplicationDeviceClass _this, XInt32 
   aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty7()' */
-void ApplicationDeviceClass__UpdateProperty7( void* _this, XInt32 aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateShopTab()' */
+void ApplicationDeviceClass__UpdateShopTab( void* _this, XInt32 aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty7(). */
-#define _ApplicationDeviceClass__UpdateProperty7_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateShopTab(). */
+#define _ApplicationDeviceClass__UpdateShopTab_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetActiveCup()' */
 XInt32 ApplicationDeviceClass_OnGetActiveCup( ApplicationDeviceClass _this );
@@ -232,14 +242,14 @@ void ApplicationDeviceClass_OnSetActiveCup( ApplicationDeviceClass _this, XInt32
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty8( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateActiveCup( ApplicationDeviceClass _this, XInt32 
   aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty8()' */
-void ApplicationDeviceClass__UpdateProperty8( void* _this, XInt32 aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateActiveCup()' */
+void ApplicationDeviceClass__UpdateActiveCup( void* _this, XInt32 aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty8(). */
-#define _ApplicationDeviceClass__UpdateProperty8_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateActiveCup(). */
+#define _ApplicationDeviceClass__UpdateActiveCup_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetActiveBall()' */
 XInt32 ApplicationDeviceClass_OnGetActiveBall( ApplicationDeviceClass _this );
@@ -250,14 +260,14 @@ void ApplicationDeviceClass_OnSetActiveBall( ApplicationDeviceClass _this, XInt3
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty9( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateActiveBall( ApplicationDeviceClass _this, XInt32 
   aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty9()' */
-void ApplicationDeviceClass__UpdateProperty9( void* _this, XInt32 aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateActiveBall()' */
+void ApplicationDeviceClass__UpdateActiveBall( void* _this, XInt32 aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty9(). */
-#define _ApplicationDeviceClass__UpdateProperty9_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateActiveBall(). */
+#define _ApplicationDeviceClass__UpdateActiveBall_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetActiveMusic()' */
 XInt32 ApplicationDeviceClass_OnGetActiveMusic( ApplicationDeviceClass _this );
@@ -268,14 +278,14 @@ void ApplicationDeviceClass_OnSetActiveMusic( ApplicationDeviceClass _this, XInt
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty10( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateActiveMusic( ApplicationDeviceClass _this, XInt32 
   aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty10()' */
-void ApplicationDeviceClass__UpdateProperty10( void* _this, XInt32 aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateActiveMusic()' */
+void ApplicationDeviceClass__UpdateActiveMusic( void* _this, XInt32 aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty10(). */
-#define _ApplicationDeviceClass__UpdateProperty10_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateActiveMusic(). */
+#define _ApplicationDeviceClass__UpdateActiveMusic_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetHallAct()' */
 XBool ApplicationDeviceClass_OnGetHallAct( ApplicationDeviceClass _this );
@@ -285,14 +295,13 @@ void ApplicationDeviceClass_OnSetHallAct( ApplicationDeviceClass _this, XBool va
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty11( ApplicationDeviceClass _this, XBool 
-  aNewValue );
+void ApplicationDeviceClass_UpdateHallAct( ApplicationDeviceClass _this, XBool aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty11()' */
-void ApplicationDeviceClass__UpdateProperty11( void* _this, XBool aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateHallAct()' */
+void ApplicationDeviceClass__UpdateHallAct( void* _this, XBool aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty11(). */
-#define _ApplicationDeviceClass__UpdateProperty11_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateHallAct(). */
+#define _ApplicationDeviceClass__UpdateHallAct_
 
 /* 'C' function for method : 'Application::DeviceClass.OnGetHallPack()' */
 XBool ApplicationDeviceClass_OnGetHallPack( ApplicationDeviceClass _this );
@@ -302,32 +311,199 @@ void ApplicationDeviceClass_OnSetHallPack( ApplicationDeviceClass _this, XBool v
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty12( ApplicationDeviceClass _this, XBool 
+void ApplicationDeviceClass_UpdateHallPack( ApplicationDeviceClass _this, XBool 
   aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty12()' */
-void ApplicationDeviceClass__UpdateProperty12( void* _this, XBool aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateHallPack()' */
+void ApplicationDeviceClass__UpdateHallPack( void* _this, XBool aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty12(). */
-#define _ApplicationDeviceClass__UpdateProperty12_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateHallPack(). */
+#define _ApplicationDeviceClass__UpdateHallPack_
 
-/* 'C' function for method : 'Application::DeviceClass.OnGetAchFrame()' */
-XInt32 ApplicationDeviceClass_OnGetAchFrame( ApplicationDeviceClass _this );
+/* 'C' function for method : 'Application::DeviceClass.OnGetFrameSound()' */
+XBool ApplicationDeviceClass_OnGetFrameSound( ApplicationDeviceClass _this );
 
-/* 'C' function for method : 'Application::DeviceClass.OnSetAchFrame()' */
-void ApplicationDeviceClass_OnSetAchFrame( ApplicationDeviceClass _this, XInt32 
+/* 'C' function for method : 'Application::DeviceClass.OnSetFrameSound()' */
+void ApplicationDeviceClass_OnSetFrameSound( ApplicationDeviceClass _this, XBool 
   value );
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
-void ApplicationDeviceClass_UpdateProperty13( ApplicationDeviceClass _this, XInt32 
+void ApplicationDeviceClass_UpdateFrameSound( ApplicationDeviceClass _this, XBool 
   aNewValue );
 
-/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateProperty13()' */
-void ApplicationDeviceClass__UpdateProperty13( void* _this, XInt32 aNewValue );
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateFrameSound()' */
+void ApplicationDeviceClass__UpdateFrameSound( void* _this, XBool aNewValue );
 
-/* The following define announces the presence of the method Application::DeviceClass.UpdateProperty13(). */
-#define _ApplicationDeviceClass__UpdateProperty13_
+/* The following define announces the presence of the method Application::DeviceClass.UpdateFrameSound(). */
+#define _ApplicationDeviceClass__UpdateFrameSound_
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetCurrentScreen()' */
+XEnum ApplicationDeviceClass_OnGetCurrentScreen( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetCurrentScreen()' */
+void ApplicationDeviceClass_OnSetCurrentScreen( ApplicationDeviceClass _this, XEnum 
+  value );
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateCurrentScreen( ApplicationDeviceClass _this, XEnum 
+  aNewValue );
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateCurrentScreen()' */
+void ApplicationDeviceClass__UpdateCurrentScreen( void* _this, XEnum aNewValue );
+
+/* The following define announces the presence of the method Application::DeviceClass.UpdateCurrentScreen(). */
+#define _ApplicationDeviceClass__UpdateCurrentScreen_
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetFrame()' */
+XInt32 ApplicationDeviceClass_OnGetFrame( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetFrame()' */
+void ApplicationDeviceClass_OnSetFrame( ApplicationDeviceClass _this, XInt32 value );
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateFrame( ApplicationDeviceClass _this, XInt32 aNewValue );
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateFrame()' */
+void ApplicationDeviceClass__UpdateFrame( void* _this, XInt32 aNewValue );
+
+/* The following define announces the presence of the method Application::DeviceClass.UpdateFrame(). */
+#define _ApplicationDeviceClass__UpdateFrame_
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetNextLevel()' */
+XBool ApplicationDeviceClass_OnGetNextLevel( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetNextLevel()' */
+void ApplicationDeviceClass_OnSetNextLevel( ApplicationDeviceClass _this, XBool 
+  value );
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateNextLevel( ApplicationDeviceClass _this, XBool 
+  aNewValue );
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateNextLevel()' */
+void ApplicationDeviceClass__UpdateNextLevel( void* _this, XBool aNewValue );
+
+/* The following define announces the presence of the method Application::DeviceClass.UpdateNextLevel(). */
+#define _ApplicationDeviceClass__UpdateNextLevel_
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetReset()' */
+XBool ApplicationDeviceClass_OnGetReset( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetReset()' */
+void ApplicationDeviceClass_OnSetReset( ApplicationDeviceClass _this, XBool value );
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateReset( ApplicationDeviceClass _this, XBool aNewValue );
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateReset()' */
+void ApplicationDeviceClass__UpdateReset( void* _this, XBool aNewValue );
+
+/* The following define announces the presence of the method Application::DeviceClass.UpdateReset(). */
+#define _ApplicationDeviceClass__UpdateReset_
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetStartSound()' */
+XBool ApplicationDeviceClass_OnGetStartSound( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetStartSound()' */
+void ApplicationDeviceClass_OnSetStartSound( ApplicationDeviceClass _this, XBool 
+  value );
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateStartSound( ApplicationDeviceClass _this, XBool 
+  aNewValue );
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateStartSound()' */
+void ApplicationDeviceClass__UpdateStartSound( void* _this, XBool aNewValue );
+
+/* The following define announces the presence of the method Application::DeviceClass.UpdateStartSound(). */
+#define _ApplicationDeviceClass__UpdateStartSound_
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetWrongGuesses()' */
+XInt32 ApplicationDeviceClass_OnGetWrongGuesses( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetWrongGuesses()' */
+void ApplicationDeviceClass_OnSetWrongGuesses( ApplicationDeviceClass _this, XInt32 
+  value );
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateWrongGuesses( ApplicationDeviceClass _this, XInt32 
+  aNewValue );
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateWrongGuesses()' */
+void ApplicationDeviceClass__UpdateWrongGuesses( void* _this, XInt32 aNewValue );
+
+/* The following define announces the presence of the method Application::DeviceClass.UpdateWrongGuesses(). */
+#define _ApplicationDeviceClass__UpdateWrongGuesses_
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetActiveMusicName()' */
+XString ApplicationDeviceClass_OnGetActiveMusicName( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetActiveMusicName()' */
+void ApplicationDeviceClass_OnSetActiveMusicName( ApplicationDeviceClass _this, 
+  XString value );
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateActiveMusicName( ApplicationDeviceClass _this, 
+  XString aNewValue );
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateActiveMusicName()' */
+void ApplicationDeviceClass__UpdateActiveMusicName( void* _this, XString aNewValue );
+
+/* The following define announces the presence of the method Application::DeviceClass.UpdateActiveMusicName(). */
+#define _ApplicationDeviceClass__UpdateActiveMusicName_
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetDate()' */
+XString ApplicationDeviceClass_OnGetDate( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetDate()' */
+void ApplicationDeviceClass_OnSetDate( ApplicationDeviceClass _this, XString value );
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateDate( ApplicationDeviceClass _this, XString aNewValue );
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateDate()' */
+void ApplicationDeviceClass__UpdateDate( void* _this, XString aNewValue );
+
+/* The following define announces the presence of the method Application::DeviceClass.UpdateDate(). */
+#define _ApplicationDeviceClass__UpdateDate_
+
+/* 'C' function for method : 'Application::DeviceClass.OnGetHours()' */
+XString ApplicationDeviceClass_OnGetHours( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.OnSetHours()' */
+void ApplicationDeviceClass_OnSetHours( ApplicationDeviceClass _this, XString value );
+
+/* This method is intended to be called by the device to notify the GUI application 
+   about an alternation of its setting or state value. */
+void ApplicationDeviceClass_UpdateHours( ApplicationDeviceClass _this, XString aNewValue );
+
+/* Wrapper function for the non virtual method : 'Application::DeviceClass.UpdateHours()' */
+void ApplicationDeviceClass__UpdateHours( void* _this, XString aNewValue );
+
+/* The following define announces the presence of the method Application::DeviceClass.UpdateHours(). */
+#define _ApplicationDeviceClass__UpdateHours_
+
+/* 'C' function for method : 'Application::DeviceClass.GetShopArrays()' */
+void ApplicationDeviceClass_GetShopArrays( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.UpdateShopArrays()' */
+void ApplicationDeviceClass_UpdateShopArrays( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.GetAchivementsArray()' */
+void ApplicationDeviceClass_GetAchivementsArray( ApplicationDeviceClass _this );
+
+/* 'C' function for method : 'Application::DeviceClass.CheckAchivements()' */
+XInt32 ApplicationDeviceClass_CheckAchivements( ApplicationDeviceClass _this, XInt32 
+  aArg1 );
 
 #ifdef __cplusplus
   }

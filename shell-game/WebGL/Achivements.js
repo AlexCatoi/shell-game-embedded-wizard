@@ -66,7 +66,7 @@ function CheckCupsAchievements(){
         SetAchievements(ach);
         return 3;
     }
-    else if(count==x.length && !ach[4])
+    else if(count==x.length-1 && !ach[4])
     {
         ach[4]=true;
         SetAchievements(ach);
@@ -94,7 +94,7 @@ function CheckBallsAchievements(){
         SetAchievements(ach);
         return 6;
     }
-    else if(count==x.length && !ach[7])
+    else if(count==x.length-1 && !ach[7])
     {
         ach[7]=true;
         SetAchievements(ach);
@@ -122,7 +122,7 @@ function CheckMusicAchievements(){
         SetAchievements(ach);
         return 9;
     }
-    else if(count==x.length && !ach[10])
+    else if(count==x.length-1 && !ach[10])
     {
         ach[10]=true;
         SetAchievements(ach);

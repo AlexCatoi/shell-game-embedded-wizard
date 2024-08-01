@@ -49,12 +49,6 @@
 #include "_WidgetSetPushButton.h"
 #include "_WidgetSetPushButtonConfig.h"
 
-/* Forward declaration of the class Application::DeviceClass */
-#ifndef _ApplicationDeviceClass_
-  EW_DECLARE_CLASS( ApplicationDeviceClass )
-#define _ApplicationDeviceClass_
-#endif
-
 /* Forward declaration of the class Application::Stats */
 #ifndef _ApplicationStats_
   EW_DECLARE_CLASS( ApplicationStats )
@@ -108,7 +102,6 @@ EW_DEFINE_FIELDS( ApplicationStats, CoreGroup )
   EW_OBJECT  ( PushButton,      WidgetSetPushButton )
   EW_OBJECT  ( PushButtonConfig, WidgetSetPushButtonConfig )
   EW_OBJECT  ( Bevel,           ViewsBevel )
-  EW_VARIABLE( Object,          ApplicationDeviceClass )
 EW_END_OF_FIELDS( ApplicationStats )
 
 /* Virtual Method Table (VMT) for the class : 'Application::Stats' */

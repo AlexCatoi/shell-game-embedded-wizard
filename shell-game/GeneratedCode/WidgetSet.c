@@ -3798,8 +3798,6 @@ void WidgetSetHorizontalSlider_onRepetitionTimer( WidgetSetHorizontalSlider _thi
   if ( oldValue == WidgetSetHorizontalSlider_OnGetCurrentValue( _this ))
     return;
 
-  EwPostSignal( _this->OnChange, ((XObject)_this ));
-
   if ( _this->Outlet.Object != 0 )
   {
     EwOnSetInt32( _this->Outlet, WidgetSetHorizontalSlider_OnGetCurrentValue( _this ));
@@ -3862,8 +3860,6 @@ void WidgetSetHorizontalSlider_onPressKey( WidgetSetHorizontalSlider _this, XObj
   if ( oldValue == WidgetSetHorizontalSlider_OnGetCurrentValue( _this ))
     return;
 
-  EwPostSignal( _this->OnChange, ((XObject)_this ));
-
   if ( _this->Outlet.Object != 0 )
   {
     EwOnSetInt32( _this->Outlet, WidgetSetHorizontalSlider_OnGetCurrentValue( _this ));
@@ -3901,8 +3897,6 @@ void WidgetSetHorizontalSlider_onDragTouch( WidgetSetHorizontalSlider _this, XOb
 
   if ( oldValue == WidgetSetHorizontalSlider_OnGetCurrentValue( _this ))
     return;
-
-  EwPostSignal( _this->OnChange, ((XObject)_this ));
 
   if ( _this->Outlet.Object != 0 )
   {
@@ -4037,7 +4031,7 @@ EW_END_OF_CLASS_VARIANTS( WidgetSetHorizontalSlider )
 
 /* Virtual Method Table (VMT) for the class : 'WidgetSet::HorizontalSlider' */
 EW_DEFINE_CLASS( WidgetSetHorizontalSlider, CoreGroup, RepetitionTimer, outline2, 
-                 OnChange, Outlet, touchStartValue, touchStartValue, "WidgetSet::HorizontalSlider" )
+                 Outlet, Outlet, touchStartValue, touchStartValue, "WidgetSet::HorizontalSlider" )
   CoreRectView_initLayoutContext,
   CoreView_GetRoot,
   CoreGroup_Draw,

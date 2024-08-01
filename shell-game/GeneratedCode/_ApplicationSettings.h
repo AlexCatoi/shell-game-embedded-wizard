@@ -188,14 +188,14 @@ void ApplicationSettings_SwitchDialog( ApplicationSettings _this, XObject sender
 /* 'C' function for method : 'Application::Settings.UpdateProperty()' */
 void ApplicationSettings_UpdateProperty( ApplicationSettings _this, XObject sender );
 
-/* 'C' function for method : 'Application::Settings.Volume()' */
-void ApplicationSettings_Volume( ApplicationSettings _this, XObject sender );
-
 /* 'C' function for method : 'Application::Settings.BackToMenu()' */
 void ApplicationSettings_BackToMenu( ApplicationSettings _this, XObject sender );
 
 /* 'C' function for method : 'Application::Settings.onVolumeChange()' */
 void ApplicationSettings_onVolumeChange( ApplicationSettings _this, XObject sender );
+
+/* 'C' function for method : 'Application::Settings.onSFXVolumeChange()' */
+void ApplicationSettings_onSFXVolumeChange( ApplicationSettings _this, XObject sender );
 
 #ifdef __cplusplus
   }

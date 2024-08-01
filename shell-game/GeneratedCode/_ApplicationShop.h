@@ -51,12 +51,6 @@
 #include "_WidgetSetPushButton.h"
 #include "_WidgetSetPushButtonConfig.h"
 
-/* Forward declaration of the class Application::DeviceClass */
-#ifndef _ApplicationDeviceClass_
-  EW_DECLARE_CLASS( ApplicationDeviceClass )
-#define _ApplicationDeviceClass_
-#endif
-
 /* Forward declaration of the class Application::Shop */
 #ifndef _ApplicationShop_
   EW_DECLARE_CLASS( ApplicationShop )
@@ -116,7 +110,6 @@ EW_DEFINE_FIELDS( ApplicationShop, CoreGroup )
   EW_OBJECT  ( PushButton,      WidgetSetPushButton )
   EW_OBJECT  ( PushButtonConfig, WidgetSetPushButtonConfig )
   EW_OBJECT  ( PacksBtn,        WidgetSetPushButton )
-  EW_VARIABLE( Obj,             ApplicationDeviceClass )
   EW_ARRAY   ( Songs,           XString, [16])
 EW_END_OF_FIELDS( ApplicationShop )
 
@@ -192,15 +185,6 @@ void ApplicationShop_UpdateOnBuy( ApplicationShop _this, XObject sender );
 
 /* 'C' function for method : 'Application::Shop.Back()' */
 void ApplicationShop_Back( ApplicationShop _this, XObject sender );
-
-/* 'C' function for method : 'Application::Shop.BringFromDB()' */
-void ApplicationShop_BringFromDB( ApplicationShop _this );
-
-/* 'C' function for method : 'Application::Shop.UpdateArr()' */
-void ApplicationShop_UpdateArr( ApplicationShop _this );
-
-/* 'C' function for method : 'Application::Shop.GetArrays()' */
-void ApplicationShop_GetArrays( ApplicationShop _this );
 
 #ifdef __cplusplus
   }

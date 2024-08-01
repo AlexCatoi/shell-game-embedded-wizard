@@ -48,7 +48,6 @@
 #include "_ApplicationApplication.h"
 #include "_ApplicationContainer.h"
 #include "_ApplicationDeviceClass.h"
-#include "_ApplicationDeviceClass1.h"
 #include "_ApplicationGame.h"
 #include "_ApplicationHelpMenu.h"
 #include "_ApplicationLoadingGame.h"
@@ -133,9 +132,6 @@ typedef XEnum ApplicationScreenType;
 #define ApplicationScreenTypeInitilizeGame                  5
 #define ApplicationScreenTypeGame                           6
 #define ApplicationScreenTypeAchivements                    7
-
-/* User defined auto object: 'Application::Device1' */
-EW_DECLARE_AUTOOBJECT( ApplicationDevice1, ApplicationDeviceClass1 )
 
 #ifdef __cplusplus
   }
