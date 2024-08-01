@@ -48,6 +48,7 @@
 #include "_ApplicationApplication.h"
 #include "_ApplicationContainer.h"
 #include "_ApplicationDeviceClass.h"
+#include "_ApplicationDeviceClassSimulation.h"
 #include "_ApplicationGame.h"
 #include "_ApplicationHelpMenu.h"
 #include "_ApplicationLoadingGame.h"

@@ -53,6 +53,7 @@
 
 /* Deklaration of class : 'Application::DeviceClass' */
 EW_DEFINE_FIELDS( ApplicationDeviceClass, TemplatesDeviceClass )
+  EW_VTHISPTR()
   EW_PROPERTY( ActiveMusicName, XString )
   EW_PROPERTY( Date,            XString )
   EW_PROPERTY( Hours,           XString )
@@ -86,7 +87,15 @@ EW_END_OF_FIELDS( ApplicationDeviceClass )
 
 /* Virtual Method Table (VMT) for the class : 'Application::DeviceClass' */
 EW_DEFINE_METHODS( ApplicationDeviceClass, TemplatesDeviceClass )
+  EW_METHOD( OnSetNextLevel,    void )( ApplicationDeviceClass _this, XBool value )
+  EW_METHOD( CheckAchivements,  XInt32 )( ApplicationDeviceClass _this, XInt32 aArg1 )
 EW_END_OF_METHODS( ApplicationDeviceClass )
+
+/* Variant Dispatch Method Table for the class : 'Application::DeviceClass' */
+EW_DEFINE_DISPATCHER( ApplicationDeviceClass, TemplatesDeviceClass )
+  EW_METHOD( OnSetNextLevel,    void )( ApplicationDeviceClass _this, XBool value )
+  EW_METHOD( CheckAchivements,  XInt32 )( ApplicationDeviceClass _this, XInt32 aArg1 )
+EW_END_OF_DISPATCHER( ApplicationDeviceClass )
 
 /* 'C' function for method : 'Application::DeviceClass.Done()' */
 void ApplicationDeviceClass_Done( ApplicationDeviceClass _this );
@@ -375,9 +384,20 @@ void ApplicationDeviceClass__UpdateFrame( void* _this, XInt32 aNewValue );
 /* 'C' function for method : 'Application::DeviceClass.OnGetNextLevel()' */
 XBool ApplicationDeviceClass_OnGetNextLevel( ApplicationDeviceClass _this );
 
-/* 'C' function for method : 'Application::DeviceClass.OnSetNextLevel()' */
+/* 'C' function for method : 'Application::DeviceClass.OnSetNextLevel()'
+   Please note, this function serves as the dispatcher to the methods overriden 
+   in the derived class variants. */
 void ApplicationDeviceClass_OnSetNextLevel( ApplicationDeviceClass _this, XBool 
   value );
+
+/* Implementation of the method : 'Application::DeviceClass.OnSetNextLevel()'. The 
+   implementation has been moved here, because the origin function ApplicationDeviceClass_OnSetNextLevel() 
+   does serve as the dispatcher to the derived class variants only. */
+void ApplicationDeviceClass___OnSetNextLevel( ApplicationDeviceClass _this, XBool 
+  value );
+
+/* Wrapper function for the virtual method : 'Application::DeviceClass.OnSetNextLevel()' */
+void ApplicationDeviceClass__OnSetNextLevel( void* _this, XBool value );
 
 /* This method is intended to be called by the device to notify the GUI application 
    about an alternation of its setting or state value. */
@@ -501,9 +521,20 @@ void ApplicationDeviceClass_UpdateShopArrays( ApplicationDeviceClass _this );
 /* 'C' function for method : 'Application::DeviceClass.GetAchivementsArray()' */
 void ApplicationDeviceClass_GetAchivementsArray( ApplicationDeviceClass _this );
 
-/* 'C' function for method : 'Application::DeviceClass.CheckAchivements()' */
+/* 'C' function for method : 'Application::DeviceClass.CheckAchivements()'
+   Please note, this function serves as the dispatcher to the methods overriden 
+   in the derived class variants. */
 XInt32 ApplicationDeviceClass_CheckAchivements( ApplicationDeviceClass _this, XInt32 
   aArg1 );
+
+/* Implementation of the method : 'Application::DeviceClass.CheckAchivements()'. 
+   The implementation has been moved here, because the origin function ApplicationDeviceClass_CheckAchivements() 
+   does serve as the dispatcher to the derived class variants only. */
+XInt32 ApplicationDeviceClass___CheckAchivements( ApplicationDeviceClass _this, 
+  XInt32 aArg1 );
+
+/* Wrapper function for the virtual method : 'Application::DeviceClass.CheckAchivements()' */
+XInt32 ApplicationDeviceClass__CheckAchivements( void* _this, XInt32 aArg1 );
 
 #ifdef __cplusplus
   }

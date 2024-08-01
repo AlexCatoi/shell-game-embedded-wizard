@@ -31,6 +31,7 @@
 #include "_ApplicationApplication.h"
 #include "_ApplicationContainer.h"
 #include "_ApplicationDeviceClass.h"
+#include "_ApplicationDeviceClassSimulation.h"
 #include "_ApplicationGame.h"
 #include "_ApplicationHelpMenu.h"
 #include "_ApplicationLoadingGame.h"
@@ -1626,10 +1627,10 @@ void ApplicationGame_NextLevel( ApplicationGame _this, XObject sender )
     _this->Nivel );
 
   if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->NextLevel )
-    ApplicationDeviceClass_OnSetNextLevel( EwGetAutoObject( &ApplicationDevice, 
+    ApplicationDeviceClass__OnSetNextLevel( EwGetAutoObject( &ApplicationDevice, 
     ApplicationDeviceClass ), 0 );
   else
-    ApplicationDeviceClass_OnSetNextLevel( EwGetAutoObject( &ApplicationDevice, 
+    ApplicationDeviceClass__OnSetNextLevel( EwGetAutoObject( &ApplicationDevice, 
     ApplicationDeviceClass ), 1 );
 
   ViewsText_OnSetString( &_this->NivelCurrent, EwConcatString( EwLoadString( &_Const003D ), 
@@ -2620,7 +2621,7 @@ void ApplicationDeviceClass__Init( ApplicationDeviceClass _this, XObject aLink, 
   _this->Volume = 50;
   _this->SFXVolume = 50;
   _this->MaxLevel = 1;
-  _this->Coins = 6000;
+  _this->Coins = 9000;
   _this->ShopTab = 1;
   _this->CupsArray[ 10 ] = 1;
   _this->BallsArray[ 5 ] = 1;
@@ -2636,6 +2637,9 @@ void ApplicationDeviceClass__Init( ApplicationDeviceClass _this, XObject aLink, 
 
   /* Call the user defined constructor */
   ApplicationDeviceClass_Init( _this, aArg );
+
+  /* Create and initialize the suitable class variant */
+  EwAttachObjectVariant( &_this->_.XObject, aLink, aArg );
 }
 
 /* Re-Initializer for the class 'Application::DeviceClass' */
@@ -2643,11 +2647,18 @@ void ApplicationDeviceClass__ReInit( ApplicationDeviceClass _this )
 {
   /* At first re-initialize the super class ... */
   TemplatesDeviceClass__ReInit( &_this->_.Super );
+
+  /* Reinitialize the variant */
+  if ( _this->_vthis )
+    _this->_vthis->_.VMT->_ReInit( &_this->_.XObject );
 }
 
 /* Finalizer method for the class 'Application::DeviceClass' */
 void ApplicationDeviceClass__Done( ApplicationDeviceClass _this )
 {
+  /* Deinitialize the variant */
+  EwDetachObjectVariant( &_this->_.XObject );
+
   /* Call the user defined destructor of the class */
   ApplicationDeviceClass_Done( _this );
 
@@ -3566,8 +3577,25 @@ XBool ApplicationDeviceClass_OnGetNextLevel( ApplicationDeviceClass _this )
   return _this->NextLevel;
 }
 
-/* 'C' function for method : 'Application::DeviceClass.OnSetNextLevel()' */
+/* 'C' function for method : 'Application::DeviceClass.OnSetNextLevel()'
+   Please note, this function serves as the dispatcher to the methods overriden 
+   in the derived class variants. */
 void ApplicationDeviceClass_OnSetNextLevel( ApplicationDeviceClass _this, XBool 
+  value )
+{
+  XObject _vthis = _this->_vthis;
+
+  if ( _vthis && _vthis->_.VMT )
+    ((const struct _dmt_ApplicationDeviceClass*)(_vthis->_.VMT))->OnSetNextLevel( _this
+  , value );
+  else
+    ApplicationDeviceClass___OnSetNextLevel( _this, value );
+}
+
+/* Implementation of the method : 'Application::DeviceClass.OnSetNextLevel()'. The 
+   implementation has been moved here, because the origin function ApplicationDeviceClass_OnSetNextLevel() 
+   does serve as the dispatcher to the derived class variants only. */
+void ApplicationDeviceClass___OnSetNextLevel( ApplicationDeviceClass _this, XBool 
   value )
 {
   if ( _this->NextLevel == value )
@@ -3590,7 +3618,14 @@ void ApplicationDeviceClass_OnSetNextLevel( ApplicationDeviceClass _this, XBool
     */
   }
   EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetNextLevel, 
-    ApplicationDeviceClass_OnSetNextLevel ), 0 );
+    ApplicationDeviceClass__OnSetNextLevel ), 0 );
+}
+
+/* Wrapper function for the virtual method : 'Application::DeviceClass.OnSetNextLevel()' */
+void ApplicationDeviceClass__OnSetNextLevel( void* _this, XBool value )
+{
+  ((ApplicationDeviceClass)_this)->_.VMT->OnSetNextLevel((ApplicationDeviceClass)_this
+  , value );
 }
 
 /* This method is intended to be called by the device to notify the GUI application 
@@ -3602,7 +3637,7 @@ void ApplicationDeviceClass_UpdateNextLevel( ApplicationDeviceClass _this, XBool
   {
     _this->NextLevel = aNewValue;
     EwNotifyRefObservers( EwNewRef( _this, ApplicationDeviceClass_OnGetNextLevel, 
-      ApplicationDeviceClass_OnSetNextLevel ), 0 );
+      ApplicationDeviceClass__OnSetNextLevel ), 0 );
   }
 }
 
@@ -3939,27 +3974,54 @@ void ApplicationDeviceClass_GetAchivementsArray( ApplicationDeviceClass _this )
   EW_UNUSED_ARG( _this );
 }
 
-/* 'C' function for method : 'Application::DeviceClass.CheckAchivements()' */
+/* 'C' function for method : 'Application::DeviceClass.CheckAchivements()'
+   Please note, this function serves as the dispatcher to the methods overriden 
+   in the derived class variants. */
 XInt32 ApplicationDeviceClass_CheckAchivements( ApplicationDeviceClass _this, XInt32 
   aArg1 )
+{
+  XObject _vthis = _this->_vthis;
+
+  if ( _vthis && _vthis->_.VMT )
+    return ((const struct _dmt_ApplicationDeviceClass*)(_vthis->_.VMT))->CheckAchivements( _this
+  , aArg1 );
+  else
+    return ApplicationDeviceClass___CheckAchivements( _this, aArg1 );
+}
+
+/* Implementation of the method : 'Application::DeviceClass.CheckAchivements()'. 
+   The implementation has been moved here, because the origin function ApplicationDeviceClass_CheckAchivements() 
+   does serve as the dispatcher to the derived class variants only. */
+XInt32 ApplicationDeviceClass___CheckAchivements( ApplicationDeviceClass _this, 
+  XInt32 aArg1 )
 {
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( _this );
 
-  if ( aArg1 >= 0 )
+  if ( aArg1 >= 1 )
     return -1;
 
   return -1;
 }
 
+/* Wrapper function for the virtual method : 'Application::DeviceClass.CheckAchivements()' */
+XInt32 ApplicationDeviceClass__CheckAchivements( void* _this, XInt32 aArg1 )
+{
+  return ((ApplicationDeviceClass)_this)->_.VMT->CheckAchivements((ApplicationDeviceClass)_this
+  , aArg1 );
+}
+
 /* Variants derived from the class : 'Application::DeviceClass' */
 EW_DEFINE_CLASS_VARIANTS( ApplicationDeviceClass )
+  EW_STATIC_CLASS_VARIANT( ApplicationDeviceClassSimulation ),
 EW_END_OF_CLASS_VARIANTS( ApplicationDeviceClass )
 
 /* Virtual Method Table (VMT) for the class : 'Application::DeviceClass' */
 EW_DEFINE_CLASS( ApplicationDeviceClass, TemplatesDeviceClass, ActiveMusicName, 
                  ActiveMusicName, ActiveMusicName, ActiveMusicName, ActiveMusicName, 
                  Volume, "Application::DeviceClass" )
+  ApplicationDeviceClass_OnSetNextLevel,
+  ApplicationDeviceClass_CheckAchivements,
 EW_END_OF_CLASS( ApplicationDeviceClass )
 
 /* User defined auto object: 'Application::Device' */
@@ -5779,7 +5841,7 @@ void ApplicationShopListItem_Buy( ApplicationShopListItem _this, XObject sender 
             - _this->Price ));
           }
 
-      frame = ApplicationDeviceClass_CheckAchivements( EwGetAutoObject( &ApplicationDevice, 
+      frame = ApplicationDeviceClass__CheckAchivements( EwGetAutoObject( &ApplicationDevice, 
       ApplicationDeviceClass ), EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab );
 
       if ( frame != -1 )
@@ -6883,5 +6945,189 @@ EW_DEFINE_CLASS( ApplicationAchPop, CoreGroup, Rectangle, Obj, AchievementsNames
   CoreGroup_Remove,
   CoreGroup_Add,
 EW_END_OF_CLASS( ApplicationAchPop )
+
+/* Initializer for the class variant 'Application::DeviceClassSimulation' */
+void ApplicationDeviceClassSimulation__Init( ApplicationDeviceClass _this, XObject aLink, XHandle aArg )
+{
+  ApplicationDeviceClassSimulation _vthis = (ApplicationDeviceClassSimulation)_this->_vthis;
+
+  /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( aLink );
+  EW_UNUSED_ARG( aArg );
+
+  /* Allow the Immediate Garbage Collection to evalute the members of this class variant. */
+  _vthis->_.XObject._.GCT = EW_VCLASS_GCT( ApplicationDeviceClassSimulation );
+
+  /* Setup the VMT pointer */
+  _vthis->_.VMT = EW_VCLASS( ApplicationDeviceClassSimulation );
+}
+
+/* Re-Initializer for the class variant 'Application::DeviceClassSimulation' */
+void ApplicationDeviceClassSimulation__ReInit( ApplicationDeviceClass _this )
+{
+  /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
+  EW_UNUSED_ARG( _this );
+}
+
+/* Finalizer method for the class variant 'Application::DeviceClassSimulation' */
+void ApplicationDeviceClassSimulation__Done( ApplicationDeviceClass _this )
+{
+  ApplicationDeviceClassSimulation _vthis = (ApplicationDeviceClassSimulation)_this->_vthis;
+
+  /* Finalize this class */
+  _vthis->_.VMT = 0;
+}
+
+/* 'C' function for method : 'Application::DeviceClassSimulation.OnSetNextLevel()' */
+void ApplicationDeviceClassSimulation_OnSetNextLevel( ApplicationDeviceClass _this, 
+  XBool value )
+{
+  ApplicationDeviceClass___OnSetNextLevel((ApplicationDeviceClass)_this, value );
+
+  if (( _this->CorrectGuesses >= 50 ) && !_this->Unlocked[ 0 ])
+  {
+    _this->Unlocked[ 0 ] = 1;
+    ApplicationDeviceClass_OnSetFrame((ApplicationDeviceClass)_this, 0 );
+  }
+  else
+    if (( _this->CorrectGuesses >= 100 ) && !_this->Unlocked[ 1 ])
+    {
+      _this->Unlocked[ 1 ] = 1;
+      ApplicationDeviceClass_OnSetFrame((ApplicationDeviceClass)_this, 1 );
+    }
+    else
+      if (( _this->MaxLevel >= 15 ) && !_this->Unlocked[ 12 ])
+      {
+        _this->Unlocked[ 12 ] = 1;
+        ApplicationDeviceClass_OnSetFrame((ApplicationDeviceClass)_this, 12 );
+      }
+      else
+        if (( _this->MaxLevel >= 20 ) && !_this->Unlocked[ 13 ])
+        {
+          _this->Unlocked[ 13 ] = 1;
+          ApplicationDeviceClass_OnSetFrame((ApplicationDeviceClass)_this, 13 );
+        }
+        else
+          if (( _this->MaxLevel >= 25 ) && !_this->Unlocked[ 14 ])
+          {
+            _this->Unlocked[ 14 ] = 1;
+            ApplicationDeviceClass_OnSetFrame((ApplicationDeviceClass)_this, 14 );
+          }
+          else
+            ApplicationDeviceClass_OnSetFrame((ApplicationDeviceClass)_this, -1 );
+}
+
+/* 'C' function for method : 'Application::DeviceClassSimulation.CheckAchivements()' */
+XInt32 ApplicationDeviceClassSimulation_CheckAchivements( ApplicationDeviceClass _this, 
+  XInt32 aArg1 )
+{
+  XInt32 i;
+  XInt32 count = 0;
+
+  if ( aArg1 == 1 )
+  {
+    for ( i = 0; i < 13; i++ )
+      if ( _this->CupsArray[ EwCheckIndex( i, 13 )])
+        count++;
+
+    if (( count >= 1 ) && !_this->Unlocked[ 2 ])
+    {
+      _this->Unlocked[ 2 ] = 1;
+      return 2;
+    }
+    else
+      if (( count >= 5 ) && !_this->Unlocked[ 3 ])
+      {
+        _this->Unlocked[ 3 ] = 1;
+        return 3;
+      }
+      else
+        if (( count == 13 ) && !_this->Unlocked[ 4 ])
+        {
+          _this->Unlocked[ 4 ] = 1;
+          return 4;
+        }
+
+    return -1;
+  }
+  else
+    if ( aArg1 == 2 )
+    {
+      for ( i = 0; i < 10; i++ )
+        if ( _this->BallsArray[ EwCheckIndex( i, 10 )])
+          count++;
+
+      if (( count >= 1 ) && !_this->Unlocked[ 5 ])
+      {
+        _this->Unlocked[ 5 ] = 1;
+        return 5;
+      }
+      else
+        if (( count >= 5 ) && !_this->Unlocked[ 6 ])
+        {
+          _this->Unlocked[ 6 ] = 1;
+          return 6;
+        }
+        else
+          if (( count == 10 ) && !_this->Unlocked[ 7 ])
+          {
+            _this->Unlocked[ 7 ] = 1;
+            return 7;
+          }
+
+      return -1;
+    }
+    else
+      if ( aArg1 == 3 )
+      {
+        for ( i = 0; i < 16; i++ )
+          if ( _this->MusicsArray[ EwCheckIndex( i, 16 )])
+            count++;
+
+        if (( count >= 1 ) && !_this->Unlocked[ 8 ])
+        {
+          _this->Unlocked[ 8 ] = 1;
+          return 8;
+        }
+        else
+          if (( count >= 5 ) && !_this->Unlocked[ 9 ])
+          {
+            _this->Unlocked[ 9 ] = 1;
+            return 9;
+          }
+          else
+            if (( count == 16 ) && !_this->Unlocked[ 10 ])
+            {
+              _this->Unlocked[ 10 ] = 1;
+              return 10;
+            }
+
+        return -1;
+      }
+      else
+        if ( aArg1 == 4 )
+        {
+          if ( _this->HallPack && !_this->Unlocked[ 11 ])
+          {
+            _this->Unlocked[ 11 ] = 1;
+            return 11;
+          }
+
+          return -1;
+        }
+
+  return -1;
+}
+
+/* Variants derived from the class : 'Application::DeviceClassSimulation' */
+EW_DEFINE_CLASS_VARIANTS( ApplicationDeviceClassSimulation )
+EW_END_OF_CLASS_VARIANTS( ApplicationDeviceClassSimulation )
+
+/* Virtual Method Table (VMT) for the class variant : 'Application::DeviceClassSimulation' */
+EW_DEFINE_VCLASS( ApplicationDeviceClassSimulation, XObject, ApplicationDeviceClass, 
+                  _.VMT, _.VMT, _.VMT, _.VMT, _.VMT, _.VMT, "Application::DeviceClassSimulation" )
+  ApplicationDeviceClassSimulation_OnSetNextLevel,
+  ApplicationDeviceClassSimulation_CheckAchivements,
+EW_END_OF_VCLASS( ApplicationDeviceClassSimulation )
 
 /* Embedded Wizard */

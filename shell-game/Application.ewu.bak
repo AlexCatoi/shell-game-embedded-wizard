@@ -11,7 +11,7 @@ class Application : Core::Root
   $rect <820,140,1000,180>
   inherited method Init()
   {
-    attachobserver OnScreenChange,^Application::Device1.CurrentScreen;
+    attachobserver OnScreenChange,^Application::Device.CurrentScreen;
 
     postsignal OnScreenChange;
 
@@ -21,12 +21,12 @@ class Application : Core::Root
   var Application::DeviceClass Variable = Application::Device;
 
   $rect <814,214,1014,254>
-  var Application::DeviceClass1 CurrentScreen = Application::Device1;
+  var Application::DeviceClass CurrentScreen = Application::Device;
 
   $rect <813,306,1013,346>
   slot OnScreenChange
   {
-    switch(Application::Device1.CurrentScreen){
+    switch(Application::Device.CurrentScreen){
       case Application::ScreenType.MainMenu: Container.Content=new Application::MainMenu;
       case Application::ScreenType.HelpMenu: Container.Content=new Application::HelpMenu;
       case Application::ScreenType.SettingsMenu: Container.Content=new Application::Settings;
@@ -544,9 +544,8 @@ class Game : Core::Group
   slot Choice
   {
     var Core::SimpleTouchHandler choice = (Core::SimpleTouchHandler)sender;
-    var Application::DeviceClass settings=this.SettingsObject;
 
-    settings.TotalRounds+=1;
+    Application::Device.TotalRounds+=1;
     if(choice==ChooseLeft)
       {
         if(Left.Bounds==<100,70,300,438>)
@@ -603,20 +602,10 @@ class Game : Core::Group
 
     if(Correct)
     {
-      settings.CorrectGuesses+=1;
-      $if (!$prototyper)
-      native{
-         Correct();
-      }
-      $endif
+      Application::Device.CorrectGuesses+=1;
     }
     else{
-       $if (!$prototyper)
-      native{
-         Wrong();
-      }
-      $endif
-
+      Application::Device.WrongGuesses+=1;
     }
 
     this.ChooseCenter.Enabled=false;
@@ -650,20 +639,15 @@ class Game : Core::Group
         RightToCenterS.CycleDuration=250;
 
         this.MakeMoves.Period=1000;
-    this.WaitFinish.Period=1000;
-    this.ShowBall.CycleDuration=1000;
-    this.HideBall.CycleDuration=1000;
+        this.WaitFinish.Period=1000;
+        this.ShowBall.CycleDuration=1000;
+        this.HideBall.CycleDuration=1000;
 
-    LeftCenterAnimation.CycleDuration=500;
-    LeftRightAnimation.CycleDuration=500;
-    CenterRightAnimation.CycleDuration=500;
+        LeftCenterAnimation.CycleDuration=500;
+        LeftRightAnimation.CycleDuration=500;
+        CenterRightAnimation.CycleDuration=500;
 
-     var int32 lvl=Nivel;
-     $if (!$prototyper)
-      native(lvl){
-         UpdateStorage(lvl,true,false);  
-      }
-      $endif
+    Application::Device.Reset = !Application::Device.Reset;
 
     signal ShowBallCall;
 
@@ -680,26 +664,20 @@ class Game : Core::Group
     var int32 frame=-1;
     var Application::DeviceClass settings=this.SettingsObject;
 
-    var int32 lvl=Nivel;
-    var int32 coins;
-
     if(Nivel>settings.MaxLevel)
     {
       settings.MaxLevel=Nivel;
     }
-      $if (!$prototyper)
-      native(lvl,frame){
-         UpdateStorage(lvl,true,true);
-         frame=CheckLevels();
-         if(frame==-1)
-            frame=CheckRights();  
-      }
-      $endif
+    if(Application::Device.NextLevel)
+      Application::Device.NextLevel=false;
+    else
+      Application::Device.NextLevel=true;
 
     this.NivelCurrent.String="Nivel: "+(string)Nivel;
     var int32 speedMine = LeftCenterAnimation.CycleDuration;
     var int32 speedW = LeftToCenterF.CycleDuration-Nivel*5;
      var bool GoOnSwitched=false;
+
     if(speedW>80){
         //warped 
         GoOnSwitched=true;
@@ -716,9 +694,11 @@ class Game : Core::Group
         RightToLeftS.CycleDuration=speedW;
         CenterToRightS.CycleDuration=speedW;
         RightToCenterS.CycleDuration=speedW;
-      }
+     }
+
     var bool goOn=false;
-    coins=(speedMine-500).abs/50 + Nivel;
+    var int32 coins=(speedMine-500).abs/50 + Nivel;
+
     if(speedMine>230)
     {    goOn=true;
         speedMine=speedMine-Nivel*10;
@@ -733,19 +713,22 @@ class Game : Core::Group
         LeftRightAnimation.CycleDuration-=10;
         CenterRightAnimation.CycleDuration-=10;
     }
+
     var bool active=SettingsObject.Animation;
+
     if(!active && goOn)
     {
-       this.MakeMoves.Period=speedMine*2;
-      this.WaitFinish.Period=speedMine*2;
-      this.ShowBall.CycleDuration=speedMine*2;
-      this.HideBall.CycleDuration=speedMine*2;
+        this.MakeMoves.Period=speedMine*2;
+        this.WaitFinish.Period=speedMine*2;
+        this.ShowBall.CycleDuration=speedMine*2;
+        this.HideBall.CycleDuration=speedMine*2;
     }
-    else if(GoOnSwitched){
-          this.MakeMoves.Period=speedW*4;
-    this.WaitFinish.Period=speedW*4;
-    this.ShowBall.CycleDuration=speedW*4;
-    this.HideBall.CycleDuration=speedW*4;
+    else if(active && GoOnSwitched)
+    {
+        this.MakeMoves.Period=speedW*4;
+        this.WaitFinish.Period=speedW*4;
+        this.ShowBall.CycleDuration=speedW*4;
+        this.HideBall.CycleDuration=speedW*4;
     }
 
 
@@ -755,6 +738,7 @@ class Game : Core::Group
           AchPopDismiss.Enabled=true;
           PresentDialog(new Application::AchPop,Effects::SlideDownCentered,null,null,null,null,null,null,null,false);
      }
+
     UpdateCoins(coins);
 
     signal ShowBallCall;
@@ -979,7 +963,7 @@ class Game : Core::Group
   $rect <40,1060,240,1100>
   slot GoToMenu
   {
-    Application::Device1.ShowOr=true;
+    Application::Device.ShowOr=true;
     if(Owner!=null)
       Owner.PresentDialog( new Application::Settings, Effects::SlideLeftCentered,null, null, null, null, null, null, null, false );
 
@@ -1006,9 +990,9 @@ class Game : Core::Group
     Center.FrameNumber=SettingsObject.ActiveCup;
     Ball.FrameNumber=SettingsObject.ActiveBall;
 
-    FromDB();
 
-    if(SettingsObject.HallAct)
+
+    if(Application::Device.HallAct)
     {
       MakeItHalloween();
     }
@@ -1023,9 +1007,9 @@ class Game : Core::Group
       NivelCurrent.ColorBL=#FF0015FF;
       NivelCurrent.ColorBR=#FF0071FF;
 
-      Left.FrameNumber=SettingsObject.ActiveCup;
-      Center.FrameNumber=SettingsObject.ActiveCup;
-      Right.FrameNumber=SettingsObject.ActiveCup;
+      Left.FrameNumber=Application::Device.ActiveCup;
+      Center.FrameNumber=Application::Device.ActiveCup;
+      Right.FrameNumber=Application::Device.ActiveCup;
 
       SpiderLeft.Visible=false;
       SpiderRight.Visible=false;
@@ -1033,7 +1017,7 @@ class Game : Core::Group
       PumpRight.Visible=false;
 
       Ball.Bitmap=Application::ShopBalls;
-      Ball.FrameNumber=SettingsObject.ActiveBall;
+      Ball.FrameNumber=Application::Device.ActiveBall;
     }   
        
   }
@@ -1295,15 +1279,9 @@ class Game : Core::Group
   $rect <-100,930,100,970>
   method void UpdateCoins( arg int32 coins )
   {
-    $if (!$prototyper)
-    native(coins)
-    {
-      UpdateMoney(coins);
-      coins=GetCoins();
-    }
-    $endif
-    SettingsObject.Coins=coins;
-    Text1.String=(string)SettingsObject.Coins;
+    Application::Device.Coins=coins;
+
+    Text1.String=(string)Application::Device.Coins;
   }
 
   $rect <20,20,160,60>
@@ -1625,8 +1603,9 @@ class Settings : Core::Group
     this.HorizontalSlider.CurrentValue=Object.Volume;
     this.HorizontalSlider1.CurrentValue=Object.SFXVolume;
     attachobserver onVolumeChange,^Application::Device.Volume;
+    attachobserver onSFXVolumeChange,^Application::Device.SFXVolume;
 
-    if(Application::Device1.ShowOr)
+    if(Application::Device.ShowOr)
       {
       PushButton.Visible=true;
       PushButton.Enabled=true;
@@ -1653,7 +1632,7 @@ class Settings : Core::Group
   object WidgetSet::HorizontalSlider HorizontalSlider
   {
     preset Bounds = <329,176,726,226>;
-    preset OnChange = Volume;
+    preset OnChange = null;
     preset Outlet = ^Application::Device.Volume;
     preset Appearance = HorizontalSliderConfig;
   }
@@ -1733,46 +1712,6 @@ class Settings : Core::Group
     preset Bitmap = Resources::PlayerIconsSmall;
   }
 
-  $rect <540,640,740,680>
-  slot Volume
-  {
-    var WidgetSet::HorizontalSlider volume=(WidgetSet::HorizontalSlider)sender;
-    var Application::DeviceClass settings=Application::Device;
-
-    if(volume==this.HorizontalSlider)
-    {
-
-    $if (!$prototyper)
-    native{
-        let vol= Math.abs(volume.CurrentValue / 100);
-        if(vol>1.0)
-          vol=1.0;
-        SetVolume(vol);
-    }
-
-    $endif
-    }
-    else if(volume==this.HorizontalSlider1)
-    {
-       if(volume.CurrentValue==0)
-        this.Sound1.FrameNumber=12;
-      else if(volume.CurrentValue>0 && volume.CurrentValue<=50)
-        this.Sound1.FrameNumber=10;
-      else
-         this.Sound1.FrameNumber=11;
-    settings.SFXVolume=volume.CurrentValue;
-     $if (!$prototyper)
-    native{
-        let vol= Math.abs(volume.CurrentValue / 100);
-        if(vol>1.0)
-          vol=1.0;
-        ShuffleVolume(vol);
-        }
-    $endif
-    }
-
-  }
-
   // WidgetsConfigs
   note group Note1
   {
@@ -1797,7 +1736,8 @@ class Settings : Core::Group
   object WidgetSet::HorizontalSlider HorizontalSlider1
   {
     preset Bounds = <329,292,726,342>;
-    preset OnChange = Volume;
+    preset OnChange = null;
+    preset Outlet = ^Application::Device.SFXVolume;
     preset Appearance = HorizontalSliderConfig;
   }
 
@@ -1869,8 +1809,8 @@ class Settings : Core::Group
      }
     $endif
     Owner.DismissDialog( FindCurrentDialog(), Effects::SlideRightCentered, null, null, null, null, false );
-    Application::Device1.LeftToRight=1;
-    Application::Device1.CurrentScreen=Application::ScreenType.MainMenu;
+    Application::Device.LeftToRight=1;
+    Application::Device.CurrentScreen=Application::ScreenType.MainMenu;
   }
 
   $rect <751,641,951,681>
@@ -1882,6 +1822,17 @@ class Settings : Core::Group
         this.Sound.FrameNumber=10;
       else
          this.Sound.FrameNumber=11;
+  }
+
+  $rect <540,640,740,680>
+  slot onSFXVolumeChange
+  {
+    if(Application::Device.SFXVolume==0)
+        this.Sound1.FrameNumber=12;
+      else if(Application::Device.SFXVolume>0 && Application::Device.SFXVolume<=50)
+        this.Sound1.FrameNumber=10;
+      else
+         this.Sound1.FrameNumber=11;
   }
 
   // Directives to adapt the order of the above members according to how these members 
@@ -1901,7 +1852,6 @@ class Settings : Core::Group
   $member HorizontalSlider
   $member HorizontalSliderConfig
   $member Sound
-  $member Volume
   $member Note1
   $member Note2
   $member Text2
@@ -1913,6 +1863,7 @@ class Settings : Core::Group
   $member Bevel
   $member BackToMenu
   $member onVolumeChange
+  $member onSFXVolumeChange
 }
 
 $rect <470,60,670,100>
@@ -2144,7 +2095,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-140,190,60,230>
   $output true
-  method void UpdateProperty( arg int32 aNewValue )
+  method void UpdateVolume( arg int32 aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure Volume )
@@ -2234,7 +2185,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-130,240,70,280>
   $output true
-  method void UpdateProperty1( arg int32 aNewValue )
+  method void UpdateSFXVolume( arg int32 aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure SFXVolume )
@@ -2324,7 +2275,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-130,290,70,330>
   $output true
-  method void UpdateProperty2( arg bool aNewValue )
+  method void UpdateAnimation( arg bool aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure Animation )
@@ -2414,7 +2365,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-130,340,70,380>
   $output true
-  method void UpdateProperty3( arg int32 aNewValue )
+  method void UpdateMaxLevel( arg int32 aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure MaxLevel )
@@ -2504,7 +2455,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-130,390,70,430>
   $output true
-  method void UpdateProperty4( arg int32 aNewValue )
+  method void UpdateTotalRounds( arg int32 aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure TotalRounds )
@@ -2594,7 +2545,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-119,450,81,490>
   $output true
-  method void UpdateProperty5( arg int32 aNewValue )
+  method void UpdateCorrectGuesses( arg int32 aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure CorrectGuesses )
@@ -2607,10 +2558,10 @@ class DeviceClass : Templates::DeviceClass
     }
   }
 
-  $rect <70,519,270,559>
+  $rect <70,540,270,580>
   property int32 Coins = 6000;
 
-  $rect <470,519,670,559>
+  $rect <470,540,670,580>
   onget Coins
   {
     // Per default return the value stored already in the property.
@@ -2645,7 +2596,7 @@ class DeviceClass : Templates::DeviceClass
     */
   }
 
-  $rect <270,519,470,559>
+  $rect <270,540,470,580>
   onset Coins
   {
     // The property doesn't change -> nothing to do.
@@ -2682,9 +2633,9 @@ class DeviceClass : Templates::DeviceClass
 
   // This method is intended to be called by the device to notify the GUI application \
   // about an alternation of its setting or state value.
-  $rect <-130,519,70,559>
+  $rect <-130,540,70,580>
   $output true
-  method void UpdateProperty6( arg int32 aNewValue )
+  method void UpdateCoins( arg int32 aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure Coins )
@@ -2774,7 +2725,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-140,590,60,630>
   $output true
-  method void UpdateProperty7( arg int32 aNewValue )
+  method void UpdateShopTab( arg int32 aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure ShopTab )
@@ -2896,7 +2847,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-150,650,50,690>
   $output true
-  method void UpdateProperty8( arg int32 aNewValue )
+  method void UpdateActiveCup( arg int32 aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure ActiveCup )
@@ -2986,7 +2937,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-130,720,70,760>
   $output true
-  method void UpdateProperty9( arg int32 aNewValue )
+  method void UpdateActiveBall( arg int32 aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure ActiveBall )
@@ -3097,7 +3048,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-130,790,70,830>
   $output true
-  method void UpdateProperty10( arg int32 aNewValue )
+  method void UpdateActiveMusic( arg int32 aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure ActiveMusic )
@@ -3187,7 +3138,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-157,966,43,1006>
   $output true
-  method void UpdateProperty11( arg bool aNewValue )
+  method void UpdateHallAct( arg bool aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure HallAct )
@@ -3277,7 +3228,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-150,1040,50,1080>
   $output true
-  method void UpdateProperty12( arg bool aNewValue )
+  method void UpdateHallPack( arg bool aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure HallPack )
@@ -3367,7 +3318,7 @@ class DeviceClass : Templates::DeviceClass
   // about an alternation of its setting or state value.
   $rect <-150,1120,50,1160>
   $output true
-  method void UpdateProperty13( arg int32 aNewValue )
+  method void UpdateAchFrame( arg int32 aNewValue )
   {
     // Only if the reported value does differ from the one stored currently in the property.
     if ( aNewValue != pure AchFrame )
@@ -3377,6 +3328,650 @@ class DeviceClass : Templates::DeviceClass
 
       // Notify all associated property observers.
       notifyobservers ^AchFrame;
+    }
+  }
+
+  $rect <60,1220,260,1260>
+  property Application::ScreenType CurrentScreen = Application::ScreenType.MainMenu;
+
+  $rect <460,1220,660,1260>
+  onget CurrentScreen
+  {
+    // Per default return the value stored already in the property.
+    return pure CurrentScreen;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <260,1220,460,1260>
+  onset CurrentScreen
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure CurrentScreen == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure CurrentScreen = value;
+
+    if(value==Application::ScreenType.MainMenu)
+    {
+      $if (!$prototyper)
+      native{
+        ShuffleEnd();
+      }
+      $endif
+    }
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^CurrentScreen;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-140,1220,60,1260>
+  $output true
+  method void UpdateCurrentScreen( arg Application::ScreenType aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure CurrentScreen )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure CurrentScreen = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^CurrentScreen;
+    }
+  }
+
+  $rect <50,1300,250,1340>
+  var bool ShowOr = true;
+
+  $rect <270,1300,470,1340>
+  var int32 LeftToRight = 0;
+
+  $rect <40,1370,240,1410>
+  property int32 Frame = -1;
+
+  $rect <440,1370,640,1410>
+  onget Frame
+  {
+    // Per default return the value stored already in the property.
+    return pure Frame;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <240,1370,440,1410>
+  onset Frame
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure Frame == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure Frame = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^Frame;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-160,1370,40,1410>
+  $output true
+  method void UpdateFrame( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure Frame )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure Frame = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^Frame;
+    }
+  }
+
+  $rect <50,1440,250,1480>
+  property bool NextLevel = false;
+
+  $rect <450,1440,650,1480>
+  onget NextLevel
+  {
+    // Per default return the value stored already in the property.
+    return pure NextLevel;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <250,1440,450,1480>
+  onset NextLevel
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure NextLevel == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure NextLevel = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^NextLevel;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-150,1440,50,1480>
+  $output true
+  method void UpdateNextLevel( arg bool aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure NextLevel )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure NextLevel = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^NextLevel;
+    }
+  }
+
+  $rect <50,1490,250,1530>
+  property bool Reset = false;
+
+  $rect <450,1490,650,1530>
+  onget Reset
+  {
+    // Per default return the value stored already in the property.
+    return pure Reset;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <250,1490,450,1530>
+  onset Reset
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure Reset == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure Reset = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^Reset;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-150,1490,50,1530>
+  $output true
+  method void UpdateReset( arg bool aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure Reset )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure Reset = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^Reset;
+    }
+  }
+
+  $rect <60,1550,260,1590>
+  property bool StartSound = false;
+
+  $rect <460,1550,660,1590>
+  onget StartSound
+  {
+    // Per default return the value stored already in the property.
+    return pure StartSound;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <260,1550,460,1590>
+  onset StartSound
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure StartSound == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure StartSound = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^StartSound;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-140,1550,60,1590>
+  $output true
+  method void UpdateStartSound( arg bool aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure StartSound )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure StartSound = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^StartSound;
+    }
+  }
+
+  $rect <80,490,280,530>
+  property int32 WrongGuesses = 0;
+
+  $rect <480,490,680,530>
+  onget WrongGuesses
+  {
+    // Per default return the value stored already in the property.
+    return pure WrongGuesses;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <280,490,480,530>
+  onset WrongGuesses
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure WrongGuesses == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure WrongGuesses = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^WrongGuesses;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-120,490,80,530>
+  $output true
+  method void UpdateWrongGuesses( arg int32 aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure WrongGuesses )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure WrongGuesses = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^WrongGuesses;
+    }
+  }
+
+  $rect <50,1619,250,1659>
+  property string ActiveMusicName;
+
+  $rect <450,1619,650,1659>
+  onget ActiveMusicName
+  {
+    // Per default return the value stored already in the property.
+    return pure ActiveMusicName;
+
+    /*
+
+      TO DO:
+
+      If the property should return the value stored in the underlying device
+      or in the middleware, remove the above 'return' statement and instead do
+      following:
+
+      Declare a local variable to receive the value from the underlying device.
+      The type of the variable has to correspond to the data type of the property.
+      For example in case of an 'int32' property:
+      
+        var int32 result;
+
+      Implement a native statement to access the value and to store it in the
+      variable 'result'. Then return the value. For example:
+
+        $if !$prototyper
+          native ( result )
+          {
+            result = YourDevice_GetSomeValue();
+          }
+        $endif
+
+        return result;
+
+    */
+  }
+
+  $rect <250,1619,450,1659>
+  onset ActiveMusicName
+  {
+    // The property doesn't change -> nothing to do.
+    if ( pure ActiveMusicName == value )
+      return;
+
+    // Remember the new value in the internal memory of the property.
+    pure ActiveMusicName = value;
+
+    // For target code generation you will use your specific device API 
+    // to change the affected value.
+    $if !$prototyper
+      native ( value )
+      {
+        /*
+           TO DO:
+
+           You can call a function of your own device API or you simply
+           modify a variable existing in your middleware to reflect the
+           new value:
+
+           YourDevice_SetSomeValue( value );
+
+           or
+
+           YourDevice_SomeVariable = value;
+        */
+      }
+    $endif
+
+    // Notify all associated property observers.
+    notifyobservers ^ActiveMusicName;
+  }
+
+  // This method is intended to be called by the device to notify the GUI application \
+  // about an alternation of its setting or state value.
+  $rect <-150,1619,50,1659>
+  $output true
+  method void UpdateActiveMusicName( arg string aNewValue )
+  {
+    // Only if the reported value does differ from the one stored currently in the property.
+    if ( aNewValue != pure ActiveMusicName )
+    {
+      // Remember the new value in the internal memory of the property.
+      pure ActiveMusicName = aNewValue;
+
+      // Notify all associated property observers.
+      notifyobservers ^ActiveMusicName;
     }
   }
 }
@@ -3514,9 +4109,9 @@ class MainMenu : Core::Group
   $rect <540,700,740,740>
   slot InitializeGame
   {
-    StartSound();
-    Application::Device1.LeftToRight=4;
-    Application::Device1.CurrentScreen=Application::ScreenType.InitilizeGame;
+    Application::Device.StartSound=true;
+    Application::Device.LeftToRight=4;
+    Application::Device.CurrentScreen=Application::ScreenType.InitilizeGame;
   }
 
   $rect <20,20,160,60>
@@ -3549,46 +4144,17 @@ class MainMenu : Core::Group
   $rect <540,620,740,660>
   slot Stats
   {
-    StartSound();
-    Application::Device1.LeftToRight=1;
-    Application::Device1.CurrentScreen=Application::ScreenType.Stats;
-  }
-
-  $rect <230,700,410,740>
-  inherited method Init()
-  {
-    Start.Enabled=true;
-    StatsButton.Enabled=true;
-    Shop.Enabled=true;
-
+    Application::Device.StartSound=true;
+    Application::Device.LeftToRight=1;
+    Application::Device.CurrentScreen=Application::ScreenType.Stats;
   }
 
   $rect <540,660,740,700>
   slot ShopMeth
   {
-    StartSound();
-    Application::Device1.LeftToRight=1;
-    Application::Device1.CurrentScreen=Application::ScreenType.Shop;
-  }
-
-  $rect <30,700,230,740>
-  method void StartSound()
-  {
-    $if (!$prototyper)
-      native
-      {
-        // Javascript code executed inside the browser
-        if(GetHalloweenActive()==false)
-        {
-          var music=GetActiveMusicName();
-          SelectMusic(music);
-        }
-        else{
-          SelectMusic("Halloween ");
-        }
-       }
-    $endif
-
+    Application::Device.StartSound=true;
+    Application::Device.LeftToRight=1;
+    Application::Device.CurrentScreen=Application::ScreenType.Shop;
   }
 
   // Tabs
@@ -3641,10 +4207,10 @@ class MainMenu : Core::Group
   $rect <540,740,740,780>
   slot GoToSettings
   {
-    StartSound();
-    Application::Device1.ShowOr=false;
-    Application::Device1.LeftToRight=0;
-    Application::Device1.CurrentScreen=Application::ScreenType.SettingsMenu;
+    Application::Device.StartSound=true;
+    Application::Device.ShowOr=false;
+    Application::Device.LeftToRight=0;
+    Application::Device.CurrentScreen=Application::ScreenType.SettingsMenu;
 
 
   }
@@ -3652,9 +4218,9 @@ class MainMenu : Core::Group
   $rect <740,610,890,650>
   slot HelpTab
   {
-    StartSound();
-    Application::Device1.LeftToRight=1;
-    Application::Device1.CurrentScreen=Application::ScreenType.HelpMenu;
+    Application::Device.StartSound=true;
+    Application::Device.LeftToRight=1;
+    Application::Device.CurrentScreen=Application::ScreenType.HelpMenu;
   }
 
   $rect <20,20,160,60>
@@ -3672,41 +4238,10 @@ class MainMenu : Core::Group
   $rect <740,650,860,690>
   slot AchieveTab
   {
-    StartSound();
-    Application::Device1.LeftToRight=1;
-    Application::Device1.CurrentScreen=Application::ScreenType.Achivements;
+    Application::Device.StartSound=true;
+    Application::Device.LeftToRight=1;
+    Application::Device.CurrentScreen=Application::ScreenType.Achivements;
   }
-
-  // Directives to adapt the order of the above members according to how these members 
-  // where arranged when the project content was stored. In this manner the storage 
-  // and the expected order of the members don't depend. Merging of changes in the 
-  // project files is simplified.
-  $member Init
-  $member Bounds
-  $member Rectangle
-  $member Start
-  $member PushButtonConfig
-  $member StatsButton
-  $member Shop
-  $member Text
-  $member Image2
-  $member RectEffect1
-  $member InitializeGame
-  $member Bevel
-  $member Bevel1
-  $member Bevel2
-  $member Stats
-  $member ShopMeth
-  $member StartSound
-  $member Note
-  $member Note1
-  $member Settings
-  $member HelpBtn
-  $member Sett
-  $member GoToSettings
-  $member HelpTab
-  $member HelpBtn1
-  $member AchieveTab
 }
 
 $rect <430,330,630,370>
@@ -3776,8 +4311,8 @@ class LoadingGame : Core::Group
   $rect <30,619,230,659>
   slot Slot
   {
-    Application::Device1.LeftToRight=1;
-    Application::Device1.CurrentScreen=Application::ScreenType.Game;
+    Application::Device.LeftToRight=1;
+    Application::Device.CurrentScreen=Application::ScreenType.Game;
   }
 
   $rect <267,607,447,647>
@@ -4001,8 +4536,8 @@ class Stats : Core::Group
   $rect <-21,588,179,628>
   slot Back
   {
-    Application::Device1.LeftToRight=0;
-    Application::Device1.CurrentScreen=Application::ScreenType.MainMenu;
+    Application::Device.LeftToRight=0;
+    Application::Device.CurrentScreen=Application::ScreenType.MainMenu;
   }
 
   $rect <470,520,650,560>
@@ -4450,15 +4985,18 @@ class Shop : Core::Group
   $rect <800,540,950,580>
   inherited method Init()
   {
-    Obj.ShopTab=1;
-    Text.String=Obj.Coins;
-    attachobserver UpdateOnBuy,^Obj.Coins;
-    attachobserver UpdateOnBuy,^Obj.ActiveCup;
-    attachobserver UpdateOnBuy,^Obj.ActiveBall;
-    attachobserver UpdateOnBuy,^Obj.ActiveMusic;
-    attachobserver UpdateOnBuy,^Obj.HallAct;
+    Application::Device.ShopTab=1;
 
-    BringFromDB();
+    GetArrays();
+
+    Text.String=Application::Device.Coins;
+
+    attachobserver UpdateOnBuy,^Application::Device.Coins;
+    attachobserver UpdateOnBuy,^Application::Device.ActiveCup;
+    attachobserver UpdateOnBuy,^Application::Device.ActiveBall;
+    attachobserver UpdateOnBuy,^Application::Device.ActiveMusic;
+    attachobserver UpdateOnBuy,^Application::Device.HallAct;
+
 
   }
 
@@ -4486,7 +5024,7 @@ class Shop : Core::Group
        BallsBtn.Appearance= PushButtonConfigNormal;
        MusicBtn.Appearance= PushButtonConfigNormal;
        PacksBtn.Appearance=PushButtonConfigNormal;
-       Obj.ShopTab=1;
+       Application::Device.ShopTab=1;
        HorizontalList.NoOfItems=13;
        HorizontalList.InvalidateItems(0,HorizontalList.NoOfItems-1);
 
@@ -4497,7 +5035,7 @@ class Shop : Core::Group
         CupsBtn.Appearance= PushButtonConfigNormal;
        MusicBtn.Appearance= PushButtonConfigNormal;
        PacksBtn.Appearance=PushButtonConfigNormal;
-       Obj.ShopTab=2;
+       Application::Device.ShopTab=2;
        HorizontalList.NoOfItems=10;
        HorizontalList.InvalidateItems(0,HorizontalList.NoOfItems-1);
 
@@ -4509,7 +5047,7 @@ class Shop : Core::Group
        CupsBtn.Appearance= PushButtonConfigNormal;
        PacksBtn.Appearance=PushButtonConfigNormal;
 
-       Obj.ShopTab=3;
+       Application::Device.ShopTab=3;
        HorizontalList.NoOfItems=16;
        HorizontalList.InvalidateItems(0,HorizontalList.NoOfItems-1);
     } 
@@ -4518,7 +5056,7 @@ class Shop : Core::Group
         CupsBtn.Appearance= PushButtonConfigNormal;
        BallsBtn.Appearance= PushButtonConfigNormal;
        MusicBtn.Appearance= PushButtonConfigNormal;
-       Obj.ShopTab=4;
+       Application::Device.ShopTab=4;
        HorizontalList.NoOfItems=1;
        HorizontalList.InvalidateItems(0,HorizontalList.NoOfItems-1);
     }
@@ -4580,9 +5118,9 @@ class Shop : Core::Group
       return;
 
     // Configure the item view ...
-    BringFromDB();
-    itemView.Property=Obj.ShopTab;
-    var int32 coins=Obj.Coins;
+    GetArrays();
+    itemView.Property=Application::Device.ShopTab;
+    var int32 coins=Application::Device.Coins;
     if(itemView.Property==1)
     {
           HorizontalList.NoOfItems=13;
@@ -4593,7 +5131,7 @@ class Shop : Core::Group
         itemView.Price=500;
       else
         itemView.Price=1000;
-     if (Obj.CupsArray[itemNo]) {
+     if (Application::Device.CupsArray[itemNo]) {
         itemView.Bought = true;
         }
     }
@@ -4605,7 +5143,7 @@ class Shop : Core::Group
         itemView.Price=500;
       else
         itemView.Price=1000;
-      if(Obj.BallsArray[itemNo])
+      if(Application::Device.BallsArray[itemNo])
         {
           itemView.Bought=true;
         }
@@ -4616,7 +5154,7 @@ class Shop : Core::Group
         itemView.Bought=false;
         itemView.Price=1500;
         itemView.SongName.String=Songs[itemNo];
-      if(Obj.MusicsArray[itemNo])
+      if(Application::Device.MusicsArray[itemNo])
         {
           itemView.Bought=true;
         }
@@ -4626,7 +5164,7 @@ class Shop : Core::Group
       itemView.ImageNr=itemNo;
         itemView.Bought=false;
         itemView.Price=6000;
-        if(Obj.HallPack==true)
+        if(Application::Device.HallPack==true)
           itemView.Bought=true;
     }
 
@@ -4676,7 +5214,7 @@ class Shop : Core::Group
   $rect <599,590,799,630>
   slot UpdateOnBuy
   {
-    Text.String=Obj.Coins;
+    Text.String=Application::Device.Coins;
     HorizontalList.InvalidateItems(0,HorizontalList.NoOfItems-1);
     UpdateArr();
 
@@ -4722,12 +5260,9 @@ class Shop : Core::Group
   $rect <599,640,799,679>
   slot Back
   {
-    Application::Device1.LeftToRight=0;
-    Application::Device1.CurrentScreen=Application::ScreenType.MainMenu;
+    Application::Device.LeftToRight=0;
+    Application::Device.CurrentScreen=Application::ScreenType.MainMenu;
   }
-
-  $rect <0,650,200,690>
-  var Application::DeviceClass Obj = Application::Device;
 
   $rect <0,599,200,639>
   array string Songs[ 16 ] =
@@ -4735,7 +5270,7 @@ class Shop : Core::Group
     Default[0] = "Tate McRae";
     Default[1] = "Ava Max";
     Default[2] = "Alan Walker ";
-    Default[3] = "Enisa";
+    Default[3] = "Enisa ";
     Default[4] = "Cascada ";
     Default[5] = "Skillet ";
     Default[6] = "Eurovision ";
@@ -4768,52 +5303,25 @@ class Shop : Core::Group
     attr Bounds = <590,500,970,710>;
   }
 
-  $rect <810,590,970,640>
-  method void BringFromDB()
-  {
-    var int32 ACup=10;
-    var int32 ABall=5;
-    var int32 AMusic=14;
-    var int32 Coins=6000;
-    var bool AHall=false;
-
-    $if (!$prototyper)
-      native(ACup,ABall,AMusic,Coins,AHall){
-        ACup=GetActiveCup();
-        ABall=GetActiveBall();
-        AMusic=GetActiveMusic();
-        Coins=GetCoins();
-        AHall=GetHalloweenActive();  
-      }
-    $endif
-
-    Obj.ActiveCup=ACup;
-    Obj.ActiveBall=ABall;
-    Obj.ActiveMusic=AMusic;
-    Obj.Coins=Coins;
-    Obj.HallAct=AHall;
-
-    GetArrays();
-
-
-  }
-
   $rect <800,650,960,690>
   method void UpdateArr()
   {
-    array bool CupsArray[13];;
+    array bool CupsArray[13];
     array bool BallsArray[10];
     array bool MusicArray[16];
-    var bool hallPack=Obj.HallPack;
-    var bool hallAct=Obj.HallAct;
+    var bool hallPack=Application::Device.HallPack;
+    var bool hallAct=Application::Device.HallAct;
 
     var int32 i;
-    for(i=0;i<Obj.CupsArray.size;i++)
-      CupsArray[i]=Obj.CupsArray[i];
-    for(i=0;i<Obj.BallsArray.size;i++)
-      BallsArray[i]=Obj.BallsArray[i];
-    for(i=0;i<Obj.MusicsArray.size;i++)
-      MusicArray[i]=Obj.MusicsArray[i];
+    for(i=0;i<Application::Device.CupsArray.size;i++)
+      CupsArray[i]=Application::Device.CupsArray[i];
+
+    for(i=0;i<Application::Device.BallsArray.size;i++)
+      BallsArray[i]=Application::Device.BallsArray[i];
+
+    for(i=0;i<Application::Device.MusicsArray.size;i++)
+      MusicArray[i]=Application::Device.MusicsArray[i];
+
     $if (!$prototyper)
     native(CupsArray,BallsArray,MusicArray,hallPack,hallAct){
       UpdateArrays(CupsArray,BallsArray,MusicArray);
@@ -4832,31 +5340,30 @@ class Shop : Core::Group
     }
     $endif
 
-     for(i=0;i<Obj.CupsArray.size;i++)
-      Obj.CupsArray[i]=CupsArray[i];
-    for(i=0;i<Obj.BallsArray.size;i++)
-      Obj.BallsArray[i]=BallsArray[i];
-    for(i=0;i<Obj.MusicsArray.size;i++)
-      Obj.MusicsArray[i]=MusicArray[i];
-    Obj.HallPack=hallPack;
-    Obj.HallAct=hallAct;
+     for(i=0;i<Application::Device.CupsArray.size;i++)
+      Application::Device.CupsArray[i]=CupsArray[i];
+    for(i=0;i<Application::Device.BallsArray.size;i++)
+      Application::Device.BallsArray[i]=BallsArray[i];
+    for(i=0;i<Application::Device.MusicsArray.size;i++)
+      Application::Device.MusicsArray[i]=MusicArray[i];
+
+    Application::Device.HallPack=hallPack;
+    Application::Device.HallAct=hallAct;
   }
 
-  $rect <722,763,922,803>
+  $rect <810,590,1010,630>
   method void GetArrays()
   {
     array bool CupsArray[13];
     array bool BallsArray[10];
     array bool MusicArray[16];
-    var bool hallPack=Obj.HallPack;
 
     var int32 i;
     $if (!$prototyper)
-    native(CupsArray,BallsArray,MusicArray,hallPack){
+    native(CupsArray,BallsArray,MusicArray){
       var cups=GetCupsArray();
       var balls=GetBallsArray();
       var musics=GetMusicArray();
-      hallPack=GetHalloweenBought();
       for(let i=0;i<cups.length;i++)
           CupsArray[i]=cups[i];
       for(i=0;i<balls.length;i++)
@@ -4866,14 +5373,15 @@ class Shop : Core::Group
 
     }
     $endif
+     for(i=0;i<Application::Device.CupsArray.size;i++)
+      Application::Device.CupsArray[i]=CupsArray[i];
 
-     for(i=0;i<Obj.CupsArray.size;i++)
-      Obj.CupsArray[i]=CupsArray[i];
-    for(i=0;i<Obj.BallsArray.size;i++)
-      Obj.BallsArray[i]=BallsArray[i];
-    for(i=0;i<Obj.MusicsArray.size;i++)
-      Obj.MusicsArray[i]=MusicArray[i];
-    Obj.HallPack=hallPack;
+    for(i=0;i<Application::Device.BallsArray.size;i++)
+      Application::Device.BallsArray[i]=BallsArray[i];
+
+    for(i=0;i<Application::Device.MusicsArray.size;i++)
+      Application::Device.MusicsArray[i]=MusicArray[i];
+
   }
 
   $rect <20,20,160,60>
@@ -4908,12 +5416,10 @@ class Shop : Core::Group
   $member PushButton
   $member PushButtonConfig
   $member Back
-  $member Obj
   $member Songs
   $member Note
   $member Note1
   $member Note2
-  $member BringFromDB
   $member UpdateArr
   $member GetArrays
   $member PacksBtn
@@ -5130,42 +5636,39 @@ class ShopListItem : Core::Group
     return pure Property;
   }
 
-  $rect <100,490,210,530>
-  var Application::DeviceClass Obj = Application::Device;
-
   $rect <-80,590,40,630>
   slot Buy
   {
     var WidgetSet::PushButton btn=(WidgetSet::PushButton)sender;
     var int32 frame=2;
+
         if(btn.Label=="Buy")
         {
-          if(Obj.Coins>=Price)
+          if(Application::Device.Coins>=Price)
            { 
             Bought=true;
-            if(Obj.ShopTab==1)
+            if(Application::Device.ShopTab==1)
             {
-                Obj.CupsArray[ImageNr]=true;
-                Obj.Coins-=Price;
+                Application::Device.CupsArray[ImageNr]=true;
+                Application::Device.Coins=-Price;
             }
-            else if(Obj.ShopTab==2)
+            else if(Application::Device.ShopTab==2)
             { 
-                Obj.BallsArray[ImageNr]=true;
-                Obj.Coins-=Price;
+                Application::Device.BallsArray[ImageNr]=true;
+                Application::Device.Coins=-Price;
             }
-            else if(Obj.ShopTab==3){
-                Obj.MusicsArray[ImageNr]=true;
-                Obj.Coins-=Price;
+            else if(Application::Device.ShopTab==3){
+                Application::Device.MusicsArray[ImageNr]=true;
+                Application::Device.Coins=-Price;
             }
             else{
-              Obj.HallPack=true;
-              Obj.Coins-=Price;
+              Application::Device.HallPack=true;
+              Application::Device.Coins=-Price;
             }
-           UpdateCoinsSpent();
-           frame=Check(Obj.ShopTab);
+           frame=Check(Application::Device.ShopTab);
            if(frame!=-1)
            {
-              Obj.AchFrame=frame; 
+              Application::Device.AchFrame=frame; 
               AchPopDismiss.Enabled=true;
               rootthis.PresentDialog(new Application::AchPop,Effects::SlideDownCentered,null,null,null,null,null,null,null,false); 
            }
@@ -5173,26 +5676,25 @@ class ShopListItem : Core::Group
        }
        else if(btn.Label=="Activate")
        {
-            if(Obj.ShopTab==1)
-              Obj.ActiveCup=ImageNr;
-            else if(Obj.ShopTab==2)
-              Obj.ActiveBall=ImageNr;
-            else if(Obj.ShopTab==3)
+            
+            if(Application::Device.ShopTab==1)
+              Application::Device.ActiveCup=ImageNr;
+            else if(Application::Device.ShopTab==2)
+              Application::Device.ActiveBall=ImageNr;
+            else if(Application::Device.ShopTab==3)
               {
-              Obj.ActiveMusic=ImageNr;
-              PlayNewActiveMusic();
+              Application::Device.ActiveMusic=ImageNr;
+              Application::Device.ActiveMusicName= SongName.String;
               }
             else{
-              Obj.HallAct=true;
+              Application::Device.HallAct=true;
             }
-          UpdateActives();
        }
-       else if(btn.Label=="Active" && Obj.ShopTab==4)
+       else if(btn.Label=="Active" && Application::Device.ShopTab==4)
        {        PushButton.Appearance=PushButtonConfigSold;
                 Text.String="Owned";
                 PushButton.Label="Activate";
-                Obj.HallAct=false;
-                trace "ActiveNot",Obj.HallAct;
+                Application::Device.HallAct=false;
        }
 
   }
@@ -5225,7 +5727,7 @@ class ShopListItem : Core::Group
   $rect <0,630,200,670>
   method void SongNameVisible()
   {
-    if(Obj.ShopTab==3)
+    if(Application::Device.ShopTab==3)
     {
         if(Active.Visible)
           SongName.Visible=false;
@@ -5236,21 +5738,6 @@ class ShopListItem : Core::Group
     SongName.Visible=false;
     }
 
-  }
-
-  $rect <-210,630,-10,670>
-  method void PlayNewActiveMusic()
-  {
-    var string name=SongName.String;
-    $if (!$prototyper)
-
-    native(name){
-      SelectMusic(name);
-      SetActiveMusicName(name);
-    }
-
-
-    $endif
   }
 
   // Properties
@@ -5300,18 +5787,18 @@ class ShopListItem : Core::Group
   $rect <0,690,200,730>
   method void ActiveItem()
   {
-    if(Obj.ShopTab==1)
+    if(Application::Device.ShopTab==1)
     {
-        if(Obj.ActiveCup==ImageNr) Active.Visible=true;
+        if(Application::Device.ActiveCup==ImageNr) Active.Visible=true;
         else  Active.Visible=false;
     }
-    else if(Obj.ShopTab==2)
+    else if(Application::Device.ShopTab==2)
     {
-       if(Obj.ActiveBall==ImageNr) Active.Visible=true;
+       if(Application::Device.ActiveBall==ImageNr) Active.Visible=true;
         else Active.Visible=false; 
     }
-    else if(Obj.ShopTab==3){
-         if(Obj.ActiveMusic==ImageNr)
+    else if(Application::Device.ShopTab==3){
+         if(Application::Device.ActiveMusic==ImageNr)
          {
            Active.Visible=true;  
            }
@@ -5319,43 +5806,11 @@ class ShopListItem : Core::Group
             Active.Visible=false;
     }
     else{
-      if(Obj.HallAct==true)
+      if(Application::Device.HallAct==true)
         Active.Visible=true;
       else
         Active.Visible=false;
     }
-  }
-
-  $rect <-210,740,-10,780>
-  method void UpdateCoinsSpent()
-  {
-    var int32 moneySpent=Price;
-    var bool pack=Obj.HallPack;
-    $if (!$prototyper)
-    native(moneySpent,pack){
-      UpdateMoney(-moneySpent);
-      SetHalloweenBought(pack);
-    }
-
-    $endif
-  }
-
-  $rect <0,740,200,780>
-  method void UpdateActives()
-  {
-    var int32 ACup=Obj.ActiveCup;
-    var int32 ABall=Obj.ActiveBall;
-    var int32 AMusic=Obj.ActiveMusic;
-    var bool APack=Obj.HallAct;
-
-
-    $if (!$prototyper)
-    native(ACup,ABall,AMusic,APack){
-      UpdatePrefs(ACup,ABall,AMusic,APack);
-    }
-
-    $endif
-
   }
 
   $rect <395,782,595,822>
@@ -5419,20 +5874,16 @@ class ShopListItem : Core::Group
   $member Property
   $member OnSetProperty
   $member OnGetProperty
-  $member Obj
   $member Buy
   $member Active
   $member SongName
   $member SongNameVisible
-  $member PlayNewActiveMusic
   $member Note
   $member Note1
   $member Note2
   $member Note3
   $member BoughtOrNot
   $member ActiveItem
-  $member UpdateCoinsSpent
-  $member UpdateActives
   $member Check
   $member AchPopDismiss
   $member AchPopTrigger
@@ -5619,8 +6070,8 @@ class HelpMenu : Core::Group
   $rect <590,540,790,580>
   slot Back
   {
-    Application::Device1.LeftToRight=0;
-    Application::Device1.CurrentScreen=Application::ScreenType.MainMenu;
+    Application::Device.LeftToRight=0;
+    Application::Device.CurrentScreen=Application::ScreenType.MainMenu;
   }
 
   $rect <524,641,704,681>
@@ -5690,255 +6141,7 @@ note group ManagingScreens
   attr Bounds = <590,519,1070,720>;
 }
 
-$rect <630,639,830,679>
-inline Inline1
-{
-  /*
-
-    TO DO:
-
-    Include external header files or add type and function declarations needed
-    in the implementation of Application::DeviceClass1. For example:
-
-      #include "DeviceDriver.h"
-
-      #include "your_middleware_api.h"
-
-      void Your_Middleware_Some_Function( int aSomeArg );
-
-  */
-}
-
-$rect <630,599,830,639>
-$output false
-class DeviceClass1 : Templates::DeviceClass
-{
-  $rect <30,80,230,120>
-  inherited method Done()
-  {
-    // The following section is intended to perform de-initialization-related operations
-    // in the underlying device or middleware. Consequently, the section is taken in
-    // account only when generating code (not during prototyping).
-    $if !$prototyper
-      var object thisObject = this;
-
-      /*
-         TO DO:
-
-         The following native statement is intended to enclose code to communicate with
-         your device API. The variable 'thisObject' contains a pointer to the actually
-         de-initialized Application::DeviceClass1 object. Use the 'thisObject' pointer to
-         e.g. de-register the object from the middleware if you have registered it
-         beforehand.
-         
-      */
-
-      native ( thisObject )
-      {
-        /*
-           TO DO:
-
-           Depending on your application case you call functions of the underlying
-           middleware (or access the device directly) in order to perform the necessary
-           de-initialization steps. For example, you invoke some 'C' function:
-
-             YourDevice_DeInitialize();
-
-           IMPORTANT:
-           ----------
-
-           The variable 'thisObject' represents the actually de-initialized instance of the
-           Application::DeviceClass1. If you have stored this object at the initialization
-           time (in the 'Init' method) in some global C variable or registered it by the
-           middleware, it is important to perform now the opposite operation. Set the
-           global variable to NULL or de-register 'thisObject' object from the middleware.
-           
-        */
-      }
-    $endif
-  }
-
-  $rect <30,40,230,80>
-  inherited method Init()
-  {
-    // The following section is intended to perform initialization-related operations
-    // in the underlying device or middleware. Consequently, the section is taken in
-    // account only when generating code (not during prototyping).
-    $if !$prototyper
-      var object thisObject = this;
-
-      /*
-         TO DO:
-
-         The following native statement is intended to enclose code to communicate with
-         your device API. The variable 'thisObject' contains a pointer to the actually
-         initialized Application::DeviceClass1 object. Use the 'thisObject' pointer to
-         e.g. register the object by the middleware as receiver of events, etc.
-         
-      */
-
-      native ( thisObject )
-      {
-        /*
-           TO DO:
-
-           Depending on your application case you call functions of the underlying
-           middleware (or access the device directly) in order to perform the necessary
-           initialization steps. For example, you invoke some 'C' function:
-
-             YourDevice_Initialize();
-
-           The variable 'thisObject' represents the actually initialized instance of the
-           Application::DeviceClass1. You can store this variable e.g. in the middleware
-           and use it whenever the middleware needs to notify the GUI application about
-           some state alternation or events. In this manner, the middleware will be able
-           to invoke methods of the interface device object.
-
-           For example, you can store 'thisObject' in some global C variable:
-
-             // Declaration of the global C variable
-             XObject theDeviceObject;
-
-             // Store the instance in the global variable
-             theDeviceObject = thisObject;
-
-           Later use the global variable e.g. to provide the GUI application with events:
-
-             ApplicationDeviceClass__TriggerSomeEvent( theDeviceObject );
-
-           IMPORTANT:
-           ----------
-
-           If you store 'thisObject' for later use, don't forget to implement the opposite
-           operation in the method 'Done'. Concrete, 'Done' should set the global variable
-           again to the value NULL.
-
-        */
-      }
-    $endif
-  }
-
-  note arrow Note2
-  {
-    attr Point1 = <250,50>;
-    attr Point2 = <320,50>;
-  }
-
-  // Constructor and Destructor
-  note group Note1
-  {
-    attr Bounds = <10,0,250,140>;
-  }
-
-  $rect <260,310,460,350>
-  property Application::ScreenType CurrentScreen = Application::ScreenType.MainMenu;
-
-  $rect <660,310,860,350>
-  onget CurrentScreen
-  {
-    // Per default return the value stored already in the property.
-    return pure CurrentScreen;
-
-    /*
-
-      TO DO:
-
-      If the property should return the value stored in the underlying device
-      or in the middleware, remove the above 'return' statement and instead do
-      following:
-
-      Declare a local variable to receive the value from the underlying device.
-      The type of the variable has to correspond to the data type of the property.
-      For example in case of an 'int32' property:
-      
-        var int32 result;
-
-      Implement a native statement to access the value and to store it in the
-      variable 'result'. Then return the value. For example:
-
-        $if !$prototyper
-          native ( result )
-          {
-            result = YourDevice_GetSomeValue();
-          }
-        $endif
-
-        return result;
-
-    */
-  }
-
-  $rect <460,310,660,350>
-  onset CurrentScreen
-  {
-    // The property doesn't change -> nothing to do.
-    if ( pure CurrentScreen == value )
-      return;
-
-    // Remember the new value in the internal memory of the property.
-    pure CurrentScreen = value;
-
-    if(value==Application::ScreenType.MainMenu)
-    {
-      $if (!$prototyper)
-      native{
-        ShuffleEnd();
-      }
-      $endif
-    }
-    // For target code generation you will use your specific device API 
-    // to change the affected value.
-    $if !$prototyper
-      native ( value )
-      {
-        /*
-           TO DO:
-
-           You can call a function of your own device API or you simply
-           modify a variable existing in your middleware to reflect the
-           new value:
-
-           YourDevice_SetSomeValue( value );
-
-           or
-
-           YourDevice_SomeVariable = value;
-        */
-      }
-    $endif
-
-    // Notify all associated property observers.
-    notifyobservers ^CurrentScreen;
-  }
-
-  // This method is intended to be called by the device to notify the GUI application \
-  // about an alternation of its setting or state value.
-  $rect <60,310,260,350>
-  $output true
-  method void UpdateProperty( arg Application::ScreenType aNewValue )
-  {
-    // Only if the reported value does differ from the one stored currently in the property.
-    if ( aNewValue != pure CurrentScreen )
-    {
-      // Remember the new value in the internal memory of the property.
-      pure CurrentScreen = aNewValue;
-
-      // Notify all associated property observers.
-      notifyobservers ^CurrentScreen;
-    }
-  }
-
-  $rect <250,390,450,430>
-  var bool ShowOr = true;
-
-  $rect <470,390,670,430>
-  var int32 LeftToRight = 0;
-}
-
-$rect <830,599,1030,639>
-autoobject Application::DeviceClass1 Device1;
-
-$rect <850,650,1050,690>
+$rect <839,560,1039,600>
 $output false
 class Container : Core::Group
 {
@@ -5963,7 +6166,7 @@ class Container : Core::Group
 
     if(value!=null)
     {     
-        switch(Application::Device1.LeftToRight){
+        switch(Application::Device.LeftToRight){
           case 0: SwitchToDialog(value,Effects::SlideLeftCentered,Effects::SlideRightCentered,null,null,null,null,null,null,null,false);
           case 1: SwitchToDialog(value,Effects::SlideRightCentered,Effects::SlideLeftCentered,null,null,null,null,null,null,null,false);
           case 2: SwitchToDialog(value,Effects::SlideDownCentered,Effects::SlideUpCentered,null,null,null,null,null,null,null,false);
@@ -6034,7 +6237,7 @@ note group Note4
   attr Bounds = <190,740,490,940>;
 }
 
-$rect <960,260,1160,300>
+$rect <850,599,1050,639>
 $output false
 class Achievements : Core::Group
 {
@@ -6244,8 +6447,8 @@ class Achievements : Core::Group
   $rect <630,670,830,710>
   slot Back
   {
-    Application::Device1.LeftToRight=0;
-    Application::Device1.CurrentScreen=Application::ScreenType.MainMenu;
+    Application::Device.LeftToRight=0;
+    Application::Device.CurrentScreen=Application::ScreenType.MainMenu;
   }
 
   $rect <20,560,260,600>
@@ -6292,7 +6495,7 @@ class Achievements : Core::Group
     attr Bounds = <600,520,900,720>;
   }
 
-  $rect <662,780,862,820>
+  $rect <630,730,830,770>
   method void Check()
   {
     array bool Achives[15];
@@ -6336,7 +6539,7 @@ class Achievements : Core::Group
   $member Check
 }
 
-$rect <960,310,1160,350>
+$rect <620,660,820,700>
 $output false
 class Achievement : Core::Group
 {
@@ -6401,7 +6604,7 @@ resource Resources::Font AchivementTitle
   attr fontrowdistance RowDistance;
 }
 
-$rect <960,359,1160,399>
+$rect <850,650,1050,690>
 $output false
 resource Resources::Bitmap Achives
 {
@@ -6425,7 +6628,7 @@ resource Resources::Bitmap AchiveIcon
   attr bitmapmode Mode = Default;
 }
 
-$rect <960,210,1160,250>
+$rect <630,599,830,639>
 $output false
 class AchPop : Core::Group
 {
@@ -6509,7 +6712,7 @@ class AchPop : Core::Group
   $member Obj
 }
 
-$rect <660,370,860,410>
+$rect <860,240,1060,280>
 $variant WebGL
 vclass DeviceClassWebGL : Application::DeviceClass
 {
@@ -6534,8 +6737,343 @@ vclass DeviceClassWebGL : Application::DeviceClass
 
     $endif
   }
+
+  $rect <800,-110,1000,-70>
+  inherited onset SFXVolume
+  {
+    // Invoke the inherited version of the onset method 'OnSetSFXVolume'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    $if (!$prototyper)
+    var int32 volume = SFXVolume;
+
+    native(volume)
+    {
+      let vol = Math.abs( volume / 100 );
+      if( vol > 1.0 )
+        vol = 1.0;
+      ShuffleVolume( vol );
+    }
+    $endif
+
+  }
+
+  $rect <550,-170,750,-130>
+  inherited onset CorrectGuesses
+  {
+    // Invoke the inherited version of the onset method 'OnSetCorrectGuesses'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    $if (!$prototyper)
+      native{
+         Correct();
+      }
+    $endif
+  }
+
+  $rect <770,-40,970,0>
+  inherited onget Coins
+  {
+    // Invoke the inherited version of the onget method 'OnGetCoins'.
+    // Remove the line if the inherited code should not be executed.
+    var int32 result = super();
+
+    $if (!$prototyper)
+    native
+    {
+      result = GetCoins();
+    }
+    $endif
+    return result;
+  }
+
+  $rect <1010,-40,1210,0>
+  inherited onset Coins
+  {
+    // Invoke the inherited version of the onset method 'OnSetCoins'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    $if (!$prototyper)
+    native(value)
+    {
+      UpdateMoney(value);
+    }
+    $endif
+  }
+
+  $rect <930,-250,1130,-210>
+  inherited onget ActiveCup
+  {
+    // Invoke the inherited version of the onget method 'OnGetActiveCup'.
+    // Remove the line if the inherited code should not be executed.
+    var int32 result = super();
+
+    $if (!$prototyper)
+    native(result) 
+    {
+          result=GetActiveCup();
+    }
+    $endif
+    return result;
+  }
+
+  $rect <949,-309,1149,-269>
+  inherited onset ActiveCup
+  {
+    // Invoke the inherited version of the onset method 'OnSetActiveCup'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    $if (!$prototyper)
+    var int32 ACup = value;
+    var int32 ABall = ActiveBall;
+    var int32 AMusic = ActiveMusic;
+    var bool APack = HallAct;
+
+    native(ACup,ABall,AMusic,APack){
+      UpdatePrefs(ACup,ABall,AMusic,APack);
+    }
+
+    $endif 
+  }
+
+  $rect <729,-255,929,-215>
+  inherited onget ActiveBall
+  {
+    // Invoke the inherited version of the onget method 'OnGetActiveBall'.
+    // Remove the line if the inherited code should not be executed.
+    var int32 result = super();
+
+    $if (!$prototyper)
+    native(result) 
+    {
+          result=GetActiveBall();
+    }
+
+    $endif
+
+
+    return result;
+  }
+
+  $rect <762,-318,962,-278>
+  inherited onset ActiveBall
+  {
+    // Invoke the inherited version of the onset method 'OnSetActiveBall'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    $if (!$prototyper)
+    var int32 ACup = ActiveCup;
+    var int32 ABall = value;
+    var int32 AMusic = ActiveMusic;
+    var bool APack = HallAct;
+
+    native(ACup,ABall,AMusic,APack){
+      UpdatePrefs(ACup,ABall,AMusic,APack);
+    }
+
+    $endif 
+  }
+
+  $rect <1130,-250,1330,-210>
+  inherited onget ActiveMusic
+  {
+    // Invoke the inherited version of the onget method 'OnGetActiveMusic'.
+    // Remove the line if the inherited code should not be executed.
+    var int32 result = super();
+    $if (!$prototyper)
+    native(result) 
+    {
+          result=GetActiveMusic();
+    }
+    $endif
+    return result;
+  }
+
+  $rect <1160,-310,1360,-270>
+  inherited onset ActiveMusic
+  {
+    // Invoke the inherited version of the onset method 'OnSetActiveMusic'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    $if (!$prototyper)
+    var int32 ACup = ActiveCup;
+    var int32 ABall = ActiveBall;
+    var int32 AMusic = value;
+    var bool APack = HallAct;
+
+    native(ACup,ABall,AMusic,APack){
+      UpdatePrefs(ACup,ABall,AMusic,APack);
+    }
+
+    $endif 
+  }
+
+  $rect <1340,-250,1540,-210>
+  inherited onget HallAct
+  {
+    // Invoke the inherited version of the onget method 'OnGetHallAct'.
+    // Remove the line if the inherited code should not be executed.
+    var bool result = super();
+
+    $if (!$prototyper)
+    native(result) 
+    {
+          result=GetHalloweenActive();
+    }
+    $endif
+
+    return result;
+  }
+
+  $rect <1360,-310,1560,-270>
+  inherited onset HallAct
+  {
+    // Invoke the inherited version of the onset method 'OnSetHallAct'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    $if (!$prototyper)
+    var int32 ACup = ActiveCup;
+    var int32 ABall = ActiveBall;
+    var int32 AMusic = ActiveMusic;
+    var bool APack = value;
+
+    native(ACup,ABall,AMusic,APack){
+      UpdatePrefs(ACup,ABall,AMusic,APack);
+    }
+
+    $endif 
+  }
+
+  $rect <500,10,700,50>
+  inherited onget HallPack
+  {
+    // Invoke the inherited version of the onget method 'OnGetHallPack'.
+    // Remove the line if the inherited code should not be executed.
+    var bool result = super();
+
+    $if (!$prototyper)
+    native(result){
+      result=GetHalloweenBought();
+    }
+
+    $endif
+    return result;
+  }
+
+  $rect <514,-46,714,-6>
+  inherited onset HallPack
+  {
+    // Invoke the inherited version of the onset method 'OnSetHallPack'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    $if (!$prototyper)
+    native(value){
+      SetHalloweenBought(value);
+    }
+
+    $endif
+  }
+
+  $rect <1030,-170,1230,-130>
+  inherited onset NextLevel
+  {
+    // Invoke the inherited version of the onset method 'OnSetNextLevel'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    $if (!$prototyper)
+    var int32 lvl = MaxLevel;
+    var int32 frame = Frame;
+
+      native(lvl,frame){
+         UpdateStorage(lvl,true,true);
+         frame=CheckLevels();
+         if(frame==-1)
+            frame=CheckRights();  
+      }
+    $endif 
+
+    Frame = frame;
+     
+  }
+
+  $rect <1030,-110,1230,-70>
+  inherited onset Reset
+  {
+    // Invoke the inherited version of the onset method 'OnSetReset'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+      $if (!$prototyper)
+      var int32 lvl = MaxLevel;
+      native(lvl){
+         UpdateStorage(lvl,true,false);  
+      }
+      $endif
+     
+  }
+
+  $rect <500,-250,700,-210>
+  inherited onset StartSound
+  {
+    // Invoke the inherited version of the onset method 'OnSetStartSound'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    $if (!$prototyper)
+      native
+      {
+        // Javascript code executed inside the browser
+        if(GetHalloweenActive()==false)
+        {
+          var music=GetActiveMusicName();
+          SelectMusic(music);
+        }
+        else{
+          SelectMusic("Halloween ");
+        }
+       }
+    $endif 
+  }
+
+  $rect <540,-120,740,-80>
+  inherited onset WrongGuesses
+  {
+    // Invoke the inherited version of the onset method 'OnSetWrongGuesses'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+     $if (!$prototyper)
+      native{
+         Wrong();
+      }
+      $endif 
+  }
+
+  $rect <337,-146,537,-106>
+  inherited onset ActiveMusicName
+  {
+    // Invoke the inherited version of the onset method 'OnSetActiveMusicName'.
+    // Remove the line if the inherited code should not be executed.
+    super( value );
+
+    $if (!$prototyper)
+    native(value){
+      SelectMusic(value);
+      SetActiveMusicName(value);
+    }
+    $endif
+  }
 }
 
-$rect <660,430,860,470>
+$rect <860,300,1060,340>
 $variant Simulation
 vclass DeviceClassSimulation : Application::DeviceClass;

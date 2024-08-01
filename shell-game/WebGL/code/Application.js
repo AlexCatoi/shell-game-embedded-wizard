@@ -437,7 +437,7 @@ A._cycle=D);if((A=this.Ht)._cycle!=D)A._Mark(A._cycle=D);if((A=this.Ce)._cycle!=
 D)A._Mark(A._cycle=D);if((A=this.BA)._cycle!=D)A._Mark(A._cycle=D);},_className:
 "Application::Settings"};C.Ki={_class:function(){return B.aci.Am;},0:{FileName:"./res/ApplicationMusicNote.png"
 ,Format:B._PIXEL_FORMAT_NATIVE,NoOfFrames:1,FrameSize:[50,50],FrameDelay:0,_this:
-null}};C.Au={La:B.jV,Date:YC,LA:YD,Hc:50,G6:50,El:1,Mi:0,Le:0,Ld:6000,DG:1,K_:10
+null}};C.Au={La:B.jV,Date:YC,LA:YD,Hc:50,G6:50,El:1,Mi:0,Le:0,Ld:9000,DG:1,K_:10
 ,K9:5,K$:14,E5:0,DT:-1,KO:0,Hz:0,Mv:B.abi(15,false,null),Ma:false,IG:false,IA:false
 ,Rh:true,Kf:false,Lz:false,Ly:false,Kj:B.abi(16,false,{14:true}),Kb:B.abi(10,false
 ,{5:true}),Ke:B.abi(13,false,{10:true}),GS:false,Fp:function(){var Abi=this;{}},
@@ -558,7 +558,7 @@ else return C.Au.Aao.apply(this,arguments);},Aao:function(){},NO:function(){if(t
 Ad&&this.Ad.NO)return this.Ad.NO.apply(this,arguments);else return C.Au.Aam.apply(
 this,arguments);},Aam:function(){},NE:function(aArg1){if(this.Ad&&this.Ad.NE)return this.
 Ad.NE.apply(this,arguments);else return C.Au.Aal.apply(this,arguments);},Aal:function(
-aArg1){if(aArg1>=0)return-1;return-1;},_Init:function(aArg){B.acj.Au._Init.call(
+aArg1){if(aArg1>=1)return-1;return-1;},_Init:function(aArg){B.acj.Au._Init.call(
 this,aArg);(this.Mv=[]).__proto__=C.Au.Mv;(this.Kj=[]).__proto__=C.Au.Kj;(this.Kb=[
 ]).__proto__=C.Au.Kb;(this.Ke=[]).__proto__=C.Au.Ke;this.__proto__=C.Au;this.BC(
 aArg);var UT=this._variants();if(UT){this.Ad={};UT._Init.call(this,aArg);}},_Done:

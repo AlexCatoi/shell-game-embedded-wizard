@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Application::DeviceClass;
+attr active = Application::DeviceClassSimulation;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Application::DeviceClass.UpdateActiveMusicName;
+attr currentCodeInspector = Application::DeviceClassSimulation.OnSetNextLevel;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -17,7 +17,7 @@ attr extractDoc_Variants = false;
 attr generateClut_ReservedColors = 0;
 attr heapMonitor_Show = false;
 attr language = Default;
-attr profile = WebGL;
+attr profile = Simulation;
 attr profilerMonitor_Show = false;
 attr search_CaseSensitive = false;
 attr search_IgnoreDescription = false;
@@ -54,7 +54,6 @@ view class Application::Application
 
 view class Application::Settings
 {
-  attr enableWireMode = false;
   attr scrollTo = <-100,301>;
   attr zoom = 0.75;
 }
@@ -69,35 +68,35 @@ view class Application::Game
 view class Application::Shop
 {
   attr enableWireMode = false;
-  attr scrollTo = <-31,378>;
+  attr scrollTo = <-31,330>;
   attr zoom = 0.75;
 }
 
 view vclass Application::DeviceClassWebGL
 {
   attr enableWireMode = false;
-  attr scrollTo = <151,-343>;
-  attr zoom = 1.0;
+  attr scrollTo = <-461,-366>;
+  attr zoom = 0.75;
 }
 
 view class Application::DeviceClass
 {
   attr enableWireMode = false;
-  attr scrollTo = <-282,794>;
+  attr scrollTo = <-282,938>;
   attr zoom = 0.5;
 }
 
 view class Application::ShopListItem
 {
   attr enableWireMode = false;
-  attr scrollTo = <-235,353>;
+  attr scrollTo = <-235,401>;
   attr zoom = 0.75;
 }
 
 view class Application::MainMenu
 {
   attr enableWireMode = false;
-  attr scrollTo = <-114,233>;
+  attr scrollTo = <-114,281>;
   attr zoom = 0.75;
 }
 
@@ -111,14 +110,14 @@ view class Application::Container
 view class Application::Stats
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,473>;
+  attr scrollTo = <-7,425>;
   attr zoom = 1.0;
 }
 
 view class Application::LoadingGame
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,473>;
+  attr scrollTo = <-7,137>;
   attr zoom = 1.0;
 }
 
@@ -131,20 +130,18 @@ view enum Application::ScreenType
 view class Application::Achievements
 {
   attr enableWireMode = false;
-  attr scrollTo = <-39,-111>;
+  attr scrollTo = <-134,33>;
   attr zoom = 1.0;
 }
 
 view class Application::Achievement
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-55>;
   attr zoom = 1.0;
 }
 
 view class Application::HelpMenu
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,233>;
   attr zoom = 1.0;
 }
@@ -152,80 +149,23 @@ view class Application::HelpMenu
 view class Application::AchPop
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,-41>;
+  attr scrollTo = <-7,439>;
   attr zoom = 1.0;
 }
 
-codeview Application::Container.OnSetContent
+view vclass Application::DeviceClassSimulation
 {
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <62,11>;
-  attr codeSelStart = <62,11>;
-}
-
-codeview Application::MainMenu.GoToSettings
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <36,0>;
-  attr codeSelStart = <36,0>;
-}
-
-codeview Application::MainMenu.InitializeGame
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <36,0>;
-  attr codeSelStart = <36,0>;
-}
-
-codeview Application::Settings.SwitchDialog
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <45,1>;
-  attr codeSelStart = <45,1>;
-}
-
-codeview Application::MainMenu.HelpTab
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <36,0>;
-  attr codeSelStart = <36,0>;
-}
-
-codeview Application::HelpMenu.Back
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <19,1>;
-  attr codeSelStart = <19,1>;
-}
-
-codeview Application::ShopListItem.ActiveItem
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,15>;
-  attr codeSelEnd = <24,19>;
-  attr codeSelStart = <24,19>;
-}
-
-codeview Application::ShopListItem.BoughtOrNot
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <40,4>;
-  attr codeSelStart = <40,4>;
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
 }
 
 codeview Application::Shop.UpdateOnBuy
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <23,3>;
-  attr codeSelStart = <23,3>;
+  attr codeSelEnd = <15,0>;
+  attr codeSelStart = <15,0>;
 }
 
 codeview Application::Shop.SelectShopTab
@@ -236,231 +176,87 @@ codeview Application::Shop.SelectShopTab
   attr codeSelStart = <22,40>;
 }
 
-codeview Application::Shop.UpdateArr
+codeview Application::Shop.Init
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <44,4>;
-  attr codeSelStart = <44,4>;
-}
-
-codeview Application::Shop.GetArrays
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <30,25>;
-  attr codeSelStart = <30,25>;
+  attr codeSelEnd = <53,6>;
+  attr codeSelStart = <53,6>;
 }
 
 codeview Application::Shop.OnLoadItem
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,30>;
-  attr codeSelEnd = <24,73>;
-  attr codeSelStart = <24,73>;
+  attr codeFirstPos = <0,65>;
+  attr codeSelEnd = <36,28>;
+  attr codeSelStart = <36,28>;
 }
 
-codeview Application::ShopListItem.OnSetProperty
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <8,6>;
-  attr codeSelEnd = <120,11>;
-  attr codeSelStart = <120,11>;
-}
-
-codeview Application::ShopListItem.Buy
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,41>;
-  attr codeSelEnd = <47,45>;
-  attr codeSelStart = <47,45>;
-}
-
-codeview Application::Shop.Init
+codeview Application::DeviceClassWebGL.OnGetHallAct
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <12,2>;
-  attr codeSelStart = <12,2>;
-}
-
-codeview Application::ShopListItem.SongNameVisible
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <22,0>;
-  attr codeSelStart = <22,0>;
-}
-
-codeview Application::ShopListItem.OnSetBought
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,9>;
-  attr codeSelStart = <0,9>;
-}
-
-codeview Application::Game.Init
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,3>;
-  attr codeSelEnd = <0,6>;
-  attr codeSelStart = <0,6>;
-}
-
-codeview Application::Game.MakeItHalloween
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <62,19>;
-  attr codeSelStart = <62,19>;
-}
-
-codeview Application::DeviceClass.UpdateAnimation
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <102,6>;
-  attr codeSelStart = <102,6>;
-}
-
-codeview Application::Shop.Back
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <19,1>;
-  attr codeSelStart = <19,1>;
-}
-
-codeview Application::ShopListItem.OnSetImageNr
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Application::ShopListItem.OnSetPrice
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,2>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Application::ShopListItem.OnSetColor
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Application::ShopListItem.Init
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Application::Game.GoToMenu
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <19,0>;
-  attr codeSelStart = <19,0>;
-}
-
-codeview Application::Settings.BackToMenu
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <19,7>;
-  attr codeSelStart = <19,7>;
-}
-
-codeview Application::Game.UpdateCoins
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <48,2>;
-  attr codeSelStart = <48,2>;
-}
-
-codeview Application::Game.FromDB
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <17,0>;
-  attr codeSelStart = <17,0>;
-}
-
-codeview Application::Achievements.OnLoadItem
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,38>;
-  attr codeSelEnd = <18,41>;
-  attr codeSelStart = <18,41>;
-}
-
-codeview Application::Achievements.Init
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <8,2>;
-  attr codeSelStart = <8,2>;
-}
-
-codeview Application::Achievements.Back
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <19,1>;
-  attr codeSelStart = <19,1>;
-}
-
-codeview Application::Application.OnScreenChange
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <26,0>;
-  attr codeSelStart = <26,0>;
-}
-
-codeview Application::MainMenu.AchieveTab
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <36,0>;
-  attr codeSelStart = <36,0>;
-}
-
-codeview Application::ShopListItem.Check
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
+  attr codeSelEnd = <6,7>;
+  attr codeSelStart = <34,7>;
 }
 
 codeview Application::Game.NextLevel
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,70>;
-  attr codeSelEnd = <15,37>;
-  attr codeSelStart = <15,37>;
+  attr codeFirstPos = <0,67>;
+  attr codeSelEnd = <21,74>;
+  attr codeSelStart = <21,74>;
 }
 
-codeview Application::Achievements.Check
+codeview Application::Game.Reset
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,22>;
+  attr codeSelEnd = <33,30>;
+  attr codeSelStart = <33,30>;
+}
+
+codeview Application::Game.GameLogic
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <28,7>;
-  attr codeSelStart = <28,7>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
 }
 
-codeview Application::Game.AchPopTrigger
+codeview Application::Game.Init
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,12>;
+  attr codeSelEnd = <36,4>;
+  attr codeSelStart = <36,4>;
+}
+
+codeview Application::Game.LeftCenter
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,3>;
+  attr codeSelEnd = <35,0>;
+  attr codeSelStart = <35,0>;
+}
+
+codeview Application::Game.RightLeft
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <35,0>;
+  attr codeSelStart = <35,0>;
+}
+
+codeview Application::Game.CenterRight
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <35,0>;
+  attr codeSelStart = <35,0>;
+}
+
+codeview Application::Game.LeftCenterSecondaryAnimation
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
@@ -472,8 +268,80 @@ codeview Application::AchPop.Init
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <19,5>;
-  attr codeSelStart = <19,5>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Application::DeviceClassWebGL.OnSetActiveMusicName
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,1>;
+  attr codeSelEnd = <21,6>;
+  attr codeSelStart = <2,6>;
+}
+
+codeview Application::DeviceClassWebGL.OnSetCorrectGuesses
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <21,6>;
+  attr codeSelStart = <21,6>;
+}
+
+codeview Application::DeviceClassWebGL.OnSetFrameSound
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <23,8>;
+  attr codeSelStart = <23,8>;
+}
+
+codeview Application::DeviceClass.UpdateFrameSound
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Application::ShopListItem.SongNameVisible
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <22,0>;
+  attr codeSelStart = <22,0>;
+}
+
+codeview Application::ShopListItem.BoughtOrNot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <40,4>;
+  attr codeSelStart = <40,4>;
+}
+
+codeview Application::ShopListItem.ActiveItem
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <24,19>;
+  attr codeSelStart = <24,19>;
+}
+
+codeview Application::ShopListItem.Buy
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,21>;
+  attr codeSelEnd = <48,25>;
+  attr codeSelStart = <48,25>;
+}
+
+codeview Application::ShopListItem.OnSetBought
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,9>;
+  attr codeSelStart = <0,9>;
 }
 
 codeview Application::ShopListItem.AchPopTrigger
@@ -482,94 +350,6 @@ codeview Application::ShopListItem.AchPopTrigger
   attr codeFirstPos = <0,0>;
   attr codeSelEnd = <36,1>;
   attr codeSelStart = <36,1>;
-}
-
-codeview Core::Timer.Trigger
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,7>;
-  attr codeSelStart = <0,7>;
-}
-
-codeview Application::TheClass.Animate
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,57>;
-  attr codeSelEnd = <43,67>;
-  attr codeSelStart = <43,67>;
-}
-
-codeview Application::DeviceClass.OnSetVolume
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,7>;
-  attr codeSelEnd = <27,23>;
-  attr codeSelStart = <27,23>;
-}
-
-codeview Application::Settings.Init
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <18,11>;
-  attr codeSelStart = <18,11>;
-}
-
-codeview Application::Settings.onVolumeChange
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <31,0>;
-  attr codeSelStart = <5,0>;
-}
-
-codeview Application::DeviceClass.UpdateVolume
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Application::DeviceClassWebGL.OnSetVolume
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,5>;
-  attr codeSelEnd = <0,5>;
-  attr codeSelStart = <6,16>;
-}
-
-codeview Core::View.ChangeViewState
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,18>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Application::Settings.onSFXVolumeChange
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <74,2>;
-  attr codeSelStart = <74,2>;
-}
-
-codeview Application::DeviceClassWebGL.OnSetSFXVolume
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,7>;
-  attr codeSelEnd = <0,15>;
-  attr codeSelStart = <0,15>;
-}
-
-codeview Application::Settings.UpdateProperty
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
 }
 
 codeview Application::MainMenu.Stats
@@ -588,6 +368,110 @@ codeview Application::MainMenu.ShopMeth
   attr codeSelStart = <36,0>;
 }
 
+codeview Application::MainMenu.InitializeGame
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <36,0>;
+  attr codeSelStart = <36,0>;
+}
+
+codeview Application::MainMenu.GoToSettings
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <36,0>;
+  attr codeSelStart = <36,0>;
+}
+
+codeview Application::MainMenu.HelpTab
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <36,0>;
+  attr codeSelStart = <36,0>;
+}
+
+codeview Application::MainMenu.AchieveTab
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <36,0>;
+  attr codeSelStart = <36,0>;
+}
+
+codeview Application::Container.OnSetContent
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,15>;
+  attr codeSelEnd = <62,11>;
+  attr codeSelStart = <62,11>;
+}
+
+codeview Application::Stats.Init
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,3>;
+  attr codeSelStart = <0,3>;
+}
+
+codeview Application::DeviceClassWebGL.OnGetMaxLevel
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,2>;
+  attr codeSelEnd = <25,9>;
+  attr codeSelStart = <25,9>;
+}
+
+codeview Application::DeviceClassWebGL.OnGetCorrectGuesses
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,1>;
+  attr codeSelEnd = <29,6>;
+  attr codeSelStart = <29,6>;
+}
+
+codeview Application::DeviceClassWebGL.OnGetTotalRounds
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,2>;
+  attr codeSelEnd = <4,7>;
+  attr codeSelStart = <4,7>;
+}
+
+codeview Application::DeviceClassWebGL.OnGetHours
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <13,6>;
+  attr codeSelStart = <13,6>;
+}
+
+codeview Application::DeviceClassWebGL.OnGetDate
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,1>;
+  attr codeSelEnd = <23,6>;
+  attr codeSelStart = <23,6>;
+}
+
+codeview Application::DeviceClass.UpdateDate
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Application::DeviceClass.UpdateHours
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
 codeview Application::Stats.Back
 {
   attr codeColSelect = false;
@@ -604,28 +488,60 @@ codeview Application::LoadingGame.Slot
   attr codeSelStart = <19,1>;
 }
 
-codeview Application::Application.Init
+codeview Application::LoadingGame.Init
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <37,2>;
-  attr codeSelStart = <37,2>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
 }
 
-codeview Application::Game.Reset
+codeview Application::DeviceClassWebGL.GetAchivementsArray
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <54,27>;
-  attr codeSelStart = <54,27>;
+  attr codeSelEnd = <9,3>;
+  attr codeSelStart = <9,3>;
 }
 
-codeview Application::DeviceClassWebGL.OnSetNextLevel
+codeview Application::Achievements.OnLoadItem
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,10>;
-  attr codeSelEnd = <0,17>;
-  attr codeSelStart = <0,17>;
+  attr codeFirstPos = <0,8>;
+  attr codeSelEnd = <46,36>;
+  attr codeSelStart = <46,36>;
+}
+
+codeview Application::Achievements.Init
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,2>;
+  attr codeSelEnd = <27,9>;
+  attr codeSelStart = <27,9>;
+}
+
+codeview Application::DeviceClassWebGL.UpdateShopArrays
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,15>;
+  attr codeSelEnd = <26,5>;
+  attr codeSelStart = <9,5>;
+}
+
+codeview Application::DeviceClassWebGL.OnSetCoins
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,1>;
+  attr codeSelEnd = <10,7>;
+  attr codeSelStart = <10,7>;
+}
+
+codeview Application::Game.UpdateCoins
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <46,2>;
+  attr codeSelStart = <46,2>;
 }
 
 codeview Application::DeviceClassWebGL.OnSetReset
@@ -636,124 +552,100 @@ codeview Application::DeviceClassWebGL.OnSetReset
   attr codeSelStart = <0,10>;
 }
 
-codeview Application::DeviceClass.UpdateActiveCup
+codeview Application::DeviceClass.CheckAchivements
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
+  attr codeSelEnd = <10,2>;
+  attr codeSelStart = <10,2>;
 }
 
-codeview Application::DeviceClass.UpdateNextLevel
+codeview Application::DeviceClassWebGL.CheckAchivements
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,3>;
+  attr codeSelEnd = <25,6>;
+  attr codeSelStart = <25,6>;
+}
+
+codeview Application::DeviceClassSimulation.CheckAchivements
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
+  attr codeSelEnd = <64,1>;
+  attr codeSelStart = <64,1>;
 }
 
-codeview Application::DeviceClass.UpdateReset
+codeview Application::DeviceClassWebGL.OnSetNextLevel
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
+  attr codeSelEnd = <1,13>;
+  attr codeSelStart = <1,13>;
 }
 
-codeview Application::DeviceClassWebGL.OnGetActiveBall
+codeview Application::DeviceClassSimulation.OnSetNextLevel
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,2>;
-  attr codeSelEnd = <0,4>;
-  attr codeSelStart = <6,10>;
-}
-
-codeview Application::DeviceClassWebGL.OnGetActiveCup
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,2>;
-  attr codeSelEnd = <17,9>;
-  attr codeSelStart = <17,9>;
-}
-
-codeview Application::DeviceClassWebGL.OnGetActiveMusic
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,3>;
-  attr codeSelStart = <6,8>;
-}
-
-codeview Application::DeviceClass.UpdateStartSound
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Application::DeviceClassWebGL.OnSetStartSound
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <40,12>;
-  attr codeSelStart = <40,12>;
-}
-
-codeview Application::Game.GameLogic
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,8>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Application::Game.Choice
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,57>;
-  attr codeSelEnd = <71,0>;
-  attr codeSelStart = <71,0>;
-}
-
-codeview Application::DeviceClassWebGL.OnSetCorrectGuesses
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,5>;
-  attr codeSelStart = <3,7>;
+  attr codeFirstPos = <0,22>;
+  attr codeSelEnd = <14,29>;
+  attr codeSelStart = <14,29>;
 }
 
 codeview Application::DeviceClassWebGL.OnSetWrongGuesses
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <8,8>;
-  attr codeSelStart = <8,8>;
+  attr codeSelEnd = <4,6>;
+  attr codeSelStart = <13,6>;
 }
 
-codeview Application::DeviceClassWebGL.OnSetCoins
+codeview Application::DeviceClassWebGL.OnSetStartSound
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <19,7>;
-  attr codeSelStart = <19,7>;
+  attr codeSelEnd = <34,15>;
+  attr codeSelStart = <34,15>;
 }
 
-codeview Application::DeviceClassWebGL.OnGetCoins
+codeview Application::DeviceClassWebGL.OnSetVolume
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,5>;
+  attr codeSelEnd = <0,5>;
+  attr codeSelStart = <6,16>;
+}
+
+codeview Application::DeviceClassWebGL.OnSetSFXVolume
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <6,5>;
-  attr codeSelStart = <6,5>;
+  attr codeSelEnd = <0,15>;
+  attr codeSelStart = <0,15>;
+}
+
+codeview Application::DeviceClassWebGL.OnGetHallPack
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <30,6>;
+  attr codeSelStart = <2,6>;
 }
 
 codeview Application::DeviceClassWebGL.OnSetHallPack
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,1>;
-  attr codeSelEnd = <14,5>;
-  attr codeSelStart = <14,5>;
+  attr codeSelEnd = <11,8>;
+  attr codeSelStart = <11,8>;
+}
+
+codeview Application::DeviceClassWebGL.OnSetHallAct
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,3>;
+  attr codeSelEnd = <26,8>;
+  attr codeSelStart = <26,8>;
 }
 
 codeview Application::DeviceClassWebGL.OnSetActiveBall
@@ -775,79 +667,23 @@ codeview Application::DeviceClassWebGL.OnSetActiveCup
 codeview Application::DeviceClassWebGL.OnSetActiveMusic
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,3>;
-  attr codeSelEnd = <24,7>;
-  attr codeSelStart = <24,7>;
+  attr codeFirstPos = <0,4>;
+  attr codeSelEnd = <31,8>;
+  attr codeSelStart = <31,8>;
 }
 
-codeview Application::DeviceClassWebGL.OnSetHallAct
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,6>;
-  attr codeSelEnd = <22,8>;
-  attr codeSelStart = <22,8>;
-}
-
-codeview Application::DeviceClassWebGL.OnGetHallAct
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,3>;
-  attr codeSelEnd = <34,7>;
-  attr codeSelStart = <34,7>;
-}
-
-codeview Application::DeviceClass.OnSetHallPack
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,29>;
-  attr codeSelStart = <0,29>;
-}
-
-codeview Application::DeviceClassWebGL.OnGetHallPack
+codeview Application::DeviceClassWebGL.OnGetCoins
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,2>;
-  attr codeSelEnd = <0,4>;
-  attr codeSelStart = <6,9>;
+  attr codeSelEnd = <6,5>;
+  attr codeSelStart = <6,5>;
 }
 
-codeview Application::DeviceClass.UpdateHallPack
+codeview Application::DeviceClassWebGL.GetShopArrays
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Application::DeviceClass.UpdateWrongGuesses
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Application::DeviceClass.OnSetCorrectGuesses
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
-}
-
-codeview Application::DeviceClassWebGL.OnSetActiveMusicName
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,1>;
-  attr codeSelEnd = <26,7>;
-  attr codeSelStart = <26,7>;
-}
-
-codeview Application::DeviceClass.UpdateActiveMusicName
-{
-  attr codeColSelect = false;
-  attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <0,0>;
-  attr codeSelStart = <0,0>;
+  attr codeSelEnd = <30,18>;
+  attr codeSelStart = <30,18>;
 }
