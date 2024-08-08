@@ -87,7 +87,6 @@ function GetActiveMusicName(){
 
 function SetHalloweenBought(APack){
     localStorage.setItem("HalloweenBought",APack);
-    console.log("Setter "+APack);
 }
 function GetHalloweenBought(){
     let hall=localStorage.getItem("HalloweenBought");

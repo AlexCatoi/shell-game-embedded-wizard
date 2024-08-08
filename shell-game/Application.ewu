@@ -57,7 +57,7 @@ class Application : Core::Root
   $member Container
 }
 
-$rect <170,0,370,40>
+$rect <170,10,370,50>
 $output false
 resource Resources::Font Font
 {
@@ -1443,7 +1443,7 @@ class Game : Core::Group
   $member AchPopTrigger
 }
 
-$rect <470,20,670,60>
+$rect <459,0,659,40>
 $output false
 resource Resources::Bitmap Cup
 {
@@ -1455,7 +1455,7 @@ resource Resources::Bitmap Cup
   attr bitmapmode Mode = Default;
 }
 
-$rect <170,39,370,79>
+$rect <170,50,370,90>
 $output false
 resource Resources::Font Font1
 {
@@ -1471,7 +1471,7 @@ resource Resources::Font Font1
   attr fontrowdistance RowDistance;
 }
 
-$rect <170,80,370,120>
+$rect <170,90,370,130>
 $output false
 resource Resources::Font Font2
 {
@@ -1849,7 +1849,7 @@ class Settings : Core::Group
   $member onSFXVolumeChange
 }
 
-$rect <470,60,670,100>
+$rect <459,40,659,80>
 $output false
 resource Resources::Bitmap MusicNote
 {
@@ -4176,8 +4176,7 @@ class DeviceClass : Templates::DeviceClass
   $rect <779,1240,979,1280>
   method int32 CheckAchivements( arg int32 aArg1 )
   {
-    if(aArg1>=1)
-      return -1;
+    aArg1;
     return -1;
   }
 }
@@ -4188,13 +4187,13 @@ autoobject Application::DeviceClass Device;
 // BitMaps
 note group Note
 {
-  attr Bounds = <460,-20,919,210>;
+  attr Bounds = <450,-19,939,210>;
 }
 
 // Fonts
 note group Note1
 {
-  attr Bounds = <160,-30,460,210>;
+  attr Bounds = <160,-70,459,219>;
 }
 
 // Main
@@ -5406,7 +5405,6 @@ class Shop : Core::Group
   $rect <599,590,799,630>
   slot UpdateOnBuy
   {
-    trace "Update";
     Text.String=Application::Device.Coins;
     HorizontalList.InvalidateItems(0,HorizontalList.NoOfItems-1);
     Application::Device.UpdateShopArrays();
@@ -5976,7 +5974,7 @@ class ShopListItem : Core::Group
   $member AchPopTrigger
 }
 
-$rect <170,119,370,159>
+$rect <170,130,370,170>
 $output false
 resource Resources::Font Title
 {
@@ -6004,7 +6002,7 @@ resource Resources::Bitmap Coin
   attr bitmapmode Mode = Default;
 }
 
-$rect <470,100,670,140>
+$rect <459,80,659,120>
 $output false
 resource Resources::Bitmap Check
 {
@@ -6028,7 +6026,7 @@ resource Resources::Bitmap ShopMusic
   attr bitmapmode Mode = Default;
 }
 
-$rect <170,160,370,200>
+$rect <170,170,370,210>
 $output false
 resource Resources::Font MusicFont
 {
@@ -6056,7 +6054,7 @@ resource Resources::Bitmap HelpIcon
   attr bitmapmode Mode = Default;
 }
 
-$rect <470,140,670,180>
+$rect <470,120,670,160>
 $output false
 resource Resources::Bitmap SettingsIcon
 {
@@ -6068,7 +6066,7 @@ resource Resources::Bitmap SettingsIcon
   attr bitmapmode Mode = Default;
 }
 
-$rect <630,250,830,290>
+$rect <630,250,790,290>
 $output false
 class HelpMenu : Core::Group
 {
@@ -6181,7 +6179,7 @@ class HelpMenu : Core::Group
   $member Back
 }
 
-$rect <673,159,873,199>
+$rect <690,160,890,200>
 $output false
 resource Resources::Bitmap HelpImages
 {
@@ -6222,10 +6220,10 @@ enum ScreenType
   item Achivements;
 }
 
-// This is an annotation.
+// Achivements & screens
 note group ManagingScreens
 {
-  attr Bounds = <590,519,1070,720>;
+  attr Bounds = <590,518,1070,719>;
 }
 
 $rect <839,560,1039,600>
@@ -6321,7 +6319,7 @@ resource Resources::Bitmap CrystalBall
 // Halloween
 note group Note4
 {
-  attr Bounds = <190,740,490,940>;
+  attr Bounds = <179,739,479,939>;
 }
 
 $rect <850,599,1050,639>
@@ -6465,7 +6463,7 @@ class Achievements : Core::Group
         count++;
     }
     var float prog= count*100/Application::Device.Unlocked.size;
-    Progress.CurrentValue=math_ceil(prog);
+    Progress.CurrentValue=(int32)math_ceil(prog);
     Text.String=(string)Progress.CurrentValue+"%%";
   }
 
@@ -6634,7 +6632,7 @@ class Achievement : Core::Group
   }
 }
 
-$rect <170,199,370,239>
+$rect <170,-30,370,10>
 $output false
 resource Resources::Font AchivementTitle
 {
@@ -6662,7 +6660,7 @@ resource Resources::Bitmap Achives
   attr bitmapmode Mode = Default;
 }
 
-$rect <894,9,1094,49>
+$rect <480,170,680,210>
 $output false
 resource Resources::Bitmap AchiveIcon
 {
@@ -7525,4 +7523,10 @@ vclass DeviceClassSimulation : Application::DeviceClass
     return -1;
 
   }
+}
+
+// Varaince
+note group Note5
+{
+  attr Bounds = <819,210,1119,410>;
 }

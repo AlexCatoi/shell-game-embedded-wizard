@@ -1,9 +1,9 @@
 $version 1.0
 
-attr active = Application::DeviceClassSimulation;
+attr active = Application;
 attr callStackMonitor_Show = false;
 attr connectInspectors = false;
-attr currentCodeInspector = Application::DeviceClassSimulation.OnSetNextLevel;
+attr currentCodeInspector = Application::TheClass.Animate;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
 attr extractDoc_DeleteOldFiles = false;
@@ -17,8 +17,8 @@ attr extractDoc_Variants = false;
 attr generateClut_ReservedColors = 0;
 attr heapMonitor_Show = false;
 attr language = Default;
-attr profile = Simulation;
-attr profilerMonitor_Show = false;
+attr profile = WebGL;
+attr profilerMonitor_Show = true;
 attr search_CaseSensitive = false;
 attr search_IgnoreDescription = false;
 attr search_IgnoreMosaic = false;
@@ -41,8 +41,8 @@ view unit Application
   attr enableGrid = true;
   attr enableWireMode = false;
   attr grid = 10;
-  attr scrollTo = <274,80>;
-  attr zoom = 0.75;
+  attr scrollTo = <2,159>;
+  attr zoom = 0.5;
 }
 
 view class Application::Application
@@ -60,14 +60,12 @@ view class Application::Settings
 
 view class Application::Game
 {
-  attr enableWireMode = false;
   attr scrollTo = <-142,718>;
   attr zoom = 0.75;
 }
 
 view class Application::Shop
 {
-  attr enableWireMode = false;
   attr scrollTo = <-31,330>;
   attr zoom = 0.75;
 }
@@ -75,34 +73,31 @@ view class Application::Shop
 view vclass Application::DeviceClassWebGL
 {
   attr enableWireMode = false;
-  attr scrollTo = <-461,-366>;
+  attr scrollTo = <329,-152>;
   attr zoom = 0.75;
 }
 
 view class Application::DeviceClass
 {
   attr enableWireMode = false;
-  attr scrollTo = <-282,938>;
-  attr zoom = 0.5;
+  attr scrollTo = <-154,694>;
+  attr zoom = 0.75;
 }
 
 view class Application::ShopListItem
 {
-  attr enableWireMode = false;
   attr scrollTo = <-235,401>;
   attr zoom = 0.75;
 }
 
 view class Application::MainMenu
 {
-  attr enableWireMode = false;
   attr scrollTo = <-114,281>;
   attr zoom = 0.75;
 }
 
 view class Application::Container
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,439>;
   attr zoom = 1.0;
 }
@@ -110,26 +105,26 @@ view class Application::Container
 view class Application::Stats
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,425>;
+  attr scrollTo = <-7,114>;
   attr zoom = 1.0;
 }
 
 view class Application::LoadingGame
 {
   attr enableWireMode = false;
-  attr scrollTo = <-7,137>;
+  attr scrollTo = <-7,464>;
   attr zoom = 1.0;
 }
 
 view enum Application::ScreenType
 {
+  attr enableWireMode = false;
   attr scrollTo = <-7,89>;
   attr zoom = 1.0;
 }
 
 view class Application::Achievements
 {
-  attr enableWireMode = false;
   attr scrollTo = <-134,33>;
   attr zoom = 1.0;
 }
@@ -148,15 +143,20 @@ view class Application::HelpMenu
 
 view class Application::AchPop
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,439>;
   attr zoom = 1.0;
 }
 
 view vclass Application::DeviceClassSimulation
 {
-  attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view class Application::TheClass
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-277,-498>;
   attr zoom = 1.0;
 }
 
@@ -164,8 +164,8 @@ codeview Application::Shop.UpdateOnBuy
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <15,0>;
-  attr codeSelStart = <15,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
 }
 
 codeview Application::Shop.SelectShopTab
@@ -500,8 +500,8 @@ codeview Application::DeviceClassWebGL.GetAchivementsArray
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <9,3>;
-  attr codeSelStart = <9,3>;
+  attr codeSelEnd = <34,14>;
+  attr codeSelStart = <34,14>;
 }
 
 codeview Application::Achievements.OnLoadItem
@@ -516,24 +516,24 @@ codeview Application::Achievements.Init
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,2>;
-  attr codeSelEnd = <27,9>;
-  attr codeSelStart = <27,9>;
+  attr codeSelEnd = <28,9>;
+  attr codeSelStart = <28,9>;
 }
 
 codeview Application::DeviceClassWebGL.UpdateShopArrays
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,15>;
-  attr codeSelEnd = <26,5>;
-  attr codeSelStart = <9,5>;
+  attr codeFirstPos = <0,18>;
+  attr codeSelEnd = <34,25>;
+  attr codeSelStart = <34,25>;
 }
 
 codeview Application::DeviceClassWebGL.OnSetCoins
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,1>;
-  attr codeSelEnd = <10,7>;
-  attr codeSelStart = <10,7>;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <18,9>;
+  attr codeSelStart = <18,9>;
 }
 
 codeview Application::Game.UpdateCoins
@@ -556,16 +556,16 @@ codeview Application::DeviceClass.CheckAchivements
 {
   attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <10,2>;
-  attr codeSelStart = <10,2>;
+  attr codeSelEnd = <15,1>;
+  attr codeSelStart = <15,1>;
 }
 
 codeview Application::DeviceClassWebGL.CheckAchivements
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,3>;
-  attr codeSelEnd = <25,6>;
-  attr codeSelStart = <25,6>;
+  attr codeFirstPos = <0,7>;
+  attr codeSelEnd = <53,8>;
+  attr codeSelStart = <53,8>;
 }
 
 codeview Application::DeviceClassSimulation.CheckAchivements
@@ -635,7 +635,7 @@ codeview Application::DeviceClassWebGL.OnGetHallPack
 codeview Application::DeviceClassWebGL.OnSetHallPack
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,1>;
+  attr codeFirstPos = <0,0>;
   attr codeSelEnd = <11,8>;
   attr codeSelStart = <11,8>;
 }
@@ -643,7 +643,7 @@ codeview Application::DeviceClassWebGL.OnSetHallPack
 codeview Application::DeviceClassWebGL.OnSetHallAct
 {
   attr codeColSelect = false;
-  attr codeFirstPos = <0,3>;
+  attr codeFirstPos = <0,0>;
   attr codeSelEnd = <26,8>;
   attr codeSelStart = <26,8>;
 }
@@ -683,7 +683,39 @@ codeview Application::DeviceClassWebGL.OnGetCoins
 codeview Application::DeviceClassWebGL.GetShopArrays
 {
   attr codeColSelect = false;
+  attr codeFirstPos = <0,20>;
+  attr codeSelEnd = <30,27>;
+  attr codeSelStart = <30,27>;
+}
+
+codeview Application::DeviceClass.GetAchivementsArray
+{
+  attr codeColSelect = false;
   attr codeFirstPos = <0,0>;
-  attr codeSelEnd = <30,18>;
-  attr codeSelStart = <30,18>;
+  attr codeSelEnd = <10,0>;
+  attr codeSelStart = <10,0>;
+}
+
+codeview Application::DeviceClass.UpdateShopArrays
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Application::DeviceClass.GetShopArrays
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}
+
+codeview Application::TheClass.Animate
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,30>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
 }

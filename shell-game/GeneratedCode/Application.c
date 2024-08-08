@@ -108,7 +108,7 @@ EW_CONST_STRING_PRAGMA static const unsigned int _StringsDefault0[] =
 /* Compressed strings for the language 'Default'. */
 EW_CONST_STRING_PRAGMA static const unsigned int _StringsDefault1[] =
 {
-  0x000004BC, /* ratio 50.50 % */
+  0x000004AA, /* ratio 50.92 % */
   0xB8001700, 0x800A6452, 0x00D20035, 0x4010B360, 0x00740019, 0xD1400080, 0x4522C0C1,
   0x2001D400, 0x001BC007, 0x98021276, 0x1BA3F223, 0x34011489, 0x637068B8, 0x1F2F001B,
   0x44D89C76, 0x0A949E24, 0x28712E2E, 0x8FC9E152, 0xB83E2913, 0x98400428, 0x16274891,
@@ -116,21 +116,21 @@ EW_CONST_STRING_PRAGMA static const unsigned int _StringsDefault1[] =
   0x49C01462, 0xD4015AAF, 0xA15248DC, 0x2E128A57, 0xB1191122, 0x228E4685, 0x08F14A27,
   0x8549ECB3, 0xB8462947, 0x1E6CA468, 0xA61F5100, 0xC8328135, 0x787A0057, 0x9028A43E,
   0x6687D920, 0x18646ECA, 0xCA802831, 0xDDF08645, 0xC7623278, 0x12739EC3, 0xABA70834,
-  0x290CA3C8, 0x0558B826, 0x47A8EB40, 0x4034A69F, 0x8A61EEF4, 0x00D609BC, 0x4A788300,
-  0x46BD8ED0, 0x37321854, 0x9317D94F, 0x72191443, 0x17040032, 0x63B8009F, 0x8A546796,
-  0x64F2E407, 0xA1629AD8, 0x8CAF0400, 0x63F5E007, 0x8111944C, 0x50CC7002, 0x4EBB594C,
-  0x833D1E78, 0xFE44E8F7, 0x02E7BD47, 0x5524494A, 0xF56D44D6, 0x28565AD5, 0x5A57D801,
-  0x1DC4A13E, 0x363D6E58, 0xA5604451, 0x1151D2F5, 0x7D91F44E, 0x1CB6B86A, 0xA44D3C48,
-  0xF2174910, 0x476B5135, 0x445656A1, 0x525695BA, 0xC84D1377, 0x61694753, 0xF6002258,
-  0x8990D6C1, 0x91373A06, 0x361C0055, 0x018D80A2, 0x336E9990, 0x5E1D54F1, 0x24F8322E,
-  0xF7C02C43, 0xB9275A58, 0x288DE3C4, 0x44D9947D, 0x24F47D2F, 0x951D7D8A, 0x46444A18,
-  0x28866295, 0x629AD491, 0x12284988, 0x79010C43, 0x1D0F5E16, 0x5543D245, 0x9C62A822,
-  0xC2700126, 0xC4311374, 0x1D695214, 0x4D46D1F6, 0x5791F666, 0x28E4A16C, 0x44FD135E,
-  0x9D3C93A8, 0xAE9B6434, 0x9F551A05, 0x59D46E5B, 0xDA09A391, 0xE1FA9D50, 0x1F5F69A5,
-  0x985288E1, 0xA2E43DDD, 0xD562729E, 0xA91380D0, 0x6B8E90A7, 0x55EB08EE, 0xA7944EA4,
-  0xA4A1DEAA, 0x79135DE8, 0x77B26445, 0x4BD7C539, 0x6896450A, 0x6A424DA9, 0xF6A0521B,
-  0xDD906A78, 0x43E989A9, 0x61A8EAAB, 0x657922B3, 0x7ADA4A27, 0x1D7F1085, 0x002DDA2D,
-  0x11F492A0, 0xC63973A8, 0x15134655, 0x217E5B56, 0x406FE4A4, 0x00000000
+  0x290CA3C8, 0xF77A201A, 0x358BECB0, 0x9DD0C000, 0xAF63B412, 0x3C861511, 0x826534FA,
+  0x8A21BF8B, 0x0019390C, 0x004F8B82, 0x33CB31DC, 0x7203C52A, 0x4D6C3279, 0x820050B1,
+  0xF003B457, 0xCA2631FA, 0x38014088, 0xACA62866, 0x8F3C275D, 0x747BC19E, 0xE6A3FCE2,
+  0x924CA05D, 0xB6C4ECB4, 0x1596B57D, 0x95F5F74A, 0x4D284F96, 0x8F5B9607, 0x5811144D,
+  0x1474BD69, 0xD47D1382, 0x05AE1A9E, 0x134F1207, 0x83924429, 0xDAD44D7C, 0x1595A851,
+  0x95A57151, 0x0A44DD44, 0x5A51D4F2, 0x4008720F, 0xD435B07B, 0xA1C47F61, 0x87001564,
+  0x635F9869, 0xDC566400, 0x87313C4C, 0x1A038957, 0xE70B10C9, 0x49D6963D, 0x22E8CD2E,
+  0x36651F4A, 0x191F4BD1, 0x475F61F9, 0x7523A625, 0x21088151, 0xA6B5244A, 0x8A096218,
+  0x374310C4, 0x43D7859E, 0x10F49147, 0x8885FF93, 0x9C0049A6, 0x0C44DCA0, 0x5A548531,
+  0x11B47D87, 0xE47D9991, 0x15285B15, 0x3F44D78A, 0x4F2459ED, 0xDF544D27, 0x75F1E39F,
+  0x4A745452, 0x3C6751B9, 0x4367968E, 0x5787C66C, 0xF47D7DA4, 0x52584A22, 0x718950F7,
+  0x435589A6, 0x9E144DFA, 0x298A3142, 0x7557AA63, 0xA39C113A, 0xA0528756, 0xD5E44D77,
+  0xE5DEC28E, 0x292F5F14, 0x9EA01914, 0x00287912, 0x299491AD, 0x08E2A08D, 0x190F4A26,
+  0x118C6A49, 0x57922B1A, 0xAD44A26D, 0xD7CD0857, 0x66D7A091, 0x9947D24A, 0x5718E5CE,
+  0x58544D19, 0x17C00015, 0x06F84A42, 0x00000004, 0x00000000
 };
 
 /* Compressed strings for the language 'Default'. */
@@ -374,86 +374,85 @@ static const XRect _Const00C7 = {{ 450, -1 }, { 600, 80 }};
 static const XStringRes _Const00C8 = { _StringsDefault1, 0x0097 };
 static const XColor _Const00C9 = { 0xF9, 0xFF, 0x19, 0xFF };
 static const XColor _Const00CA = { 0xFF, 0x06, 0x00, 0xFF };
-static const XStringRes _Const00CB = { _StringsDefault1, 0x00A1 };
-static const XRect _Const00CC = {{ 0, 0 }, { 160, 400 }};
-static const XRect _Const00CD = {{ 0, 0 }, { 160, 326 }};
-static const XRect _Const00CE = {{ 0, 326 }, { 160, 400 }};
-static const XStringRes _Const00CF = { _StringsDefault1, 0x00AA };
-static const XColor _Const00D0 = { 0x4B, 0xFF, 0xFC, 0xFF };
-static const XColor _Const00D1 = { 0x07, 0xF1, 0x12, 0xE1 };
-static const XColor _Const00D2 = { 0xFF, 0xF1, 0x0A, 0xFF };
-static const XRect _Const00D3 = {{ 0, 263 }, { 160, 312 }};
-static const XStringRes _Const00D4 = { _StringsDefault1, 0x00B0 };
-static const XColor _Const00D5 = { 0x2C, 0x50, 0xFA, 0xFE };
-static const XColor _Const00D6 = { 0x7E, 0x8A, 0x7E, 0xFF };
-static const XRect _Const00D7 = {{ 55, 7 }, { 117, 57 }};
-static const XRect _Const00D8 = {{ 0, 20 }, { 160, 50 }};
-static const XStringRes _Const00D9 = { _StringsDefault1, 0x00B6 };
+static const XRect _Const00CB = {{ 0, 0 }, { 160, 400 }};
+static const XRect _Const00CC = {{ 0, 0 }, { 160, 326 }};
+static const XRect _Const00CD = {{ 0, 326 }, { 160, 400 }};
+static const XStringRes _Const00CE = { _StringsDefault1, 0x00A1 };
+static const XColor _Const00CF = { 0x4B, 0xFF, 0xFC, 0xFF };
+static const XColor _Const00D0 = { 0x07, 0xF1, 0x12, 0xE1 };
+static const XColor _Const00D1 = { 0xFF, 0xF1, 0x0A, 0xFF };
+static const XRect _Const00D2 = {{ 0, 263 }, { 160, 312 }};
+static const XStringRes _Const00D3 = { _StringsDefault1, 0x00A7 };
+static const XColor _Const00D4 = { 0x2C, 0x50, 0xFA, 0xFE };
+static const XColor _Const00D5 = { 0x7E, 0x8A, 0x7E, 0xFF };
+static const XRect _Const00D6 = {{ 55, 7 }, { 117, 57 }};
+static const XRect _Const00D7 = {{ 0, 20 }, { 160, 50 }};
+static const XStringRes _Const00D8 = { _StringsDefault1, 0x00AD };
+static const XStringRes _Const00D9 = { _StringsDefault1, 0x00B8 };
 static const XStringRes _Const00DA = { _StringsDefault1, 0x00C1 };
-static const XStringRes _Const00DB = { _StringsDefault1, 0x00CA };
-static const XRect _Const00DC = {{ 291, 0 }, { 509, 52 }};
-static const XColor _Const00DD = { 0x37, 0x00, 0xFF, 0xFF };
-static const XColor _Const00DE = { 0xFF, 0x00, 0x0B, 0xFF };
-static const XColor _Const00DF = { 0xFF, 0x0D, 0xE0, 0xFF };
-static const XColor _Const00E0 = { 0x20, 0xFF, 0x77, 0xFF };
-static const XStringRes _Const00E1 = { _StringsDefault1, 0x00D2 };
-static const XRect _Const00E2 = {{ 0, 85 }, { 800, 266 }};
-static const XStringRes _Const00E3 = { _StringsDefault1, 0x00D9 };
-static const XRect _Const00E4 = {{ 0, 266 }, { 800, 480 }};
-static const XRect _Const00E5 = {{ 34, 80 }, { 774, 384 }};
-static const XRect _Const00E6 = {{ 34, 82 }, { 774, 384 }};
-static const XPoint _Const00E7 = { 0, 100 };
-static const XStringRes _Const00E8 = { _StringsDefault2, 0x0002 };
-static const XStringRes _Const00E9 = { _StringsDefault2, 0x0018 };
-static const XStringRes _Const00EA = { _StringsDefault2, 0x0033 };
-static const XStringRes _Const00EB = { _StringsDefault2, 0x0043 };
-static const XStringRes _Const00EC = { _StringsDefault2, 0x005F };
-static const XStringRes _Const00ED = { _StringsDefault2, 0x0070 };
-static const XStringRes _Const00EE = { _StringsDefault2, 0x0081 };
-static const XStringRes _Const00EF = { _StringsDefault2, 0x0097 };
-static const XStringRes _Const00F0 = { _StringsDefault2, 0x00AA };
-static const XStringRes _Const00F1 = { _StringsDefault2, 0x00BB };
-static const XStringRes _Const00F2 = { _StringsDefault2, 0x00D5 };
-static const XStringRes _Const00F3 = { _StringsDefault2, 0x00EE };
-static const XStringRes _Const00F4 = { _StringsDefault2, 0x00FC };
-static const XStringRes _Const00F5 = { _StringsDefault2, 0x0115 };
-static const XStringRes _Const00F6 = { _StringsDefault2, 0x0128 };
-static const XStringRes _Const00F7 = { _StringsDefault2, 0x0136 };
-static const XStringRes _Const00F8 = { _StringsDefault2, 0x0150 };
-static const XStringRes _Const00F9 = { _StringsDefault2, 0x016B };
-static const XStringRes _Const00FA = { _StringsDefault2, 0x0180 };
-static const XStringRes _Const00FB = { _StringsDefault2, 0x018D };
-static const XStringRes _Const00FC = { _StringsDefault2, 0x019C };
-static const XStringRes _Const00FD = { _StringsDefault2, 0x01B2 };
-static const XStringRes _Const00FE = { _StringsDefault2, 0x01C0 };
-static const XStringRes _Const00FF = { _StringsDefault2, 0x01D0 };
-static const XStringRes _Const0100 = { _StringsDefault2, 0x01E6 };
-static const XStringRes _Const0101 = { _StringsDefault2, 0x01F4 };
-static const XStringRes _Const0102 = { _StringsDefault3, 0x0002 };
-static const XStringRes _Const0103 = { _StringsDefault3, 0x0017 };
-static const XStringRes _Const0104 = { _StringsDefault3, 0x0028 };
-static const XStringRes _Const0105 = { _StringsDefault3, 0x0039 };
-static const XRect _Const0106 = {{ 34, 396 }, { 774, 446 }};
-static const XRect _Const0107 = {{ 354, 431 }, { 454, 461 }};
-static const XStringRes _Const0108 = { _StringsDefault3, 0x004A };
-static const XColor _Const0109 = { 0x00, 0x0F, 0xFF, 0xFF };
-static const XColor _Const010A = { 0x89, 0x89, 0x89, 0xFF };
-static const XColor _Const010B = { 0xFF, 0x00, 0x5F, 0xFF };
-static const XStringRes _Const010C = { _StringsDefault3, 0x0050 };
-static const XColor _Const010D = { 0xFC, 0x00, 0x05, 0xFF };
-static const XColor _Const010E = { 0x00, 0xFC, 0x07, 0xFF };
-static const XRect _Const010F = {{ 0, 0 }, { 700, 100 }};
-static const XRect _Const0110 = {{ 0, 0 }, { 701, 100 }};
-static const XColor _Const0111 = { 0x75, 0x75, 0x75, 0xFF };
-static const XRect _Const0112 = {{ 40, 2 }, { 140, 102 }};
-static const XRect _Const0113 = {{ 190, 52 }, { 700, 100 }};
-static const XStringRes _Const0114 = { _StringsDefault3, 0x0055 };
-static const XRect _Const0115 = {{ 190, 0 }, { 701, 75 }};
-static const XRect _Const0116 = {{ 40, 0 }, { 140, 100 }};
-static const XRect _Const0117 = {{ 250, 0 }, { 550, 50 }};
-static const XColor _Const0118 = { 0x3D, 0xE6, 0x00, 0x87 };
-static const XRect _Const0119 = {{ 232, 0 }, { 328, 50 }};
-static const XRect _Const011A = {{ 304, 0 }, { 550, 50 }};
+static const XRect _Const00DB = {{ 291, 0 }, { 509, 52 }};
+static const XColor _Const00DC = { 0x37, 0x00, 0xFF, 0xFF };
+static const XColor _Const00DD = { 0xFF, 0x00, 0x0B, 0xFF };
+static const XColor _Const00DE = { 0xFF, 0x0D, 0xE0, 0xFF };
+static const XColor _Const00DF = { 0x20, 0xFF, 0x77, 0xFF };
+static const XStringRes _Const00E0 = { _StringsDefault1, 0x00C9 };
+static const XRect _Const00E1 = {{ 0, 85 }, { 800, 266 }};
+static const XStringRes _Const00E2 = { _StringsDefault1, 0x00D0 };
+static const XRect _Const00E3 = {{ 0, 266 }, { 800, 480 }};
+static const XRect _Const00E4 = {{ 34, 80 }, { 774, 384 }};
+static const XRect _Const00E5 = {{ 34, 82 }, { 774, 384 }};
+static const XPoint _Const00E6 = { 0, 100 };
+static const XStringRes _Const00E7 = { _StringsDefault2, 0x0002 };
+static const XStringRes _Const00E8 = { _StringsDefault2, 0x0018 };
+static const XStringRes _Const00E9 = { _StringsDefault2, 0x0033 };
+static const XStringRes _Const00EA = { _StringsDefault2, 0x0043 };
+static const XStringRes _Const00EB = { _StringsDefault2, 0x005F };
+static const XStringRes _Const00EC = { _StringsDefault2, 0x0070 };
+static const XStringRes _Const00ED = { _StringsDefault2, 0x0081 };
+static const XStringRes _Const00EE = { _StringsDefault2, 0x0097 };
+static const XStringRes _Const00EF = { _StringsDefault2, 0x00AA };
+static const XStringRes _Const00F0 = { _StringsDefault2, 0x00BB };
+static const XStringRes _Const00F1 = { _StringsDefault2, 0x00D5 };
+static const XStringRes _Const00F2 = { _StringsDefault2, 0x00EE };
+static const XStringRes _Const00F3 = { _StringsDefault2, 0x00FC };
+static const XStringRes _Const00F4 = { _StringsDefault2, 0x0115 };
+static const XStringRes _Const00F5 = { _StringsDefault2, 0x0128 };
+static const XStringRes _Const00F6 = { _StringsDefault2, 0x0136 };
+static const XStringRes _Const00F7 = { _StringsDefault2, 0x0150 };
+static const XStringRes _Const00F8 = { _StringsDefault2, 0x016B };
+static const XStringRes _Const00F9 = { _StringsDefault2, 0x0180 };
+static const XStringRes _Const00FA = { _StringsDefault2, 0x018D };
+static const XStringRes _Const00FB = { _StringsDefault2, 0x019C };
+static const XStringRes _Const00FC = { _StringsDefault2, 0x01B2 };
+static const XStringRes _Const00FD = { _StringsDefault2, 0x01C0 };
+static const XStringRes _Const00FE = { _StringsDefault2, 0x01D0 };
+static const XStringRes _Const00FF = { _StringsDefault2, 0x01E6 };
+static const XStringRes _Const0100 = { _StringsDefault2, 0x01F4 };
+static const XStringRes _Const0101 = { _StringsDefault3, 0x0002 };
+static const XStringRes _Const0102 = { _StringsDefault3, 0x0017 };
+static const XStringRes _Const0103 = { _StringsDefault3, 0x0028 };
+static const XStringRes _Const0104 = { _StringsDefault3, 0x0039 };
+static const XRect _Const0105 = {{ 34, 396 }, { 774, 446 }};
+static const XRect _Const0106 = {{ 354, 431 }, { 454, 461 }};
+static const XStringRes _Const0107 = { _StringsDefault3, 0x004A };
+static const XColor _Const0108 = { 0x00, 0x0F, 0xFF, 0xFF };
+static const XColor _Const0109 = { 0x89, 0x89, 0x89, 0xFF };
+static const XColor _Const010A = { 0xFF, 0x00, 0x5F, 0xFF };
+static const XStringRes _Const010B = { _StringsDefault3, 0x0050 };
+static const XColor _Const010C = { 0xFC, 0x00, 0x05, 0xFF };
+static const XColor _Const010D = { 0x00, 0xFC, 0x07, 0xFF };
+static const XRect _Const010E = {{ 0, 0 }, { 700, 100 }};
+static const XRect _Const010F = {{ 0, 0 }, { 701, 100 }};
+static const XColor _Const0110 = { 0x75, 0x75, 0x75, 0xFF };
+static const XRect _Const0111 = {{ 40, 2 }, { 140, 102 }};
+static const XRect _Const0112 = {{ 190, 52 }, { 700, 100 }};
+static const XStringRes _Const0113 = { _StringsDefault3, 0x0055 };
+static const XRect _Const0114 = {{ 190, 0 }, { 701, 75 }};
+static const XRect _Const0115 = {{ 40, 0 }, { 140, 100 }};
+static const XRect _Const0116 = {{ 250, 0 }, { 550, 50 }};
+static const XColor _Const0117 = { 0x3D, 0xE6, 0x00, 0x87 };
+static const XRect _Const0118 = {{ 232, 0 }, { 328, 50 }};
+static const XRect _Const0119 = {{ 304, 0 }, { 550, 50 }};
 
 #ifndef EW_DONT_CHECK_INDEX
   /* This function is used to check the indices when accessing an array.
@@ -3997,9 +3996,7 @@ XInt32 ApplicationDeviceClass___CheckAchivements( ApplicationDeviceClass _this,
 {
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( _this );
-
-  if ( aArg1 >= 1 )
-    return -1;
+  EW_UNUSED_ARG( aArg1 );
 
   return -1;
 }
@@ -5468,7 +5465,6 @@ void ApplicationShop_UpdateOnBuy( ApplicationShop _this, XObject sender )
   /* Dummy expressions to avoid the 'C' warning 'unused argument'. */
   EW_UNUSED_ARG( sender );
 
-  EwTrace( "%s", EwLoadString( &_Const00CB ));
   ViewsText_OnSetString( &_this->Text, EwNewStringInt( EwGetAutoObject( &ApplicationDevice, 
   ApplicationDeviceClass )->Coins, 0, 10 ));
   CoreHorizontalList_InvalidateItems( &_this->HorizontalList, 0, _this->HorizontalList.NoOfItems 
@@ -5549,13 +5545,13 @@ void ApplicationShopListItem__Init( ApplicationShopListItem _this, XObject aLink
   _this->_.VMT = EW_CLASS( ApplicationShopListItem );
 
   /* ... and initialize objects, variables, properties, etc. */
-  CoreRectView__OnSetBounds( _this, _Const00CC );
-  CoreRectView__OnSetBounds( &_this->Image, _Const00CD );
+  CoreRectView__OnSetBounds( _this, _Const00CB );
+  CoreRectView__OnSetBounds( &_this->Image, _Const00CC );
   ViewsImage_OnSetFrameNumber( &_this->Image, -1 );
   ViewsImage_OnSetVisible( &_this->Image, 1 );
   CoreView_OnSetStackingPriority((CoreView)&_this->PushButton, 0 );
-  CoreRectView__OnSetBounds( &_this->PushButton, _Const00CE );
-  WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00CF ));
+  CoreRectView__OnSetBounds( &_this->PushButton, _Const00CD );
+  WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00CE ));
   WidgetSetPushButtonConfig_OnSetThumbShadowColorFocused( &_this->PushButtonConfigBuy, 
   _Const002E );
   WidgetSetPushButtonConfig_OnSetThumbShadowOffsetFocused( &_this->PushButtonConfigBuy, 
@@ -5569,21 +5565,21 @@ void ApplicationShopListItem__Init( ApplicationShopListItem _this, XObject aLink
   WidgetSetPushButtonConfig_OnSetThumbBorderWidthDefault( &_this->PushButtonConfigBuy, 
   1 );
   WidgetSetPushButtonConfig_OnSetThumbColorActive( &_this->PushButtonConfigBuy, 
-  _Const00D0 );
+  _Const00CF );
   WidgetSetPushButtonConfig_OnSetThumbColorFocused( &_this->PushButtonConfigBuy, 
-  _Const00D1 );
+  _Const00D0 );
   WidgetSetPushButtonConfig_OnSetThumbColorDefault( &_this->PushButtonConfigBuy, 
-  _Const00D1 );
+  _Const00D0 );
   WidgetSetPushButtonConfig_OnSetLabelColorActive( &_this->PushButtonConfigBuy, 
-  _Const00D2 );
+  _Const00D1 );
   WidgetSetPushButtonConfig_OnSetLabelColorFocused( &_this->PushButtonConfigBuy, 
-  _Const00D2 );
+  _Const00D1 );
   WidgetSetPushButtonConfig_OnSetLabelColorDisabled( &_this->PushButtonConfigBuy, 
-  _Const00D2 );
+  _Const00D1 );
   WidgetSetPushButtonConfig_OnSetLabelColorDefault( &_this->PushButtonConfigBuy, 
-  _Const00D2 );
-  CoreRectView__OnSetBounds( &_this->Text, _Const00D3 );
-  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00D4 ));
+  _Const00D1 );
+  CoreRectView__OnSetBounds( &_this->Text, _Const00D2 );
+  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00D3 ));
   ViewsText_OnSetColor( &_this->Text, _Const00CA );
   _this->ImageNr = -1;
   WidgetSetPushButtonConfig_OnSetThumbShadowColorFocused( &_this->PushButtonConfigSold, 
@@ -5599,11 +5595,11 @@ void ApplicationShopListItem__Init( ApplicationShopListItem _this, XObject aLink
   WidgetSetPushButtonConfig_OnSetThumbBorderWidthDefault( &_this->PushButtonConfigSold, 
   1 );
   WidgetSetPushButtonConfig_OnSetThumbColorActive( &_this->PushButtonConfigSold, 
-  _Const00D5 );
+  _Const00D4 );
   WidgetSetPushButtonConfig_OnSetThumbColorFocused( &_this->PushButtonConfigSold, 
-  _Const00D6 );
+  _Const00D5 );
   WidgetSetPushButtonConfig_OnSetThumbColorDefault( &_this->PushButtonConfigSold, 
-  _Const00D6 );
+  _Const00D5 );
   WidgetSetPushButtonConfig_OnSetLabelColorActive( &_this->PushButtonConfigSold, 
   _Const002C );
   WidgetSetPushButtonConfig_OnSetLabelColorFocused( &_this->PushButtonConfigSold, 
@@ -5615,11 +5611,11 @@ void ApplicationShopListItem__Init( ApplicationShopListItem _this, XObject aLink
   _this->Color = _Const00CA;
   _this->Property = 1;
   CoreView_OnSetStackingPriority((CoreView)&_this->Active, 10 );
-  CoreRectView__OnSetBounds( &_this->Active, _Const00D7 );
+  CoreRectView__OnSetBounds( &_this->Active, _Const00D6 );
   ViewsImage_OnSetAlignment( &_this->Active, ViewsImageAlignmentAlignHorzCenter 
   | ViewsImageAlignmentAlignVertCenter | ViewsImageAlignmentScaleToFit );
   ViewsImage_OnSetVisible( &_this->Active, 0 );
-  CoreRectView__OnSetBounds( &_this->SongName, _Const00D8 );
+  CoreRectView__OnSetBounds( &_this->SongName, _Const00D7 );
   ViewsText_OnSetString( &_this->SongName, 0 );
   ViewsText_OnSetColor( &_this->SongName, _Const0030 );
   ViewsText_OnSetVisible( &_this->SongName, 0 );
@@ -5796,7 +5792,7 @@ void ApplicationShopListItem_Buy( ApplicationShopListItem _this, XObject sender 
   WidgetSetPushButton btn = EwCastObject( sender, WidgetSetPushButton );
   XInt32 frame = -1;
 
-  if ( !EwCompString( btn->Label, EwLoadString( &_Const00CF )))
+  if ( !EwCompString( btn->Label, EwLoadString( &_Const00CE )))
   {
     if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->Coins >= 
         _this->Price )
@@ -5856,7 +5852,7 @@ void ApplicationShopListItem_Buy( ApplicationShopListItem _this, XObject sender 
     }
   }
   else
-    if ( !EwCompString( btn->Label, EwLoadString( &_Const00D9 )))
+    if ( !EwCompString( btn->Label, EwLoadString( &_Const00D8 )))
     {
       if ( EwGetAutoObject( &ApplicationDevice, ApplicationDeviceClass )->ShopTab 
           == 1 )
@@ -5881,12 +5877,12 @@ void ApplicationShopListItem_Buy( ApplicationShopListItem _this, XObject sender 
             ApplicationDeviceClass ), 1 );
     }
     else
-      if ( !EwCompString( btn->Label, EwLoadString( &_Const00DA )) && ( EwGetAutoObject( 
+      if ( !EwCompString( btn->Label, EwLoadString( &_Const00D9 )) && ( EwGetAutoObject( 
           &ApplicationDevice, ApplicationDeviceClass )->ShopTab == 4 ))
       {
         WidgetSetPushButton_OnSetAppearance( &_this->PushButton, &_this->PushButtonConfigSold );
-        ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00DB ));
-        WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00D9 ));
+        ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00DA ));
+        WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00D8 ));
         ApplicationDeviceClass_OnSetHallAct( EwGetAutoObject( &ApplicationDevice, 
         ApplicationDeviceClass ), 0 );
       }
@@ -5913,16 +5909,16 @@ void ApplicationShopListItem_BoughtOrNot( ApplicationShopListItem _this, XBool a
   if ( aArg1 )
   {
     WidgetSetPushButton_OnSetAppearance( &_this->PushButton, &_this->PushButtonConfigSold );
-    ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00DB ));
+    ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00DA ));
 
     if ( ViewsImage_OnGetVisible( &_this->Active ))
-      WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00DA ));
-    else
       WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00D9 ));
+    else
+      WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00D8 ));
   }
   else
   {
-    WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00CF ));
+    WidgetSetPushButton_OnSetLabel( &_this->PushButton, EwLoadString( &_Const00CE ));
     WidgetSetPushButton_OnSetAppearance( &_this->PushButton, &_this->PushButtonConfigBuy );
     ViewsText_OnSetString( &_this->Text, EwNewStringInt( _this->Price, 0, 10 ));
   }
@@ -6080,21 +6076,21 @@ void ApplicationHelpMenu__Init( ApplicationHelpMenu _this, XObject aLink, XHandl
   ViewsRectangle_OnSetColorBR( &_this->Rectangle, _Const0048 );
   ViewsRectangle_OnSetColorTL( &_this->Rectangle, _Const0049 );
   ViewsRectangle_OnSetColor( &_this->Rectangle, _Const002C );
-  CoreRectView__OnSetBounds( &_this->Text, _Const00DC );
-  ViewsText_OnSetColorBL( &_this->Text, _Const00DD );
-  ViewsText_OnSetColorBR( &_this->Text, _Const00DE );
-  ViewsText_OnSetColorTR( &_this->Text, _Const00DF );
-  ViewsText_OnSetColorTL( &_this->Text, _Const00E0 );
-  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00E1 ));
+  CoreRectView__OnSetBounds( &_this->Text, _Const00DB );
+  ViewsText_OnSetColorBL( &_this->Text, _Const00DC );
+  ViewsText_OnSetColorBR( &_this->Text, _Const00DD );
+  ViewsText_OnSetColorTR( &_this->Text, _Const00DE );
+  ViewsText_OnSetColorTL( &_this->Text, _Const00DF );
+  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const00E0 ));
   CoreView_OnSetLayout((CoreView)&_this->Text1, CoreLayoutAlignToLeft | CoreLayoutAlignToTop );
-  CoreRectView__OnSetBounds( &_this->Text1, _Const00E2 );
+  CoreRectView__OnSetBounds( &_this->Text1, _Const00E1 );
   ViewsText_OnSetPadding( &_this->Text1, 10 );
   ViewsText_OnSetRowDistance( &_this->Text1, 35 );
   ViewsText_OnSetWrapText( &_this->Text1, 1 );
   ViewsText_OnSetAlignment( &_this->Text1, ViewsTextAlignmentAlignHorzLeft | ViewsTextAlignmentAlignVertTop );
-  ViewsText_OnSetString( &_this->Text1, EwLoadString( &_Const00E3 ));
+  ViewsText_OnSetString( &_this->Text1, EwLoadString( &_Const00E2 ));
   ViewsText_OnSetColor( &_this->Text1, _Const0091 );
-  CoreRectView__OnSetBounds( &_this->Image, _Const00E4 );
+  CoreRectView__OnSetBounds( &_this->Image, _Const00E3 );
   CoreRectView__OnSetBounds( &_this->PushButton, _Const00B6 );
   WidgetSetPushButton_OnSetIconFrame( &_this->PushButton, 9 );
   WidgetSetPushButton_OnSetLabel( &_this->PushButton, 0 );
@@ -6422,51 +6418,51 @@ void ApplicationAchievements__Init( ApplicationAchievements _this, XObject aLink
   CoreRectView__OnSetBounds( &_this->Rectangle, _Const0000 );
   ViewsRectangle_OnSetColorBR( &_this->Rectangle, _Const0001 );
   ViewsRectangle_OnSetColorTL( &_this->Rectangle, _Const0002 );
-  CoreRectView__OnSetBounds( &_this->VerticalList, _Const00E5 );
+  CoreRectView__OnSetBounds( &_this->VerticalList, _Const00E4 );
   CoreVerticalList_OnSetItemHeight( &_this->VerticalList, 100 );
   CoreVerticalList_OnSetNoOfItems( &_this->VerticalList, 15 );
   CoreVerticalList_OnSetItemClass( &_this->VerticalList, EW_CLASS( ApplicationAchievement ));
-  CoreRectView__OnSetBounds( &_this->SlideTouchHandler, _Const00E6 );
+  CoreRectView__OnSetBounds( &_this->SlideTouchHandler, _Const00E5 );
   _this->SlideTouchHandler.Offset = _Const0004;
-  CoreSlideTouchHandler_OnSetSnapNext( &_this->SlideTouchHandler, _Const00E7 );
+  CoreSlideTouchHandler_OnSetSnapNext( &_this->SlideTouchHandler, _Const00E6 );
   _this->SlideTouchHandler.SlideHorz = 0;
-  _this->AchievementsNames[ 0 ] = EwShareString( EwLoadString( &_Const00E8 ));
-  _this->AchievementsNames[ 1 ] = EwShareString( EwLoadString( &_Const00E9 ));
-  _this->AchievementsNames[ 2 ] = EwShareString( EwLoadString( &_Const00EA ));
-  _this->AchievementsNames[ 3 ] = EwShareString( EwLoadString( &_Const00EB ));
-  _this->AchievementsNames[ 4 ] = EwShareString( EwLoadString( &_Const00EC ));
-  _this->AchievementsNames[ 5 ] = EwShareString( EwLoadString( &_Const00ED ));
-  _this->AchievementsNames[ 6 ] = EwShareString( EwLoadString( &_Const00EE ));
-  _this->AchievementsNames[ 7 ] = EwShareString( EwLoadString( &_Const00EF ));
-  _this->AchievementsNames[ 8 ] = EwShareString( EwLoadString( &_Const00F0 ));
-  _this->AchievementsNames[ 9 ] = EwShareString( EwLoadString( &_Const00F1 ));
-  _this->AchievementsNames[ 10 ] = EwShareString( EwLoadString( &_Const00F2 ));
-  _this->AchievementsNames[ 11 ] = EwShareString( EwLoadString( &_Const00F3 ));
-  _this->AchievementsNames[ 12 ] = EwShareString( EwLoadString( &_Const00F4 ));
-  _this->AchievementsNames[ 13 ] = EwShareString( EwLoadString( &_Const00F5 ));
-  _this->AchievementsNames[ 14 ] = EwShareString( EwLoadString( &_Const00F6 ));
-  _this->Describing[ 0 ] = EwShareString( EwLoadString( &_Const00F7 ));
-  _this->Describing[ 1 ] = EwShareString( EwLoadString( &_Const00F8 ));
-  _this->Describing[ 2 ] = EwShareString( EwLoadString( &_Const00F9 ));
-  _this->Describing[ 3 ] = EwShareString( EwLoadString( &_Const00FA ));
-  _this->Describing[ 4 ] = EwShareString( EwLoadString( &_Const00FB ));
-  _this->Describing[ 5 ] = EwShareString( EwLoadString( &_Const00FC ));
-  _this->Describing[ 6 ] = EwShareString( EwLoadString( &_Const00FD ));
-  _this->Describing[ 7 ] = EwShareString( EwLoadString( &_Const00FE ));
-  _this->Describing[ 8 ] = EwShareString( EwLoadString( &_Const00FF ));
-  _this->Describing[ 9 ] = EwShareString( EwLoadString( &_Const0100 ));
-  _this->Describing[ 10 ] = EwShareString( EwLoadString( &_Const0101 ));
-  _this->Describing[ 11 ] = EwShareString( EwLoadString( &_Const0102 ));
-  _this->Describing[ 12 ] = EwShareString( EwLoadString( &_Const0103 ));
-  _this->Describing[ 13 ] = EwShareString( EwLoadString( &_Const0104 ));
-  _this->Describing[ 14 ] = EwShareString( EwLoadString( &_Const0105 ));
-  CoreRectView__OnSetBounds( &_this->Progress, _Const0106 );
+  _this->AchievementsNames[ 0 ] = EwShareString( EwLoadString( &_Const00E7 ));
+  _this->AchievementsNames[ 1 ] = EwShareString( EwLoadString( &_Const00E8 ));
+  _this->AchievementsNames[ 2 ] = EwShareString( EwLoadString( &_Const00E9 ));
+  _this->AchievementsNames[ 3 ] = EwShareString( EwLoadString( &_Const00EA ));
+  _this->AchievementsNames[ 4 ] = EwShareString( EwLoadString( &_Const00EB ));
+  _this->AchievementsNames[ 5 ] = EwShareString( EwLoadString( &_Const00EC ));
+  _this->AchievementsNames[ 6 ] = EwShareString( EwLoadString( &_Const00ED ));
+  _this->AchievementsNames[ 7 ] = EwShareString( EwLoadString( &_Const00EE ));
+  _this->AchievementsNames[ 8 ] = EwShareString( EwLoadString( &_Const00EF ));
+  _this->AchievementsNames[ 9 ] = EwShareString( EwLoadString( &_Const00F0 ));
+  _this->AchievementsNames[ 10 ] = EwShareString( EwLoadString( &_Const00F1 ));
+  _this->AchievementsNames[ 11 ] = EwShareString( EwLoadString( &_Const00F2 ));
+  _this->AchievementsNames[ 12 ] = EwShareString( EwLoadString( &_Const00F3 ));
+  _this->AchievementsNames[ 13 ] = EwShareString( EwLoadString( &_Const00F4 ));
+  _this->AchievementsNames[ 14 ] = EwShareString( EwLoadString( &_Const00F5 ));
+  _this->Describing[ 0 ] = EwShareString( EwLoadString( &_Const00F6 ));
+  _this->Describing[ 1 ] = EwShareString( EwLoadString( &_Const00F7 ));
+  _this->Describing[ 2 ] = EwShareString( EwLoadString( &_Const00F8 ));
+  _this->Describing[ 3 ] = EwShareString( EwLoadString( &_Const00F9 ));
+  _this->Describing[ 4 ] = EwShareString( EwLoadString( &_Const00FA ));
+  _this->Describing[ 5 ] = EwShareString( EwLoadString( &_Const00FB ));
+  _this->Describing[ 6 ] = EwShareString( EwLoadString( &_Const00FC ));
+  _this->Describing[ 7 ] = EwShareString( EwLoadString( &_Const00FD ));
+  _this->Describing[ 8 ] = EwShareString( EwLoadString( &_Const00FE ));
+  _this->Describing[ 9 ] = EwShareString( EwLoadString( &_Const00FF ));
+  _this->Describing[ 10 ] = EwShareString( EwLoadString( &_Const0100 ));
+  _this->Describing[ 11 ] = EwShareString( EwLoadString( &_Const0101 ));
+  _this->Describing[ 12 ] = EwShareString( EwLoadString( &_Const0102 ));
+  _this->Describing[ 13 ] = EwShareString( EwLoadString( &_Const0103 ));
+  _this->Describing[ 14 ] = EwShareString( EwLoadString( &_Const0104 ));
+  CoreRectView__OnSetBounds( &_this->Progress, _Const0105 );
   WidgetSetHorizontalValueBar_OnSetCurrentValue( &_this->Progress, 0 );
-  CoreRectView__OnSetBounds( &_this->Text, _Const0107 );
-  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const0108 ));
-  ViewsText_OnSetColor( &_this->Text, _Const0109 );
+  CoreRectView__OnSetBounds( &_this->Text, _Const0106 );
+  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const0107 ));
+  ViewsText_OnSetColor( &_this->Text, _Const0108 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightColor( &_this->HorizontalValueBarConfig, 
-  _Const010A );
+  _Const0109 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightFlattened( &_this->HorizontalValueBarConfig, 
   1 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightCornerRadius( &_this->HorizontalValueBarConfig, 
@@ -6476,7 +6472,7 @@ void ApplicationAchievements__Init( ApplicationAchievements _this, XObject aLink
   WidgetSetHorizontalValueBarConfig_OnSetTrackRightWithEdge( &_this->HorizontalValueBarConfig, 
   1 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftColor( &_this->HorizontalValueBarConfig, 
-  _Const010B );
+  _Const010A );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftFlattened( &_this->HorizontalValueBarConfig, 
   1 );
   WidgetSetHorizontalValueBarConfig_OnSetTrackLeftCornerRadius( &_this->HorizontalValueBarConfig, 
@@ -6592,7 +6588,7 @@ void ApplicationAchievements_Init( ApplicationAchievements _this, XHandle aArg )
   WidgetSetHorizontalValueBar_OnSetCurrentValue( &_this->Progress, (XInt32)EwMathCeil( 
   prog ));
   ViewsText_OnSetString( &_this->Text, EwConcatString( EwNewStringInt( WidgetSetHorizontalValueBar_OnGetCurrentValue( 
-  &_this->Progress ), 0, 10 ), EwLoadString( &_Const010C )));
+  &_this->Progress ), 0, 10 ), EwLoadString( &_Const010B )));
 }
 
 /* This method is called by 'VerticalList' every time the list loads or updates 
@@ -6622,12 +6618,12 @@ void ApplicationAchievements_OnLoadItem( ApplicationAchievements _this, XObject
       EwCheckIndex( itemNo, 15 )])
   {
     ViewsFilterScreen_OnSetVisible( &itemView->FilterScreen, 1 );
-    ViewsText_OnSetColor( &itemView->Title, _Const010D );
+    ViewsText_OnSetColor( &itemView->Title, _Const010C );
   }
   else
   {
     ViewsFilterScreen_OnSetVisible( &itemView->FilterScreen, 0 );
-    ViewsText_OnSetColor( &itemView->Title, _Const010E );
+    ViewsText_OnSetColor( &itemView->Title, _Const010D );
   }
 
   CoreRectView__OnSetBounds( itemView, EwSetRectSize( itemView->Super2.Bounds, _this->VerticalList.ViewSize ));
@@ -6703,17 +6699,17 @@ void ApplicationAchievement__Init( ApplicationAchievement _this, XObject aLink, 
   _this->_.VMT = EW_CLASS( ApplicationAchievement );
 
   /* ... and initialize objects, variables, properties, etc. */
-  CoreRectView__OnSetBounds( _this, _Const010F );
-  CoreRectView__OnSetBounds( &_this->Rectangle, _Const0110 );
-  ViewsRectangle_OnSetColor( &_this->Rectangle, _Const0111 );
-  CoreRectView__OnSetBounds( &_this->Image, _Const0112 );
-  CoreRectView__OnSetBounds( &_this->Text, _Const0113 );
-  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const0114 ));
+  CoreRectView__OnSetBounds( _this, _Const010E );
+  CoreRectView__OnSetBounds( &_this->Rectangle, _Const010F );
+  ViewsRectangle_OnSetColor( &_this->Rectangle, _Const0110 );
+  CoreRectView__OnSetBounds( &_this->Image, _Const0111 );
+  CoreRectView__OnSetBounds( &_this->Text, _Const0112 );
+  ViewsText_OnSetString( &_this->Text, EwLoadString( &_Const0113 ));
   ViewsText_OnSetColor( &_this->Text, _Const0030 );
-  CoreRectView__OnSetBounds( &_this->Title, _Const0115 );
-  ViewsText_OnSetString( &_this->Title, EwLoadString( &_Const00E8 ));
-  ViewsText_OnSetColor( &_this->Title, _Const010D );
-  CoreRectView__OnSetBounds( &_this->FilterScreen, _Const0116 );
+  CoreRectView__OnSetBounds( &_this->Title, _Const0114 );
+  ViewsText_OnSetString( &_this->Title, EwLoadString( &_Const00E7 ));
+  ViewsText_OnSetColor( &_this->Title, _Const010C );
+  CoreRectView__OnSetBounds( &_this->FilterScreen, _Const0115 );
   ViewsFilterScreen_OnSetTintColor( &_this->FilterScreen, _Const002C );
   ViewsFilterScreen_OnSetTintMode( &_this->FilterScreen, GraphicsTintModeGrayscale );
   ViewsFilterScreen_OnSetBlurClampToEdges( &_this->FilterScreen, 1 );
@@ -6826,30 +6822,30 @@ void ApplicationAchPop__Init( ApplicationAchPop _this, XObject aLink, XHandle aA
 
   /* ... and initialize objects, variables, properties, etc. */
   CoreRectView__OnSetBounds( _this, _Const0000 );
-  CoreRectView__OnSetBounds( &_this->Rectangle, _Const0117 );
-  ViewsRectangle_OnSetColor( &_this->Rectangle, _Const0118 );
-  CoreRectView__OnSetBounds( &_this->Image, _Const0119 );
+  CoreRectView__OnSetBounds( &_this->Rectangle, _Const0116 );
+  ViewsRectangle_OnSetColor( &_this->Rectangle, _Const0117 );
+  CoreRectView__OnSetBounds( &_this->Image, _Const0118 );
   ViewsImage_OnSetAlignment( &_this->Image, ViewsImageAlignmentAlignHorzCenter | 
   ViewsImageAlignmentAlignVertCenter | ViewsImageAlignmentScaleToFit );
   ViewsImage_OnSetFrameNumber( &_this->Image, 0 );
-  CoreRectView__OnSetBounds( &_this->Title, _Const011A );
-  ViewsText_OnSetString( &_this->Title, EwLoadString( &_Const00E8 ));
-  ViewsText_OnSetColor( &_this->Title, _Const010D );
-  _this->AchievementsNames[ 0 ] = EwShareString( EwLoadString( &_Const00E8 ));
-  _this->AchievementsNames[ 1 ] = EwShareString( EwLoadString( &_Const00E9 ));
-  _this->AchievementsNames[ 2 ] = EwShareString( EwLoadString( &_Const00EA ));
-  _this->AchievementsNames[ 3 ] = EwShareString( EwLoadString( &_Const00EB ));
-  _this->AchievementsNames[ 4 ] = EwShareString( EwLoadString( &_Const00EC ));
-  _this->AchievementsNames[ 5 ] = EwShareString( EwLoadString( &_Const00ED ));
-  _this->AchievementsNames[ 6 ] = EwShareString( EwLoadString( &_Const00EE ));
-  _this->AchievementsNames[ 7 ] = EwShareString( EwLoadString( &_Const00EF ));
-  _this->AchievementsNames[ 8 ] = EwShareString( EwLoadString( &_Const00F0 ));
-  _this->AchievementsNames[ 9 ] = EwShareString( EwLoadString( &_Const00F1 ));
-  _this->AchievementsNames[ 10 ] = EwShareString( EwLoadString( &_Const00F2 ));
-  _this->AchievementsNames[ 11 ] = EwShareString( EwLoadString( &_Const00F3 ));
-  _this->AchievementsNames[ 12 ] = EwShareString( EwLoadString( &_Const00F4 ));
-  _this->AchievementsNames[ 13 ] = EwShareString( EwLoadString( &_Const00F5 ));
-  _this->AchievementsNames[ 14 ] = EwShareString( EwLoadString( &_Const00F6 ));
+  CoreRectView__OnSetBounds( &_this->Title, _Const0119 );
+  ViewsText_OnSetString( &_this->Title, EwLoadString( &_Const00E7 ));
+  ViewsText_OnSetColor( &_this->Title, _Const010C );
+  _this->AchievementsNames[ 0 ] = EwShareString( EwLoadString( &_Const00E7 ));
+  _this->AchievementsNames[ 1 ] = EwShareString( EwLoadString( &_Const00E8 ));
+  _this->AchievementsNames[ 2 ] = EwShareString( EwLoadString( &_Const00E9 ));
+  _this->AchievementsNames[ 3 ] = EwShareString( EwLoadString( &_Const00EA ));
+  _this->AchievementsNames[ 4 ] = EwShareString( EwLoadString( &_Const00EB ));
+  _this->AchievementsNames[ 5 ] = EwShareString( EwLoadString( &_Const00EC ));
+  _this->AchievementsNames[ 6 ] = EwShareString( EwLoadString( &_Const00ED ));
+  _this->AchievementsNames[ 7 ] = EwShareString( EwLoadString( &_Const00EE ));
+  _this->AchievementsNames[ 8 ] = EwShareString( EwLoadString( &_Const00EF ));
+  _this->AchievementsNames[ 9 ] = EwShareString( EwLoadString( &_Const00F0 ));
+  _this->AchievementsNames[ 10 ] = EwShareString( EwLoadString( &_Const00F1 ));
+  _this->AchievementsNames[ 11 ] = EwShareString( EwLoadString( &_Const00F2 ));
+  _this->AchievementsNames[ 12 ] = EwShareString( EwLoadString( &_Const00F3 ));
+  _this->AchievementsNames[ 13 ] = EwShareString( EwLoadString( &_Const00F4 ));
+  _this->AchievementsNames[ 14 ] = EwShareString( EwLoadString( &_Const00F5 ));
   CoreGroup__Add( _this, ((CoreView)&_this->Rectangle ), 0 );
   CoreGroup__Add( _this, ((CoreView)&_this->Image ), 0 );
   CoreGroup__Add( _this, ((CoreView)&_this->Title ), 0 );

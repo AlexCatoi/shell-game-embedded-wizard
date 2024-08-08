@@ -39,9 +39,9 @@ bitmap&&(this.FrameDelay>0))&&(this.NoOfFrames>1);},N$:function(value){throw new
 Error(AG);},Update:function(){},_Init:function(aArg){B.Core.HY._Init.call(this,aArg
 );this.__proto__=C.Am;this.BC(aArg);},_Done:function(){this.Fp();this.__proto__=
 B.Core.HY;B.Core.HY._Done.call(this);},_className:"Resources::Bitmap"};C.Ch={font:
-null,Leading:0,Descent:0,Ascent:0,Fp:function(){this.AaI();},BC:function(aArg){this.
-AaP(aArg);},AaI:function(){if(!this.font)return;var handle=this.font;B.aal(handle
-);this.font=null;this.Ascent=0;this.Descent=0;this.Leading=0;},AaP:function(aFontResource
+null,Leading:0,Descent:0,Ascent:0,Fp:function(){this.AaH();},BC:function(aArg){this.
+AaO(aArg);},AaH:function(){if(!this.font)return;var handle=this.font;B.aal(handle
+);this.font=null;this.Ascent=0;this.Descent=0;this.Leading=0;},AaO:function(aFontResource
 ){if(!aFontResource)return;var handle=null;var ascent=0;var descent=0;var leading=
 0;{var font=B.aa5(aFontResource);if(font){ascent=font.Ascent;descent=font.Descent;
 leading=font.Leading;}handle=font;}this.font=handle;this.Ascent=ascent;this.Descent=
